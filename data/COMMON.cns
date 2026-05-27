@@ -157,16 +157,15 @@ sysvar(2) = 1
 type = VarSet
 trigger1 = Time = 0
 sysvar(1) = 0
-
 [State 40, 2]
 type = VarSet
 trigger1 = command = "holdfwd"
 sysvar(1) = 1
-
 [State 40, 3]
 type = VarSet
 trigger1 = command = "holdback"
 sysvar(1) = -1
+
 
 [State 40, 4];FWD jump
 type = VelSet
@@ -189,7 +188,7 @@ type = VelSet
 triggerall = sysvar(2) = 0
 triggerall = sysvar(1) = -1
 trigger1 = animtime = 0
-x = const(velocity.jump.back.x)
+x = cond(prevstateno = [100, 101], const(velocity.runjump.back.x), const(velocity.jump.back.x))
 y = const(velocity.jump.y)
 
 [State 40, 4];FWD Hop
@@ -213,7 +212,7 @@ type = VelSet
 triggerall = sysvar(2) = 1
 triggerall = sysvar(1) = -1
 trigger1 = animtime = 0
-x = const(velocity.jump.back.x)
+x = cond(prevstateno = [100, 101], const(velocity.runjump.back.x), const(velocity.jump.back.x))
 y = const(velocity.jump.y) * 0.70
 
 [State 40, 6]
@@ -1516,8 +1515,8 @@ value = 40
 [State 100, 4]
 type = ChangeState
 trigger1 = command != "holdfwd"
-value = 0
-ctrl = 1
+value = 101
+ctrl = 0
 
 ;---------------------------------------------------------------------------
 ; Run stop
@@ -1525,8 +1524,13 @@ ctrl = 1
 type    = S
 physics = S
 sprpriority = 1
-ctrl = 0
+ctrl = 1
 anim = 101
+
+[State 100, 2] ;Prevent run from canceling into walk
+type = AssertSpecial
+trigger1 = 1
+flag = NoWalk
 
 [State 200, 3]
 type = ChangeState
@@ -1558,15 +1562,8 @@ value = 20, 0
 [State 100, 1]
 type = VelSet
 trigger1 = !time
-x = CONST(BACKDASH.SPEED)
-y = CONST(BACKDASH.HEIGHT)
-
-[State 0, NotHitBy]
-type 	= NotHitBy
-trigger1 	= time <= 7
-value 	= SCA
-time 	= 1
-ignorehitpause = 1
+x = CONST(velocity.run.back.x)
+y = CONST(velocity.run.back.y)
 
 [State 100, 4]
 type = ChangeState

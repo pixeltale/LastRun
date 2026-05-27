@@ -129,6 +129,14 @@ value = 1001
 triggerall = command = "236B"
 triggerall = statetype != A
 trigger1 = var(1)
+;236B
+[State -1, Crouching Heavy]
+type = ChangeState
+value = 2000
+triggerall = command = "236C"
+triggerall = power >= 500
+triggerall = statetype != A
+trigger1 = var(1)
 
 ;214A
 [State -1, Crouching Heavy]

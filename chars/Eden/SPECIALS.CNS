@@ -104,7 +104,7 @@ animtype 		= light                 ;Animation type: Light, Medium, Heavy, Back (
 air.animtype 	= back
 guardflag 	= M
 hitflag 		= MAF
-pausetime 		= 5, 5
+pausetime 		= 1, 1
 sparkno 			= 0
 sparkxy 			= -30, -59
 hitsound 			= 5, 1
@@ -169,7 +169,7 @@ animtype 		= light                 ;Animation type: Light, Medium, Heavy, Back (
 air.animtype 	= back
 guardflag 	= M
 hitflag 		= MAF
-pausetime 		= 5, 5
+pausetime 		= 1, 1
 sparkno 			= 0
 sparkxy 			= -30, -59
 hitsound 			= 5, 1
@@ -652,6 +652,27 @@ type = VelSet
 trigger1 = animelem = 3
 x = 4
 
+[State -2, P1 Value Set]
+type 		= MapSet
+trigger1 		= movehit && !map(ComboStateCheck)
+map 		= "P1"
+value 		= 1	;100% Starting DMG
+ignorehitpause 	= 1
+[State -2, P2 Value Set]
+type 		= MapSet
+trigger1 		= movehit && map(ComboStateCheck)
+map 		= "P2"
+value 		= 0.90	;85% DMG For next hit
+ignorehitpause 	= 1
+persistent = 0
+[State -2, P2 Accumulation - Scale]
+type 		= MapSet
+trigger1 		= movehit
+map 		= "Accumulation"
+value 		= Map(Accumulation) * map(P2)
+ignorehitpause 	= 1
+persistent 		= 0
+
 [State 200, 1]
 type = HitDef 
 trigger1	= Map(RETRIBUTION) = 0 || animelem = 4
@@ -783,6 +804,27 @@ time = 1
 type = VelSet
 trigger1 = animelem = 3
 x = 4
+
+[State -2, P1 Value Set]
+type 		= MapSet
+trigger1 		= movehit && !map(ComboStateCheck)
+map 			= "P1"
+value 		= 1	;100% Starting DMG
+ignorehitpause 	= 1
+[State -2, P2 Value Set]
+type 		= MapSet
+trigger1 		= movehit && map(ComboStateCheck)
+map 			= "P2"
+value 		= 0.90	;85% DMG For next hit
+ignorehitpause 	= 1
+persistent = 0
+[State -2, P2 Accumulation - Scale]
+type 		= MapSet
+trigger1 		= movehit
+map 				= "Accumulation"
+value 			= Map(Accumulation) * map(P2)
+ignorehitpause 	= 1
+persistent 		= 0
 
 [State 200, 1]
 type = HitDef 

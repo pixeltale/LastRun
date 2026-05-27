@@ -458,7 +458,7 @@ sysvar(1) = -1
 type = VelSet
 trigger1 = Time = 0
 x = ifelse(sysvar(1)=0, const(velocity.jump.neu.x), ifelse(sysvar(1)=1, const(velocity.jump.fwd.x) + vel x, const(velocity.jump.back.x)))*1.1
-y = const(velocity.jump.y) * 1.2
+y = const(velocity.jump.y) * 1.1
 
 [State 1220, Afterimage]
 type = AfterImage

@@ -1,0 +1,36 @@
+Version: nightly
+Build Time: 2026.05.22
+Platform: windows (amd64)
+OpenGL 3.3
+RAM in Use: 190 MB / OS Reserved: 230 MB
+Active Goroutines: 3
+Timestamp: 2026-05-25 00:00:44
+
+Engine error
+
+Error: .\external\script\start.lua:1654: data/common.cns:6741:
+Invalid StateType: h
+stack traceback:
+	[G]: in function 'game'
+	.\external\script\start.lua:1654: in function 'f_game'
+	.\external\script\start.lua:2232: in function 'launchFight'
+	external/script/default.lua:2: in function <external/script/default.lua:0>
+	.\external\script\start.lua:1710: in function 'f'
+	external/script/main.lua:2407: in function 'loop'
+	external/script/main.lua:3728: in main chunk
+	[G]: ?
+
+Go stack traceback:
+goroutine 1 [running, locked to thread]:
+runtime/debug.Stack()
+	runtime/debug/stack.go:24 +0x65
+main.handlePanic({0x7ff63bcac3a0?, 0xc005543140})
+	github.com/ikemen-engine/Ikemen-GO/src/main.go:362 +0x3e5
+main.realMain.func1()
+	github.com/ikemen-engine/Ikemen-GO/src/main.go:66 +0x2a
+panic({0x7ff63bcac3a0, 0xc005543140})
+	runtime/panic.go:884 +0x213
+main.realMain()
+	github.com/ikemen-engine/Ikemen-GO/src/main.go:206 +0x573
+main.main()
+	github.com/ikemen-engine/Ikemen-GO/src/main.go:59 +0x17

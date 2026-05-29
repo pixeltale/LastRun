@@ -3756,12 +3756,6 @@ value = , NT,ST,HT
 time = 12
 ignorehitpause = 1
 
-[State 5120, 6] ;Can't be hit right after getting up (short time)
-type = NotHitBy
-trigger1 = AnimTime = 0
-value2 = SCA
-time = 3
-
 [State 5120, 7]
 type = ChangeState
 trigger1 = AnimTime = 0
@@ -3978,14 +3972,8 @@ trans = add
 
 [State 0, NotHitBy]
 type = NotHitBy
-trigger1 = time = [0,12]
+trigger1 = 1
 value = SCA,NA,SA,HA,NP,SP,HP,NT,ST
-time = 1
-
-[State 0, NotHitBy]
-type = NotHitBy
-trigger1 = time >= 12
-value = ,NT,ST,HT
 time = 1
 
 [State 5210, 1] ;Blink white
@@ -4009,18 +3997,6 @@ type = VelSet
 trigger1 = Time = 0
 x = vel x
 y = -4
-
-[State 0, Width]
-type = Playerpush
-trigger1 = time = [0,25]
-value = 0
-ignorehitpause = 1
-persistent = 0
-
-[State 5210, 4]
-type = CtrlSet
-trigger1 = Time >= 12
-value = 1
 
 [State 5210, 5] ;Land on ground
 type = ChangeState

@@ -59,13 +59,6 @@ facing = 1
 keyctrl = 0
 ownpal = 0
 
-[State 0, ChangeAnim]
-type = ChangeAnim
-triggerall = time = 12
-trigger1 = sysvar(1)
-value = 1000
-elem = 1
-
 [State 200, 3]
 type = ChangeState
 trigger1 = AnimTime = 0

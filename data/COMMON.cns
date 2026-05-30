@@ -1471,7 +1471,12 @@ type    = S
 physics = S
 anim = 100
 sprpriority = 1
-ctrl = 1
+ctrl = 0
+
+[State 100, CtrlSet] ;allows you to jump while running
+type = CtrlSet
+trigger1 = time = 1
+value = 1
 
 [State 0, MapSet] 
 type = MapAdd
@@ -2202,318 +2207,6 @@ value = 0
 ;======================================================================================
 ;PARRY SECTION                                                                       []
 ;=====================================================================================
-
-;Stand Parry Attempt
-[Statedef 700]
-type = S
-physics = S
-movetype = I
-anim = 700
-velset = vel x, 0
-ctrl = 0
-sprpriority = 2
-poweradd = 0
-facep2 = 1
-
-[State 1300, 2]
-type = ReversalDef
-triggerall = enemy,Map(Low)!=1
-trigger1 = Time = [1,7]
-reversal.attr = SCA,AA
-pausetime = 0,0
-sparkno = 40
-sparkxy = 40,0
-hitsound = 6,0
-p1stateno = 710
-p1sprpriority = 2 ;Set P1's sprite in front of P2's
-p2sprpriority = 1
-
-[State 700, Changestate]
-type = Changestate 
-trigger1 = time = 20
-value = 0
-ctrl = 1
-
-
-;Standing Parry Success
-[Statedef 710]
-type = S
-physics = S
-movetype = I
-anim = 710
-velset = vel x, 0
-ctrl = 0
-sprpriority = 2
-poweradd = 78
-facep2 = 1
-
-[State 0, MapSet] ;Is Style Active?
-type = MapSet
-trigger1 = time = 0
-map = "StyleActive"
-value = 1
-[State 0, MapSet] ;Style Reset
-type = MapSet
-trigger1 = time = 0
-map = "StyleTime"
-value = 120
-[State 0, MapSet] ;Style Gain
-type = MapAdd
-trigger1 = time = 0
-map = "StyleGain"
-value = 50
-
-
-[State 0, CtrlSet]
-type = CtrlSet
-trigger1 = time = 5
-ignorehitpause = 1
-value = 1
-
-[State 700, Snd]
-type = playsnd
-trigger1 = !time
-value = S6700, 0
-
-
-[State 700, Stop]
-type = posfreeze
-trigger1 = 1
-value = 1
-
-[State 700, Pause]
-type = pause
-trigger1 = time = 0
-time = 10
-persistent = 0
-pausebg = 0
-
-[State 700, Flash]
-type = palfx
-trigger1 = time = 1
-ignorehitpause = 1
-add = 255, 30, 0
-sinadd = 255, -30, 0, 60
-time = 15
-
-[State 700, No walking]
-type = assertspecial
-trigger1 = 1
-flag = nowalk
-
-[State 700, End]
-type = changestate
-trigger1 = animtime = 0
-value = 0
-ctrl = 1
-
-
-;Crouch parry (Attempt)
-[Statedef 701]
-type = C
-physics = C
-movetype = I
-anim = 701
-velset = vel x, 0
-ctrl = 0
-sprpriority = 2
-poweradd = 78
-facep2 = 1
-
-[State 1300, 2]
-type = ReversalDef
-triggerall = enemy,Map(Overhead)!=1
-trigger1 = Time = [1,7]
-reversal.attr = SCA,AA
-pausetime = 0,0
-sparkno = 40
-sparkxy = 40,0
-hitsound = 6,0
-p1stateno = 711
-p1sprpriority = 2 ;Set P1's sprite in front of P2's
-p2sprpriority = 1
-
-[State 700, Changestate]
-type = Changestate 
-trigger1 = time = 20
-value = 11
-ctrl = 1
-
-;Crouch Parry (Success)
-[Statedef 711]
-type = C
-physics = C
-movetype = I
-anim = 711
-velset = vel x, 0
-ctrl = 0
-sprpriority = 2
-poweradd = 78
-facep2 = 1
-
-[State 0, MapSet] ;Is Style Active?
-type = MapSet
-trigger1 = time = 0
-map = "StyleActive"
-value = 1
-[State 0, MapSet] ;Style Reset
-type = MapSet
-trigger1 = time = 0
-map = "StyleTime"
-value = 120
-[State 0, MapSet] ;Style Gain
-type = MapAdd
-trigger1 = time = 0
-map = "StyleGain"
-value = 50
-
-
-[State 0, CtrlSet]
-type = CtrlSet
-trigger1 = time = 5
-ignorehitpause = 1
-value = 1
-
-[State 700, Snd]
-type = playsnd
-trigger1 = !time
-value = S6700, 0
-
-
-[State 700, Stop]
-type = posfreeze
-trigger1 = 1
-value = 1
-
-[State 700, Pause]
-type = pause
-trigger1 = time = 0
-time = 10
-persistent = 0
-pausebg = 0
-
-[State 700, Flash]
-type = palfx
-trigger1 = time = 1
-ignorehitpause = 1
-add = 255, 30, 0
-sinadd = 255, -30, 0, 60
-time = 15
-
-[State 700, No walking]
-type = assertspecial
-trigger1 = 1
-flag = nowalk
-
-[State 700, End]
-type = changestate
-trigger1 = animtime = 0
-value = 11
-ctrl = 1
-
-;Air Parry
-[Statedef 702]
-type = A
-physics = A
-movetype = I
-anim = 702
-velset = vel x, vel y
-ctrl = 0
-sprpriority = 2
-poweradd = 0
-facep2 = 1
-
-[State 1300, 2]
-type = ReversalDef
-trigger1 = Time = [1,7]
-reversal.attr = SCA,AA
-pausetime = 0,0
-sparkno = 40
-sparkxy = 40,0
-hitsound = 6,0
-p1stateno = 712
-p1sprpriority = 2 ;Set P1's sprite in front of P2's
-p2sprpriority = 1
-
-[State 700, Changestate]
-type = Changestate 
-trigger1 = time = 20
-value = 50
-ctrl = 1
-
-;Air Parry (Success)
-[Statedef 712]
-type = A
-physics = A
-movetype = I
-anim = 712
-ctrl = 0
-velset = vel x, vel y*.5-2
-sprpriority = 2
-poweradd = 78
-facep2 = 1
-
-[State 0, MapSet] ;Is Style Active?
-type = MapSet
-trigger1 = time = 0
-map = "StyleActive"
-value = 1
-[State 0, MapSet] ;Style Reset
-type = MapSet
-trigger1 = time = 0
-map = "StyleTime"
-value = 120
-[State 0, MapSet] ;Style Gain
-type = MapAdd
-trigger1 = time = 0
-map = "StyleGain"
-value = 50
-
-
-[State 0, CtrlSet]
-type = CtrlSet
-trigger1 = time = 5
-ignorehitpause = 1
-value = 1
-
-[State 700, Snd]
-type = playsnd
-trigger1 = !time
-value = S6700, 0
-
-[State 700, Pause]
-type = pause
-trigger1 = time = 0
-time = 10
-persistent = 0
-pausebg = 0
-
-[State 700, Flash]
-type = palfx
-trigger1 = time = 1
-ignorehitpause = 1
-add = 255, 30, 0
-sinadd = 255, -30, 0, 60
-time = 15
-
-[State 700, No walking]
-type = assertspecial
-trigger1 = 1
-flag = nowalk
-
-[State 702, Type]
-type = statetypeset
-trigger1 = 0
-physics = A
-
-[State 0, ChangeState]
-type = ChangeState
-trigger1 = animtime= 0
-value = 50
-ctrl = 1
-
-;---------------------------------------------------------------------------
-;Red Guard
 [Statedef 900] ;PARRY
 type    = S
 movetype= I
@@ -2555,7 +2248,6 @@ hitsound = S2,0
 p1stateno = 905
 ignorehitpause = 1
 
-
 [State 1000, 7]
 type = ChangeState
 triggerall = prevstateno != [150,155]
@@ -2563,15 +2255,8 @@ trigger1 = AnimTime = 0
 value = 0
 ctrl = 1
 
-[State 1000, 7]
-type = ChangeState
-triggerall = prevstateno = [150,155]
-trigger1 = time >= map(ctrltime_set)*2
-value = 0
-ctrl = 1
-
 ;---------------------------------------------------------------------------
-;Red Guard - Success
+;Parry Success
 [Statedef 905] ;Redline guard success
 type    = S
 movetype= I
@@ -2587,15 +2272,17 @@ type = Pause
 triggerall = enemy, hitdefattr != SCA,NP, SP, HP
 trigger1 = !time
 time = 25
-movetime = 5
-ignorehitpause = 1
-[State 0, Pause]
-type = Pause
-triggerall = enemy, hitdefattr = SCA,NP, SP, HP
-trigger1 = !time
-time = 8
 movetime = 1
 ignorehitpause = 1
+endcmdbuftime = 1
+[State 0, Pause]
+type = Pause
+triggerall = enemy, hitdefattr = SCA, NP, SP, HP
+trigger1 = !time
+time = 12
+movetime = 1
+ignorehitpause = 1
+endcmdbuftime = 1
 [State 0, PalFX]
 type = PalFX
 trigger1 = !time
@@ -2625,7 +2312,7 @@ persistent = 1
 
 [State 0, NotHitBy]
 type 	= NotHitBy
-trigger1 = !time
+trigger1 = 1
 value 	= SCA
 time 	= 3
 ignorehitpause = 1
@@ -6325,7 +6012,7 @@ value = 6140
 [State -1, PARRY]
 type = ChangeState
 value = 900 + 10*statetype = A
-triggerall = command = "D"
+triggerall = command = "D" || (stateno = 905 && stateno = 915) && command = "Parry_Buffered" && time > 2
 trigger1 = ctrl || stateno = 905 || stateno = 915
 
 [State -1, Pursuit Dash Cancel]

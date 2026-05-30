@@ -37,9 +37,11 @@ command = d
 time = 1
 [Command]
 name = "Parry_Buffered"
-command = /d
+command = d
 time = 1
-buffer.time = 0
+buffer.time = 10
+buffer.hitpause = 0
+buffer.pauseend = 0
 [Command]
 name = "F"
 command = x

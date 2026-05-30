@@ -6270,7 +6270,7 @@ value = 999
 ignorehitpause = 1
 [State 0, MapSet] ;Lower Limit
 type = MapSet
-trigger1 = MAP(PURSUIT) < 0
+trigger1 = MAP(PURSUIT) <= 0
 map = "Pursuit"
 value = 0
 ignorehitpause = 1

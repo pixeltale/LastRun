@@ -177,11 +177,102 @@ ctrl = 1
 
 [Statedef -2]
 
+[State -2, Explod]		;Pursuit Gauge Bar
+type = Explod
+triggerall = teamside = 1
+trigger1 = !NumExplod(46)
+anim = F46
+pos = 40, 165
+postype = left
+removetime = -1
+scale = .25, .3
+sprpriority = -1
+id = 46
+bindtime = -1
+ontop = 1
+ownpal = 0
+ignorehitpause = 1
+pausemovetime = 999999
+supermovetime = 999999
+[State -2, Explod]		;Pursuit Gauge Bar
+type = Explod
+triggerall = teamside = 2
+trigger1 = !NumExplod(46)
+anim = F46
+pos = -40, 165
+postype = right
+removetime = -1
+scale = .25, .3
+sprpriority = -1
+id = 46
+bindtime = -1
+ontop = 1
+ownpal = 0
+ignorehitpause = 1
+pausemovetime = 999999
+supermovetime = 999999
+
+[State -2, Explod] 		;Pursuit Gauge Rim
+type = Explod
+id = 45
+triggerall = teamside = 1
+trigger1 = !NumExplod(45)
+anim = F45
+pos = 40, 165
+postype = left
+removetime = -1
+scale = -.25, .3
+sprpriority = -3
+bindtime = -1
+ontop = 1
+ownpal = 0
+ignorehitpause = 1
+pausemovetime = 999999
+supermovetime = 999999
+[State -2, Explod] 		;Pursuit Gauge Rim
+type = Explod
+id = 45
+triggerall = teamside = 2
+trigger1 = !NumExplod(45)
+anim = F45
+pos = -40, 165
+postype = right
+removetime = -1
+scale = .25, .3
+sprpriority = -3
+bindtime = -1
+ontop = 1
+ownpal = 0
+ignorehitpause = 1
+pausemovetime = 999999
+supermovetime = 999999
+
+
+
+[State -2, Explod]		;Scaling The Inside Bar
+type = ModifyExplod
+Trigger1=TeamSide=1
+trigger1 = NumExplod(46)
+scale = -.26 * map(Pursuit)/999,.3
+id = 46
+PauseMoveTime=999999999999
+SuperMoveTime=99999999999999
+ignorehitpause = 1
+[State -2, Explod]		;Scaling The Inside Bar
+type = ModifyExplod
+Trigger1=TeamSide=2
+trigger1 = NumExplod(46)
+scale = .26 * map(Pursuit)/999,.3
+id = 46
+PauseMoveTime=999999999999
+SuperMoveTime=99999999999999
+ignorehitpause = 1
+
 [State 0, DisplayToClipboard]
 type = DisplayToClipboard
 trigger1 = 1
-text = "pursuit = %0.f retribution = %0.f juggletime = %i"
-params = map(pursuit), map(retribution), BackEdgeBodyDist
+text = "baroutside = %i barinside = %i"
+params = numexplod(45), var(2)
 ignorehitpause = 1
 persistent = 1
 

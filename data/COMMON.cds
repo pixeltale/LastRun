@@ -865,6 +865,16 @@ command = ~F, D, $F, x
 time = 15
 
 [Command]
+name = "236BC"
+command = ~D, F+b+c
+steptime = 7
+[Command]
+name = "236BC"
+command = ~D, F, b+c
+steptime = 7
+
+
+[Command]
 name = "236A"
 command = ~D, F+a
 steptime = 7

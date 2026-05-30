@@ -21,6 +21,10 @@ command.buffer.time = 1
 type = VarSet
 trigger1 = 1
 var(1) = 0
+[State -1, Combo condition Reset]
+type = VarSet
+trigger1 = 1
+var(2) = 0
 
 [State -1, Special Cancel Normal Attacks]
 type = VarSet
@@ -29,6 +33,14 @@ trigger1 = ctrl || stateno = 40 || stateno = 55
 trigger2 = (stateno = [200,299]) || (stateno = [400,499] || stateno = [600,699])
 trigger2 = movecontact
 var(1) = 1
+ignorehitpause = 1
+[State -1, Super Cancel Special Attacks]
+type = VarSet
+triggerall = statetype != A
+trigger1 = var(1)
+trigger2 = stateno = [1000,3000) && MoveContact
+var(2) = 1
+ignorehitpause = 1
 
 [State -2, Pursuit Cancel - Normals]
 type 		= MapSet
@@ -97,6 +109,19 @@ triggerall = command = "Throw"
 triggerall = statetype != A
 trigger1 = ctrl
 
+
+;===========================================================================
+;SUPER ATTACKS
+;===========================================================================
+;236236A
+[State -1, A DP]
+type = ChangeState
+value = 3000
+triggerall = command = "236BC"
+triggerall = statetype != A
+trigger1 = var(2)
+
+
 ;===========================================================================
 ;SPECIAL ATTACKS
 ;===========================================================================
@@ -112,6 +137,13 @@ trigger1 = var(1)
 type = ChangeState
 value = 1021
 triggerall = command = "623B"
+triggerall = statetype != A
+trigger1 = var(1)
+;6233
+[State -1, B DP]
+type = ChangeState
+value = 2020
+triggerall = command = "623C"
 triggerall = statetype != A
 trigger1 = var(1)
 
@@ -152,6 +184,12 @@ trigger1 = var(1)
 type = ChangeState
 value = 1015
 triggerall = command = "214B"
+trigger1 = var(1)
+;214C
+[State -1, Crouching Heavy]
+type = ChangeState
+value = 2010 - (1 * statetype = A)
+triggerall = command = "214C"
 trigger1 = var(1)
 
 

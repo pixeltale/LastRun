@@ -1068,7 +1068,7 @@ velset 		= vel x, 0
 ctrl 		= 0
 anim 		= 2010
 facep2 		= 1
-poweradd 		= 0
+poweradd 		= -500
 sprpriority 	= 2
 
 [State 8000, PalFX]

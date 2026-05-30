@@ -1,15 +1,17 @@
 {
-  "playtime": 1666,
+  "playtime": 502.42,
   "modes": {
     "training": {
       "playtime": 0,
       "clear": 0
     },
     "netplayversus": {
-      "playtime": 1666,
-      "clear": 12,
-      "clearcount": {
-        "eden": 12
+      "playtime": 502.42,
+      "clear": 4
+    ,"clearcount":{"eden":4}}
+  }
+}arcount": {
+        "eden": 1
       }
     }
   }

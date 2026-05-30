@@ -1,4 +1,11 @@
 main = {}
+
+-- Load Steam lobby module when running via IkemenShell
+steamLobby = nil
+if steamMode and steamMode() then
+	steamLobby = require('external/script/steam_lobby')
+end
+
 --;===========================================================
 --; INITIALIZE DATA
 --;===========================================================
@@ -1971,6 +1978,29 @@ main.t_itemname = {
 			replayStop()
 			exitNetPlay()
 			exitReplay()
+			showSessionWarning()
+		end
+		return nil
+	end,
+	--STEAM HOST
+	['steamhost'] = function(t, item)
+		hook.run("main.t_itemname", t, item)
+		if steamLobby ~= nil and steamLobby.f_host() then
+			enterSyncedNetplayMenu()
+			steamLeaveLobby()
+			exitNetPlay()
+			showSessionWarning()
+		end
+		return nil
+	end,
+	--STEAM JOIN
+	['steamjoin'] = function(t, item)
+		hook.run("main.t_itemname", t, item)
+		local code = steamLobby ~= nil and steamLobby.f_lobbyInput() or nil
+		if code ~= nil and steamLobby.f_join(code) then
+			enterSyncedNetplayMenu()
+			steamLeaveLobby()
+			exitNetPlay()
 			showSessionWarning()
 		end
 		return nil

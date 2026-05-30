@@ -211,6 +211,8 @@ menu.itemname.storymode.back = BACK
 menu.itemname.menunetwork = NETWORK
 menu.itemname.menunetwork.serverhost = HOST GAME
 menu.itemname.menunetwork.serverjoin = JOIN GAME
+menu.itemname.menunetwork.steamhost = STEAM HOST
+menu.itemname.menunetwork.steamjoin = STEAM JOIN
 menu.itemname.menunetwork.back = BACK
 
 ; known IP addresses show up before serverjoin.back item

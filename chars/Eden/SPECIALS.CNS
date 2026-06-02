@@ -1023,6 +1023,15 @@ trigger1 = 1
 value = ,NA,SA,HA,NT,ST,HT
 time = 1
 
+[State 0, HitOverride]
+type = HitOverride
+trigger1 = 1
+attr = SCA,NP,SP,HP
+slot = 0
+stateno = 1007
+time = 10
+
+
 [State 200, 3]
 type = Changestate
 trigger1 = sysvar(1) >= 3

@@ -868,10 +868,12 @@ time = 15
 name = "236BC"
 command = ~D, F+b+c
 steptime = 7
+buffertime = 18
 [Command]
 name = "236BC"
 command = ~D, F, b+c
 steptime = 7
+buffertime = 18
 
 
 [Command]

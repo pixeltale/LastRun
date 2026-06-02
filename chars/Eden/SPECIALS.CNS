@@ -1471,9 +1471,9 @@ hitonce = 1
 attr = S, HA
 damage = 30*MAP(P4), 10
 hitflag = MAFD
-guardflag = MA
+guardflag = M
 pausetime = 20,180
-guard.pausetime = 30,25
+guard.pausetime = 15,15
 sparkno = 2
 sparkxy = -25,-44
 hitsound   = 5,1
@@ -1490,9 +1490,8 @@ fall = 0
 air.fall = 1
 kill= 0
 fall.yvelocity = 0
-guard.slidetime = 21
-guard.hittime = 21
-guard.ctrltime = 4
+guard.slidetime = 14
+guard.hittime = 15
 getpower = 0
 
 

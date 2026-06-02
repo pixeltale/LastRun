@@ -788,7 +788,7 @@ p2facing = 1
 trigger1 = time = 0
 attr = S, NT
 animtype  = hard
-damage = 150*MAP(P4), 0
+damage = 180, 0
 guardflag = MA
 pausetime = 8,8
 sparkno = 2
@@ -862,7 +862,7 @@ p2facing = 1
 trigger1 = time = 0
 attr = S, NT
 animtype  = hard
-damage = 150, 0
+damage = 180, 0
 guardflag = MA
 pausetime = 8,8
 sparkno = 2
@@ -5639,18 +5639,13 @@ type = Height
 trigger1 = statetype = A
 value = -30, 10
 [State Test]
+type = Width
+trigger1 = statetype = A
+value = 5, 0
+[State Test]
 type = Height
 trigger1 = statetype = C
 value = -30, 0
-[State , No Auto Corner Steal]
-type = PlayerPush
-trigger1 = backedgebodydist = 0
-value = 1
-priority = 10
-[State 100, 3] ;Prevent from turning
-type = AssertSpecial
-trigger1 = backedgebodydist = 0
-flag = NoAutoTurn
 
 ;===============================================================================
 ; ------- Combo State Checker --------

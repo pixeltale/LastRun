@@ -30,7 +30,7 @@ var(2) = 0
 type = VarSet
 triggerall = stateno != 420
 trigger1 = ctrl || stateno = 40 || stateno = 55
-trigger2 = (stateno = [200,299]) || (stateno = [400,499] || stateno = [600,699])
+trigger2 = (stateno = [200,299]) || (stateno = [400,499] || stateno = [600,710]) 
 trigger2 = movecontact
 var(1) = 1
 ignorehitpause = 1

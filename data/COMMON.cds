@@ -902,7 +902,6 @@ steptime = 7
 name = "236C"
 command = ~D, F+c
 steptime = 7
-time = 20
 [Command]
 name = "236C"
 command = ~D, F, c

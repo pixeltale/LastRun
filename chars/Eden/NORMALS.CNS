@@ -69,10 +69,10 @@ guard.slidetime		= 10
 guard.velocity 		= -6
 airguard.velocity 		= -1,-1
 ;===============================
-ground.cornerpush.veloff	= -2
-air.cornerpush.veloff 	= -2
-down.cornerpush.veloff 	= -1
-guard.cornerpush.veloff 	= -1
+ground.cornerpush.veloff	= -4
+air.cornerpush.veloff 	= -4
+down.cornerpush.veloff 	= -3
+guard.cornerpush.veloff 	= -3
 ;===============================
 fall 				= 0
 air.fall 				= 1
@@ -1004,6 +1004,7 @@ ctrl 		= 0
 anim 		= 420
 sprpriority 	= 2
 facep2		= 1
+velset	 	= 4
 
 [State -2, P1 Value Set]
 type 		= MapSet
@@ -1043,7 +1044,7 @@ trigger1 	=  !movecontact && !movereversed
 attr 		= C, NA
 damage 		= 150 * map(P4), 0
 animtype  	= Hard
-hitflag 		= MAF
+hitflag 		= MAFD
 guardflag 	= L
 pausetime 	= 12,12 + 4 * (enemy, movetype = A)
 sparkno 		= 2
@@ -1059,12 +1060,12 @@ down.hittime 		= 31
 ground.velocity 	= -2,-1
 guard.velocity		= -8
 fall 			= 1
-air.velocity 		= -1,-1.5 / map(JuggleScale)
-fall.yvelocity 	= 0
-down.velocity 		= -2,-3
-down.hittime 		= 22
-guard.ctrltime 	= 6
-guard.cornerpush.veloff = -6
+air.velocity 		= -1,-4.5 / map(JuggleScale)
+fall.yvelocity 		= 0
+down.velocity 		= -2,-7
+down.hittime 		= 999
+guard.ctrltime 		= 8
+guard.cornerpush.veloff 	= -6
 ;===============================
 envshake.time 			= 15
 envshake.freq 			= 15
@@ -1444,7 +1445,7 @@ facep2 		= 1
 
 [State 0, PalFX]
 type = PalFX
-trigger1 = !time
+trigger1 = time = [0, 1]
 time = 15
 sinadd = 220, 120, 64, 50	
 mul = 256,256,256
@@ -1485,18 +1486,18 @@ hitflag 				= MAFD
 guardflag 			= M
 animtype 			= Light
 air.animtype 			= Light
-ground.TYPE 			= trip
-air.TYPE 				= trip
+ground.TYPE 			= high
+air.TYPE 				= high
 ;===============================
 sparkno 				= 2
 sparkxy 				= -p2dist x * 0.25, -60
 hitsound 				= 5,3
 guardsound 			= 6,0
 ;===============================
-ground.hittime  			= 16
+ground.hittime  			= 999
 ground.slidetime			= 16
 ground.velocity 			= -8,-6
-air.hittime  			= 30
+air.hittime  			= 999
 air.velocity 			= -8,-6 / map(JuggleScale)
 down.velocity 			= -1,-5
 down.hittime 			= 30
@@ -1528,7 +1529,7 @@ value = 50
 type = MapAdd
 trigger1 = movecontact = 1 || movehit = 1
 map = "Pursuit"
-value = -50
+value = -10
 ignorehitpause = 1
 redirectid = enemynear, id
 
@@ -1571,7 +1572,7 @@ facep2 		= 1
 
 [State 0, PalFX]
 type = PalFX
-trigger1 = !time
+trigger1 = time = [0, 1]
 time = 15
 sinadd = 220, 120, 64, 50	
 mul = 256,256,256
@@ -1625,11 +1626,11 @@ sparkno 		= 3
 sparkxy 		= -5,-35
 hitsound   	= 5,3
 guardsound 	= 6,0
-ground.type 	= trip
-air.type		= trip
+ground.type 	= high
+air.type		= high
 ground.slidetime 	= 6
-ground.hittime  	= 18 
-air.hittime  	= 20 
+ground.hittime  	= 999
+air.hittime  	= 999 
 ground.velocity 	= -8, -6
 fall.yvelocity 	= 0
 air.velocity 		= -8,-6 / map(JuggleScale)
@@ -1649,7 +1650,7 @@ value = 50
 type = MapAdd
 trigger1 = movecontact = 1 || movehit = 1
 map = "Pursuit"
-value = -50
+value = -10
 ignorehitpause = 1
 redirectid = enemynear, id
 

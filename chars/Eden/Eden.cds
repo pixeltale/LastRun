@@ -144,6 +144,7 @@ trigger1 = var(1)
 type = ChangeState
 value = 2020
 triggerall = command = "623C"
+triggerall = power >= 500
 triggerall = statetype != A
 trigger1 = var(1)
 
@@ -190,6 +191,7 @@ trigger1 = var(1)
 type = ChangeState
 value = 2010 - (1 * statetype = A)
 triggerall = command = "214C"
+triggerall = power >= 500
 trigger1 = var(1)
 
 

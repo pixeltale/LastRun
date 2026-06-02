@@ -1,6 +1,6 @@
 [Defaults]
 command.time = 15
-command.buffer.time = 7
+command.buffer.time = 10
 
 ;-| Single Button |---------------------------------------------------------
 [Command]

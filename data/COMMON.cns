@@ -3556,7 +3556,7 @@ y = 0
 
 [State 0, ChangeState] ;Backroll
 type = SelfState
-triggerall = command = "holdback"
+triggerall = command = "HOLD_D"
 trigger1 = time = 15
 value = 5202
 ctrl = 0
@@ -5440,7 +5440,7 @@ value = 0
 [State -1, PARRY]
 type = ChangeState
 value = 900 + 10*statetype = A
-triggerall = command = "D" || (stateno = 905 && stateno = 915) && command = "Parry_Buffered" && time > 2
+triggerall = command = "D" || (stateno = 905 && stateno = 915) && command = "Parry_Buffered" && time > 2 || prevstateno = 5120 && command = "HOLD_D"
 trigger1 = ctrl || stateno = 905 || stateno = 915
 
 [State -1, Pursuit Dash Cancel]
@@ -5448,7 +5448,7 @@ type = ChangeState
 value = 100
 triggerall = command = "FF"
 triggerall = statetype != A
-triggerall = movecontact > 0 && movecontact <= 3
+triggerall = movecontact > 0 && movecontact <= 6
 trigger1 = MAP(PURSUITCANCEL_NORMALS) && map(Pursuit) >= 333 ;Dash Cancel Normals
 trigger2 = MAP(PURSUITCANCEL_SPECIALS) && map(Pursuit) >= 666 ;Dash Cancel Specials
 trigger3 = MAP(PURSUITCANCEL_SUPERS) && map(Pursuit) >= 999 ;Dash Cancel Supers

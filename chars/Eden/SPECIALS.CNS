@@ -1,5 +1,3 @@
-;Specials
-;----------------------
 ;236A Card Throw
 [Statedef 1000]
 type    		= S
@@ -19,7 +17,7 @@ helpertype = Normal ;Player
 name = "Fatal Introduction"
 ID = 1005
 stateno = 1005
-pos = 20,-70
+pos = 20,-60
 postype = P1    ;P2, Front, Back, Left, Right
 facing = 1
 keyctrl = 0
@@ -31,8 +29,6 @@ trigger1 = AnimTime = 0
 value = 0
 ctrl = 1
 
-;Specials
-;----------------------
 ;236B Card Throw
 [Statedef 1001]
 type    		= S
@@ -53,7 +49,7 @@ helpertype = Normal ;Player
 name = "Fatal Introduction"
 ID = 1005
 stateno = 1005
-pos = 20,-70
+pos = 20,-60
 postype = P1    ;P2, Front, Back, Left, Right
 facing = 1
 keyctrl = 0
@@ -917,6 +913,7 @@ ctrl = 1
 
 ;EX Moves
 ;----------------------
+
 ;236C Card Throw
 [Statedef 2000]
 type    		= S
@@ -951,7 +948,7 @@ helpertype = Normal ;Player
 name = "Fatal Introduction EX"
 ID = 2005
 stateno = 2005
-pos = 20,-70
+pos = 20,-60
 postype = P1    ;P2, Front, Back, Left, Right
 facing = 1
 keyctrl = 0
@@ -1025,13 +1022,6 @@ type = NotHitBy
 trigger1 = 1
 value = ,NA,SA,HA,NT,ST,HT
 time = 1
-[State 0, HitOverride]
-type = HitOverride
-trigger1 = 1
-attr = SCA,NP,SP,HP
-slot = 0
-stateno = cond(sysvar(1) < 3, 2005, 1007)
-time = 10
 
 [State 200, 3]
 type = Changestate

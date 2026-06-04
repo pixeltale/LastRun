@@ -2262,6 +2262,22 @@ anim = 900 + 5 * (anim = 905)
 ctrl = 0
 sprpriority = 2
 
+[State 0, Mapadd]
+type 		= MapAdd
+trigger1 	    = !time
+map 		    = "Pursuit"
+value 		    = 50
+ignorehitpause 	= 1
+persistent 		= 1
+[State 0, Mapadd]
+type 		= MapAdd
+trigger1 	    = !time
+map 		    = "Pursuit"
+value 		    = -50
+ignorehitpause 	= 1
+persistent 		= 1
+redirectid      = enemy, ID
+
 [State 0, Pause]
 type = SuperPause
 triggerall = gethitvar(attr) != SCA,NP, SP, HP
@@ -2348,6 +2364,22 @@ velset = vel x * 0.75, -3
 anim = 910
 ctrl = 0
 sprpriority = 2
+
+[State 0, Mapadd]
+type 		= MapAdd
+trigger1 	    = !time
+map 		    = "Pursuit"
+value 		    = 50
+ignorehitpause 	= 1
+persistent 		= 1
+[State 0, Mapadd]
+type 		= MapAdd
+trigger1 	    = !time
+map 		    = "Pursuit"
+value 		    = -50
+ignorehitpause 	= 1
+persistent 		= 1
+redirectid      = enemy, ID
 
 [State 0, Pause]
 type = SuperPause
@@ -5649,7 +5681,7 @@ map = "Pursuit"
 value = floor(vel x * 0.5) + statetype = A
 [State 0, MapSet] 
 type = MapAdd
-trigger1 = movecontact
+trigger1 = movecontact && !movehitvar(overridden)
 map = "Pursuit"
 value = enemy,gethitvar(damage) * 0.5
 ignorehitpause = 1

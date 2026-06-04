@@ -37,7 +37,7 @@ command = d
 time = 1
 buffer.time = 6
 [Command]
-name = "Parry_Buffered"
+name = "Multiparry"
 command = d
 time = 1
 buffer.time = 10

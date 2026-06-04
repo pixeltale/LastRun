@@ -271,8 +271,8 @@ ignorehitpause = 1
 [State 0, DisplayToClipboard]
 type = DisplayToClipboard
 trigger1 = 1
-text = "baroutside = %i barinside = %i"
-params = numexplod(45), var(2)
+text = "baroutside = %i parrytype = %i"
+params = numexplod(45), (hitdefattr = SCA, NA, SA, SP)
 ignorehitpause = 1
 persistent = 1
 

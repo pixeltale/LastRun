@@ -28,7 +28,7 @@ var(2) = 0
 
 [State -1, Special Cancel Normal Attacks]
 type = VarSet
-triggerall = stateno != 420
+triggerall = stateno != 240
 trigger1 = ctrl || stateno = 40 || stateno = 55
 trigger2 = (stateno = [200,299]) || (stateno = [400,499] || stateno = [600,710]) 
 trigger2 = movecontact

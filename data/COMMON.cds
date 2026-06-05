@@ -72,7 +72,6 @@ time = 1
 [Command]
 name = "start"
 command = /s
-buffer.time = 30
 [Command]
 name = "m"
 command = m

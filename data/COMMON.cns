@@ -124,12 +124,18 @@ value = 21
 ;---------------------------------------------------------------------------
 ; Jump Start
 [Statedef 40]
-type    = A
+type    = S
 physics = S
 anim = 40
 ctrl = 0
 sprpriority = 1
 facep2 = 1
+
+[State 170, 1]
+type = NotHitBy
+trigger1 = 1
+value = , AT
+time = 1
 
 [State 0, Jump Cancel]
 type 		= MapSet
@@ -389,11 +395,17 @@ ctrl = 1
 ;---------------------------------------------------------------------------
 ;Super Jump Squat
 [Statedef 55] ;Superjumpsquat
-type    = A
+type    = S
 physics = S
 ctrl = 0
 velset = 0, 0
 anim = 40
+
+[State 170, 1]
+type = NotHitBy
+trigger1 = 1
+value = , AT
+time = 1
 
 [State - Air Option Limiter - Double Jump]
 type 		= mapset
@@ -6080,16 +6092,6 @@ type = LifeAdd
 triggerall = GameMode = "Training" && map(_iksys_trainingRegen) = 1
 trigger1 = (stateno = 0 || stateno = 11) && time >= 15
 value = 10000
-
-[State 0, MapAdd]
-type = MapAdd
-triggerall = GameMode = "Training"
-trigger1 = map(VoidGauge) > 0
-trigger1 = movetype = I
-trigger1 = teamside = 2
-trigger2 = roundstate = 0
-map = "VoidGauge"
-value = 1000
 
 [State 0, VarAdd]
 type = MapAdd

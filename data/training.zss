@@ -38,10 +38,10 @@ ignoreHitPause if gameMode = "training" {
 		} else {
 			mapAdd{map: "_iksys_trainingPowerTimer"; value: 1}
 		}
-		if map(_iksys_trainingPowerTimer) >= 60 {
-			powerSet{value: powerMax}
-			mapSet{map: "_iksys_trainingPowerTimer"; value: 0}
-		}
+		# if map(_iksys_trainingPowerTimer) >= 60 {
+		# 	powerSet{value: powerMax}
+		# 	mapSet{map: "_iksys_trainingPowerTimer"; value: 0}
+		# }
 	}
 	# Disable normal KO behavior
 	assertSpecial{

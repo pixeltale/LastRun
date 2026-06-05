@@ -327,7 +327,7 @@ envshake.time 		= 3
 envshake.freq 		= 5
 envshake.ampl 		= 2
 envshake.phase 	= 1
-getpower 			= (50)*(cond(var(var(2)) = 1, 1, .5))
+getpower 			= 50 * map(P4)
 
 
 [State 200, 3]
@@ -396,7 +396,7 @@ envshake.phase 	= 1
 air.fall 			= 1
 air.type			= trip
 fall.yvelocity 	= 0
-getpower 				= 75
+getpower 				= 75 * map(P4)
 [State 0]
 type 	= HitDef 
 p2facing 	= 1
@@ -432,7 +432,7 @@ air.fall 			= 1
 air.type			= trip
 fall.yvelocity 	= 0
 air.cornerpush.veloff	= -5
-getpower 				= 75
+getpower 				= 150
 p2stateno       		= 5255
 p2getp1state    		= 0
 id					= 1
@@ -557,7 +557,7 @@ envshake.time 		= 3
 envshake.freq 		= 5
 envshake.ampl 		= 2
 envshake.phase 	= 1
-getpower 			= 50
+getpower 			= 100 * map(P4)
 
 [State 200, 1]
 type = HitDef 
@@ -592,7 +592,7 @@ envshake.time 		= 3
 envshake.freq 		= 5
 envshake.ampl 		= 2
 envshake.phase 	= 1
-getpower 			= (50)*(cond(var(var(2)) = 1, 1, .5))
+getpower 			= 150
 id				= 1
 
 
@@ -695,7 +695,7 @@ envshake.time 		= 3
 envshake.freq 		= 3
 envshake.ampl 		= 2
 envshake.phase 		= 1
-getpower 		= 50
+getpower 		= 50 * map(P4)
 id			= 2
 
 [State 630, 2] ;Always Clean Hit
@@ -731,7 +731,7 @@ envshake.time 	= 8
 envshake.freq 	= 10
 envshake.ampl 	= 5
 envshake.phase 	= 1
-getpower 		= 0
+getpower 		= 150
 p2stateno 	= 5220
 p2getp1state 	= 0
 id		= 1
@@ -863,7 +863,7 @@ envshake.time 		= 3
 envshake.freq 		= 5
 envshake.ampl 		= 2
 envshake.phase 	= 1
-getpower 			= 50
+getpower 			= 150 * map(P4)
 
 [State 630, 2]
 type = HitDef 
@@ -898,7 +898,7 @@ envshake.time 	= 8
 envshake.freq 	= 10
 envshake.ampl 	= 5
 envshake.phase 	= 1
-getpower 		= 0
+getpower 		= 200
 p2stateno 	= 5220
 p2getp1state 	= 0
 id		= 1

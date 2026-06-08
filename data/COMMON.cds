@@ -620,17 +620,17 @@ buffer.time = 2
 
 [Command]
 name = "236236A"
-command = ~D, DF, F, D, DF, F, a
+command = ~D, F, D, F, a
 time = 30
 buffer.time = 15
 [Command]
 name = "236236B"
-command = ~D, DF, F, D, DF, F, b
+command = ~D, F, D, F, b
 time = 30
 buffer.time = 15
 [Command]
 name = "236236C"
-command = ~D, DF, F, D, DF, F, c
+command = ~D, F, D, F, c
 time = 30
 buffer.time = 15
 [Command]

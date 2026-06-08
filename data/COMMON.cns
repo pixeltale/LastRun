@@ -151,13 +151,13 @@ value = 0, 4
 [State 40, 1]
 type = VarSet
 trigger1 = time = 0
-sysvar(2) = 0
+sysvar(3) = 0
 
 [State 40, 1]
 type = VarSet
 trigger1 = command != "sh_buffer"
 trigger2 = command = "HOPMOD"
-sysvar(2) = 1
+sysvar(3) = 1
 
 [State 40, 1]
 type = VarSet
@@ -175,7 +175,7 @@ sysvar(1) = -1
 
 [State 40, 4];FWD jump
 type = VelSet
-triggerall = sysvar(2) = 0
+triggerall = sysvar(3) = 0
 triggerall = sysvar(1) = 1
 trigger1 = animtime = 0
 x = cond(prevstateno = 100, const(velocity.runjump.fwd.x), const(velocity.jump.fwd.x))
@@ -183,7 +183,7 @@ y = const(velocity.jump.y)
 
 [State 40, 4] ;Neutral Jump
 type = VelSet
-triggerall = sysvar(2) = 0
+triggerall = sysvar(3) = 0
 triggerall = sysvar(1) = 0
 trigger1 = animtime = 0
 x = const(velocity.jump.neu.x)
@@ -191,7 +191,7 @@ y = const(velocity.jump.y)
 
 [State 40, 4] ;Backward Jump
 type = VelSet
-triggerall = sysvar(2) = 0
+triggerall = sysvar(3) = 0
 triggerall = sysvar(1) = -1
 trigger1 = animtime = 0
 x = cond(prevstateno = [100, 101], const(velocity.runjump.back.x), const(velocity.jump.back.x))
@@ -199,7 +199,7 @@ y = const(velocity.jump.y)
 
 [State 40, 4];FWD Hop
 type = VelSet
-triggerall = sysvar(2) = 1
+triggerall = sysvar(3) = 1
 triggerall = sysvar(1) = 1
 trigger1 = animtime = 0
 x = cond(prevstateno = 100, const(velocity.runjump.fwd.x), const(velocity.jump.fwd.x))
@@ -207,7 +207,7 @@ y = const(velocity.jump.y) * 0.75
 
 [State 40, 4] ;Neutral Hop
 type = VelSet
-triggerall = sysvar(2) = 1
+triggerall = sysvar(3) = 1
 triggerall = sysvar(1) = 0
 trigger1 = animtime = 0
 x = const(velocity.jump.neu.x)
@@ -215,7 +215,7 @@ y = const(velocity.jump.y) * 0.75
 
 [State 40, 4] ;Backward Hop
 type = VelSet
-triggerall = sysvar(2) = 1
+triggerall = sysvar(3) = 1
 triggerall = sysvar(1) = -1
 trigger1 = animtime = 0
 x = cond(prevstateno = [100, 101], const(velocity.runjump.back.x), const(velocity.jump.back.x))
@@ -401,6 +401,10 @@ ctrl = 0
 velset = 0, 0
 anim = 40
 
+[State 40, 1]
+type = VarSet
+trigger1 = time = 0
+sysvar(3) = 0
 [State 170, 1]
 type = NotHitBy
 trigger1 = 1
@@ -1859,6 +1863,23 @@ trigger1 = time = 1 && map(IBTimer)
 map = "IBTimer"
 value = 0
 
+[State 0, Mapadd]
+type 		= MapAdd
+triggerall      = !map(IBCheck)
+trigger1 	    = time = 1
+map 		    = "Pursuit"
+value 		    = -gethitvar(ctrltime) * 1.5
+ignorehitpause 	= 1
+persistent 		= 1
+[State 0, Mapadd]
+type 		= MapAdd
+triggerall      = map(IBCheck)
+trigger1 	    = time = 1
+map 		    = "Pursuit"
+value 		    = gethitvar(ctrltime)
+ignorehitpause 	= 1
+persistent 		= 1
+
 [State 0, Changestate] ;Guard Crush
 type = Changestate 
 trigger1 = Map(GC)=1 && BackEdgeBodyDist <=0 && !map(BGuard)
@@ -1970,6 +1991,23 @@ type = MapSet
 trigger1 = time = 1 && map(IBTimer)
 map = "IBTimer"
 value = 0
+
+[State 0, Mapadd]
+type 		= MapAdd
+triggerall      = !map(IBCheck)
+trigger1 	    = time = 1
+map 		    = "Pursuit"
+value 		    = -gethitvar(ctrltime) * 1.5
+ignorehitpause 	= 1
+persistent 		= 1
+[State 0, Mapadd]
+type 		= MapAdd
+triggerall      = map(IBCheck)
+trigger1 	    = time = 1
+map 		    = "Pursuit"
+value 		    = gethitvar(ctrltime)
+ignorehitpause 	= 1
+persistent 		= 1
 
 [State 0, Changestate] ;Guard Crush
 type = Changestate 
@@ -2283,6 +2321,7 @@ ignorehitpause 	= 1
 persistent 		= 1
 [State 0, Mapadd]
 type 		= MapAdd
+triggerall      = gethitvar(attr) != SCA,NP, SP, HP
 trigger1 	    = !time
 map 		    = "Pursuit"
 value 		    = -50
@@ -2386,6 +2425,7 @@ ignorehitpause 	= 1
 persistent 		= 1
 [State 0, Mapadd]
 type 		= MapAdd
+triggerall      = gethitvar(attr) != SCA,NP, SP, HP
 trigger1 	    = !time
 map 		    = "Pursuit"
 value 		    = -50
@@ -2629,11 +2669,6 @@ trigger1 = !time
 x = (vel x / const(movement.crouch.friction)) - vel x
 ignorehitpause = 1
 
-[State 5011, 2]
-type = ChangeAnim
-trigger1 = AnimTime = 0
-value = 5025 + GetHitVar(animtype)
-
 [State 5011, 3] ;Stop sliding back
 type = VelMul
 trigger1 = Time >= GetHitVar(Slidetime)
@@ -2686,67 +2721,52 @@ type = ChangeAnim
 trigger1 = Time > 0
 value = anim
 
-
-; [State 5020, 5] ;WIP Skug Restand code
-; type = ChangeState
-; trigger1 = !Hitfall
-; trigger1 = HitShakeOver
-; value = 5025
-
 [State 5020, 5]
 type = ChangeState
+triggerall = HitFall
 trigger1 = HitShakeOver
 value = 5030
 
-;==============================================================
-; Air get-hit (restand) [WIP]
+[State 5020, 5]
+type = ChangeState
+triggerall = !HitFall
+trigger1 = HitShakeOver
+value = 5025 ;Flip-Out
+
+;---------------------------------------------------------------------------
+; Air get-hit (Flipout)
 [Statedef 5025]
 type    = A
 movetype= H
-physics = N
+physics = A
 velset = 0,0
 ctrl = 0
-
-[State 5050, 3] ;Gravity (Air Hit Gravity)
-type = VelAdd
-trigger1 = time > 0
-y = .4
-
-[State 0, StateTypeSet]
-type = StateTypeSet
-trigger1 = pos y = 0
-statetype = S       ;S,A,C,L
-movetype = H       ;I,A,H
-physics = S         ;A,C,S,N
-
-[State 5030, 1]
-type = ChangeAnim
-trigger1 = Anim != [5000, 5199]
-trigger1 = SelfAnimExist(5030)
-value = 5030
+anim = 5025
 
 [State 5030, 3]
 type = velset
 triggerall = alive
 trigger1 = Time = 0
-x = gethitvar(xvel) * facing
-y = gethitvar(yvel) + 1*(map(untechDecay) > 4)
+x = -2
+y = -4
 
-[State 5030, 3]
-type = velset
-triggerall = !alive
-trigger1 = Time = 0
-x = gethitvar(xvel) * facing
-y = cond((enemy, map(ComboTimer) < 1000), gethitvar(yvel), gethitvar(yvel) * (1000/(enemy, map(ComboTimer))*2))
+[State 5111, 11]
+type    = NotHitBy
+trigger1    = 1
+value       = SCA
+time        = 1
 
-[State 5050, 4] ;Recover near ground
+[State 5030, 6]
 type = ChangeState
-triggerall = Vel Y > 0
-triggerall = Pos Y >= 0
-triggerall = alive && prevstateno != 5080
-trigger1 = 1
-value = 5001 ;Air get-hit (fall recovery on ground)
-ctrl = 0
+triggerall = alive
+trigger1 = (Vel y >= 0) && (Pos y >= 0)
+value = 0
+
+[State 1028, Hit ground]
+type = SelfState
+triggerall = !alive
+trigger1 = (Vel y >= 0) && (Pos y >= 0)
+value = 5100
 
 ;---------------------------------------------------------------------------
 ; Air get-hit (knocked away)
@@ -2785,20 +2805,10 @@ y = cond((enemy, map(ComboTimer) < 1000), gethitvar(yvel), gethitvar(yvel) * (10
 [State 5030, 5]
 type = ChangeState
 triggerall = alive
-triggerall = HitFall
 trigger1 = HitOver
 trigger2 = Vel Y > 0    ;Hit ground
 trigger2 = Pos Y >= Const(movement.air.gethit.groundlevel)
 value = 5050 ;HITA_FALL
-
-[State 5030, 5]
-type = ChangeState
-triggerall = alive
-triggerall = !HitFall
-trigger1 = HitOver
-trigger2 = Vel Y > 0    ;Hit ground
-trigger2 = Pos Y >= Const(movement.air.gethit.groundlevel)
-value = 5002 ;RESTAND
 
 [State 1028, Hit ground]
 type = SelfState

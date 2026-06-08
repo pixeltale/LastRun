@@ -117,7 +117,7 @@ trigger1 = ctrl
 [State -1, A DP]
 type = ChangeState
 value = 3000
-triggerall = command = "236BC"
+triggerall = command = "236236A" || command = "236236B" || command = "236236C"
 triggerall = statetype != A
 trigger1 = var(2)
 
@@ -346,7 +346,7 @@ value = 610
 triggerall = command = "B"
 triggerall = statetype = A
 trigger1 = ctrl
-trigger2 = stateno = 600 && MoveContact
+trigger2 = stateno = 600 && MoveContact && !sysvar(3)
 ;---------------------------------------------------------------------------
 ;j.C
 [State -1, Jump Heavy]
@@ -355,5 +355,5 @@ value = 630
 triggerall = command = "C"
 triggerall = statetype = A
 trigger1 = ctrl
-trigger2 = stateno = [600,610] && MoveContact
+trigger2 = stateno = [600,610] && MoveContact && !sysvar(3)
 

@@ -1047,6 +1047,13 @@ command = $U
 time = 1
 buffer.time = 5
 
+;-| TERMINA |-----------------------------------------------
+[Command]
+name = "TERMINA"
+command = a+b+c
+time = 3
+buffer.time = 2
+
 ;-| Throws |-----------------------------------------------
 [Command]
 name = "Throw"

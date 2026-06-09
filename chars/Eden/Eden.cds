@@ -81,6 +81,11 @@ value 		= 1
 ignorehitpause = 1
 
 
+
+;===========================================================================
+
+
+
 ;===========================================================================
 ;---------------------------------------------------------------------------
 ;Run
@@ -100,16 +105,6 @@ triggerall = command = "44"
 triggerall = statetype != A
 trigger1 = ctrl
 
-;---------------------------------------------------------------------------
-;Throw
-[State -1, Throw]
-type = ChangeState
-value = 800
-triggerall = command = "Throw"
-triggerall = statetype != A
-trigger1 = ctrl
-
-
 ;===========================================================================
 ;SUPER ATTACKS
 ;===========================================================================
@@ -117,6 +112,7 @@ trigger1 = ctrl
 [State -1, A DP]
 type = ChangeState
 value = 3000
+triggerall = power >= 1000
 triggerall = command = "236236A" || command = "236236B" || command = "236236C"
 triggerall = statetype != A
 trigger1 = var(2)

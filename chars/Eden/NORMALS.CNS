@@ -237,7 +237,7 @@ pausetime 			= 12,12 + 4 * (movecountered)
 getpower 				= 100 * map(P4)
 ;===============================
 attr 				= S,NA
-hitflag 				= MAFD
+hitflag 				= MAF
 guardflag 			= M
 animtype 				= Light
 air.animtype 			= Light
@@ -308,13 +308,13 @@ facep2 		= 1
 [State -2, P1 Value Set]
 type 		= MapSet
 trigger1 		= movehit && !map(ComboStateCheck)
-map 		= "P1"
-value 		= 1	;100% Starting DMG
+map 			= "P1"
+value 		= 0.90	;100% Starting DMG
 ignorehitpause 	= 1
 [State -2, P2 Value Set]
 type 		= MapSet
 trigger1 		= movehit && map(ComboStateCheck)
-map 		= "P2"
+map 			= "P2"
 value 		= 0.90	;85% DMG For next hit
 ignorehitpause 	= 1
 persistent = 0
@@ -705,7 +705,7 @@ physics 		= S
 juggle  		= 0
 poweradd		= 0
 ctrl 		= 0
-velset 		= vel x + 6, 0
+velset 		= vel x + 3, 0
 anim 		= 240
 sprpriority	= 2
 facep2 		= 1
@@ -1443,25 +1443,16 @@ anim 		= 700
 sprpriority 	= 2
 facep2 		= 1
 
-[State 0, PalFX]
-type = PalFX
-trigger1 = time = [0, 1]
-time = 15
-sinadd = 220, 120, 64, 50	
-mul = 256,256,256
-invertall = 0
-color = 256
-
 [State -2, P1 Value Set]
 type 		= MapSet
 trigger1 		= movehit && !map(ComboStateCheck)
 map 		= "P1"
-value 		= 1	;100% Starting DMG
+value 		= 0.90	;90% Starting DMG
 ignorehitpause 	= 1
 [State -2, P2 Value Set]
 type 		= MapSet
 trigger1 		= movehit && map(ComboStateCheck)
-map 		= "P2"
+map 			= "P2"
 value 		= 0.90	;85% DMG For next hit
 ignorehitpause 	= 1
 persistent = 0
@@ -1527,6 +1518,7 @@ map = "Pursuit"
 value = 50
 [State 0, MapSet] 
 type = MapAdd
+triggerall = enemy, map(Pursuit.MAX) = 0
 trigger1 = movecontact = 1 || movehit = 1
 map = "Pursuit"
 value = -10
@@ -1541,10 +1533,6 @@ x = 5
 type = PosAdd
 trigger1 = animelem = 3
 x = 20
-[State 0, VelAdd]
-type = PosAdd
-trigger1 = animelem = 4 || animelem = 5 || animelem = 6
-x = -5
 
 [State 200, 2]
 type = PlaySnd
@@ -1570,15 +1558,6 @@ sprpriority 	= 2
 velset 		= vel x, vel y
 facep2 		= 1
 
-[State 0, PalFX]
-type = PalFX
-trigger1 = time = [0, 1]
-time = 15
-sinadd = 220, 120, 64, 50	
-mul = 256,256,256
-invertall = 0
-color = 256
-
 [State 200, 2]
 type = PlaySnd
 trigger1 = animelem = 5
@@ -1595,13 +1574,13 @@ ignorehitpause 	= 1
 type 		= MapSet
 trigger1 		= movehit && !map(ComboStateCheck)
 map 			= "P1"
-value 		= 0.95	;100% Starting DMG
+value 		= 0.90	;100% Starting DMG
 ignorehitpause 	= 1
 [State -2, P2 Value Set]
 type 		= MapSet
 trigger1 		= movehit && !map(ComboStateCheck)
 map 			= "P2"
-value 		= 0.87	;85% DMG For next hit
+value 		= 0.85	;85% DMG For next hit
 ignorehitpause 	= 1
 persistent = 0
 [State -2, P2 Accumulation - Scale]
@@ -1648,6 +1627,7 @@ map = "Pursuit"
 value = 50
 [State 0, MapSet] 
 type = MapAdd
+triggerall = enemy, map(Pursuit.MAX) = 0
 trigger1 = movecontact = 1 || movehit = 1
 map = "Pursuit"
 value = -10

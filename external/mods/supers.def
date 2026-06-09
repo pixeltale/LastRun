@@ -1,0 +1,23 @@
+; grooves.def
+
+; this is where all the default grooves go.
+; this file can be overriden by a character by adding grooves to a character's .def file.
+
+; enabled is 1 by default so you don't need to have it when adding grooves.
+
+; STANDARD FORMAT
+
+[LASTRIDE A]
+map_name = super_type
+map_value = 1
+enabled = 1
+
+[LASTRIDE B]
+map_name = super_type
+map_value = 2
+enabled = 1
+
+[LASTRIDE C]
+map_name = super_type
+map_value = 3
+enabled = 1

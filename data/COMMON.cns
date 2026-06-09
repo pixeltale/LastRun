@@ -697,7 +697,7 @@ player = 0,0
 [State 0, ChangeAnim2]
 type = ChangeAnim
 trigger1 = 1
-value = 5010
+value = 5000
 elem = 1
 
 
@@ -1865,7 +1865,7 @@ value = 0
 
 [State 0, Mapadd]
 type 		= MapAdd
-triggerall      = !map(IBCheck)
+triggerall      = !map(IBCheck) && !map(Pursuit.MAX)
 trigger1 	    = time = 1
 map 		    = "Pursuit"
 value 		    = -gethitvar(ctrltime) * 1.5
@@ -1994,7 +1994,7 @@ value = 0
 
 [State 0, Mapadd]
 type 		= MapAdd
-triggerall      = !map(IBCheck)
+triggerall      = !map(IBCheck) && !map(Pursuit.MAX)
 trigger1 	    = time = 1
 map 		    = "Pursuit"
 value 		    = -gethitvar(ctrltime) * 1.5
@@ -5421,6 +5421,45 @@ trigger1 = time = 0
 trigger1 = SelfAnimExist(5500)
 value = 5500
 
+;---------------------------------------------------------------------------
+;TERMINA ACTIVATION
+[Statedef 4000]
+type = S
+ctrl = 0
+anim = 4000
+velset = 0,0
+
+[State 0, MapSet] ;START
+type = MapSet
+trigger1 = !time
+map = "TERMINA.ACTIVE"
+value = 1
+ignorehitpause = 1
+[State 0, MapSet] ;START
+type = MapSet
+trigger1 = map(TERMINA.ACTIVE)
+map = "TERMINA.TIME"
+value = 600 - 300 * (combocount > 0)
+ignorehitpause = 1
+
+[State 0, SuperPause]
+type = SuperPause
+trigger1 = time = 0
+time = 20
+sound = 20,0
+pos = 0,0
+movetime = 20
+darken = 1
+p2defmul = 1
+poweradd = 0
+unhittable = 1
+
+[State 4000, 1]
+type = ChangeState
+trigger1 = !animtime
+value = 0
+ctrl = 1
+
 
 ;---------------------------------------------------------------------------
 ; Initialize (at the start of the round)
@@ -5459,8 +5498,14 @@ value = 0
 ;===========================================================================
 ;UNIVERSAL ACTIONS ----------------------------------------------------------
 ;===========================================================================
+[State -1, Pursuit Dash Cancel]
+type = ChangeState
+value = 4000
+triggerall = command = "TERMINA"
+triggerall = statetype != A && stateno < 3000 && movetype != H
+trigger1 = MAP(pursuit.MAX)
 
-;REDLINE GUARD
+;PARRY
 [State -1, PARRY]
 type = ChangeState
 value = 900 + 10*statetype = A
@@ -5516,6 +5561,7 @@ ignorehitpause 	= 0
 [State -2, Juggle Scaling Timer - Tick Up]
 type = MapAdd
 trigger1 = combocount && enemy, statetype = A
+trigger1 = enemy, stateno != [5220,5259]
 map = "JuggleTime"
 value = 1
 ignorehitpause = 0
@@ -5691,7 +5737,7 @@ ignorehitpause = 1
 
 
 ;======================================
-;PURSUIT
+;PURSUIT Section
 ;======================================
 
 ;Build Pursuit for Aggression
@@ -5700,15 +5746,32 @@ type = MapAdd
 triggerall = vel x > 0
 trigger1 = !combocount
 map = "Pursuit"
-value = floor(vel x * 0.5) + statetype = A
+value = floor(vel x * 0.4) + statetype = A
 [State 0, MapSet] 
 type = MapAdd
 trigger1 = movecontact && !movehitvar(overridden)
 map = "Pursuit"
-value = enemy,gethitvar(damage) * 0.5
+value = enemy,gethitvar(damage) * 0.7
+ignorehitpause = 1
+[State 0, MapSet] 
+type = MapAdd
+trigger1 = enemy, stateno = [150, 153]
+map = "Pursuit"
+value = 1
 ignorehitpause = 1
 
-
+[State 0, MapSet] ;Player has MAX Pursuit Value. Cannot be depleted by blocking or deadzones.
+type = MapSet
+trigger1 = MAP(PURSUIT) >= 999
+map = "Pursuit.MAX"
+value = 1
+ignorehitpause = 1
+[State 0, MapSet] ;Player has MAX Pursuit Value. Cannot be depleted by blocking or deadzones.
+type = MapSet
+trigger1 = MAP(PURSUIT) < 999
+map = "Pursuit.MAX"
+value = 0
+ignorehitpause = 1
 [State 0, MapSet] ;Upper Limit
 type = MapSet
 trigger1 = MAP(PURSUIT) > 999
@@ -5722,65 +5785,180 @@ map = "Pursuit"
 value = 0
 ignorehitpause = 1
 
-[State 0]
+;======================================
+;TERMINA Calculations
+;======================================
+[State 0, MapSet] ;Deplete
+type = MapAdd
+trigger1 = map(TERMINA.ACTIVE)
+map = "TERMINA.TIME"
+value = -1
+ignorehitpause = 0
+persistent = 1
+[State 0, MapSet] ;END
+type = MapSet
+trigger1 = map(TERMINA.TIME) = 0
+map = "TERMINA.ACTIVE"
+value = 0
+ignorehitpause = 1
+[State 0, MapSet] ;END
+type = MapSet
+trigger1 = map(TERMINA.ACTIVE) = 1
+map = "PURSUIT"
+value = 999 * (map(TERMINA.TIME)/600)
+ignorehitpause = 1
+
+
+;======================================
+;TERMINA Visuals
+;======================================
+[State 0, BGPalFX - A-TYPE]
+type = BGPalFX
+trigger1 = map(Groove_Style) = 1
+trigger1 = map(TERMINA.ACTIVE)
+time = 5
+add = -10,-50,-50
+persistent = 1
+ignorehitpause = 1
+[State 0, BGPalFX - B-TYPE]
+type = BGPalFX
+trigger1 = map(Groove_Style) = 2
+trigger1 = map(TERMINA.ACTIVE)
+time = 5
+add = -40,-50,-10
+persistent = 1
+ignorehitpause = 1
+[State 0, BGPalFX - C-TYPE]
+type = BGPalFX
+trigger1 = map(Groove_Style) = 3
+trigger1 = map(TERMINA.ACTIVE)
+time = 5
+add = -10,-50,-10
+persistent = 1
+ignorehitpause = 1
+[State 0, MapSet] ;NO JUGGLE LIMIT
+type = MapSet
+trigger1 = map(TERMINA.ACTIVE)
+map = "JUGGLETIME"
+value = 0
+ignorehitpause = 1
+
+;======================================
+;GROOVE TEXT
+;======================================
+
+[State -2, Black Rectangle]
 type = text
 triggerall = teamside=1
 trigger1 = 1
 removetime = 1
-layerno = 2  
-text = "Pursuit %.0f"
-params = map(Pursuit)
-scale = 0.51,0.52
-font = F-1
+layerno = 0  
+text = "-"
+scale = 5,1.5
+font = F1
 align = 0
-pos = 38,165
-color = 0, 0, 0
+pos = 21,50
+color = 0, 0, 0, 150
 ignorehitpause = 1
 pausemovetime = 100
-[State 0]
+[State -2, A-Type]
 type = text
 triggerall = teamside=1
-trigger1 = 1
+trigger1 = map(Groove_Style) = 1
 removetime = 1
-layerno = 2  
-text = "Pursuit %.0f"
-params = map(Pursuit)
+layerno = 0
+text = "A-Type"
 scale = 0.5,0.5
-font = F-1
+font = F1
 align = 0
-pos = 38,165
+pos = 20,45
 color = 256, 0, 0
+ignorehitpause = 1
+pausemovetime = 100
+[State -2, B-Type]
+type = text
+triggerall = teamside=1
+trigger1 = map(Groove_Style) = 2
+removetime = 1
+layerno = 0
+text = "B-Type"
+scale = 0.5,0.5
+font = F1
+align = 0
+pos = 20,45
+color = 56, 56, 256
+ignorehitpause = 1
+pausemovetime = 100
+[State -2, C-Type]
+type = text
+triggerall = teamside=1
+trigger1 = map(Groove_Style) = 3
+removetime = 1
+layerno = 0
+text = "C-Type"
+scale = 0.5,0.5
+font = F1
+align = 0
+pos = 20,45
+color = 256, 0, 256
 ignorehitpause = 1
 pausemovetime = 100
 
-[State 0]
+
+[State -2, Black Rectangle]
 type = text
 triggerall = teamside=2
 trigger1 = 1
 removetime = 1
-layerno = 2  
-text = "Pursuit %.0f"
-params = map(Pursuit)
-scale = 0.51,0.52
-font = F-1
-align = 0
-pos = 280,165
-color = 0, 0, 0
+layerno = 0  
+text = "-"
+scale = 5, 1.5
+font = F1
+align = 1
+pos = 287,50
+color = 0, 0, 0, 150
 ignorehitpause = 1
 pausemovetime = 100
-[State 0]
+[State -2, A-Type]
 type = text
 triggerall = teamside=2
-trigger1 = 1
+trigger1 = map(Groove_Style) = 1
 removetime = 1
-layerno = 2  
-text = "Pursuit %.0f"
-params = map(Pursuit)
-scale = 0.5,0.5
-font = F-1
-align = 0
-pos = 280,165
+layerno = 0 
+text = "A-Type"
+scale = 0.51,0.52
+font = F1
+align = 1
+pos = 288,45
 color = 256, 0, 0
+ignorehitpause = 1
+pausemovetime = 100
+[State -2, B-Type]
+type = text
+triggerall = teamside=2
+trigger1 = map(Groove_Style) = 2
+removetime = 1
+layerno = 0 
+text = "B-Type"
+scale = 0.51,0.52
+font = F1
+align = 1
+pos = 288,45
+color = 56, 56, 256
+ignorehitpause = 1
+pausemovetime = 100
+[State -2, C-Type]
+type = text
+triggerall = teamside=2
+trigger1 = map(Groove_Style) = 3
+removetime = 1
+layerno = 0 
+text = "C-Type"
+scale = 0.51,0.52
+font = F1
+align = 1
+pos = 288,45
+color = 256, 0, 256
 ignorehitpause = 1
 pausemovetime = 100
 

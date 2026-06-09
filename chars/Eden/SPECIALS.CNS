@@ -312,7 +312,7 @@ down.hittime 		= 15
 ground.velocity 	= -3, -5
 guard.ctrltime 	= 5
 guard.slidetime	= 5
-air.velocity 		= -3, (-2.5 - 1*(PrevStateNo = 1010))
+air.velocity 		= -3, ((-2.5/map(JuggleScale)) - 1*(PrevStateNo = 1010))
 envshake.time 		= 0
 fall				= 1
 air.fall 			= 1
@@ -1619,7 +1619,7 @@ attr = S, HA
 damage = 20*MAP(P4) + 5, 10
 hitflag = MAFD
 guardflag = MA
-pausetime = 5,5
+pausetime = 5,10 - 5 *(movehitvar(overridden))
 sparkno = 2
 sparkxy = -25,-44
 hitsound   = 5,1
@@ -1632,7 +1632,8 @@ ground.velocity = -2,-3
 air.velocity = -6.6,-2
 air.hittime = 24
 envshake.time = 7
-fall = 0
+fall = 1
+air.fall = 1
 fall.yvelocity = 0
 guard.slidetime = 21
 guard.hittime = 21

@@ -28,7 +28,7 @@ height = 100          ;Height of player (for opponent to jump over)
 attack.dist = 0    ;Default attack distance
 proj.attack.dist = 0 ;Default attack distance for projectiles
 proj.doscale = 0     ;Set to 1 to scale projectiles too
-head.pos = -5, -90   ;Approximate position of head
+head.pos = -5, -125   ;Approximate position of head
 mid.pos = -5, -60    ;Approximate position of midsection
 shadowoffset = 0     ;Number of pixels to vertically offset the shadow
 draw.offset = 0,0    ;Player drawing offset in pixels (x, y). Recommended 0,0
@@ -177,6 +177,21 @@ ctrl = 1
 
 [Statedef -2]
 
+[State -2, Lifetime Set]
+type 		= MapSet
+trigger1 		= time = 0
+trigger1		= numhelper(2120)
+map 			= "Stalker"
+value 		= 1
+ignorehitpause 	= 1
+[State -2, Lifetime Set]
+type 		= MapSet
+trigger1 		= time = 0
+trigger1		= !numhelper(2120)
+map 			= "Stalker"
+value 		= 0
+ignorehitpause 	= 1
+
 [State -2, Explod]		;Pursuit Gauge Bar
 type = Explod
 triggerall = teamside = 1
@@ -271,8 +286,8 @@ ignorehitpause = 1
 [State 0, DisplayToClipboard]
 type = DisplayToClipboard
 trigger1 = 1
-text = "TerminaActive = %.0f TerminaTime = %.0f"
-params = map(TERMINA.ACTIVE), map(TERMINA.TIME)
+text = "TerminaActive = %i TerminaTime = %.0f"
+params = const(data.defence), map(TERMINA.TIME)
 ignorehitpause = 1
 persistent = 1
 

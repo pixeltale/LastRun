@@ -26,8 +26,41 @@ Water's Edge_EX_AIROK								_QDB^A/^B/^C
 _!Extra kick								(After A Version) ^A
   _!Knockdown [R]								    (After A Version) ^A
 
-<#f0f000>SUPER MOVES</>
-Purple Truth Combo</>		_QDF_+^B +^C
+<#f0f000>LASTRIDE</>
+Revelation</>		_QDF_QDF_+^B _+^C
+
+<#f0f000>ALTERNATIVE SPECIAL MOVES: A-GEAR</>
+BLACK HOLE						_QDB^B_+^C
+   <#bbbbbb>A projectile spawns at the enemy's
+   location before exploding.</>
+
+LOWCARD						_D_D^B_+^C
+   <#bbbbbb>A low card attack.</>
+
+<#f0f000>ALTERNATIVE SPECIAL MOVES: B-GEAR</>
+CRAWLING FLAME						_QDB^B_+^C
+   <#bbbbbb>A slow moving, multi-hit projectile
+   that travels across the ground.</>
+SOARING FLAME						_QDB^B_+^C
+   <#bbbbbb>An air to ground projectile attack.</>
+
+<#f0f000>ALTERNATIVE SPECIAL MOVES: C-GEAR</>
+NUMBERED DAYS: DEATH EPITAPH		_QDB^B_+^C
+   <#bbbbbb>A fast dash punch that is unsafe
+   on block. Applies the Numbered Days state on contact,
+   enabling the use of STALKER.
+   If you use this attack again, the Numbered Days mark
+   will explode. </>
+STALKER						_D_D^A/^B/^C
+   <#bbbbbb>A teleport that can be used to cancel out of 
+   special moves.
+   A Version teleports in place.
+   B Version teleports forward.
+   C Version teleports to the opponent.</>
+
+
+<#f0f000>LASTRIDE: ALTERNATIVES</>
+Not Yet Implemented
 
 <#f0f000>ULTIMATE</>
 Not implemented Yet

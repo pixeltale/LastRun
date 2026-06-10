@@ -1496,22 +1496,35 @@ value = 1
 
 [State 0, MapSet] 
 type = MapAdd
+triggerall = !map(Termina.active)
 triggerall = !time
 trigger1 = prevstateno = [200, 800]
 map = "Pursuit"
 value = -333
 [State 0, MapSet] 
 type = MapAdd
+triggerall = !map(Termina.active)
 triggerall = !time
 trigger1 = prevstateno = [1000, 4000)
 map = "Pursuit"
 value = -666
 [State 0, MapSet] 
 type = MapAdd
+triggerall = map(Termina.active)
 triggerall = !time
-trigger1 = prevstateno = [4000, 5000]
-map = "Pursuit"
-value = -999
+trigger1 = prevstateno = [200, 800]
+map = "Termina.Time"
+value = -100
+[State 0, MapSet] 
+type = MapAdd
+triggerall = map(Termina.active)
+triggerall = !time
+trigger1 = prevstateno = [1000, 4000)
+map = "Termina.Time"
+value = -200
+
+
+
 [State 0, Mapadd]
 type 		= MapSet
 triggerall      = combocount
@@ -5498,7 +5511,7 @@ value = 0
 ;===========================================================================
 ;UNIVERSAL ACTIONS ----------------------------------------------------------
 ;===========================================================================
-[State -1, Pursuit Dash Cancel]
+[State -1, TERMINA]
 type = ChangeState
 value = 4000
 triggerall = command = "TERMINA"
@@ -5518,9 +5531,8 @@ value = 100
 triggerall = command = "FF"
 triggerall = statetype != A
 triggerall = movecontact > 0 && movecontact <= 6
-trigger1 = MAP(PURSUITCANCEL_NORMALS) && map(Pursuit) >= 333 ;Dash Cancel Normals
-trigger2 = MAP(PURSUITCANCEL_SPECIALS) && map(Pursuit) >= 666 ;Dash Cancel Specials
-trigger3 = MAP(PURSUITCANCEL_SUPERS) && map(Pursuit) >= 999 ;Dash Cancel Supers
+trigger1 = MAP(PURSUITCANCEL_NORMALS) && (map(Pursuit) >= 333 || map(TERMINA.ACTIVE)) ;Dash Cancel Normals
+trigger2 = MAP(PURSUITCANCEL_SPECIALS) && (map(Pursuit) >= 666 || map(TERMINA.ACTIVE)) ;Dash Cancel Specials
 
 [State -1, Grab] ;Throw
 type = ChangeState
@@ -5577,14 +5589,14 @@ persistent = 1
 type = MapSet
 trigger1 = map(JuggleTime) < 30 
 map = "JuggleScale"
-value = 1.1
+value = 0.9
 ignorehitpause = 1
 persistent = 1
 [State -2, Juggle State Check]
 type = MapSet
 trigger1 = map(JuggleTime) >= 30
 map = "JuggleScale"
-value = 1.1*((map(juggleTime)+60) * 0.01)
+value = ((map(juggleTime)+60) * 0.015)
 ignorehitpause = 1
 persistent = 1
 
@@ -5790,6 +5802,7 @@ ignorehitpause = 1
 ;======================================
 [State 0, MapSet] ;Deplete
 type = MapAdd
+trigger1 = stateno < 3000  || movetype = H      ;Dont deplete during supers or starutp anim
 trigger1 = map(TERMINA.ACTIVE)
 map = "TERMINA.TIME"
 value = -1
@@ -5797,7 +5810,7 @@ ignorehitpause = 0
 persistent = 1
 [State 0, MapSet] ;END
 type = MapSet
-trigger1 = map(TERMINA.TIME) = 0
+trigger1 = map(TERMINA.TIME) <= 0
 map = "TERMINA.ACTIVE"
 value = 0
 ignorehitpause = 1

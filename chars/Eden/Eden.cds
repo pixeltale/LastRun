@@ -36,9 +36,9 @@ var(1) = 1
 ignorehitpause = 1
 [State -1, Super Cancel Special Attacks]
 type = VarSet
-triggerall = statetype != A
 trigger1 = var(1)
 trigger2 = stateno = [1000,3000) && MoveContact
+trigger3 = (stateno = [1000, 1001] || stateno = 2000 ) && animelemno(0) > 3
 var(2) = 1
 ignorehitpause = 1
 
@@ -117,6 +117,65 @@ triggerall = command = "236236A" || command = "236236B" || command = "236236C"
 triggerall = statetype != A
 trigger1 = var(2)
 
+
+;===========================================================================
+;ALTERNATIVE SPECIALS
+;===========================================================================
+[State -1, A GEAR - DIRTY TRICK] ;22BC
+type = ChangeState
+value = 2105
+triggerall = map(Groove_Style) = 1
+triggerall = command = "22BC"
+triggerall = statetype != A && stateno != [2100, 3000)
+triggerall = stateno != [1000, 3000) || (map(Pursuit) >= 333 || map(Termina.Active))
+trigger1 = var(2)
+[State -1, A GEAR - BLACK HOLE]
+type = ChangeState
+value = 2100
+triggerall = map(Groove_Style) = 1
+triggerall = command = "214BC"
+triggerall = statetype != A && stateno != [2100, 3000)
+triggerall = stateno != [1000, 3000) || (map(Pursuit) >= 333 || map(Termina.Active))
+trigger1 = var(2)
+
+[State -1, B GEAR - SEARING FLAME]
+type = ChangeState
+value = 2110 - 1*(statetype = A)
+triggerall = map(Groove_Style) = 2
+triggerall = command = "214BC"
+triggerall = numhelper(2111) = 0 && stateno != [2100, 3000)
+triggerall = stateno != [1000, 3000) || (map(Pursuit) >= 333 || map(Termina.Active))
+trigger1 = var(2)
+
+[State -1, C GEAR - NUMBERED DAYS - DEATH EPITAPH] ;214BC
+type = ChangeState
+value = 2120
+triggerall = map(Groove_Style) = 3
+triggerall = command = "214BC"
+triggerall = statetype != A && stateno != [2100, 3000)
+triggerall = stateno != [1000, 3000) || (map(Pursuit) >= 333 || map(Termina.Active))
+trigger1 = var(2)
+[State -1, C GEAR - DIRTY TRICK] ;22A
+type = ChangeState
+value = 2125
+triggerall = map(Groove_Style) = 3
+triggerall = command = "22A"
+triggerall = numhelper(2120) && map(Stalker)
+trigger1 = var(2)
+[State -1, C GEAR - DIRTY TRICK] ;22B
+type = ChangeState
+value = 2123
+triggerall = map(Groove_Style) = 3
+triggerall = command = "22B"
+triggerall = numhelper(2120) && map(Stalker)
+trigger1 = var(2)
+[State -1, C GEAR - DIRTY TRICK] ;22C
+type = ChangeState
+value = 2124
+triggerall = map(Groove_Style) = 3
+triggerall = command = "22C"
+triggerall = numhelper(2120) && map(Stalker)
+trigger1 = var(2)
 
 ;===========================================================================
 ;SPECIAL ATTACKS

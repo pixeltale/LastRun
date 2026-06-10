@@ -808,6 +808,18 @@ command = ~B, DB, D, DF, F, x
 buffer.time = 10
 
 [Command]
+name = "214BC"
+command = ~D, B, b+c
+[Command]
+name = "236BC"
+command = ~D, F, b+c
+steptime = 7
+[Command]
+name = "22BC"
+command = ~D, D, b+c
+steptime = 7
+
+[Command]
 name = "624A"
 command = ~$F, $D, $B, a
 buffer.time = 15
@@ -939,7 +951,6 @@ name = "421D"
 command = ~B, D, DB, x
 time = 6
 
-
 [Command]
 name = "214A"
 command = ~D, B+a
@@ -988,7 +999,7 @@ command = ~D, D, a
 time = 10
 [Command]
 name = "22B"
-command = ~D, D, a
+command = ~D, D, b
 time = 10
 [Command]
 name = "22C"

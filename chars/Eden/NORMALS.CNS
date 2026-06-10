@@ -1473,9 +1473,9 @@ pausetime 			= 12,12 + 4 * (movecountered)
 getpower 				= 100 * map(P4)
 ;===============================
 attr 				= S,NA
-hitflag 				= MAFD
+hitflag 				= MAF
 guardflag 			= M
-animtype 			= Light
+animtype 				= Light
 air.animtype 			= Light
 ground.TYPE 			= high
 air.TYPE 				= high
@@ -1510,6 +1510,7 @@ envshake.time 			= 15
 envshake.freq 			= 15
 envshake.ampl 			= 4
 envshake.phase 			= 0.5
+getpower				= 200 * map(P4)
 
 [State 0, MapSet] 
 type = MapAdd
@@ -1618,7 +1619,7 @@ fall		= 1
 air.fall 		= 1
 ground.cornerpush.veloff 	= -18
 air.cornerpush.veloff 	= -18
-getpower 		= 75
+getpower				= 200 * map(P4)
 
 [State 0, MapSet] 
 type = MapAdd

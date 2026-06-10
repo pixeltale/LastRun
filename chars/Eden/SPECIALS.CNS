@@ -528,7 +528,8 @@ y = -0.25
 type = HitDef 
 triggerall = Map(RETRIBUTION) = 0
 trigger1 	= !MoveContact && !MoveReversed
-attr = S, SA
+attr 	= S, SA
+p2facing  = 1
 damage 			= 30 * map(P4)
 guardflag 		= M
 hitflag 			= MAF
@@ -550,7 +551,7 @@ fall				= 1
 air.fall 			= 1
 fall.yvelocity 	= 0
 ;=====================================
-air.type			= trip
+air.type			= high
 ground.type		= trip
 ;=====================================
 envshake.time 		= 3
@@ -1446,6 +1447,916 @@ trigger1 = AnimTime = 0
 value = 0
 ctrl = 1
 
+;----------------------
+;[A] 214BC - Black Hole
+[Statedef 2100]
+type    		= S
+movetype		= A
+physics 		= S
+velset 		= vel x * 0.5, 0
+ctrl 		= 0
+anim 		= 2100
+facep2 		= 1
+poweradd 		= 0
+sprpriority 	= 2
+
+[State 0, MapSet]	;Spend pursuit when canceling
+type = MapAdd
+triggerall = !time
+trigger1 = prevstateno = [1000, 4000)
+map = "Pursuit"
+value = -333
+
+[State 8000, PalFX]
+type = PalFX
+trigger1 = 1
+add = 40, 0, 0
+time=10
+ignorehitpause = 1
+[State 3120, AfterImage]
+type = AfterImage
+trigger1 = Time = 0
+time = 20
+palbright = 40,0,0
+palcontrast = 256,206,206
+trans = add1
+ignorehitpause = 1 
+
+[State 0, Helper]
+type = Helper
+trigger1 = animelem = 1
+helpertype = Normal ;Player
+name = "Black Hole"
+ID = 2101
+stateno = 2101
+pos = 0,0
+postype = P2
+facing = 1
+keyctrl = 0
+ownpal = 0
+
+[State 200, 3]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;----------------------
+;[A] 214BC Projectile
+[Statedef 2101]
+type    		= U
+movetype		= A
+physics 		= N
+velset 		= enemy, vel x * 0.5, enemy, vel y * 0.5
+ctrl 		= 0
+anim 		= 2101
+facep2 		= 0
+poweradd 		= 0
+sprpriority 	= 10
+
+[State 0, VelMul]
+type = VelMul
+trigger1 = 1
+x = 0.94
+y = 0.94
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = 1
+x = p2dist x * 0.01
+y = p2dist y * 0.01
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = frontedgedist < 10
+x = 0
+[State 0, VelSet]
+type = VelSet
+trigger1 = pos y >= 0
+y = 0
+
+
+[State -2, P1 Value Set]
+type 		= MapSet
+trigger1 		= movehit && !map(ComboStateCheck)
+map 			= "P1"
+value 		= 0.85
+ignorehitpause 	= 1
+[State -2, P2 Value Set]
+type 		= MapSet
+trigger1 		= movehit && map(ComboStateCheck)
+map 			= "P2"
+value 		= 0.95	;85% DMG For next hit
+ignorehitpause 	= 1
+persistent = 0
+[State -2, P2 Accumulation - Scale]
+type 		= MapSet
+trigger1 		= movehit
+map 			= "Accumulation"
+value 		= Map(Accumulation) * map(P2)
+ignorehitpause 	= 1
+persistent 		= 0
+
+[State 200, 1]
+type = HitDef 
+trigger1 	= !MoveContact && !MoveReversed
+attr = SCA, SP
+damage 		= 100 * (root, map(P4)), 5
+animtype 		= light                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
+air.animtype 	= back
+guardflag 	= M
+hitflag 		= MAF
+pausetime 		= 1, 1
+sparkno 			= 0
+sparkxy 			= -30, -59
+hitsound 			= 5, 1
+guardsound 		= 6, 0
+ground.slidetime 	= 18
+ground.hittime  	= 15
+air.hittime  		= 999
+down.hittime 		= 15
+ground.velocity 	= -8
+guard.ctrltime 	= 4
+guard.slidetime	= 4
+airguard.velocity 	= -3,-.8
+air.velocity 		= -rootdist x * 0.05,-4 / root, map(JuggleScale)
+envshake.time 		= 0;
+air.fall 			= 1
+fall.yvelocity 	= 0
+;=====================================
+envshake.time 		= 3
+envshake.freq 		= 5
+envshake.ampl 		= 2
+envshake.phase 	= 1
+getpower 			= 50
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA,NA,SA,HA,NT,ST,HT
+time = 1
+
+[State 200, 3]
+type = DestroySelf
+trigger1 = !animtime || root, movetype = H
+
+;----------------------
+;[A] 236BC - Dirty Trick
+[Statedef 2105]
+type    		= S
+movetype		= A
+physics 		= S
+velset 		= vel x * 0.5, 0
+ctrl 		= 0
+anim 		= 2105
+facep2 		= 1
+poweradd 		= 0
+sprpriority 	= 2
+
+[State 0, MapSet]	;Spend pursuit when canceling
+type = MapAdd
+triggerall = !time
+trigger1 = prevstateno = [1000, 4000)
+map = "Pursuit"
+value = -333
+
+[State 0, Explod]
+type = Explod
+trigger1 = animelem = 3
+anim = 2106
+ID = 2106
+pos = 0,0
+postype = P1  ;P2, Front, Back, Left, Right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = -2
+supermovetime = 0
+pausemovetime = 0
+scale = 1,1
+sprpriority = 0
+ontop = 0
+shadow = 0,0,0
+ownpal = 0
+removeongethit = 0
+
+
+[State 8000, PalFX]
+type = PalFX
+trigger1 = 1
+add = 40, 0, 0
+time=10
+ignorehitpause = 1
+[State 3120, AfterImage]
+type = AfterImage
+trigger1 = Time = 0
+time = 20
+palbright = 40,0,0
+palcontrast = 256,206,206
+trans = add1
+ignorehitpause = 1 
+
+[State 430, 2]
+type 	= HitDef 
+p2facing 	= 1
+trigger1 	=  !movecontact && !movereversed
+attr 		= S, SP
+damage 		= 150 * map(P4), 0
+animtype  	= Hard
+hitflag 		= MAFD
+guardflag 	= L
+pausetime 	= 4,4 + 4 * (enemy, movetype = A)
+sparkno 		= 2
+sparkxy 		= -10,-8
+hitsound   	= 5,2
+guardsound 			= 6,0
+air.type		= LOW
+ground.type 	= TRIP
+ground.slidetime 	= 25
+ground.hittime  	= 31
+air.hittime  		= 31
+down.hittime 		= 31
+ground.velocity 	= -2,-1
+guard.velocity		= -8
+fall 			= 1
+air.velocity 		= -1,-1.5
+fall.yvelocity 		= 0
+down.velocity 		= -2,-7
+down.hittime 		= 999
+guard.ctrltime 		= 14
+guard.cornerpush.veloff 	= -6
+;===============================
+envshake.time 			= 8
+envshake.freq 			= 8
+envshake.ampl 			= 2
+envshake.phase 		= 0.5
+getpower 			= 150 * map(P4)
+
+[State 200, 3]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;[B] 214BC (AIR)
+[Statedef 2109]
+type    		= S
+movetype		= A
+physics 		= S
+[State 0, MapSet]	;Spend pursuit when canceling
+type = MapAdd
+triggerall = !time
+trigger1 = prevstateno = [1000, 4000)
+map = "Pursuit"
+value = -333
+[State 200, 3]
+type = ChangeState
+trigger1 = 1
+value = 2110
+ctrl = 1
+
+;[B] 214BC - Searing
+[Statedef 2110]
+type    		= S
+movetype		= A
+physics 		= S
+velset 		= vel x, 0
+ctrl 		= 0
+anim 		= 2110
+facep2 		= 1
+poweradd 		= 0
+sprpriority 	= 2
+
+[State 0, MapSet]	;Spend pursuit when canceling
+type = MapAdd
+triggerall = !time
+trigger1 = prevstateno = [1000, 4000) && prevstateno != 2109
+map = "Pursuit"
+value = -333
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = prevstateno != 2109
+trigger1 = animelem = 2
+x = -4
+y = -5
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = prevstateno = 2109
+trigger1 = animelemno(0) = [1, 4]
+y = 0
+[State 0, VelSet]
+type = VelSet
+trigger1 = prevstateno = 2109
+trigger1 = animelem = 5
+y = 7
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = prevstateno = 2109
+trigger1 = !time
+value = 2110
+elem = 2
+ignorehitpause = 1
+
+[State 0, StateTypeSet]
+type = StateTypeSet
+trigger1 = animelem = 2
+statetype = A       ;S,A,C,L
+movetype = A       ;I,A,H
+physics = A         ;A,C,S,N
+
+[State 0, Helper]
+type = Helper
+trigger1 = prevstateno != 2109
+trigger1 = animelem = 4
+helpertype = Normal ;Player
+name = "Crawling Flame"
+ID = 2111
+stateno = 2111
+pos = 20,-pos y
+postype = P1    ;P2, Front, Back, Left, Right
+facing = 1
+keyctrl = 0
+ownpal = 0
+[State 0, Helper]
+type = Helper
+trigger1 = prevstateno = 2109
+trigger1 = animelem = 4
+helpertype = Normal ;Player
+name = "Soaring Flame"
+ID = 2111
+stateno = 2112
+pos = 20, -10
+postype = P1    ;P2, Front, Back, Left, Right
+facing = 1
+keyctrl = 0
+ownpal = 0
+
+[State 0, VelAdd]
+type = VelAdd
+trigger1 = animelemno(0) >= 4
+y = -0.3
+
+
+[State 200, 3]
+type = ChangeState
+triggerall = animelemno(0) > 2
+trigger1 = pos y >= 0 && vel y >= 0
+value = 0
+ctrl = 1
+
+;----------------------
+;[B]214BC Projectile
+[Statedef 2111]
+type    		= U
+movetype		= A
+physics 		= N
+velset 		= 3, 0
+ctrl 		= 0
+anim 		= 2111
+facep2 		= 0
+poweradd 		= 0
+sprpriority 	= 10
+
+[State 200, 1]
+type = HitDef 
+trigger1 	= time % 2 = 0
+trigger1 	= sysvar(1) < 5
+attr = SCA, SP
+damage 		= 15 * (root, map(P4)), 10
+animtype 		= light                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
+air.animtype 	= back
+guardflag 	= M
+hitflag 		= MAF
+pausetime 		= 4, 4
+guard.pausetime	= 2, 2
+sparkno 			= 0
+sparkxy 			= -30, -59
+hitsound 			= 5, 1
+guardsound 		= 6, 0
+ground.slidetime 	= 18
+ground.hittime  	= 15
+air.hittime  		= 999
+down.hittime 		= 15
+ground.velocity 	= -4
+guard.ctrltime 	= 4
+guard.slidetime	= 4
+airguard.velocity 	= -3,-.8
+air.velocity 		= -5,-2 / root, map(JuggleScale)
+envshake.time 		= 0;
+air.fall 			= 1
+fall.yvelocity 	= 0
+;=====================================
+envshake.time 		= 3
+envshake.freq 		= 5
+envshake.ampl 		= 2
+envshake.phase 	= 1
+getpower 			= 0
+
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = !time && prevstateno != 5000
+sysvar(1) = 0 
+[State 0, VarSet]
+type = VarAdd
+trigger1 = movereversed = 1
+trigger2 = movecontact = 1
+trigger3 = !time && gethitvar(attr) = SCA, AP
+sysvar(1) = 1 
+
+[State 0, DisplayToClipboard]
+type = DisplayToClipboard
+trigger1 = 1
+text = "health = %i"
+params = prevstateno
+ignorehitpause = 1
+persistent = 1
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = ,NA,SA,HA,NT,ST,HT
+time = 1
+
+[State 0, HitOverride]
+type = HitOverride
+trigger1 = 1
+attr = SCA,NP,SP,HP
+slot = 0
+stateno = 2005
+time = 10
+
+
+[State 200, 3]
+type = Changestate
+trigger1 = sysvar(1) = 5
+trigger2 = time > 100
+value = 1007
+ignorehitpause = 1
+
+;----------------------
+;[B]j214BC Projectile
+[Statedef 2112]
+type    		= U
+movetype		= A
+physics 		= N
+velset 		= 5, 5
+ctrl 		= 0
+anim 		= 2112
+facep2 		= 0
+poweradd 		= 0
+sprpriority 	= 10
+
+[State 200, 1]
+type = HitDef 
+trigger1 	= time % 5 = 0
+trigger1 	= sysvar(1) < 3
+attr 	= SCA, SP
+damage 		= 15 * (root, map(P4)), 10
+animtype 		= light                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
+air.animtype 	= back
+guardflag 	= M
+hitflag 		= MAFD
+pausetime 		= 4, 1
+guard.pausetime	= 2, 2
+sparkno 			= 0
+sparkxy 			= -30, -59
+hitsound 			= 5, 1
+guardsound 		= 6, 0
+ground.slidetime 	= 18
+ground.hittime  	= 15
+air.hittime  		= 999
+down.hittime 		= 999
+ground.velocity 	= -4
+guard.ctrltime 	= 4
+guard.slidetime	= 4
+airguard.velocity 	= -3,-.8
+air.velocity 		= -5,-2 / root, map(JuggleScale)
+down.velocity		= -2, -5 
+envshake.time 		= 0;
+air.fall 			= 1
+fall.yvelocity 	= 0
+;=====================================
+envshake.time 		= 3
+envshake.freq 		= 5
+envshake.ampl 		= 2
+envshake.phase 	= 1
+getpower 			= 0
+
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = !time && prevstateno != 5000
+sysvar(1) = 0 
+[State 0, VarSet]
+type = VarAdd
+trigger1 = movereversed = 1
+trigger2 = movecontact = 1
+trigger3 = !time && gethitvar(attr) = SCA, AP
+sysvar(1) = 1 
+
+[State 0, DisplayToClipboard]
+type = DisplayToClipboard
+trigger1 = 1
+text = "health = %i"
+params = prevstateno
+ignorehitpause = 1
+persistent = 1
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = ,NA,SA,HA,NT,ST,HT
+time = 1
+
+[State 0, HitOverride]
+type = HitOverride
+trigger1 = 1
+attr = SCA,NP,SP,HP
+slot = 0
+stateno = 2005
+time = 10
+
+
+[State 200, 3]
+type = Changestate
+trigger1 = sysvar(1) = 1
+trigger2 = pos y >= 0
+value = 1007
+ignorehitpause = 1
+
+;----------------------
+;[C] 214BC - Death Epitaph
+[Statedef 2120]
+type    		= S
+movetype		= A
+physics 		= S
+velset 		= vel x + 6, 0
+ctrl 		= 0
+anim 		= 2120
+facep2 		= 1
+poweradd 		= 0
+sprpriority 	= 2
+
+[State 0, MapSet]	;Spend pursuit when canceling
+type = MapAdd
+triggerall = !time
+trigger1 = prevstateno = [1000, 4000)
+map = "Pursuit"
+value = -333
+
+[State 0, Explod]
+type = Explod
+trigger1 = animelem = 6
+anim = 2123
+ID = 2123
+pos = 0,0
+postype = P1  ;P2, Front, Back, Left, Right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = -2
+supermovetime = 0
+pausemovetime = 0
+scale = 1,1
+sprpriority = 0
+ontop = 1
+shadow = 0,0,0
+ownpal = 0
+removeongethit = 0
+
+[State 0, VelAdd]
+type = PosAdd
+trigger1 = animelem = 4
+x = 20
+
+[State 0, VelAdd]
+type = PosAdd
+trigger1 = animelem = 4
+x = 10
+[State 0, VelAdd]
+type = VelSet
+trigger1 = animelem = 5
+x = 35
+[State 0, VelAdd]
+type = VelSet
+trigger1 = animelem = 6
+x = 0
+[State 200, 1]
+type = HitDef 
+trigger1 	= !MoveContact && !MoveReversed
+attr = S, SA
+damage 			= 100 * map(P4)
+guardflag 		= M
+hitflag 			= MAF
+pausetime 		= 10, 10
+sparkno 			= 0
+sparkxy 			= -30, -59
+hitsound 			= 5, 1
+guardsound 		= 6, 0
+ground.slidetime 	= 10
+ground.hittime  	= 18
+air.hittime  		= 99
+down.hittime 		= 15
+ground.velocity 	= -8, -5
+guard.ctrltime 	= 5
+guard.slidetime	= 5
+air.velocity 		= -8, -3 / map(JuggleScale)
+envshake.time 		= 0
+fall				= 1
+air.fall 			= 1
+fall.yvelocity 	= 0
+;=====================================
+air.type			= trip
+ground.type		= trip
+;=====================================
+envshake.time 		= 3
+envshake.freq 		= 5
+envshake.ampl 		= 2
+envshake.phase 	= 1
+getpower 			= 100
+id				= 2120
+
+
+[State 0, Helper]
+type = Helper
+trigger1 = movehitvar(frame)
+trigger1 = !numhelper(2120)
+helpertype = Normal ;Player
+name = "Numbered Days"
+ID = 2120
+stateno = 2121
+pos = 0,0
+postype = P2
+facing = 1
+keyctrl = 0
+ownpal = 0
+ignorehitpause = 1
+
+[State 200, 3]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;----------------------
+;[C] Mine
+[Statedef 2121]
+type    		= U
+movetype		= A
+physics 		= N
+velset 		= 0, 0
+ctrl 		= 0
+anim 		= 2121
+facep2 		= 0
+poweradd 		= 0
+sprpriority 	= 10
+
+[State -2, Lifetime Set]
+type 		= MapSet
+trigger1 		= !time
+map 			= "Lifetime"
+value 		= 600
+ignorehitpause 	= 1
+[State -2, Lifetime Set]
+type 		= MapAdd
+trigger1 		= enemy, movetype != H
+map 			= "Lifetime"
+value 		= -1
+ignorehitpause 	= 0
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = 1
+x = p2dist x - 5
+y = p2dist y + enemy, const(size.head.pos.y) * 0.5 - (enemy, const(size.head.pos.y) * 0.25) * enemy, statetype = L
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = frontedgedist < 10
+x = 0
+[State 0, VelSet]
+type = VelSet
+trigger1 = pos y >= 0
+y = 0
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = time > 10
+trigger1 = root, movehitvar(frame) && enemy, gethitvar(chainid) = 2120
+value = 2122
+elem = 1
+ignorehitpause = 1
+
+
+[State -2, P1 Value Set]
+type 		= RootMapSet
+trigger1 		= movehit && root, map(ComboStateCheck) = 0
+map 			= "P1"
+value 		= 0.85
+ignorehitpause 	= 1
+[State -2, P2 Value Set]
+type 		= RootMapSet
+trigger1 		= movehit && root, map(ComboStateCheck)
+map 			= "P2"
+value 		= 0.95	;85% DMG For next hit
+ignorehitpause 	= 1
+persistent = 0
+[State -2, P2 Accumulation - Scale]
+type 		= RootMapSet
+trigger1 		= movehit
+map 			= "Accumulation"
+value 		= root, Map(Accumulation) * root, map(P2)
+ignorehitpause 	= 1
+persistent 		= 0
+
+[State 200, 1]
+type = HitDef 
+trigger1 	= !MoveContact && !MoveReversed
+attr = SCA, SP
+damage 		= 100 * (root, map(P4)), 20
+animtype 		= light                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
+air.animtype 	= back
+guardflag 	= M
+hitflag 		= MAFD
+pausetime 		= 15, 15
+sparkno 			= 0
+sparkxy 			= -30, -59
+hitsound 			= 5, 1
+guardsound 		= 6, 0
+ground.slidetime 	= 18
+ground.hittime  	= 15
+air.hittime  		= 999
+down.hittime 		= 999
+ground.velocity 	= -1, -6
+guard.ctrltime 	= 15
+guard.slidetime	= 15
+airguard.velocity 	= -3,-.8
+air.velocity 		= -1,-4
+envshake.time 		= 0
+fall				= 1
+air.fall 			= 1
+fall.yvelocity 	= 0
+;=====================================
+envshake.time 		= 3
+envshake.freq 		= 5
+envshake.ampl 		= 2
+envshake.phase 	= 1
+getpower 			= 50
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA,NA,SA,HA,NT,ST,HT
+time = 1
+
+[State 200, 3]
+type = DestroySelf
+trigger1 = !animtime && anim = 2122 || map(Lifetime) <= 0 || root, movetype = H || root, stateno =  2125
+
+
+;-|B Version|- 
+[Statedef 2123]
+type    		= S
+movetype		= A
+physics 		= S
+[State 0, MapSet]	;Spend pursuit when canceling
+type = MapAdd
+triggerall = !time
+trigger1 = prevstateno = [1000, 4000)
+map = "Pursuit"
+value = -333
+[State 200, 3]
+type = ChangeState
+trigger1 = 1
+value = 2125
+ctrl = 0
+
+;-|C Version|- 
+[Statedef 2124]
+type    		= S
+movetype		= A
+physics 		= S
+[State 0, MapSet]	;Spend pursuit when canceling
+type = MapAdd
+triggerall = !time
+trigger1 = prevstateno = [1000, 4000)
+map = "Pursuit"
+value = -333
+[State 200, 3]
+type = ChangeState
+trigger1 = 1
+value = 2125
+ctrl = 0
+
+;[C] 22X - Teleport
+[Statedef 2125]
+type    		= S
+movetype		= A
+physics 		= N
+velset 		= 0, 0
+ctrl 		= 0
+anim 		= 2125
+facep2 		= 0
+poweradd 		= 0
+sprpriority 	= 10
+
+[State 0, VarSet]		;Version Checker
+type 		= VarSet
+trigger1 		= !time
+sysvar(1) 	= 0
+[State 0, VarSet]		;B Version
+type 		= VarSet
+trigger1 		= time = 1
+trigger1		= prevstateno = 2123
+sysvar(1) 	= 1
+[State 0, VarSet]		;C Version
+type 		= VarSet
+trigger1 		= time = 1
+trigger1		= prevstateno = 2124
+sysvar(1) 	= 2
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+triggerall = sysvar(1) = [0, 1]
+trigger1 = anim = 2125 && !animtime
+value = 2126
+elem = 1
+ignorehitpause = 1
+persistent = 1
+
+[State 0, PosSet]
+type = PosSet
+triggerall = sysvar(1) = [0, 1]
+trigger1 = anim = 2125 && animtime = 1
+y = -pos y * 0.5
+[State 0, PosSet]
+type = PosSet
+triggerall = sysvar(1) != 2
+trigger1 = anim = 2126 && animelem = 1
+y = 0
+[State 0, PosSet]
+type = PosAdd
+triggerall = sysvar(1) = 1
+trigger1 = anim = 2125 && animelemno(0) = 4
+x = 40
+[State 0, PosSet]
+type = PosAdd
+triggerall = sysvar(1) = 1
+trigger1 = anim = 2126 && animelemno(0) = 1
+x = 7
+
+[State 0, PosSet]
+type = PosSet
+triggerall = sysvar(1) = 2
+trigger1 = anim = 2125 && animelem = 4
+y = (enemy, const(size.head.pos.y)) * 1.1
+[State 0, PosAdd]
+type = PosAdd
+triggerall = sysvar(1) = 2
+trigger1 = anim = 2125 && animelem = 4
+x = (p2dist x - 50) * facing
+
+[State 0, PlayerPush]
+type = PlayerPush
+trigger1 = sysvar(1) = 1
+value = 0
+
+
+[State 200, 3]
+type = ChangeState
+trigger1 = anim = 2126 && sysvar(1) = [0, 1]
+trigger2 = anim = 2125 && sysvar(1) = 2
+triggerall = AnimTime = 0
+value = 0 + 2126 * (sysvar(1) = 2)
+ctrl = 1 - 1 * (sysvar(1) = 2)
+
+;Air TP
+[Statedef 2126]
+type    		= A
+movetype		= A
+physics 		= A
+anim			= 2128
+velset		= 2, -3
+ctrl			= 0
+
+
+
+[State 200, 3]
+type = ChangeState
+trigger1 = time = 5
+value = 50
+ctrl = 1
+
 ;236236X - Ranbu
 [Statedef 3000]
 type    = S
@@ -1456,7 +2367,15 @@ ctrl 	= 0
 velset 	= vel x,0
 anim 	= 3000
 sprpriority = 8
-poweradd = -1000
+poweradd = -1000 + 1000 * (map(Termina.Active) = 1)
+
+[State 0, MapSet] ;Set to 1 When done during termina
+type = MapSet
+trigger1 = map(TERMINA.ACTIVE)
+map = "TERMINA.TIME"
+value = 1
+ignorehitpause = 0
+persistent = 1
 
 [State 0, Targetbind]
 type = Targetbind

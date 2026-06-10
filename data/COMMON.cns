@@ -5531,6 +5531,7 @@ value = 100
 triggerall = command = "FF"
 triggerall = statetype != A
 triggerall = movecontact > 0 && movecontact <= 6
+triggerall = stateno < 3000
 trigger1 = MAP(PURSUITCANCEL_NORMALS) && (map(Pursuit) >= 333 || map(TERMINA.ACTIVE)) ;Dash Cancel Normals
 trigger2 = MAP(PURSUITCANCEL_SPECIALS) && (map(Pursuit) >= 666 || map(TERMINA.ACTIVE)) ;Dash Cancel Specials
 

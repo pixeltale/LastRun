@@ -154,12 +154,13 @@ guardsound 			= 6,0
 ground.hittime 		= 12
 air.hittime 			= 12
 down.hittime 			= 24
-ground.velocity 		= -5
+ground.velocity 		= -6
 air.velocity 			= -2,-1.5 / map(JuggleScale)
 ;===============================
 guard.ctrltime 		= 10
 guard.velocity 		= -10
 guard.slidetime		= 10
+ground.slidetime		= 12
 airguard.velocity 		= -2,-2
 ;===============================
 ground.cornerpush.veloff	= -2
@@ -232,7 +233,7 @@ persistent 		= 0
 type 				= HitDef
 trigger1 				= !movecontact && !movereversed
 ;===============================
-damage 				= 120 * map(P4)
+damage 				= 100 * map(P4)
 pausetime 			= 12,12 + 4 * (movecountered)
 getpower 				= 100 * map(P4)
 ;===============================
@@ -754,7 +755,7 @@ guardsound 			= 6,0
 ;===============================
 ground.hittime  		= 999
 ground.slidetime		= 999
-ground.velocity 		= -1, -9
+ground.velocity 		= -6, -9
 air.hittime  			= 999
 air.velocity 			= -3.5,-6 / map(JuggleScale)
 down.velocity 			= -1,-8 / map(JuggleScale)
@@ -1617,8 +1618,8 @@ air.velocity 		= -8,-6 / map(JuggleScale)
 guard.ctrltime 	= 20
 fall		= 1
 air.fall 		= 1
-ground.cornerpush.veloff 	= -18
-air.cornerpush.veloff 	= -18
+ground.cornerpush.veloff 	= -8
+air.cornerpush.veloff 	= -8
 getpower				= 200 * map(P4)
 
 [State 0, MapSet] 

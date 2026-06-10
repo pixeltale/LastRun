@@ -16,8 +16,3 @@ enabled = 1
 map_name = super_type
 map_value = 2
 enabled = 1
-
-[LASTRIDE C]
-map_name = super_type
-map_value = 3
-enabled = 1

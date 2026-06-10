@@ -60,7 +60,12 @@ STALKER						_D_D^A/^B/^C
 
 
 <#f0f000>LASTRIDE: ALTERNATIVES</>
-Not Yet Implemented
+SUPER 1: BLACK HOLE SUN					_QDB_QDB^B_+^C
+   <#bbbbbb> A projectile with infinite health that 
+   eats all other projectiles.</>
+SUPER 2: BLACK BULLET					_QDB_QDB^B_+^C
+   <#bbbbbb> A projectile with infinite health that 
+   eats all other projectiles.</>
 
 <#f0f000>ULTIMATE</>
 Not implemented Yet
@@ -68,11 +73,13 @@ Not implemented Yet
 <#f0f000>UNIVERSAL MECHANICS</>
 Dead Zone_AIROK</>		^B +^C
    <#bbbbbb>A slow but powerful and large attack used for controlling space.
-   Drains pursuit gauge on hit and block.</>
+   Drains enemy pursuit gauge on contact.</>
 
-Parry_AIROK</>		^D
+Parry_AIROK</>		^D or _D _+^D
    <#bbbbbb>For 8 Frames, intercept enemy attacks and become invulnerable, 
-   giving an opportunity to counterattack.</>
+   giving an opportunity to counterattack. Attacks must be parried high and
+   low, corresponding to how they are guarded. Additionally, attacks can be
+   parried in midair.</>
 
 Backroll</>		^D (During Soft Knockdown)
    <#bbbbbb>Holding the back direction during a soft knockdown will

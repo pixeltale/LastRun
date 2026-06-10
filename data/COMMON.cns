@@ -5735,15 +5735,14 @@ value = -30, 0
 ;===============================================================================
 [State -2, Combo State Check]
 type = MapSet
-triggerall = enemy, stateno != [120, 155]
-trigger1 = enemy, movetype = H
+trigger1 = combocount > 1
 map = "ComboStateCheck"
 value = 1
 ignorehitpause = 1
 persistent = 1
 [State -2, Combo State Check]
 type = MapSet
-trigger1 = enemy, movetype != H
+trigger1 = combocount = 0
 map = "ComboStateCheck"
 value = 0
 ignorehitpause = 1
@@ -6282,6 +6281,21 @@ value = -1
 ;==================================================================================================
 ;TRAINING MODE STUFF
 ;==================================================================================================
+
+[State 0, MapSet]
+type = MapSet
+triggerall = map(_iksys_TrainingPursuitGauge) > 0
+trigger1 = GameMode = "Training"
+trigger1 = combocount = 0
+map = "Pursuit"
+value = 333 * (map(_iksys_TrainingPursuitGauge) - 1)
+[State 0, MapSet]
+type = PowerSet
+triggerall = map(_iksys_TrainingMeter) > 0
+trigger1 = GameMode = "Training"
+trigger1 = combocount = 0
+value = 1000 * (map(_iksys_TrainingMeter) - 1)
+
 
 [State 0, LifeAdd]
 type = LifeAdd

@@ -286,8 +286,8 @@ ignorehitpause = 1
 [State 0, DisplayToClipboard]
 type = DisplayToClipboard
 trigger1 = 1
-text = "TerminaActive = %i TerminaTime = %.0f"
-params = const(data.defence), map(TERMINA.TIME)
+text = "pursuit = %.0f meter = %.0f"
+params = map(_iksys_TrainingPursuitGauge), map(_iksys_TrainingMeter)
 ignorehitpause = 1
 persistent = 1
 

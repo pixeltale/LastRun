@@ -39,6 +39,7 @@ type = VarSet
 trigger1 = var(1)
 trigger2 = stateno = [1000,3000) && MoveContact
 trigger3 = (stateno = [1000, 1001] || stateno = 2000 ) && animelemno(0) > 3
+trigger4 = stateno = 2100 && animelemno(0) >= 2
 var(2) = 1
 ignorehitpause = 1
 
@@ -106,14 +107,39 @@ triggerall = statetype != A
 trigger1 = ctrl
 
 ;===========================================================================
+;ALTERNATIVE SUPER ATTACKS
+;===========================================================================
+;236236BC - Black Hole Sun
+[State -1, LASTRIDE A TYPE - TIMES ARE GONE FOR HONEST MEN]
+type = ChangeState
+value = 3200
+triggerall = map(Super_Type) = 1
+triggerall = power >= 1000 || map(TERMINA.ACTIVE) > 0 && (var(2) || map(Termina.Time) > 1)
+triggerall = command = "236236BC"
+triggerall = statetype != A
+trigger1 = var(2) || stateno = [3000,3010] && (map(Pursuit) >= 666 || map(Termina.Active))
+
+;236236BC - Piercing Black Truth
+[State -1, LASTRIDE B TYPE - DEATH IN THE COMFORT OF A LIE]
+type = ChangeState
+value = 3100
+triggerall = map(Super_Type) = 2
+triggerall = power >= 1000 || map(TERMINA.ACTIVE) > 0 && (var(2) || map(Termina.Time) > 1)
+triggerall = command = "236236BC"
+triggerall = statetype != A
+trigger1 = var(2) || stateno = [3000,3010] && (map(Pursuit) >= 666 || map(Termina.Active))
+
+
+
+;===========================================================================
 ;SUPER ATTACKS
 ;===========================================================================
-;236236A
-[State -1, A DP]
+;632146X
+[State -1, Ranbu Super]
 type = ChangeState
 value = 3000
-triggerall = power >= 1000
-triggerall = command = "236236A" || command = "236236B" || command = "236236C"
+triggerall = power >= 1000 || map(TERMINA.ACTIVE) > 0
+triggerall = command = "632146A" || command = "632146B" || command = "632146C"
 triggerall = statetype != A
 trigger1 = var(2)
 

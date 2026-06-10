@@ -29,22 +29,49 @@ menu.t_valuename = {
 		{itemname = 'wjump', displayname = motif.pause_menu.training_pause_menu.menu.valuename.dummymode_wjump},
 	},
 	guardmode = {
-		{itemname = 'none', displayname = motif.pause_menu.training_pause_menu.menu.valuename.guardmode_none},
-		{itemname = 'auto', displayname = motif.pause_menu.training_pause_menu.menu.valuename.guardmode_auto},
-		{itemname = 'all', displayname = motif.pause_menu.training_pause_menu.menu.valuename.guardmode_all},
-		{itemname = 'random', displayname = motif.pause_menu.training_pause_menu.menu.valuename.guardmode_random},
+		{itemname = 'none', displayname = motif.pause_menu.training_pause_menu.menu.valuename.guardmode_none},		--0
+		{itemname = 'auto', displayname = motif.pause_menu.training_pause_menu.menu.valuename.guardmode_auto},		--1
+		{itemname = 'all', displayname = motif.pause_menu.training_pause_menu.menu.valuename.guardmode_all},		--2
+		{itemname = 'instant', displayname = motif.pause_menu.training_pause_menu.menu.valuename.guardmode_instant},		--3
 	},
 	fallrecovery = {
 		{itemname = 'none', displayname = motif.pause_menu.training_pause_menu.menu.valuename.fallrecovery_none},
-		{itemname = 'ground', displayname = motif.pause_menu.training_pause_menu.menu.valuename.fallrecovery_ground},
-		{itemname = 'air', displayname = motif.pause_menu.training_pause_menu.menu.valuename.fallrecovery_air},
-		{itemname = 'random', displayname = motif.pause_menu.training_pause_menu.menu.valuename.fallrecovery_random},
+		{itemname = 'backroll', displayname = motif.pause_menu.training_pause_menu.menu.valuename.fallrecovery_roll},
 	},
 	distance = {
 		{itemname = 'any', displayname = motif.pause_menu.training_pause_menu.menu.valuename.distance_any},
 		{itemname = 'close', displayname = motif.pause_menu.training_pause_menu.menu.valuename.distance_close},
 		{itemname = 'medium', displayname = motif.pause_menu.training_pause_menu.menu.valuename.distance_medium},
 		{itemname = 'far', displayname = motif.pause_menu.training_pause_menu.menu.valuename.distance_far},
+	},
+	atkdatadisp = {
+		{itemname = 'none', displayname = motif.pause_menu.training_pause_menu.menu.valuename.atkdatadisp_none}, -- 0
+		{itemname = 'vis', displayname = motif.pause_menu.training_pause_menu.menu.valuename.atkdatadisp_vis}, -- 1
+		{itemname = 'vis', displayname = motif.pause_menu.training_pause_menu.menu.valuename.atkdatadisp_advanced}, -- 1
+	},
+	ctrldatadisp = {
+		{itemname = 'none', displayname = motif.pause_menu.training_pause_menu.menu.valuename.ctrldatadisp_none}, -- 0
+		{itemname = 'p1', displayname = motif.pause_menu.training_pause_menu.menu.valuename.ctrldatadisp_p1}, -- 1
+		{itemname = 'p2',displayname = motif.pause_menu.training_pause_menu.menu.valuename.ctrldatadisp_p2}, -- 2
+		{itemname = 'both',displayname = motif.pause_menu.training_pause_menu.menu.valuename.ctrldatadisp_all}, -- 3
+	},
+	punish = {
+		{itemname = 'off', displayname = motif.pause_menu.training_pause_menu.menu.valuename.punish_off}, -- 0
+		{itemname = 'guard', displayname = motif.pause_menu.training_pause_menu.menu.valuename.punish_guard}, -- 1
+		{itemname = 'recovery', displayname = motif.pause_menu.training_pause_menu.menu.valuename.punish_rec}, -- 2
+		{itemname = 'wakeup', displayname = motif.pause_menu.training_pause_menu.menu.valuename.punish_wakeup}, -- 3
+		{itemname = 'all', displayname = motif.pause_menu.training_pause_menu.menu.valuename.punish_all}, -- 4
+	},
+	regen = {
+		{itemname = 'instant', displayname = motif.pause_menu.training_pause_menu.menu.valuename.regen_instant}, -- 0
+		{itemname = 'delayed', displayname = motif.pause_menu.training_pause_menu.menu.valuename.regen_delay}, -- 1
+		{itemname = 'none', displayname = motif.pause_menu.training_pause_menu.menu.valuename.regen_off}, -- 2
+	},
+	dir = {
+		{itemname = 'neutral', displayname = motif.pause_menu.training_pause_menu.menu.valuename.dir_5},
+		{itemname = 'fwd', displayname = motif.pause_menu.training_pause_menu.menu.valuename.dir_6},
+		{itemname = 'down', displayname = motif.pause_menu.training_pause_menu.menu.valuename.dir_2},
+		{itemname = 'back', displayname = motif.pause_menu.training_pause_menu.menu.valuename.dir_4},
 	},
 	buttonjam = {
 		{itemname = 'none', displayname = motif.pause_menu.training_pause_menu.menu.valuename.buttonjam_none},
@@ -57,6 +84,28 @@ menu.t_valuename = {
 		{itemname = 's', displayname = motif.pause_menu.training_pause_menu.menu.valuename.buttonjam_s},
 		{itemname = 'd', displayname = motif.pause_menu.training_pause_menu.menu.valuename.buttonjam_d},
 		{itemname = 'w', displayname = motif.pause_menu.training_pause_menu.menu.valuename.buttonjam_w},
+	},
+	gear = {
+		{itemname = 'a', displayname = motif.pause_menu.training_pause_menu.menu.valuename.gear_a}, -- 0
+		{itemname = 'b', displayname = motif.pause_menu.training_pause_menu.menu.valuename.gear_b}, -- 1
+		{itemname = 'c', displayname = motif.pause_menu.training_pause_menu.menu.valuename.gear_c}, -- 2
+	},
+	super = {
+		{itemname = 'a', displayname = motif.pause_menu.training_pause_menu.menu.valuename.super_a}, -- 0
+		{itemname = 'b', displayname = motif.pause_menu.training_pause_menu.menu.valuename.super_b}, -- 1
+	},
+	meter = {
+		{itemname = 'normal', displayname = motif.pause_menu.training_pause_menu.menu.valuename.meter_normal}, -- 0
+		{itemname = 'zero', displayname = motif.pause_menu.training_pause_menu.menu.valuename.meter_0}, -- 0
+		{itemname = 'one', displayname = motif.pause_menu.training_pause_menu.menu.valuename.meter_1}, -- 1
+		{itemname = 'two', displayname = motif.pause_menu.training_pause_menu.menu.valuename.meter_2}, -- 1
+	},
+	pursuit = {
+		{itemname = 'normal', displayname = motif.pause_menu.training_pause_menu.menu.valuename.pursuit_normal}, -- 0
+		{itemname = 'zero', displayname = motif.pause_menu.training_pause_menu.menu.valuename.pursuit_0}, -- 0
+		{itemname = 'one', displayname = motif.pause_menu.training_pause_menu.menu.valuename.pursuit_1}, -- 1
+		{itemname = 'two', displayname = motif.pause_menu.training_pause_menu.menu.valuename.pursuit_2}, -- 1
+		{itemname = 'three', displayname = motif.pause_menu.training_pause_menu.menu.valuename.pursuit_3}, -- 1
 	},
 }
 
@@ -94,23 +143,66 @@ menu.itemname = ''
 -- Associative elements table storing functions controlling behaviour of each
 -- pause menu item. Can be appended via external module.
 menu.t_itemname = {
+	-- Finds parent loop of currently active submenu under the active root loop.
+        -- Returns root loop when no parent match is found.
+        ['_findParentPauseLoop'] = function(currentLoop, rootLoop)
+                local rootTbl = nil
+                for _, v in pairs(menu) do
+                        if type(v) == 'table' and v.loop == rootLoop and type(v.submenu) == 'table' then
+                                rootTbl = v
+                                break
+                        end
+                end
+
+                if rootTbl == nil then
+                        return rootLoop
+                end
+
+                local function f_findParent(tbl, targetLoop, parentLoop)
+                        if type(tbl) ~= 'table' or type(tbl.submenu) ~= 'table' then
+                                return nil
+                        end
+                        for _, child in pairs(tbl.submenu) do
+                                if type(child) == 'table' and child.loop ~= nil then
+                                        if child.loop == targetLoop then
+                                                return parentLoop
+                                        end
+                                        local found = f_findParent(child, targetLoop, child.loop)
+                                        if found ~= nil then
+                                                return found
+                                        end
+                                end
+                        end
+                        return nil
+                end
+
+                local parent = f_findParent(rootTbl, currentLoop, rootLoop)
+                if parent ~= nil then
+                        return parent
+                end
+                return rootLoop
+        end,
 	--Back
-	['back'] = function(t, item, cursorPosY, moveTxt, sec)
-		if getInput(-1, sec.menu.done.key) then
-			if menu.currentMenu[1] == menu.currentMenu[2] then
-				sndPlay(motif.Snd, sec.exit.snd[1], sec.exit.snd[2])
-				menu.pauseExitDelay = gameOption('Input.PauseExitDelay')
-			else
-				sndPlay(motif.Snd, sec.cancel.snd[1], sec.cancel.snd[2])
-			end
-			if menu.currentMenu[1] ~= menu.currentMenu[2] then
-				main.f_menuSnap(sec)
-			end
-			menu.currentMenu[1] = menu.currentMenu[2]
-			return false
-		end
-		return true
-	end,
+        ['back'] = function(t, item, cursorPosY, moveTxt, sec)
+                if getInput(-1, sec.menu.done.key) then
+                        if menu.currentMenu[1] == menu.currentMenu[2] then
+                                sndPlay(motif.Snd, sec.exit.snd[1], sec.exit.snd[2])
+                                menu.pauseExitDelay = gameOption('Input.PauseExitDelay')
+                        else
+                                sndPlay(motif.Snd, sec.cancel.snd[1], sec.cancel.snd[2])
+                        end
+                        if menu.currentMenu[1] ~= menu.currentMenu[2] then
+                                main.f_menuSnap(sec)
+                        end
+                        if menu.currentMenu[1] == menu.currentMenu[2] then
+                                menu.currentMenu[1] = menu.currentMenu[2]
+                        else
+                                menu.currentMenu[1] = menu.t_itemname._findParentPauseLoop(menu.currentMenu[1], menu.currentMenu[2])
+                        end
+                        return false
+                end
+                return true
+        end,
 	--Dummy Control
 	['dummycontrol'] = function(t, item, cursorPosY, moveTxt, sec)
 		local ok, name = menu.f_valueChanged(t.items[item], sec)
@@ -158,6 +250,78 @@ menu.t_itemname = {
 		if menu.f_valueChanged(t.items[item], sec) then
 			player(2)
 			mapSet('_iksys_trainingFallRecovery', menu.fallrecovery - 1)
+		end
+		return true
+	end,
+	--Attack Data Display
+	['atkdatadisp'] = function(t, item, cursorPosY, moveTxt, sec)
+		if menu.f_valueChanged(t.items[item], sec) then
+			player(2)
+			mapSet('_iksys_trainingAtkDataDisp', menu.atkdatadisp - 1)
+		end
+		return true
+	end,
+	--CTRL Data Display
+	['ctrldatadisp'] = function(t, item, cursorPosY, moveTxt, sec)
+		if menu.f_valueChanged(t.items[item], sec) then
+			player(2)
+			mapSet('_iksys_trainingCtrlDataDisp', menu.ctrldatadisp - 1)
+		end
+		return true
+	end,
+	--Punish After
+	['punish'] = function(t, item, cursorPosY, moveTxt, sec)
+		if menu.f_valueChanged(t.items[item], sec) then
+			player(2)
+			mapSet('_iksys_trainingPunish', menu.punish - 1)
+		end
+		return true
+	end,
+	--Regen
+	['regen'] = function(t, item, cursorPosY, moveTxt, sec)
+		if menu.f_valueChanged(t.items[item], sec) then
+			player(2)
+			mapSet('_iksys_trainingRegen', menu.regen - 1)
+		end
+		return true
+	end,
+	--Hold Direction
+	['dir'] = function(t, item, cursorPosY, moveTxt, sec)
+		if menu.f_valueChanged(t.items[item], sec) then
+			player(2)
+			mapSet('_iksys_trainingDir', menu.dir - 1)
+		end
+		return true
+	end,
+	--Gear
+	['gear'] = function(t, item, cursorPosY, moveTxt, sec)
+		if menu.f_valueChanged(t.items[item], sec) then
+			player(1)
+			mapSet('groove_style', menu.gear)
+		end
+		return true
+	end,
+	--Super
+	['super'] = function(t, item, cursorPosY, moveTxt, sec)
+		if menu.f_valueChanged(t.items[item], sec) then
+			player(1)
+			mapSet('super_type', menu.super)
+		end
+		return true
+	end,
+	--Meter
+	['meter'] = function(t, item, cursorPosY, moveTxt, sec)
+		if menu.f_valueChanged(t.items[item], sec) then
+			player(1)
+			mapSet('_iksys_TrainingMeter', menu.meter - 1)
+		end
+		return true
+	end,
+	--Pursuit
+	['pursuit'] = function(t, item, cursorPosY, moveTxt, sec)
+		if menu.f_valueChanged(t.items[item], sec) then
+			player(1)
+			mapSet('_iksys_TrainingPursuitGauge', menu.pursuit - 1)
 		end
 		return true
 	end,
@@ -342,6 +506,33 @@ menu.t_vardisplay = {
 	end,
 	['fallrecovery'] = function()
 		return menu.t_valuename.fallrecovery[menu.fallrecovery or 1].displayname
+	end,
+	['atkdatadisp'] = function()
+		return menu.t_valuename.atkdatadisp[menu.atkdatadisp or 1].displayname
+	end,
+	['ctrldatadisp'] = function()
+		return menu.t_valuename.ctrldatadisp[menu.ctrldatadisp or 1].displayname
+	end,
+	['punish'] = function()
+		return menu.t_valuename.punish[menu.punish or 1].displayname
+	end,
+	['dir'] = function()
+		return menu.t_valuename.dir[menu.dir or 1].displayname
+	end,
+	['gear'] = function()
+		return menu.t_valuename.gear[menu.gear or 1].displayname
+	end,
+	['super'] = function()
+		return menu.t_valuename.super[menu.super or 1].displayname
+	end,
+	['meter'] = function()
+		return menu.t_valuename.meter[menu.meter or 1].displayname
+	end,
+	['pursuit'] = function()
+		return menu.t_valuename.pursuit[menu.pursuit or 1].displayname
+	end,
+	['regen'] = function()
+		return menu.t_valuename.regen[menu.regen or 1].displayname
 	end,
 	['distance'] = function()
 		return menu.t_valuename.distance[menu.distance or 1].displayname

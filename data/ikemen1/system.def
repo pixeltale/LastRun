@@ -2148,10 +2148,147 @@ movelist.arrow.down.scale = 1.0, 1.0
 ;-------------------------------------------------------------------
 ;Training menu screen definition
 [Training Pause Menu]
+	; If not overridden, values used for [Pause Menu] are shared with this group.
 
-; If not overridden, values used for [Menu Info] are shared with this group.
-; Refer to system.base.def for an example how to modify pause screen menus.
+	; Training specific parameters:
+	menu.valuename.dummycontrol_cooperative = Cooperative
+	menu.valuename.dummycontrol_ai = AI
+	menu.valuename.dummycontrol_manual = Manual
+	menu.valuename.ailevel_1 = 1
+	menu.valuename.ailevel_2 = 2
+	menu.valuename.ailevel_3 = 3
+	menu.valuename.ailevel_4 = 4
+	menu.valuename.ailevel_5 = 5
+	menu.valuename.ailevel_6 = 6
+	menu.valuename.ailevel_7 = 7
+	menu.valuename.ailevel_8 = 8
+	menu.valuename.dummymode_stand = Stand
+	menu.valuename.dummymode_crouch = Crouch
+	menu.valuename.dummymode_jump = Jump
+	menu.valuename.dummymode_wjump = W Jump
+	menu.valuename.guardmode_none = None
+	menu.valuename.guardmode_auto = Auto
+	menu.valuename.guardmode_all = All
+	menu.valuename.guardmode_random = Random
+	menu.valuename.fallrecovery_none = None
+	menu.valuename.fallrecovery_ground = Ground
+	menu.valuename.fallrecovery_air = Air
+	menu.valuename.fallrecovery_random = Random
+	menu.valuename.distance_any = Any
+	menu.valuename.distance_close = Close
+	menu.valuename.distance_medium = Medium
+	menu.valuename.distance_far = Far
+	menu.valuename.buttonjam_none = None
+	menu.valuename.buttonjam_a = A
+	menu.valuename.buttonjam_b = B
+	menu.valuename.buttonjam_c = C
+	menu.valuename.buttonjam_x = X
+	menu.valuename.buttonjam_y = Y
+	menu.valuename.buttonjam_z = Z
+	menu.valuename.buttonjam_s = Start
+	menu.valuename.buttonjam_d = D
+	menu.valuename.buttonjam_w = W
 
+	menu.valuename.guardmode_none = None
+	menu.valuename.guardmode_auto = Auto
+	menu.valuename.guardmode_all = All
+	menu.valuename.guardmode_instant = Instant
+
+	menu.valuename.atkdatadisp_none = Off
+	menu.valuename.atkdatadisp_vis = Basic
+	menu.valuename.atkdatadisp_advanced = Advanced
+
+	menu.valuename.ctrldatadisp_none = Off
+	menu.valuename.ctrldatadisp_p1 = P1
+	menu.valuename.ctrldatadisp_p2 = P2
+	menu.valuename.ctrldatadisp_all = All
+
+	menu.valuename.punish_off = None
+	menu.valuename.punish_guard = Guard
+	menu.valuename.punish_rec	= Recovery
+	menu.valuename.punish_wakeup = Wakeup
+	menu.valuename.punish_all = All
+
+	menu.valuename.regen_instant = Instant
+	menu.valuename.regen_delay = Delayed
+	menu.valuename.regen_off = None
+
+	menu.valuename.fallrecovery_none = None
+	menu.valuename.fallrecovery_roll = Backroll
+
+	menu.valuename.distance_any = Any
+	menu.valuename.distance_close = Close
+	menu.valuename.distance_medium = Medium
+	menu.valuename.distance_far = Far
+
+	menu.valuename.dir_5 = Neutral
+	menu.valuename.dir_6 = Forward
+	menu.valuename.dir_2 = Down
+	menu.valuename.dir_4 = Back
+
+	menu.valuename.gear_a = A-Type
+	menu.valuename.gear_b = B-Type
+	menu.valuename.gear_c = C-Type
+
+	menu.valuename.super_a = Super 1
+	menu.valuename.super_b = Super 2
+
+	menu.valuename.meter_normal = Normal
+	menu.valuename.meter_0 = 0 Bars
+	menu.valuename.meter_1 = 1 Bar
+	menu.valuename.meter_2 = 2 Bars
+
+	menu.valuename.pursuit_normal = Normal
+	menu.valuename.pursuit_0 = 0 Bars
+	menu.valuename.pursuit_1 = 1 Bar
+	menu.valuename.pursuit_2 = 2 Bars
+	menu.valuename.pursuit_3 = 3 Bars
+
+	menu.itemname.back = Continue
+
+	menu.itemname.menutraining = Training Menu
+	menu.itemname.menutraining.atkdatadisp = Attack Data
+	menu.itemname.menutraining.ctrldatadisp = Show Control
+	
+	;Player Settings Submenu
+	menu.itemname.menutraining.playersettings = Player Settings
+	menu.itemname.menutraining.playersettings.gear = Gear
+	menu.itemname.menutraining.playersettings.super = Super
+	menu.itemname.menutraining.playersettings.meter = Meter
+	menu.itemname.menutraining.playersettings.pursuit = Pursuit Gauge
+
+	;Enemy Settings Submenu
+	menu.itemname.menutraining.dummysettings = General Dummy Settings
+	menu.itemname.menutraining.dummysettings.guardmode = Guard Mode
+	menu.itemname.menutraining.dummysettings.regen = Life Regen
+	menu.itemname.menutraining.dummysettings.dummycontrol = Dummy State
+	menu.itemname.menutraining.dummysettings.fallrecovery = Fall Recovery
+	menu.itemname.menutraining.dummysettings.distance = Distance
+	menu.itemname.menutraining.dummysettings.dummymode = Dummy Control Mode
+	menu.itemname.menutraining.dummysettings.ailevel = Dummy AI Level
+	menu.itemname.menutraining.dummysettings.back = Back
+	
+	;Enemy Reaction Submenu
+	menu.itemname.menutraining.reaction = Dummy Reaction Menu
+	menu.itemname.menutraining.reaction.buttonjam = Button Jam
+	menu.itemname.menutraining.reaction.punish = Mash After
+	menu.itemname.menutraining.reaction.back = Back
+	;menu.itemname.menutraining.dir = CPU Direction Hold
+	
+	
+	menu.itemname.menutraining.back = Back
+
+
+
+	menu.itemname.menuinput = Button Config
+	menu.itemname.menuinput.keyboard = Key Config
+	menu.itemname.menuinput.gamepad = Joystick Config
+	menu.itemname.menuinput.spacer = -
+	menu.itemname.menuinput.inputdefault = Default
+	menu.itemname.menuinput.back = Back
+	menu.itemname.commandlist = Command List
+	menu.itemname.characterchange = Character Change
+	menu.itemname.exit = Exit
 ;-------------------
 ;Training menu screen background
 ;[TrainingPauseBGdef]

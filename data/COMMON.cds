@@ -634,6 +634,11 @@ command = ~D, F, D, F, c
 time = 30
 buffer.time = 15
 [Command]
+name = "236236BC"
+command = ~D, F, D, F, b+c
+time = 30
+buffer.time = 15
+[Command]
 name = "236236D"
 command = ~D, DF, F, D, DF, F, d
 time = 30
@@ -667,13 +672,13 @@ time = 20
 
 [Command]
 name = "632146A"
-command = ~F, DF, D, DB, B, F, a
+command = ~F, DF, D, DB, B, F, a | ~a
 [Command]
 name = "632146B"
-command = ~F, DF, D, DB, B, F, b
+command = ~F, DF, D, DB, B, F, b | ~b
 [Command]
 name = "632146C"
-command = ~F, DF, D, DB, B, F, c
+command = ~F, DF, D, DB, B, F, c | ~c
 [Command]
 name = "632146D"
 command = ~F, DF, D, DB, B, F, d
@@ -859,20 +864,16 @@ buffer.time = 10
 
 [Command]
 name = "623A"
-command = ~F, D, $F, a
-time = 15
+command = ~F, D, $F, a | ~a
 [Command]
 name = "623B"
-command = ~F, D, $F, b
-time = 15
+command = ~F, D, $F, b | ~b
 [Command]
 name = "623C"
-command = ~F, D, $F, c
-time = 15
+command = ~F, D, $F, c | ~c
 [Command]
 name = "623D"
-command = ~F, D, $F, x
-time = 15
+command = ~F, D, $F, d | ~d
 
 [Command]
 name = "236BC"

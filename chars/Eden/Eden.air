@@ -1701,6 +1701,14 @@ Interpolate Blend
 Interpolate Blend
 2121,6, 0,0, 2, , AS0D256
 
+; Air TP Start
+[Begin Action 2124]
+5025,4, 0,20, 3
+Interpolate Blend
+5025,3, 0,20, 3, , AS256D0
+Interpolate Blend
+5025,2, 0,20, 3, , AS0D256
+
 ; Teleport
 [Begin Action 2125]
 Clsn2: 3
@@ -1716,34 +1724,19 @@ Interpolate Blend
 Clsn2: 2
   Clsn2[0] = -11, -80, 28, -35
   Clsn2[1] = -32, -50, 32, -2
-2125,2, 0,0, 2, , AS256D0
-Interpolate Blend
-Clsn2: 2
-  Clsn2[0] = -11, -80, 28, -35
-  Clsn2[1] = -32, -50, 32, -2
-2125,2, 0,0, 2, , AS0D256
+2125,2, 0,0, 4
 
 ; A Teleport
 [Begin Action 2126]
-Interpolate Blend
-Clsn2: 2
-  Clsn2[0] = -11, -80, 28, -35
-  Clsn2[1] = -32, -50, 32, -2
-2125,2, 0,0, 2, , AS0D256
-Interpolate Blend
-Clsn2: 2
-  Clsn2[0] = -11, -80, 28, -35
-  Clsn2[1] = -32, -50, 32, -2
-2125,2, 0,0, 1, , AS256D0
 Clsn2: 2
   Clsn2[0] = -11, -89, 28, -44
   Clsn2[1] = -32, -50, 32, -2
-2125,1, 0,0, 2
+2125,1, 0,0, 3
 Clsn2: 3
   Clsn2[0] = -10, -124, 11, -102
   Clsn2[1] = -19, -109, 17, -58
   Clsn2[2] = -27, -65, 28, -1
-2125,0, 0,0, 2
+2125,0, 0,0, 3
 
 ; B Teleport
 [Begin Action 2127]
@@ -1751,21 +1744,12 @@ Interpolate Blend
 Clsn2: 2
   Clsn2[0] = -11, -80, 28, -35
   Clsn2[1] = -32, -50, 32, -2
-2125,2, 0,0, 8, , AS0D256
+105,0, 0,0, 2, , AS0D256
 Interpolate Blend
 Clsn2: 2
-  Clsn2[0] = -11, -80, 28, -35
-  Clsn2[1] = -32, -50, 32, -2
-2125,2, 0,0, 1, , AS256D0
-Clsn2: 2
-  Clsn2[0] = -11, -89, 28, -44
-  Clsn2[1] = -32, -50, 32, -2
-2125,1, 0,0, 2
-Clsn2: 3
-  Clsn2[0] = -10, -124, 11, -102
-  Clsn2[1] = -19, -109, 17, -58
-  Clsn2[2] = -27, -65, 28, -1
-2125,0, 0,0, 2
+  Clsn2[0] = -6, -125, 33, -80
+  Clsn2[1] = -32, -82, 38, -2
+105,0, 0,0, 8, H, AS256D0
 
 ; C-Telepeort
 [Begin Action 2128]

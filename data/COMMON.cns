@@ -2325,6 +2325,17 @@ anim = 900 + 5 * (anim = 905)
 ctrl = 0
 sprpriority = 2
 
+[State 700, Snd]
+type = playsnd
+trigger1 = !time
+value = 900, 0
+[State Test]
+type = ModifySnd
+trigger1 = !time
+volumescale = 0
+redirectid = enemy, ID
+ignorehitpause = 1
+
 [State 0, Mapadd]
 type 		= MapAdd
 trigger1 	    = !time
@@ -2347,7 +2358,7 @@ type = SuperPause
 triggerall = gethitvar(attr) != SCA,NP, SP, HP
 trigger1 = !time
 time = gethitvar(hitshaketime) + 2
-movetime = 0 + 7 * (gethitvar(attr) = SCA, HA,HP)
+movetime = 7 * (gethitvar(attr) = SCA, HA,HP)
 anim = -1
 sound = -1
 darken = 0
@@ -2387,7 +2398,7 @@ persistent = 1
 
 [State 1000, 7]
 type = ChangeState
-trigger1 = time = 10
+trigger1 = time = 5
 value = 0
 ctrl = 1
 
@@ -2429,6 +2440,17 @@ anim = 910
 ctrl = 0
 sprpriority = 2
 
+[State 700, Snd]
+type = playsnd
+trigger1 = !time
+value = 900, 0
+[State Test]
+type = ModifySnd
+trigger1 = !time
+volumescale = 0
+redirectid = enemy, ID
+ignorehitpause = 1
+
 [State 0, Mapadd]
 type 		= MapAdd
 trigger1 	    = !time
@@ -2451,7 +2473,7 @@ type = SuperPause
 triggerall = gethitvar(attr) != SCA,NP, SP, HP
 trigger1 = !time
 time = gethitvar(hitshaketime) + 2
-movetime = 0
+movetime = 7 * (gethitvar(attr) = SCA, HA,HP)
 anim = -1
 sound = -1
 darken = 0
@@ -2490,7 +2512,7 @@ persistent = 1
 
 [State 1000, 7]
 type = ChangeState
-trigger1 = time = 10
+trigger1 = time = 5
 value = 50
 ctrl = 1
 

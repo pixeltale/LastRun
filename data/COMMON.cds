@@ -1065,6 +1065,11 @@ name = "TERMINA"
 command = a+b+c
 time = 3
 buffer.time = 2
+[Command]
+name = "TERMINA"
+command = y
+time = 3
+buffer.time = 2
 
 ;-| Throws |-----------------------------------------------
 [Command]

@@ -6909,7 +6909,6 @@ trigger1 = enemy, time = 1
 trigger2 = combocount
 map = "PunishCheck"
 value = 0
-ignorehitpause = 1
 
 [State -2, Retribution]
 type = MapSet
@@ -6920,7 +6919,7 @@ ignorehitpause = 1
 [State -2, Retribution]
 type = MapSet
 triggerall = enemy, map(ForceRetribution) = 0
-trigger1 = map(PunishCheck) = 0
+trigger1 = map(PunishCheck) = 0 && combocount = 0
 map = "Retribution"
 value = 0
 ignorehitpause = 1

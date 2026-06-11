@@ -169,7 +169,7 @@ type = ChangeState
 value = 2110 - 1*(statetype = A)
 triggerall = map(Groove_Style) = 2
 triggerall = command = "214BC"
-triggerall = numhelper(2111) = 0 && stateno != [2100, 3000)
+triggerall = (numhelper(2111) = 0 || statetype = A) && stateno != [2100, 3000)
 triggerall = stateno != [1000, 3000) || (map(Pursuit) >= 333 || map(Termina.Active))
 trigger1 = var(2)
 
@@ -186,21 +186,21 @@ type = ChangeState
 value = 2125
 triggerall = map(Groove_Style) = 3
 triggerall = command = "22A"
-triggerall = numhelper(2120) && map(Stalker)
+triggerall = numhelper(2120)
 trigger1 = var(2)
 [State -1, C GEAR - DIRTY TRICK] ;22B
 type = ChangeState
 value = 2123
 triggerall = map(Groove_Style) = 3
 triggerall = command = "22B"
-triggerall = numhelper(2120) && map(Stalker)
+triggerall = numhelper(2120)
 trigger1 = var(2)
 [State -1, C GEAR - DIRTY TRICK] ;22C
 type = ChangeState
 value = 2124
 triggerall = map(Groove_Style) = 3
 triggerall = command = "22C"
-triggerall = numhelper(2120) && map(Stalker)
+triggerall = numhelper(2120)
 trigger1 = var(2)
 
 ;===========================================================================

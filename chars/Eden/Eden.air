@@ -1659,7 +1659,7 @@ Clsn2: 3
 Clsn2: 2
   Clsn2[0] = -4, -139, 19, -112
   Clsn2[1] = -19, -119, 45, 1
-2120,7, 0,0, 6
+2120,7, 0,0, 4
 
 ; Epitaph Mine
 [Begin Action 2121]
@@ -1729,7 +1729,7 @@ Interpolate Blend
 Clsn2: 2
   Clsn2[0] = -11, -80, 28, -35
   Clsn2[1] = -32, -50, 32, -2
-2125,2, 0,0, 3, , AS0D256
+2125,2, 0,0, 2, , AS0D256
 Interpolate Blend
 Clsn2: 2
   Clsn2[0] = -11, -80, 28, -35

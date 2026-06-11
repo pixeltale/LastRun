@@ -736,7 +736,7 @@ persistent 		= 0
 type 				= HitDef
 trigger1 				= !movecontact && !movereversed
 ;===============================
-damage 				= 150 * map(P4)
+damage 				= 120 * map(P4)
 pausetime 			= 12,12 + 4 * (movecountered)
 getpower 				= 100
 ;===============================

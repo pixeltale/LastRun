@@ -1,4 +1,4 @@
-<#f0f000>EDEN HAZARD: A-TYPE</>
+<#f0f000>EDEN HAZARD: C-TYPE</>
 <#f0f000>COMMAND NORMALS</>
 Overhead            						_F_+^B
    <#bbbbbb>An overhead kick with two hits. Chain OK.</>
@@ -30,13 +30,20 @@ _!Extra kick								(After A Version) ^A
 <#f0f000>LASTRIDE</>
 Revelation</>		_QDF_QDF_+^B _+^C
 
-<#f0f000>ALTERNATIVE SPECIAL MOVES: A-GEAR</>
-BLACK HOLE						_QDB^B_+^C
-   <#bbbbbb>A projectile spawns at the enemy's
-   location before exploding.</>
+<#f0f000>ALTERNATIVE SPECIAL MOVES: C-GEAR</>
+NUMBERED DAYS: DEATH EPITAPH		_QDB^B_+^C
+   <#bbbbbb>A fast dash punch that is unsafe
+   on block. Applies the Numbered Days state on contact,
+   enabling the use of STALKER.
+   If you use this attack again, the Numbered Days mark
+   will explode. </>
+STALKER						_D_D^A/^B/^C
+   <#bbbbbb>A teleport that can be used to cancel out of 
+   special moves.
+   A Version teleports in place.
+   B Version teleports forward.
+   C Version teleports to the opponent.</>
 
-LOWCARD						_D_D^B_+^C
-   <#bbbbbb>A low card attack.</>
 
 <#f0f000>LASTRIDE: ALTERNATIVES</>
 SUPER 1: BLACK HOLE SUN					_QDB_QDB^B_+^C

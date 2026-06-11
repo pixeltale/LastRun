@@ -2256,6 +2256,7 @@ movelist.arrow.down.scale = 1.0, 1.0
 	menu.itemname.menutraining.playersettings.super = Super
 	menu.itemname.menutraining.playersettings.meter = Meter
 	menu.itemname.menutraining.playersettings.pursuit = Pursuit Gauge
+	menu.itemname.menutraining.playersettings.back = Back
 
 	;Enemy Settings Submenu
 	menu.itemname.menutraining.dummysettings = General Dummy Settings

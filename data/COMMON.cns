@@ -5601,118 +5601,101 @@ value = ((map(juggleTime)+60) * 0.015)
 ignorehitpause = 1
 persistent = 1
 
-;===============================================================================
-; ------- Retribution --------
-;===============================================================================
-[State -2, Retribution]
-type = MapSet
-trigger1 = map(PunishCheck) = 1
-map = "Retribution"
-value = 1
-ignorehitpause = 1
-persistent = 1
-[State -2, Retribution]
-type = MapSet
-triggerall = enemy, map(ForceRetribution) = 0
-trigger1 = enemy, ctrl = 1
-map = "Retribution"
-value = 0
-ignorehitpause = 1
-persistent = 1
 
-[State 0, MapSet] 
-type = MapSet
-triggerall = map(PunishCheck) = 0
-trigger1 = enemy, animelemvar(numclsn1) > 0
-map = "PunishCheck"
-value = 1
-[State 0, MapSet] 
-type = MapSet
-triggerall = map(PunishCheck) = 1
-trigger1 = enemy, ctrl
-trigger2 = combocount
-map = "PunishCheck"
-value = 0
 
-[State 0, Custom Afterimage]
+;=============================================================
+;Collision Box Adjustments
+;=============================================================
+[State -2, Explod]		;Pursuit Gauge Bar
 type = Explod
-trigger1 = combocount
-trigger1 = map(Retribution)
-trigger1 = time%3=0
-anim = anim
-animelem = animelemno(0)
-animfreeze = 1
-ID = 9999
-postype = p1
-pos = 0,0
-facing = 1
-vfacing = 1
-bindtime = 1
-supermovetime = 0
-pausemovetime = 0
-scale = 1,1.1
-velocity = 0, -0.1
-sprpriority = -10
-ontop = 0
-shadow = 0,0,0
-ownpal = 1
-trans = add
-removetime = 20
-palfx.time = 40
-palfx.sinmul = -55,-255,-255,160
-removeongethit = 0
+triggerall = teamside = 1
+trigger1 = !NumExplod(46)
+anim = F46
+pos = 40, 165
+postype = left
+removetime = -1
+scale = .25, .3
+sprpriority = -1
+id = 46
+bindtime = -1
+ontop = 1
+ownpal = 0
 ignorehitpause = 1
-
-;Retribution Activation Slowdown
-[State 0, Mapadd]
-type 		= MapSet
-trigger1 	    = map(PunishCheck) && movehit = 1
-map 		    = "SlowdownTime"
-value 		    = 15
-ignorehitpause 	= 1
-persistent 		= 1
-[State 0, Mapadd]
-type 		    = MapAdd
-trigger1 	    = map(PunishCheck) && movehit = 1
-map 		    = "Pursuit"
-value 		    = 25
-ignorehitpause 	= 1
-persistent 		= 0
-[State 0, Mapadd]
-type 		= MapAdd
-trigger1 	    = map(PunishCheck) && movehit = 1
-map 		    = "Pursuit"
-value 		    = -25
-ignorehitpause 	= 1
-persistent 		= 0
-redirectid      = enemynear, id
-[State 0, Mapadd]
-type 		= MapAdd
-trigger1 	    = map(Slowdowntime)
-map 		    = "SlowdownTime"
-value 		    = -1
-ignorehitpause 	= 1
-persistent 		= 1
-
-[State 0, BGPalFX]
-type = BGPalFX
-trigger1 = map(SlowdownTime)
-time = 5
-add = -(map(SlowdownTime))*1.75,-(map(SlowdownTime))*1.75,-(map(SlowdownTime))*1.75
-persistent = 1
+pausemovetime = 999999
+supermovetime = 999999
+[State -2, Explod]		;Pursuit Gauge Bar
+type = Explod
+triggerall = teamside = 2
+trigger1 = !NumExplod(46)
+anim = F46
+pos = -40, 165
+postype = right
+removetime = -1
+scale = .25, .3
+sprpriority = -1
+id = 46
+bindtime = -1
+ontop = 1
+ownpal = 0
 ignorehitpause = 1
+pausemovetime = 999999
+supermovetime = 999999
 
-[State 0, EVERYTHING WILL FREEZE!]
-type = Pause
-triggerall = map(slowdownTime)
-trigger1 = gametime % 2 = 0
-time = 2
-anim = 99999
-pos = 0,0
-movetime = 2
-darken = 0
-p2defmul = 1
-unhittable = 1
+[State -2, Explod] 		;Pursuit Gauge Rim
+type = Explod
+id = 45
+triggerall = teamside = 1
+trigger1 = !NumExplod(45)
+anim = F45
+pos = 40, 165
+postype = left
+removetime = -1
+scale = -.25, .3
+sprpriority = -3
+bindtime = -1
+ontop = 1
+ownpal = 0
+ignorehitpause = 1
+pausemovetime = 999999
+supermovetime = 999999
+[State -2, Explod] 		;Pursuit Gauge Rim
+type = Explod
+id = 45
+triggerall = teamside = 2
+trigger1 = !NumExplod(45)
+anim = F45
+pos = -40, 165
+postype = right
+removetime = -1
+scale = .25, .3
+sprpriority = -3
+bindtime = -1
+ontop = 1
+ownpal = 0
+ignorehitpause = 1
+pausemovetime = 999999
+supermovetime = 999999
+
+
+
+[State -2, Explod]		;Scaling The Inside Bar
+type = ModifyExplod
+Trigger1=TeamSide=1
+trigger1 = NumExplod(46)
+scale = -.26 * map(Pursuit)/999,.3
+id = 46
+PauseMoveTime=999999999999
+SuperMoveTime=99999999999999
+ignorehitpause = 1
+[State -2, Explod]		;Scaling The Inside Bar
+type = ModifyExplod
+Trigger1=TeamSide=2
+trigger1 = NumExplod(46)
+scale = .26 * map(Pursuit)/999,.3
+id = 46
+PauseMoveTime=999999999999
+SuperMoveTime=99999999999999
+ignorehitpause = 1
 
 ;=============================================================
 ;Collision Box Adjustments
@@ -5874,6 +5857,7 @@ pos = 21,50
 color = 0, 0, 0, 150
 ignorehitpause = 1
 pausemovetime = 100
+hidewithbars = 1
 [State -2, A-Type]
 type = text
 triggerall = teamside=1
@@ -5888,6 +5872,7 @@ pos = 20,45
 color = 256, 0, 0
 ignorehitpause = 1
 pausemovetime = 100
+hidewithbars = 1
 [State -2, B-Type]
 type = text
 triggerall = teamside=1
@@ -5902,6 +5887,7 @@ pos = 20,45
 color = 56, 56, 256
 ignorehitpause = 1
 pausemovetime = 100
+hidewithbars = 1
 [State -2, C-Type]
 type = text
 triggerall = teamside=1
@@ -5916,6 +5902,7 @@ pos = 20,45
 color = 256, 0, 256
 ignorehitpause = 1
 pausemovetime = 100
+hidewithbars = 1
 
 
 [State -2, Black Rectangle]
@@ -5932,6 +5919,7 @@ pos = 287,50
 color = 0, 0, 0, 150
 ignorehitpause = 1
 pausemovetime = 100
+hidewithbars = 1
 [State -2, A-Type]
 type = text
 triggerall = teamside=2
@@ -5946,6 +5934,7 @@ pos = 288,45
 color = 256, 0, 0
 ignorehitpause = 1
 pausemovetime = 100
+hidewithbars = 1
 [State -2, B-Type]
 type = text
 triggerall = teamside=2
@@ -5960,6 +5949,7 @@ pos = 288,45
 color = 56, 56, 256
 ignorehitpause = 1
 pausemovetime = 100
+hidewithbars = 1
 [State -2, C-Type]
 type = text
 triggerall = teamside=2
@@ -5974,6 +5964,7 @@ pos = 288,45
 color = 256, 0, 256
 ignorehitpause = 1
 pausemovetime = 100
+hidewithbars = 1
 
 ;===============================================================================
 ; ------- Universal Screen Darkening - Visual Effects --------
@@ -6295,7 +6286,6 @@ triggerall = map(_iksys_TrainingMeter) > 0
 trigger1 = GameMode = "Training"
 trigger1 = combocount = 0
 value = 1000 * (map(_iksys_TrainingMeter) - 1)
-
 
 [State 0, LifeAdd]
 type = LifeAdd
@@ -6904,6 +6894,135 @@ trigger1 = MatchOver
 value = MAP(quoteNum)
 
 [statedef -4]
+
+;===============================================================================
+; ------- Retribution --------
+;===============================================================================
+[State 0, MapSet] 
+type = MapSet
+trigger1 = enemy, animelemvar(numclsn1) > 0
+map = "PunishCheck"
+value = 1
+[State 0, MapSet] 
+type = MapSet
+trigger1 = enemy, time = 1
+trigger2 = combocount
+map = "PunishCheck"
+value = 0
+ignorehitpause = 1
+
+[State -2, Retribution]
+type = MapSet
+trigger1 = map(PunishCheck) = 1
+map = "Retribution"
+value = 1
+ignorehitpause = 1
+[State -2, Retribution]
+type = MapSet
+triggerall = enemy, map(ForceRetribution) = 0
+trigger1 = map(PunishCheck) = 0
+map = "Retribution"
+value = 0
+ignorehitpause = 1
+
+[State 0, Custom Afterimage]
+type = Explod
+trigger1 = combocount
+trigger1 = map(Retribution)
+trigger1 = time%3=0
+anim = anim
+animelem = animelemno(0)
+animfreeze = 1
+ID = 9999
+postype = p1
+pos = 0,0
+facing = 1
+vfacing = 1
+bindtime = 1
+supermovetime = 0
+pausemovetime = 0
+scale = 1,1.1
+velocity = 0, -0.1
+sprpriority = -10
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+trans = add
+removetime = 20
+palfx.time = 40
+palfx.sinmul = -55,-255,-255,160
+removeongethit = 0
+ignorehitpause = 1
+
+;Retribution Activation Slowdown
+[State 0, Mapadd]
+type 		= MapSet
+trigger1 	    = map(PunishCheck) && movehit = 1
+map 		    = "SlowdownTime"
+value 		    = 15
+ignorehitpause 	= 1
+persistent 		= 1
+[State 0, Mapadd]
+type 		    = MapAdd
+trigger1 	    = map(PunishCheck) && movehit = 1
+map 		    = "Pursuit"
+value 		    = 25
+ignorehitpause 	= 1
+persistent 		= 0
+[State 0, Mapadd]
+type 		= MapAdd
+trigger1 	    = map(PunishCheck) && movehit = 1
+map 		    = "Pursuit"
+value 		    = -25
+ignorehitpause 	= 1
+persistent 		= 0
+redirectid      = enemynear, id
+[State 0, Mapadd]
+type 		= MapAdd
+trigger1 	    = map(Slowdowntime)
+map 		    = "SlowdownTime"
+value 		    = -1
+ignorehitpause 	= 1
+persistent 		= 1
+
+[State 0, BGPalFX]
+type = BGPalFX
+trigger1 = map(SlowdownTime)
+time = 5
+add = -(map(SlowdownTime))*1.75,-(map(SlowdownTime))*1.75,-(map(SlowdownTime))*1.75
+persistent = 1
+ignorehitpause = 1
+
+[State 0, EVERYTHING WILL FREEZE!]
+type = Pause
+triggerall = map(slowdownTime)
+trigger1 = gametime % 2 = 0
+time = 2
+anim = 99999
+pos = 0,0
+movetime = 2
+darken = 0
+p2defmul = 1
+unhittable = 1
+
+;==================================================================================================
+;TRAINING MODE - Movelist Update
+;==================================================================================================
+[State -2, A-Type]
+type = ChangeMovelist
+triggerall = !ishelper
+trigger1 = map(Groove_Style) = 0
+value = 0
+[State -2, B-Type]
+type = ChangeMovelist
+triggerall = !ishelper
+trigger1 = map(Groove_Style) = 1
+value = 1
+[State -2, C-Type]
+type = ChangeMovelist
+triggerall = !ishelper
+trigger1 = map(Groove_Style) = 2
+value = 2
 
 ;===============================================================================
 ; ------- Counter-Hit --------

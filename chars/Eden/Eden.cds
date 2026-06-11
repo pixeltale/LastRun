@@ -160,7 +160,7 @@ type = ChangeState
 value = 2100
 triggerall = map(Groove_Style) = 1
 triggerall = command = "214BC"
-triggerall = statetype != A && stateno != [2100, 3000)
+triggerall = statetype != A && stateno != [2100, 3000) && !numhelper(2101)
 triggerall = stateno != [1000, 3000) || (map(Pursuit) >= 333 || map(Termina.Active))
 trigger1 = var(2)
 

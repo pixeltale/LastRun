@@ -74,6 +74,27 @@ facep2 		= 0
 poweradd 		= 0
 sprpriority 	= 10
 
+[State -2, P1 Value Set]
+type 		= RootMapSet
+trigger1 		= movehit && root, map(ComboStateCheck) = 0
+map 			= "P1"
+value 		= 0.85
+ignorehitpause 	= 1
+[State -2, P2 Value Set]
+type 		= RootMapSet
+trigger1 		= movehit && root, map(ComboStateCheck)
+map 			= "P2"
+value 		= 0.85	;85% DMG For next hit
+ignorehitpause 	= 1
+persistent = 0
+[State -2, P2 Accumulation - Scale]
+type 		= RootMapSet
+trigger1 		= movehit
+map 			= "Accumulation"
+value 		= Root, Map(Accumulation) * Root, map(P2)
+ignorehitpause 	= 1
+persistent 		= 0
+
 [State 200, 1]
 type = HitDef 
 trigger1 	= !MoveContact && !MoveReversed
@@ -144,6 +165,27 @@ anim 		= 1005
 facep2 		= 0
 poweradd 		= 0
 sprpriority 	= 10
+
+[State -2, P1 Value Set]
+type 		= RootMapSet
+trigger1 		= movehit && root, map(ComboStateCheck) = 0
+map 			= "P1"
+value 		= 0.85
+ignorehitpause 	= 1
+[State -2, P2 Value Set]
+type 		= RootMapSet
+trigger1 		= movehit && root, map(ComboStateCheck)
+map 			= "P2"
+value 		= 0.85	;85% DMG For next hit
+ignorehitpause 	= 1
+persistent = 0
+[State -2, P2 Accumulation - Scale]
+type 		= RootMapSet
+trigger1 		= movehit
+map 			= "Accumulation"
+value 		= Root, Map(Accumulation) * Root, map(P2)
+ignorehitpause 	= 1
+persistent 		= 0
 
 [State 200, 1]
 type = HitDef 
@@ -293,6 +335,27 @@ trigger1 = prevstateno = 1010
 x = vel x + 1
 y = vel y + -4
 
+[State -2, P1 Value Set]
+type 		= MapSet
+trigger1 		= movehit && !map(ComboStateCheck)
+map 		= "P1"
+value 		= 0.80	;90% Starting DMG
+ignorehitpause 	= 1
+[State -2, P2 Value Set]
+type 		= MapSet
+trigger1 		= movehit && map(ComboStateCheck)
+map 		= "P2"
+value 		= 0.85	;84% DMG For next hit
+ignorehitpause 	= 1
+persistent = 0
+[State -2, P2 Accumulation - Scale]
+type 		= MapSet
+trigger1 		= movehit
+map 		= "Accumulation"
+value 		= Map(Accumulation) * map(P2)
+ignorehitpause 	= 1
+persistent 		= 0
+
 [State 200, 1]
 type = HitDef 
 trigger1 	= !MoveContact && !MoveReversed
@@ -363,6 +426,27 @@ sprpriority 	= 2
 type = VelSet
 trigger1 = animelem = 4
 y = 2
+
+[State -2, P1 Value Set]
+type 		= MapSet
+trigger1 		= movehit && !map(ComboStateCheck)
+map 			= "P1"
+value 		= 1	;90% Starting DMG
+ignorehitpause 	= 1
+[State -2, P2 Value Set]
+type 		= MapSet
+trigger1 		= movehit && map(ComboStateCheck)
+map 			= "P2"
+value 		= 0.95	;84% DMG For next hit
+ignorehitpause 	= 1
+persistent = 0
+[State -2, P2 Accumulation - Scale]
+type 		= MapSet
+trigger1 		= movehit
+map 		= "Accumulation"
+value 		= Map(Accumulation) * map(P2)
+ignorehitpause 	= 1
+persistent 		= 0
 
 [State 0]
 type 	= HitDef 
@@ -523,6 +607,26 @@ triggerall = !sysvar(1)
 trigger1 = animelemno(0) >= 6
 y = -0.25
 
+[State -2, P1 Value Set]
+type 		= MapSet
+trigger1 		= movehit && !map(ComboStateCheck)
+map 		= "P1"
+value 		= 0.90	;90% Starting DMG
+ignorehitpause 	= 1
+[State -2, P2 Value Set]
+type 		= MapSet
+trigger1 		= movehit && map(ComboStateCheck)
+map 		= "P2"
+value 		= 0.85	;84% DMG For next hit
+ignorehitpause 	= 1
+persistent = 0
+[State -2, P2 Accumulation - Scale]
+type 		= MapSet
+trigger1 		= movehit
+map 		= "Accumulation"
+value 		= Map(Accumulation) * map(P2)
+ignorehitpause 	= 1
+persistent 		= 0
 
 [State 200, 1]
 type = HitDef 
@@ -646,14 +750,14 @@ x = 4
 [State -2, P1 Value Set]
 type 		= MapSet
 trigger1 		= movehit && !map(ComboStateCheck)
-map 		= "P1"
-value 		= 1	;100% Starting DMG
+map 			= "P1"
+value 		= 0.85	;100% Starting DMG
 ignorehitpause 	= 1
 [State -2, P2 Value Set]
 type 		= MapSet
 trigger1 		= movehit && map(ComboStateCheck)
 map 		= "P2"
-value 		= 0.90	;85% DMG For next hit
+value 		= 0.85	;85% DMG For next hit
 ignorehitpause 	= 1
 persistent = 0
 [State -2, P2 Accumulation - Scale]
@@ -814,7 +918,7 @@ ignorehitpause = 1
 type 		= MapSet
 trigger1 		= movehit && !map(ComboStateCheck)
 map 			= "P1"
-value 		= 1	;100% Starting DMG
+value 		= 0.8	;100% Starting DMG
 ignorehitpause 	= 1
 [State -2, P2 Value Set]
 type 		= MapSet
@@ -1531,7 +1635,7 @@ ignorehitpause 	= 1
 type 		= RootMapSet
 trigger1 		= movehit && root, map(ComboStateCheck)
 map 			= "P2"
-value 		= 0.95	;85% DMG For next hit
+value 		= 0.85	;85% DMG For next hit
 ignorehitpause 	= 1
 persistent = 0
 [State -2, P2 Accumulation - Scale]
@@ -1583,7 +1687,7 @@ time = 1
 
 [State 200, 3]
 type = DestroySelf
-trigger1 = !animtime || root, movetype = H
+trigger1 = !animtime || enemy, combocount
 
 ;----------------------
 ;[A] 22BC - Dirty Trick
@@ -2037,8 +2141,8 @@ ground.hittime  	= 18
 air.hittime  		= 99
 down.hittime 		= 15
 ground.velocity 	= -6, -5
-guard.ctrltime 	= 5
-guard.slidetime	= 5
+guard.ctrltime 	= 10
+guard.slidetime	= 10
 air.velocity 		= -8, -3 / map(JuggleScale)
 envshake.time 		= 0
 fall				= 1
@@ -2190,7 +2294,7 @@ time = 1
 
 [State 200, 3]
 type = DestroySelf
-trigger1 = !animtime && anim = 2122 || map(Lifetime) <= 0 || root, movetype = H || root, stateno =  2125
+trigger1 = !animtime && anim = 2122 || map(Lifetime) <= 0 || enemy, combocount|| root, stateno =  2125
 
 
 ;-|B Version|- 
@@ -2704,7 +2808,7 @@ p2facing  = 1
 damage 			= 10 * map(P4) + 15
 guardflag 		= M
 hitflag 			= MAF
-pausetime 		= 1, 5
+pausetime 		= 1, 3
 sparkno 			= 0
 sparkxy 			= -30, -59
 hitsound 			= 5, 1
@@ -2844,12 +2948,32 @@ type = VelAdd
 trigger1 = 1
 x = 0.07
 
+[State -2, P1 Value Set]
+type 		= RootMapSet
+trigger1 		= movehit && root, map(ComboStateCheck) = 0
+map 			= "P1"
+value 		= 0.80
+ignorehitpause 	= 1
+[State -2, P2 Value Set]
+type 		= RootMapSet
+trigger1 		= movehit && root, map(ComboStateCheck)
+map 			= "P2"
+value 		= 0.85	;85% DMG For next hit
+ignorehitpause 	= 1
+persistent = 0
+[State -2, P2 Accumulation - Scale]
+type 		= RootMapSet
+trigger1 		= movehit
+map 			= "Accumulation"
+value 		= Root, Map(Accumulation) * Root, map(P2)
+ignorehitpause 	= 1
+persistent 		= 0
 
 [State 200, 1]
 type = HitDef 
 trigger1 	= time % 2 = 0
 trigger1 	= sysvar(1) < 15
-attr = SCA, SP
+attr = SCA, SP, HP
 damage 		= 15 * (root, map(P4)), 10
 animtype 		= light                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 air.animtype 	= back

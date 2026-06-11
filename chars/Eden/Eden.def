@@ -25,7 +25,9 @@ sprite  = Eden.sff           ;Sprite
 anim    = Eden.air           ;Animation
 sound   = Eden.snd           ;Sound
 ai      = Eden.ai            ;AI hints data (not used)
-movelist = movelist.dat     ;Ikemen feature: Movelist
+movelist1 = movelist.dat     ;Ikemen feature: Movelist
+movelist2 = movelist1.dat
+movelist3 = movelist2.dat
 
 ; Maps character selection buttons to palette numbers.
 [Palette Keymap]

@@ -1,4 +1,4 @@
-<#f0f000>EDEN HAZARD: A-TYPE</>
+<#f0f000>EDEN HAZARD: B-TYPE</>
 <#f0f000>COMMAND NORMALS</>
 Overhead            						_F_+^B
    <#bbbbbb>An overhead kick with two hits. Chain OK.</>
@@ -30,13 +30,12 @@ _!Extra kick								(After A Version) ^A
 <#f0f000>LASTRIDE</>
 Revelation</>		_QDF_QDF_+^B _+^C
 
-<#f0f000>ALTERNATIVE SPECIAL MOVES: A-GEAR</>
-BLACK HOLE						_QDB^B_+^C
-   <#bbbbbb>A projectile spawns at the enemy's
-   location before exploding.</>
-
-LOWCARD						_D_D^B_+^C
-   <#bbbbbb>A low card attack.</>
+<#f0f000>ALTERNATIVE SPECIAL MOVES: B-GEAR</>
+CRAWLING FLAME						_QDB^B_+^C
+   <#bbbbbb>A slow moving, multi-hit projectile
+   that travels across the ground.</>
+SOARING FLAME						_QDB^B_+^C
+   <#bbbbbb>An air to ground projectile attack.</>
 
 <#f0f000>LASTRIDE: ALTERNATIVES</>
 SUPER 1: BLACK HOLE SUN					_QDB_QDB^B_+^C

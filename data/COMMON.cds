@@ -651,54 +651,41 @@ buffer.time = 15
 
 [Command]
 name = "214214A"
-command = ~D, DB, B, D, DB, B, a
+command = ~D, B, D, B, a
 time = 20
 [Command]
 name = "214214B"
-command = ~D, DB, B, D, DB, B, b
+command = ~D, B, D, B, b
 time = 20
 [Command]
 name = "214214C"
-command = ~D, DB, B, D, DB, B, c
+command = ~D, B, D, B, c
 time = 20
 [Command]
 name = "214214D"
-command = ~D, DB, B, D, DB, B, d
+command = ~D, B, D, B, d
 time = 20
 [Command]
 name = "214214CD"
-command = ~D, DB, B, D, DB, B, c+d
+command = ~D, B, D, B, c+d
 time = 20
 
 [Command]
 name = "632146A"
-command = ~F, DF, D, DB, B, F, a | ~a
+command = ~$F, D, B, $F, a | ~a
 time = 20
 [Command]
 name = "632146B"
-command = ~F, DF, D, DB, B, F, b | ~b
+command = ~$F, D, B, $F, b | ~b
 time = 20
 [Command]
 name = "632146C"
-command = ~F, DF, D, DB, B, F, c | ~c
+command = ~$F, D, B, $F, c | ~c
 time = 20
 [Command]
 name = "632146D"
-command = ~F, DF, D, DB, B, F, d
+command = ~$F, D, B, $F, d | ~d
 time = 20
-[Command]
-name = "6246Y"
-command = ~$F, $D, $B, $F, y
-time = 15
-buffer.time = 15
-[Command]
-name = "6246Z"
-command = ~$F, $D, $B, $F, z
-time = 15
-buffer.time = 15
-[Command]
-name = "632146CD"
-command = ~F, DF, D, DB, B, F, c+x
 
 [Command]
 name = "ExGuard"

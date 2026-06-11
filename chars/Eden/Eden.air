@@ -1749,7 +1749,7 @@ Interpolate Blend
 Clsn2: 2
   Clsn2[0] = -6, -125, 33, -80
   Clsn2[1] = -32, -82, 38, -2
-105,0, 0,0, 8, H, AS256D0
+105,0, 0,0, 6, H, AS256D0
 
 ; C-Telepeort
 [Begin Action 2128]

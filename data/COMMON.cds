@@ -673,17 +673,19 @@ time = 20
 [Command]
 name = "632146A"
 command = ~F, DF, D, DB, B, F, a | ~a
+time = 20
 [Command]
 name = "632146B"
 command = ~F, DF, D, DB, B, F, b | ~b
+time = 20
 [Command]
 name = "632146C"
 command = ~F, DF, D, DB, B, F, c | ~c
+time = 20
 [Command]
 name = "632146D"
 command = ~F, DF, D, DB, B, F, d
-time = 15
-buffer.time = 15
+time = 20
 [Command]
 name = "6246Y"
 command = ~$F, $D, $B, $F, y

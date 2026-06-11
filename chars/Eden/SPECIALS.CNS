@@ -1991,6 +1991,7 @@ time = 10
 type = Changestate
 trigger1 = sysvar(1) = 5
 trigger2 = time > 100
+trigger3 = root, movetype = H
 value = 1007
 ignorehitpause = 1
 
@@ -2103,6 +2104,7 @@ time = 10
 type = Changestate
 trigger1 = sysvar(1) = 2
 trigger2 = pos y >= 0
+trigger3 = root, movetype = H
 value = 1007
 ignorehitpause = 1
 
@@ -2570,6 +2572,7 @@ unhittable = 1
 
 [State 0, NotHitBy]
 type = NotHitBy
+triggerall = movehitvar(overridden) = 0
 trigger1 = time = [0, 14]
 value = SCA,NA,SA,HA,NP,SP,HP,NT,ST
 time = 1
@@ -2873,7 +2876,7 @@ unhittable = 1
 [State 0, NotHitBy]
 type = NotHitBy
 trigger1 = animelemno(0) < 5
-value = SCA,AP
+value = ,AP
 time = 1
 
 [State 200, 1]

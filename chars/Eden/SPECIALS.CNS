@@ -923,7 +923,7 @@ persistent 		= 0
 
 [State 200, 1]
 type = HitDef 
-trigger1	= Map(RETRIBUTION) = 0 || combocount <= 1
+trigger1	= Map(RETRIBUTION) = 0
 trigger1 	= !MoveContact && !MoveReversed
 attr 			= S, SA
 damage 			= 120 * map(P4)
@@ -959,7 +959,6 @@ getpower 			= 150 * map(P4)
 [State 630, 2]
 type = HitDef 
 p2facing = 1
-triggerall = combocount > 1
 triggerall = MAP(RETRIBUTION)
 trigger1 = !movecontact && !movereversed
 hitonce = 1
@@ -1438,7 +1437,7 @@ persistent 		= 0
 
 [State 200, 1]
 type = HitDef 
-trigger1	= Map(RETRIBUTION) = 0 || animelem = 4
+trigger1	= Map(RETRIBUTION) = 0 || animelem = 4 || animelem = 5 && combocount <= 2
 trigger1 	= animelem = 4 || animelem = 5
 attr = S, SA
 damage 			= 60 * map(P4)
@@ -1474,7 +1473,7 @@ id				= 2
 [State 630, 2] ;Always Clean Hit
 type = HitDef 
 p2facing = 1
-triggerall = MAP(RETRIBUTION)
+triggerall = MAP(RETRIBUTION) && combocount > 2
 trigger1 = animelem = 5
 hitonce = 1
 attr = S, SA
@@ -1491,8 +1490,8 @@ air.type	= TRIP
 animtype 		= medium
 ground.slidetime 	= 14
 ground.hittime  	= 999
-ground.velocity 	= -20,-11
-air.velocity 		= -20,-10 / map(JuggleScale)
+ground.velocity 	= -20,-5
+air.velocity 		= -20,-6 / map(JuggleScale)
 air.hittime 		= 999
 fall 			= 1
 fall.yvelocity 	= 0

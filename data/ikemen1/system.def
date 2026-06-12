@@ -2262,10 +2262,10 @@ movelist.arrow.down.scale = 1.0, 1.0
 	menu.itemname.menutraining.dummysettings = General Dummy Settings
 	menu.itemname.menutraining.dummysettings.guardmode = Guard Mode
 	menu.itemname.menutraining.dummysettings.regen = Life Regen
-	menu.itemname.menutraining.dummysettings.dummycontrol = Dummy State
+	menu.itemname.menutraining.dummysettings.dummycontrol = Dummy Control Mode
 	menu.itemname.menutraining.dummysettings.fallrecovery = Fall Recovery
 	menu.itemname.menutraining.dummysettings.distance = Distance
-	menu.itemname.menutraining.dummysettings.dummymode = Dummy Control Mode
+	menu.itemname.menutraining.dummysettings.dummymode = Dummy State
 	menu.itemname.menutraining.dummysettings.ailevel = Dummy AI Level
 	menu.itemname.menutraining.dummysettings.back = Back
 	

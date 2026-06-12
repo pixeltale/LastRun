@@ -199,7 +199,7 @@ trigger1 = var(2)
 type = ChangeState
 value = 2124
 triggerall = map(Groove_Style) = 3
-triggerall = command = "22C"
+triggerall = command = "22C" && map(TP_Limiter) = 0
 triggerall = numhelper(2120)
 trigger1 = var(2)
 
@@ -297,7 +297,7 @@ trigger1 = ctrl
 ;===========================================================================
 ;COMMAND NORMALS
 ;===========================================================================
-;6B
+;6C
 [State -1, Crouching Heavy]
 type = ChangeState
 value = 240
@@ -351,7 +351,7 @@ trigger2 = (stateno = 200 || stateno = 400) && movecontact
 [State -1, Standing Heavy]
 type = ChangeState
 value = 220
-triggerall = p2Dist X <= 55
+triggerall = p2Dist X <= 50
 triggerall = command = "C"
 triggerall = command != "holddown"
 triggerall = statetype != A
@@ -362,7 +362,7 @@ trigger2 = (stateno = [200,210] || stateno = [400,410]) && movecontact
 [State -1, Standing Heavy]
 type = ChangeState
 value = 225
-triggerall = p2Dist X > 55
+triggerall = p2Dist X > 50
 triggerall = command = "C"
 triggerall = command != "holddown"
 triggerall = statetype != A

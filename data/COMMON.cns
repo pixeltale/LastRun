@@ -605,44 +605,16 @@ type = AttackDist
 trigger1 = 1
 value = 0
 
-[State -2, Starter Level]
-type 		= MapSet
-trigger1 	= 1
-map 		= "StarterLevel"
-value 		= 1
-ignorehitpause 	= 1
-
-[State -2, P1 Value Set]
-type 		= MapSet
-trigger1 		= movehit && !map(ComboStateCheck)
-map 		= "P1"
-value 		= 0.50
-ignorehitpause 	= 1
-[State -2, P2 Value Set]
-type 		= MapSet
-trigger1 		= movehit && map(ComboStateCheck)
-map 		= "P2"
-value 		= 0.50
-ignorehitpause 	= 1
-persistent = 0
-[State -2, P2 Accumulation - Scale]
-type 		= MapSet
-trigger1 		= movehit
-map 		= "Accumulation"
-value 		= Map(Accumulation) * map(P2)
-ignorehitpause 	= 1
-persistent 		= 0
-
 [State 800, 1] ;With grab sound
 type = HitDef 
 p2facing = 1
-triggerall = abs(p2dist x) <= 45
+triggerall = abs(p2dist x) <= 150
 trigger1 = p2statetype != A
 trigger1 = enemy, movetype != H
 Trigger1 = time = 0 
 attr = S, NT          ;Attributes: Standing, Normal Throw
 hitflag = M-          ;Affect only ground people who are not being hit
-priority = 1, Miss    ;Throw has low priority, must be miss or dodge type.
+priority = 10, Miss    ;Same Frame throw beats strikes
 sparkno = -1          ;No spark
 ground.type = trip
 p1sprpriority = 1     ;Draw p1's sprite in front of p2
@@ -656,6 +628,7 @@ forcenofall = 1
 ground.velocity = 0,0
 snap = 50,0
 air.velocity = 0,30
+missonoverride	= 0
 
 [State 0, PlaySnd] ;Throw Woosh
 type = PlaySnd
@@ -2336,6 +2309,14 @@ trigger1 = !time
 volumescale = 0
 redirectid = enemy, ID
 ignorehitpause = 1
+[State 0, PalFX]
+type = BGPalFX
+trigger1 = !time
+time = 15
+add = -20, -20, -20
+invertall = 0
+color = 0
+ignorehitpause = 1
 
 [State 0, Mapadd]
 type 		= MapAdd
@@ -2358,7 +2339,7 @@ redirectid      = enemy, ID
 type = SuperPause
 triggerall = gethitvar(attr) != SCA,NP, SP, HP
 trigger1 = !time
-time = gethitvar(hitshaketime) + 2
+time = gethitvar(hitshaketime) + 5
 movetime = 7 * (gethitvar(attr) = SCA, HA,HP)
 anim = -1
 sound = -1
@@ -2451,6 +2432,14 @@ trigger1 = !time
 volumescale = 0
 redirectid = enemy, ID
 ignorehitpause = 1
+[State 0, PalFX]
+type = BGPalFX
+trigger1 = !time
+time = 15
+add = -20, -20, -20
+invertall = 0
+color = 0
+ignorehitpause = 1
 
 [State 0, Mapadd]
 type 		= MapAdd
@@ -2473,7 +2462,7 @@ redirectid      = enemy, ID
 type = SuperPause
 triggerall = gethitvar(attr) != SCA,NP, SP, HP
 trigger1 = !time
-time = gethitvar(hitshaketime) + 2
+time = gethitvar(hitshaketime) + 5
 movetime = 7 * (gethitvar(attr) = SCA, HA,HP)
 anim = -1
 sound = -1
@@ -2485,8 +2474,8 @@ ignorehitpause = 1
 type = SuperPause
 triggerall = gethitvar(attr) = SCA,NP, SP, HP
 trigger1 = !time
-time = gethitvar(hitshaketime) + 5
-movetime = gethitvar(hitshaketime) + 5
+time = gethitvar(hitshaketime) + 10
+movetime = gethitvar(hitshaketime) + 10
 anim = -1
 sound = -1
 darken = 0
@@ -4438,7 +4427,7 @@ velset = 0,0
 [State 5230, Anim]
 type = ChangeAnim2
 trigger1 = 1
-value = 5220
+value = 5240
 
 [State 1025, State]
 type = ChangeState
@@ -4451,7 +4440,7 @@ value = 5241
 type    = A
 movetype= H
 physics = N
-anim    = 5220
+anim    = 5240
 
 [State 5223, Gravity]
 type = VelAdd
@@ -6979,27 +6968,12 @@ ignorehitpause = 1
 
 ;Retribution Activation Slowdown
 [State 0, Mapadd]
-type 		= MapSet
-trigger1 	    = map(PunishCheck) && movehit = 1
-map 		    = "SlowdownTime"
-value 		    = 15
-ignorehitpause 	= 1
-persistent 		= 1
-[State 0, Mapadd]
 type 		    = MapAdd
 trigger1 	    = map(PunishCheck) && movehit = 1
 map 		    = "Pursuit"
 value 		    = 25
 ignorehitpause 	= 1
 persistent 		= 0
-[State 0, Mapadd]
-type 		= MapAdd
-trigger1 	    = map(PunishCheck) && movehit = 1
-map 		    = "Pursuit"
-value 		    = -25
-ignorehitpause 	= 1
-persistent 		= 0
-redirectid      = enemynear, id
 [State 0, Mapadd]
 type 		= MapAdd
 trigger1 	    = map(Slowdowntime)

@@ -48,7 +48,7 @@ trigger1 = animelem = 3
 helpertype = Normal ;Player
 name = "Fatal Introduction"
 ID = 1005
-stateno = 1005
+stateno = 1006
 pos = 20,-60
 postype = P1    ;P2, Front, Back, Left, Right
 facing = 1
@@ -67,7 +67,7 @@ ctrl = 1
 type    		= U
 movetype		= A
 physics 		= N
-velset 		= 8 + 6*(root,stateno = 1001), 0
+velset 		= 6, 0
 ctrl 		= 0
 anim 		= 1005
 facep2 		= 0
@@ -159,7 +159,7 @@ ignorehitpause = 1
 type    		= U
 movetype		= A
 physics 		= N
-velset 		= 14, 0
+velset 		= 8, 0
 ctrl 		= 0
 anim 		= 1005
 facep2 		= 0
@@ -579,18 +579,14 @@ sysvar(1) = pos y < 0
 [State 50, 1]
 type = PosAdd
 triggerall = pos y >= 0
-trigger1 = Time = 0
+trigger1 = Time = [0,1]
 y = -20
 
-[State 0, VelMul]
-type = VelMul
-trigger1 = animelemno(0) <= 4
-y = 0.8
 [State 0, VelSet]
 type = VelSet
 trigger1 = animelemno(0) = 4
 x = 15
-y = -3 + sysvar(1)*4
+y = -3 + sysvar(1)*5
 [State 0, StateTypeSet]
 type = StateTypeSet
 trigger1 = animelem = 6
@@ -599,13 +595,8 @@ movetype = A
 physics = A
 [State 0, VelMul]
 type = VelMul
-trigger1 = animelemno(0) >= 9
-x = 0.9
-[State 0, VelSet]
-type = VelAdd
-triggerall = !sysvar(1)
 trigger1 = animelemno(0) >= 6
-y = -0.25
+x = 0.9
 
 [State -2, P1 Value Set]
 type 		= MapSet
@@ -646,10 +637,10 @@ ground.slidetime 	= 10
 ground.hittime  	= 18
 air.hittime  		= 99
 down.hittime 		= 15
-ground.velocity 	= -8, -5
+ground.velocity 	= -6, -6
 guard.ctrltime 	= 5
 guard.slidetime	= 5
-air.velocity 		= -8, -2 / map(JuggleScale)
+air.velocity 		= -6, -2 / map(JuggleScale)
 envshake.time 		= 0
 fall				= 1
 air.fall 			= 1
@@ -682,10 +673,10 @@ ground.slidetime 	= 10
 ground.hittime  	= 18
 air.hittime  		= 99
 down.hittime 		= 15
-ground.velocity 	= -1, -8
+ground.velocity 	= -8, -8
 guard.ctrltime 	= 10
 guard.slidetime	= 10
-air.velocity 		= -1, -6 / map(JuggleScale)
+air.velocity 		= -8, -6 / map(JuggleScale)
 envshake.time 		= 0
 fall				= 1
 air.fall 			= 1
@@ -693,6 +684,8 @@ fall.yvelocity 	= 0
 ground.type		= TRIP
 AIR.TYPE			= TRIP
 ;=====================================
+p2stateno			= 5240 
+p2getp1state		= 0
 envshake.time 		= 3
 envshake.freq 		= 5
 envshake.ampl 		= 2
@@ -735,7 +728,7 @@ ctrl = 0
 type    		= S
 movetype		= A
 physics 		= S
-velset 		= vel x * 0.5, 0
+velset 		= vel x, 0
 ctrl 		= 0
 anim 		= 1020
 facep2 		= 1
@@ -881,19 +874,12 @@ ctrl = 1
 type    		= S
 movetype		= A
 physics 		= S
-velset 		= vel x * 0.5, 0
+velset 		= vel x, 0
 ctrl 		= 0
 anim 		= 1021
 facep2 		= 1
 poweradd 	= 0
 sprpriority 	= 2
-
-[State 0, NotHitBy]
-type = NotHitBy
-trigger1 = anim = 1021
-trigger1 = animelemno(0) <= 5
-value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
-time = 1
 
 [State 0, VelSet]
 type = VelSet
@@ -918,13 +904,13 @@ ignorehitpause = 1
 type 		= MapSet
 trigger1 		= movehit && !map(ComboStateCheck)
 map 			= "P1"
-value 		= 0.8	;100% Starting DMG
+value 		= 1	;100% Starting DMG
 ignorehitpause 	= 1
 [State -2, P2 Value Set]
 type 		= MapSet
 trigger1 		= movehit && map(ComboStateCheck)
 map 			= "P2"
-value 		= 0.90	;85% DMG For next hit
+value 		= 1	;85% DMG For next hit
 ignorehitpause 	= 1
 persistent = 0
 [State -2, P2 Accumulation - Scale]
@@ -953,7 +939,7 @@ ground.slidetime 	= 10
 ground.hittime  	= 18
 air.hittime  		= 99
 down.hittime 		= 15
-ground.velocity 	= -8, -5
+ground.velocity 	= -4, -8
 guard.ctrltime 	= 4
 guard.slidetime	= 4
 air.velocity 		= -4,-5
@@ -1100,7 +1086,7 @@ ctrl = 1
 type    		= U
 movetype		= A
 physics 		= N
-velset 		= 15, 0
+velset 		= 10, 0
 ctrl 		= 0
 anim 		= 1005
 facep2 		= 0
@@ -1402,6 +1388,12 @@ anim 		= 2020
 facep2 		= 1
 poweradd 		= -500
 sprpriority 	= 2
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = animelemno(0) <= 5
+value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+time = 1
 
 [State 8000, PalFX]
 type = PalFX
@@ -1796,7 +1788,7 @@ ctrl = 1
 type    		= S
 movetype		= A
 physics 		= S
-velset 		= vel x, 0
+velset 		= vel x * 0.5, 0
 ctrl 		= 0
 anim 		= 2110
 facep2 		= 1
@@ -1815,7 +1807,7 @@ type = VelSet
 trigger1 = prevstateno != 2109
 trigger1 = animelem = 2
 x = -2
-y = -6
+y = -7
 
 [State 0, VelSet]
 type = VelSet
@@ -1823,10 +1815,10 @@ trigger1 = prevstateno = 2109
 trigger1 = animelemno(0) = [1, 4]
 y = 0
 [State 0, VelSet]
-type = VelSet
+type = VelAdd
 trigger1 = prevstateno = 2109
 trigger1 = animelem = 5
-y = 7
+y = 2
 
 [State 0, ChangeAnim]
 type = ChangeAnim
@@ -1872,6 +1864,7 @@ ownpal = 0
 
 [State 0, VelAdd]
 type = VelAdd
+triggerall = prevstateno != 2109
 trigger1 = animelemno(0) >= 4
 y = -0.3
 
@@ -1884,7 +1877,7 @@ value = 0
 ctrl = 1
 
 ;----------------------
-;[B]214BC Projectile
+;Ground Projectile
 [Statedef 2111]
 type    		= U
 movetype		= A
@@ -1927,7 +1920,7 @@ animtype 		= light                 ;Animation type: Light, Medium, Heavy, Back (
 air.animtype 	= back
 guardflag 	= M
 hitflag 		= MAF
-pausetime 		= 4, 4
+pausetime 		= 2, 4
 guard.pausetime	= 2, 2
 sparkno 			= 0
 sparkxy 			= -30, -59
@@ -1996,7 +1989,7 @@ value = 1007
 ignorehitpause = 1
 
 ;----------------------
-;[B]j214BC Projectile
+;Air Projectile
 [Statedef 2112]
 type    		= U
 movetype		= A
@@ -2346,12 +2339,6 @@ trigger1 = !animtime && anim = 2122 || map(Lifetime) <= 0 || enemy, combocount
 type    		= S
 movetype		= A
 physics 		= S
-[State 0, MapSet]	;Spend pursuit when canceling
-type = MapAdd
-triggerall = !time
-trigger1 = prevstateno = [1000, 4000)
-map = "Pursuit"
-value = -333
 [State 200, 3]
 type = ChangeState
 trigger1 = 1
@@ -2363,12 +2350,6 @@ ctrl = 0
 type    		= S
 movetype		= A
 physics 		= S
-[State 0, MapSet]	;Spend pursuit when canceling
-type = MapAdd
-triggerall = !time
-trigger1 = prevstateno = [1000, 4000)
-map = "Pursuit"
-value = -333
 [State 200, 3]
 type = ChangeState
 trigger1 = 1
@@ -2386,6 +2367,8 @@ anim 		= 2125 - 1 * (pos y < 0)
 facep2 		= 0
 poweradd 		= 0
 sprpriority 	= 10
+
+
 
 [State 0, VarSet]		;Version Checker
 type 		= VarSet
@@ -2442,6 +2425,13 @@ physics 		= A
 anim			= 2128
 velset		= 2, -3
 ctrl			= 1
+
+[State -2, Lifetime Set]
+type 		= MapSet
+trigger1 		= combocount = 0
+map 			= "TP_Limiter"
+value 		= 1
+ignorehitpause = 1
 
 [State 0, PosAdd]
 type = PosAdd
@@ -2587,7 +2577,7 @@ damage = 30*MAP(P4), 10
 hitflag = MAFD
 guardflag = M
 pausetime = 20,25
-guard.pausetime = 15,15
+guard.pausetime = 15,5
 sparkno = 2
 sparkxy = -25,-44
 hitsound   = 5,1
@@ -2604,8 +2594,8 @@ fall = 0
 air.fall = 1
 kill= 0
 fall.yvelocity = 0
-guard.slidetime = 14
-guard.hittime = 15
+guard.slidetime = 5
+guard.hittime = 5
 getpower = 0
 
 
@@ -2884,7 +2874,7 @@ type = HitDef
 trigger1	= time % 3 = 0
 attr 	= S, HP
 p2facing  = 1
-damage 			= 10 * map(P4) + 15
+damage 			= 10 * map(P4) + 15, 10
 guardflag 		= M
 hitflag 			= MAF
 pausetime 		= 1, 3

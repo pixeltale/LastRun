@@ -985,19 +985,19 @@ time = 10
 
 [Command]
 name = "22A"
-command = ~D, D, a
+command = ~D, D, a | ~a
 time = 10
 [Command]
 name = "22B"
-command = ~D, D, b
+command = ~D, D, b | ~b
 time = 10
 [Command]
 name = "22C"
-command = ~D, D, c
+command = ~D, D, c | ~c
 time = 10
 [Command]
 name = "22D"
-command = ~D, D, d
+command = ~D, D, d | ~d
 time = 10
 
 ;MACROS ======================[]

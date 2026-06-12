@@ -192,13 +192,20 @@ map 			= "Stalker"
 value 		= 0
 ignorehitpause 	= 1
 
+[State -2, Lifetime Set]
+type 		= MapSet
+trigger1 		= pos y >= 0
+trigger2 		= combocount > 0
+map 			= "TP_Limiter"
+value 		= 0
+ignorehitpause = 1
 
 
 [State 0, DisplayToClipboard]
 type = DisplayToClipboard
 trigger1 = 1
 text = "punish = %.0f retribution = %.0f"
-params = map(punishcheck), map(retribution)
+params = map(TP_Limiter), map(retribution)
 ignorehitpause = 1
 persistent = 1
 

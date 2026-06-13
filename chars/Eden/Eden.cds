@@ -314,7 +314,7 @@ triggerall = command = "B"
 triggerall = command = "holdfwd"
 triggerall = statetype != A
 trigger1 = ctrl
-trigger2 = (stateno = [200,225] || stateno = [400,410]) && movecontact && !combocount
+trigger2 = (stateno = [200,225] || stateno = [400,410]) && movecontact && (!combocount || command = "holdup")
 ;6B (Chainer)
 [State -1, Crouching Heavy]
 type = ChangeState
@@ -322,7 +322,7 @@ value = 231
 triggerall = command = "B"
 triggerall = command = "holdfwd"
 triggerall = statetype != A
-trigger1 = (stateno = [200,225] || stateno = [400,410]) && movecontact && combocount
+trigger1 = (stateno = [200,225] || stateno = [400,410]) && movecontact && combocount && command != "holdup"
 
 ;===========================================================================
 ;---------------------------------------------------------------------------
@@ -412,7 +412,7 @@ trigger2 = (stateno = [200,210] || stateno = [400,410]) && movecontact
 
 ;---------------------------------------------------------------------------
 ;j.A
-[State -1, Jump Light]
+[State -1, Jump Light] 
 type = ChangeState
 value = 600
 triggerall = command = "A"
@@ -427,7 +427,7 @@ value = 610
 triggerall = command = "B"
 triggerall = statetype = A
 trigger1 = ctrl
-trigger2 = stateno = 600 && MoveContact && !sysvar(3)
+trigger2 = stateno = 600 && MoveContact
 ;---------------------------------------------------------------------------
 ;j.C
 [State -1, Jump Heavy]
@@ -436,5 +436,5 @@ value = 630
 triggerall = command = "C"
 triggerall = statetype = A
 trigger1 = ctrl
-trigger2 = stateno = [600,610] && MoveContact && !sysvar(3)
+trigger2 = stateno = [600,610] && MoveContact
 

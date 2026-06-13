@@ -766,7 +766,7 @@ type = HitDef
 trigger1	= Map(RETRIBUTION) = 0 || animelem = 4
 trigger1 	= animelem = 4 || animelem = 5
 attr = S, SA
-damage 			= 20 * map(P4), 4
+damage 			= 50 * map(P4), 4
 guardflag 		= M
 hitflag 			= MAF
 pausetime 		= 8, 8
@@ -2393,9 +2393,23 @@ elem = 1
 ignorehitpause = 1
 persistent = 1
 
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = sysvar(1) = 0
+trigger1 = time > 1
+y = 20
+[State 0, AfterImage]
+type = AfterImage
+trigger1 =time =  0
+time = 20
+length = 10
+
+
 [State 0, PosSet]
 type = PosSet
+triggerall = pos y != 0
 trigger1 = anim = 2126
+trigger2 = pos y >= 0
 y = 0
 
 [State 200, 3]
@@ -2425,7 +2439,13 @@ anim			= 2128
 velset		= 2, -3
 ctrl			= 1
 
-[State -2, Lifetime Set]
+[State 0, AfterImage]
+type = AfterImage
+trigger1 =time =  0
+time = 10
+length = 5
+
+[State -2, Limiter]
 type 		= MapSet
 trigger1 		= combocount = 0
 map 			= "TP_Limiter"
@@ -2462,6 +2482,11 @@ anim			= 2127
 velset		= 0, 0
 ctrl			= 0
 
+[State 0, AfterImage]
+type = AfterImage
+trigger1 =time =  0
+time = 10
+length = 5
 
 [State 0, PlayerPush]
 type = PlayerPush
@@ -2470,7 +2495,7 @@ value = 0
 
 [State 0, PosSet]
 type = PosSet
-trigger2 = time = 5
+trigger2 = !time
 trigger1 = pos y >= 0
 y = 0
 [State 0, PosAdd]

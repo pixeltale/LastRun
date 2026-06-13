@@ -313,16 +313,6 @@ buffer.time = 2
 name = "holdup" ;Required (do not remove)
 command = /$U
 buffer.time = 2
-[Command]
-name = "holdup" ;Required (do not remove)
-command = /UF
-time = 1
-buffer.time = 2
-[Command]
-name = "holdup" ;Required (do not remove)
-command = /UB
-time = 1
-buffer.time = 2
 
 [Command]
 name = "holdfwd_r" ; Raw hold forward (REQUIRED for command buffering)

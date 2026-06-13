@@ -317,6 +317,14 @@ type    = A
 physics = A
 ctrl = 1
 
+
+[State 200, 2]
+type = ChangeAnim
+triggerall = !time
+trigger1 = sysvar(3) = 1
+value = 45
+
+
 [State 50, 1]
 type = PosAdd
 trigger1 = Time = 0 && prevstateno = 40
@@ -330,6 +338,7 @@ sysvar(1) = 0
 [State 50, 2]
 type = ChangeAnim
 trigger1 = Time = 0
+trigger1 = sysvar(3) = 0
 value = ifelse((vel x)=0, 41, ifelse((vel x)>0, 42, 43))
 
 [State 50, 3]
@@ -614,7 +623,7 @@ trigger1 = enemy, movetype != H
 Trigger1 = time = 0 
 attr = S, NT          ;Attributes: Standing, Normal Throw
 hitflag = M-          ;Affect only ground people who are not being hit
-priority = 10, Miss    ;Same Frame throw beats strikes
+priority = 0, Miss    ;Low Prio
 sparkno = -1          ;No spark
 ground.type = trip
 p1sprpriority = 1     ;Draw p1's sprite in front of p2
@@ -1701,7 +1710,7 @@ trigger1 = command != "holdback"
 trigger2 = !InGuardDist
 trigger3 = AILevel && numenemy
 trigger3 = enemynear,hitdefattr=SCA,AT
-value = 140
+value = 0
 ;-------------------------------------------------------------------------------
 ;CROUCH GUARD (guarding)
 [Statedef 131]
@@ -1727,7 +1736,7 @@ trigger1 = command != "holdback"
 trigger2 = !InGuardDist
 trigger3 = AILevel && numenemy
 trigger3 = enemynear,hitdefattr=SCA,AT
-value = 140
+value = 11
 
 ;-------------------------------------------------------------------------------
 ;AIR GUARD (guarding)
@@ -1814,11 +1823,7 @@ statetype = S
 physics = S
 [State 140, End]
 type = changestate
-trigger1 = !animtime
-value = (statetype=C)*11+(statetype=A)*51
-[State 140, End]
-type = changestate
-trigger1 = !animtime
+trigger1 = 1
 value = (statetype=C)*11+(statetype=A)*51
 ;-------------------------------------------------------------------------------
 ;SGUARDHIT (shaking)
@@ -2262,6 +2267,12 @@ anim = 900 + 5*(command = "holddown")
 ctrl = 0
 sprpriority = 2
 
+[State 0, MapSet] 
+type = MapSet
+trigger1 = 1
+map = "ForceRetribution"
+value = 1
+
 [State -1, Standing Parry]
 type = HitOverRide
 trigger1 = anim = 900
@@ -2276,7 +2287,7 @@ type = HitOverRide
 trigger1 = anim = 905
 trigger1 = !time
 attr = SCA, AA, AP
-guardflag = L
+guardflag.not = H
 stateno = 905
 slot = 0
 time = 8
@@ -2296,129 +2307,6 @@ physics = S
 poweradd= 100
 velset = vel x * 0.5, 0
 anim = 900 + 5 * (anim = 905)
-ctrl = 0
-sprpriority = 2
-
-[State 700, Snd]
-type = playsnd
-trigger1 = !time
-value = 900, 0
-[State Test]
-type = ModifySnd
-trigger1 = !time
-volumescale = 0
-redirectid = enemy, ID
-ignorehitpause = 1
-[State 0, PalFX]
-type = BGPalFX
-trigger1 = !time
-time = 15
-add = -20, -20, -20
-invertall = 0
-color = 0
-ignorehitpause = 1
-
-[State 0, Mapadd]
-type 		= MapAdd
-trigger1 	    = !time
-map 		    = "Pursuit"
-value 		    = 50
-ignorehitpause 	= 1
-persistent 		= 1
-[State 0, Mapadd]
-type 		= MapAdd
-triggerall      = gethitvar(attr) != SCA,NP, SP, HP
-trigger1 	    = !time
-map 		    = "Pursuit"
-value 		    = -50
-ignorehitpause 	= 1
-persistent 		= 1
-redirectid      = enemy, ID
-
-[State 0, Pause]
-type = SuperPause
-triggerall = gethitvar(attr) != SCA,NP, SP, HP
-trigger1 = !time
-time = gethitvar(hitshaketime) + 5
-movetime = 7 * (gethitvar(attr) = SCA, HA,HP)
-anim = -1
-sound = -1
-darken = 0
-unhittable = 1
-ignorehitpause = 1
-ignorehitpause = 1
-[State 0, Pause]
-type = SuperPause
-triggerall = gethitvar(attr) = SCA,NP, SP, HP
-trigger1 = !time
-time = gethitvar(hitshaketime) + 5
-movetime = gethitvar(hitshaketime) + 5
-anim = -1
-sound = -1
-darken = 0
-unhittable = 1
-ignorehitpause = 1
-
-[State 0, PalFX]
-type = PalFX
-trigger1 = !time
-time = 10
-add = 60, 30, 30
-invertall = 0
-color = 0
-ignorehitpause = 1
-[State 0, EnvShake]
-type = EnvShake
-trigger1 = !time
-time = 20
-freq = 20
-ampl = -3
-phase = 120
-ignorehitpause = 1
-persistent = 1
-
-
-[State 1000, 7]
-type = ChangeState
-trigger1 = time = 5
-value = 0
-ctrl = 1
-
-;---------------------------------------------------------------------------
-;Red Guard (Air)
-[Statedef 910]
-type    = A
-movetype= I
-physics = A
-velset = vel x,vel y + 1
-anim = 910
-ctrl = 0
-sprpriority = 2
-
-[State -1, Standing Parry]
-type = HitOverRide
-trigger1 = !time
-attr = SCA,NA,SA,HA,NP,SP,HP
-stateno = 915
-slot = 0
-time = 8
-
-
-[State 1000, 7]
-type = ChangeState
-trigger1 = AnimTime = 0
-value = 50
-ctrl = 1
-
-;---------------------------------------------------------------------------
-;Red Guard - Success (Air)
-[Statedef 915]
-type    = A
-movetype= I
-physics = A
-poweradd= 100
-velset = vel x * 0.75, -3 
-anim = 910
 ctrl = 0
 sprpriority = 2
 
@@ -2500,9 +2388,142 @@ phase = 120
 ignorehitpause = 1
 persistent = 1
 
+
 [State 1000, 7]
 type = ChangeState
-trigger1 = time = 5
+trigger1 = time = 10
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+;Red Guard (Air)
+[Statedef 910]
+type    = A
+movetype= I
+physics = A
+velset = vel x,vel y + 1
+anim = 910
+ctrl = 0
+sprpriority = 2
+
+[State 0, MapSet] 
+type = MapSet
+trigger1 = 1
+map = "ForceRetribution"
+value = 1
+[State -1, Standing Parry]
+type = HitOverRide
+trigger1 = !time
+attr = SCA,NA,SA,HA,NP,SP,HP
+stateno = 915
+slot = 0
+time = 8
+
+
+[State 1000, 7]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 50
+ctrl = 1
+
+;---------------------------------------------------------------------------
+;Red Guard - Success (Air)
+[Statedef 915]
+type    = A
+movetype= I
+physics = A
+poweradd= 100
+velset = vel x, -3 
+anim = 910
+ctrl = 0
+sprpriority = 2
+
+[State 700, VelAdd]
+type = VelAdd
+trigger1 = 1
+y = -0.1
+
+[State 700, Snd]
+type = playsnd
+trigger1 = !time
+value = 900, 0
+[State Test]
+type = ModifySnd
+trigger1 = !time
+volumescale = 0
+redirectid = enemy, ID
+ignorehitpause = 1
+[State 0, PalFX]
+type = BGPalFX
+trigger1 = !time
+time = 15
+add = -20, -20, -20
+invertall = 0
+color = 0
+ignorehitpause = 1
+
+[State 0, Mapadd]
+type 		= MapAdd
+trigger1 	    = !time
+map 		    = "Pursuit"
+value 		    = 50
+ignorehitpause 	= 1
+persistent 		= 1
+[State 0, Mapadd]
+type 		= MapAdd
+triggerall      = gethitvar(attr) != SCA,NP, SP, HP
+trigger1 	    = !time
+map 		    = "Pursuit"
+value 		    = -50
+ignorehitpause 	= 1
+persistent 		= 1
+redirectid      = enemy, ID
+
+[State 0, Pause]
+type = SuperPause
+triggerall = gethitvar(attr) != SCA,NP, SP, HP
+trigger1 = !time
+time = gethitvar(hitshaketime) + 5
+movetime = 7 * (gethitvar(attr) = SCA, HA,HP)
+anim = -1
+sound = -1
+darken = 0
+unhittable = 1
+ignorehitpause = 1
+ignorehitpause = 1
+[State 0, Pause]
+type = SuperPause
+triggerall = gethitvar(attr) = SCA,NP, SP, HP
+trigger1 = !time
+time = gethitvar(hitshaketime) + 10
+movetime = gethitvar(hitshaketime) + 10
+anim = -1
+sound = -1
+darken = 0
+unhittable = 1
+ignorehitpause = 1
+
+[State 0, PalFX]
+type = PalFX
+trigger1 = !time
+time = 10
+add = 60, 30, 30
+invertall = 0
+color = 0
+ignorehitpause = 1
+[State 0, EnvShake]
+type = EnvShake
+trigger1 = !time
+time = 20
+freq = 20
+ampl = -3
+phase = 120
+ignorehitpause = 1
+persistent = 1
+
+[State 1000, 7]
+type = ChangeState
+trigger1 = time = 10
 value = 50
 ctrl = 1
 
@@ -2749,13 +2770,13 @@ value = anim
 
 [State 5020, 5]
 type = ChangeState
-triggerall = HitFall
+triggerall = HitFall || pos y > -10
 trigger1 = HitShakeOver
 value = 5030
 
 [State 5020, 5]
 type = ChangeState
-triggerall = !HitFall
+triggerall = !HitFall|| pos y <= -10
 trigger1 = HitShakeOver
 value = 5025 ;Flip-Out
 
@@ -2773,26 +2794,34 @@ anim = 5025
 type = velset
 triggerall = alive
 trigger1 = Time = 0
-x = -2
-y = -4
+x = gethitvar(xvel) * facing
+y = gethitvar(yvel) * enemy,map(JuggleScale)
+
+[State 5030, 3]
+type = VelAdd
+trigger1 = vel y < 0
+y = -0.25
+[State 5030, 3]
+type = VelAdd
+trigger1 = vel y > 0
+y = 0.15
 
 [State 5111, 11]
 type    = NotHitBy
-trigger1    = 1
+trigger1    = time >= 12
 value       = SCA
 time        = 1
 
 [State 5030, 6]
 type = ChangeState
-triggerall = alive
 trigger1 = (Vel y >= 0) && (Pos y >= 0)
 value = 0
 
 [State 1028, Hit ground]
 type = SelfState
 triggerall = !alive
-trigger1 = (Vel y >= 0) && (Pos y >= 0)
-value = 5100
+trigger1 = !time
+value = 5030
 
 ;---------------------------------------------------------------------------
 ; Air get-hit (knocked away)
@@ -5535,7 +5564,7 @@ trigger1 = MAP(pursuit.MAX)
 [State -1, PARRY]
 type = ChangeState
 value = 900 + 10*statetype = A
-triggerall = command = "D" || (prevstateno = 5120) && command = "HOLD_D" || (prevstateno = 905 || prevstateno = 915) && command = "Multiparry"
+triggerall = command = "D" || (prevstateno = 5120 || stateno = 140) && command = "HOLD_D" || (prevstateno = 905 || prevstateno = 915) && command = "Multiparry"
 trigger1 = ctrl
 
 [State -1, Pursuit Dash Cancel]
@@ -5636,6 +5665,7 @@ ownpal = 0
 ignorehitpause = 1
 pausemovetime = 999999
 supermovetime = 999999
+hidewithbars = 1
 [State -2, Explod]		;Pursuit Gauge Bar
 type = Explod
 triggerall = teamside = 2
@@ -5653,6 +5683,7 @@ ownpal = 0
 ignorehitpause = 1
 pausemovetime = 999999
 supermovetime = 999999
+hidewithbars = 1
 
 [State -2, Explod] 		;Pursuit Gauge Rim
 type = Explod
@@ -5671,6 +5702,7 @@ ownpal = 0
 ignorehitpause = 1
 pausemovetime = 999999
 supermovetime = 999999
+hidewithbars = 1
 [State -2, Explod] 		;Pursuit Gauge Rim
 type = Explod
 id = 45
@@ -5688,6 +5720,7 @@ ownpal = 0
 ignorehitpause = 1
 pausemovetime = 999999
 supermovetime = 999999
+hidewithbars = 1
 
 
 
@@ -6921,6 +6954,11 @@ type = MapSet
 trigger1 = enemy, time = 1
 trigger2 = combocount
 map = "PunishCheck"
+value = 0
+[State 0, MapSet] 
+type = MapSet
+trigger1 = 1
+map = "ForceRetribution"
 value = 0
 
 [State -2, Retribution]

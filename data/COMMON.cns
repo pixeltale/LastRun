@@ -339,7 +339,7 @@ sysvar(1) = 0
 type = ChangeAnim
 trigger1 = Time = 0
 trigger1 = sysvar(3) = 0
-value = ifelse((vel x)=0, 41, ifelse((vel x)>0, 42, 43))
+value = 41
 
 [State 50, 3]
 type = ChangeAnim
@@ -617,13 +617,13 @@ value = 0
 [State 800, 1] ;With grab sound
 type = HitDef 
 p2facing = 1
-triggerall = abs(p2dist x) <= 150
+triggerall = abs(p2dist x) <= 45
 trigger1 = p2statetype != A
 trigger1 = enemy, movetype != H
 Trigger1 = time = 0 
 attr = S, NT          ;Attributes: Standing, Normal Throw
 hitflag = M-          ;Affect only ground people who are not being hit
-priority = 0, Miss    ;Low Prio
+priority = 10, Miss    ;Low Prio
 sparkno = -1          ;No spark
 ground.type = trip
 p1sprpriority = 1     ;Draw p1's sprite in front of p2

@@ -186,21 +186,21 @@ type = ChangeState
 value = 2125
 triggerall = map(Groove_Style) = 3
 triggerall = command = "22A"
-triggerall = numhelper(2120)
+triggerall = numhelper(2120) && !movehitvar(overridden)
 trigger1 = var(2)
 [State -1, C GEAR - DIRTY TRICK] ;22B
 type = ChangeState
 value = 2123
 triggerall = map(Groove_Style) = 3
 triggerall = command = "22B"
-triggerall = numhelper(2120)
+triggerall = numhelper(2120) && !movehitvar(overridden)
 trigger1 = var(2)
 [State -1, C GEAR - DIRTY TRICK] ;22C
 type = ChangeState
 value = 2124
 triggerall = map(Groove_Style) = 3
 triggerall = command = "22C" && map(TP_Limiter) = 0
-triggerall = numhelper(2120)
+triggerall = numhelper(2120) && !movehitvar(overridden)
 trigger1 = var(2)
 
 ;===========================================================================

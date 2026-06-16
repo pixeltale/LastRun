@@ -1452,7 +1452,7 @@ ground.slidetime 	= 10
 ground.hittime  	= 18
 air.hittime  		= 99
 down.hittime 		= 15
-ground.velocity 	= -8, -8
+ground.velocity 	= -8, -6
 guard.ctrltime 	= 4
 guard.slidetime	= 4
 air.velocity 		= -3, (-5 / map(JuggleScale)) -2
@@ -2160,6 +2160,28 @@ x = 35
 type = VelSet
 trigger1 = animelem = 6
 x = 0
+
+[State -2, P1 Value Set]
+type 		= MapSet
+trigger1 		= movehit && !map(ComboStateCheck)
+map 			= "P1"
+value 		= 0.90	;100% Starting DMG
+ignorehitpause 	= 1
+[State -2, P2 Value Set]
+type 		= MapSet
+trigger1 		= movehit && map(ComboStateCheck)
+map 			= "P2"
+value 		= 0.90	;85% DMG For next hit
+ignorehitpause 	= 1
+persistent = 0
+[State -2, P2 Accumulation - Scale]
+type 		= MapSet
+trigger1 		= movehit
+map 		= "Accumulation"
+value 		= Map(Accumulation) * map(P2)
+ignorehitpause 	= 1
+persistent 		= 0
+
 [State 200, 1]
 type = HitDef 
 trigger1 	= !MoveContact && !MoveReversed

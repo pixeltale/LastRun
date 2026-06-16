@@ -617,7 +617,7 @@ value = 0
 [State 800, 1] ;With grab sound
 type = HitDef 
 p2facing = 1
-triggerall = abs(p2dist x) <= 45
+triggerall = abs(p2dist x) <= 50
 trigger1 = p2statetype != A
 trigger1 = enemy, movetype != H
 Trigger1 = time = 0 
@@ -2260,7 +2260,7 @@ value = 0
 ;=====================================================================================
 [Statedef 900] ;PARRY
 type    = S
-movetype= I
+movetype= A
 physics = S
 velset = vel x * 0.5,0
 anim = 900 + 5*(command = "holddown")
@@ -2399,7 +2399,7 @@ ctrl = 1
 ;Red Guard (Air)
 [Statedef 910]
 type    = A
-movetype= I
+movetype= A
 physics = A
 velset = vel x,vel y + 1
 anim = 910

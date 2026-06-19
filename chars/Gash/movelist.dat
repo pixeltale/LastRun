@@ -1,0 +1,75 @@
+<#f0f000>GASH HAZARD: A-TYPE</>
+<#f0f000>COMMAND NORMALS</>
+CLOSE QUARTERS            						_CLOSE^C
+CHAIN            						_F_+^C
+   <#bbbbbb>A two-hit clothesline attack that pulls opponents in
+   on hit and block. Chain OK.</>
+UNDERMINE            						_DF_+^C
+   <#bbbbbb>A low sliding attack that goes under many
+   other attacks.</>
+
+<#f0f000>THROWS</>
+Gut Rearranger   								[_B/_F]_+^A_+^B
+
+<#f0f000>SPECIAL MOVES</>
+DICER_EX						_QDF^A/^B/^C
+   <#bbbbbb>A projectile attack.
+   A Version is fast but expires quickly.
+   B Version is slow, but more active.
+   C Version is fastest and 2 hits.</>
+Reckless Assault_EX_AIROK							_DSF^A/^B/^C
+   <#bbbbbb>A flying knee with a followup that knocks down.</>
+   _!Knockdown								(After any Version) ^A/^B/^C
+Loiter Shot_EX								_QDB^A/^B/^C
+   <#bbbbbb>A series of kick attacks.
+   A version is a quick, safe on block knee.
+   B Version lunges across the screen at high speed. [R]
+   EX is an extremely fast restand.</>
+   _!Knockdown								(After A Version) ^A/^B/^C
+
+<#f0f000>LASTRIDE</>
+Flamagra Burnout</>		_QDB_QDB_+^A/^B/^C
+
+<#f0f000>ALTERNATIVE SPECIAL MOVES: A-GEAR</>
+AIRDASH						_XFF
+   <#bbbbbb>Fly forward in the air, beautifully
+   and majestically. Gives Gash the ability to
+   Pursuit Cancel in midair.</>
+
+<#f0f000>LASTRIDE: ALTERNATIVES</>
+SUPER 1: BLACK HOLE SUN					_QDB_QDB^B_+^C
+   <#bbbbbb> A projectile with infinite health that 
+   eats all other projectiles.</>
+SUPER 2: BLACK BULLET					_QDB_QDB^B_+^C
+   <#bbbbbb> A projectile with infinite health that 
+   eats all other projectiles.</>
+
+<#f0f000>ULTIMATE</>
+Not implemented Yet
+
+<#f0f000>UNIVERSAL MECHANICS</>
+Dead Zone_AIROK</>		^B +^C
+   <#bbbbbb>A slow but powerful and large attack used for controlling space.
+   Drains enemy pursuit gauge on contact.</>
+
+Parry_AIROK</>		^D or _D _+^D
+   <#bbbbbb>For 8 Frames, intercept enemy attacks and become invulnerable, 
+   giving an opportunity to counterattack. Attacks must be parried high and
+   low, corresponding to how they are guarded. Additionally, attacks can be
+   parried in midair.</>
+
+Backroll</>		^D (During Soft Knockdown)
+   <#bbbbbb>Holding the back direction during a soft knockdown will
+   allow you to back-roll. Be aware that this drains your 
+   pursuit gauge.</>
+
+Hop</>		Tap Up
+   <#bbbbbb>Tapping an up direction will allow you to perform a
+   small jump called a hop.</>
+
+Retribution</>		(After Punishing An Attack)
+   <#bbbbbb>After punishing a failed attack by the opponent, 
+   RETRIBUTION becomes available. The first special attack with a 
+   RETRIBUTION trait [R] used in the ensuing combo will perform
+   a special effect, usually allowing for a 
+   longer and more damaging combo.</>

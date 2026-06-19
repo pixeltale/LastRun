@@ -692,6 +692,7 @@ envshake.ampl 		= 2
 envshake.phase 	= 1
 getpower 			= 150
 id				= 1
+missonoverride			= 0
 
 
 
@@ -1274,7 +1275,7 @@ p2facing 	= 1
 triggerall = !map(Retribution)
 trigger1 	= !movecontact && !MoveReversed
 attr 	= A, NA
-damage 	= 150 * MAP(P4)
+damage 	= 120 * MAP(P4)
 hitflag 	= MAF
 guardflag 	= H
 pausetime 	= 10,10 + 6 * (enemy, movetype = A)
@@ -1805,7 +1806,7 @@ value = -333
 type = VelSet
 trigger1 = prevstateno != 2109
 trigger1 = animelem = 2
-x = -2
+x = -1
 y = -7
 
 [State 0, VelSet]
@@ -2559,13 +2560,17 @@ value = 1
 ignorehitpause = 0
 persistent = 1
 
-[State 0, Targetbind]
-type = Targetbind
-trigger1 = movehit = 1
-pos = 50, -3
-time = 10
-persistent = 1
-ignorehitpause = 1
+[State 0, SuperPause]
+type = SuperPause
+trigger1 = time = 0
+time = 30
+sound = 20,0
+pos = 0,0
+movetime = 0
+darken = 1
+p2defmul = 1
+poweradd = 0
+unhittable = 1
 
 [State 0, VelSet]
 type = VelSet
@@ -2593,18 +2598,6 @@ map 			= "Accumulation"
 value 		= Map(Accumulation) * map(P2)
 ignorehitpause 	= 1
 persistent 		= 0
-
-[State 0, SuperPause]
-type = SuperPause
-trigger1 = time = 0
-time = 30
-sound = 20,0
-pos = 0,0
-movetime = 0
-darken = 1
-p2defmul = 1
-poweradd = 0
-unhittable = 1
 
 [State 0, NotHitBy]
 type = NotHitBy
@@ -2644,6 +2637,13 @@ guard.slidetime = 5
 guard.hittime = 5
 getpower = 0
 
+[State 0, Targetbind]
+type = Targetbind
+trigger1 = movehit = 1
+pos = 50, -3
+time = 10
+persistent = 1
+ignorehitpause = 1
 
 [State 0, ChangeState]
 type = ChangeState
@@ -2875,7 +2875,7 @@ ctrl 	= 0
 velset 	= vel x,0
 anim 	= 3100
 sprpriority = 8
-poweradd = -1000 + 1000 * (map(Termina.Active) = 1)
+poweradd = -1000 + 1000 * (map(Termina.Time) > 1)
 
 [State 0, MapSet] ;Set to 1 When done during termina
 type = MapSet
@@ -2990,7 +2990,7 @@ ctrl 	= 0
 velset 	= vel x,0
 anim 	= 3200
 sprpriority = 8
-poweradd = -1000 + 1000 * (map(Termina.Active) = 1)
+poweradd = -1000 + 1000 * (map(Termina.Time) > 1)
 
 [State 0, MapSet] ;Set to 1 When done during termina
 type = MapSet

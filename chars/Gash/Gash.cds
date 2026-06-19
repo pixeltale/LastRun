@@ -28,7 +28,6 @@ var(2) = 0
 
 [State -1, Special Cancel Normal Attacks]
 type = VarSet
-triggerall = stateno != 240
 trigger1 = ctrl || stateno = 40 || stateno = 55
 trigger2 = (stateno = [200,299]) || (stateno = [400,499] || stateno = [600,710]) 
 trigger2 = movecontact
@@ -39,7 +38,7 @@ type = VarSet
 trigger1 = var(1)
 trigger2 = stateno = [1000,3000) && MoveContact
 trigger3 = (stateno = [1000, 1001] || stateno = 2000 ) && animelemno(0) > 3
-trigger4 = stateno = 2100 && animelemno(0) >= 2
+trigger4 = stateno = [1000,1003] && animelemno(0) >= 3
 var(2) = 1
 ignorehitpause = 1
 
@@ -65,15 +64,19 @@ ignorehitpause = 1
 [State -2, Pursuit Cancel - Normals]
 type 		= MapSet
 trigger1 		= (stateno = [200,299]) || (stateno = [400,499])
-trigger1		= (movehit && map(Pursuit) >= 333 || moveguarded && map(Pursuit) >= 666 || map(TERMINA.ACTIVE))
 map 			= "PURSUITCANCEL_NORMALS"
 value 		= 1
 ignorehitpause = 1
 [State -2, Pursuit Cancel - SPECIALS]
 type 		= MapSet
 trigger1 		= stateno = [1000,4000)
-trigger1		= (movehit && map(Pursuit) >= 333 || moveguarded && map(Pursuit) >= 666 || map(TERMINA.ACTIVE))
 map 			= "PURSUITCANCEL_SPECIALS"
+value 		= 1
+ignorehitpause = 1
+[State -2, Pursuit Cancel - SUPERS]
+type 		= MapSet
+trigger1 		= stateno = [4000,4500)
+map 			= "PURSUITCANCEL_SUPERS"
 value 		= 1
 ignorehitpause = 1
 
@@ -135,7 +138,7 @@ trigger1 = var(2) || stateno = [3000,3010] && (map(Pursuit) >= 666 || map(Termin
 type = ChangeState
 value = 3000
 triggerall = power >= 1000 || map(TERMINA.ACTIVE) > 0
-triggerall = command = "632146A" || command = "632146B" || command = "632146C"
+triggerall = command = "214214A" || command = "214214B" || command = "214214C"
 triggerall = statetype != A
 trigger1 = var(2)
 
@@ -143,61 +146,16 @@ trigger1 = var(2)
 ;===========================================================================
 ;ALTERNATIVE SPECIALS
 ;===========================================================================
-[State -1, A GEAR - DIRTY TRICK] ;22BC
+
+[State -1, A GEAR - AIR DASH!]
 type = ChangeState
-value = 2105
+value = 2500
 triggerall = map(Groove_Style) = 1
-triggerall = command = "22BC"
-triggerall = statetype != A && stateno != [2100, 3000)
-triggerall = stateno != [1000, 3000) || (map(Pursuit) >= 333 || map(Termina.Active))
-trigger1 = var(2)
-[State -1, A GEAR - BLACK HOLE]
-type = ChangeState
-value = 2100
-triggerall = map(Groove_Style) = 1
-triggerall = command = "214BC"
-triggerall = statetype != A && stateno != [2100, 3000) && !numhelper(2101)
-triggerall = stateno != [1000, 3000) || (map(Pursuit) >= 333 || map(Termina.Active))
+triggerall = command = "FF" && !map(AirDash)
+triggerall = statetype = A && pos y < -40
+triggerall = (stateno != [1000, 3000) && stateno != [600,630]) || (map(Pursuit) >= 333 || map(Termina.Active))
 trigger1 = var(2)
 
-[State -1, B GEAR - SEARING FLAME]
-type = ChangeState
-value = 2110 - 1*(statetype = A)
-triggerall = map(Groove_Style) = 2
-triggerall = command = "214BC"
-triggerall = (numhelper(2111) = 0 || statetype = A) && stateno != [2100, 3000)
-triggerall = stateno != [1000, 3000) || (map(Pursuit) >= 333 || map(Termina.Active))
-trigger1 = var(2)
-
-[State -1, C GEAR - NUMBERED DAYS - DEATH EPITAPH] ;214BC
-type = ChangeState
-value = 2120
-triggerall = map(Groove_Style) = 3
-triggerall = command = "214BC"
-triggerall = statetype != A && stateno != [2100, 3000)
-triggerall = stateno != [1000, 3000) || (map(Pursuit) >= 333 || map(Termina.Active))
-trigger1 = var(2)
-[State -1, C GEAR - DIRTY TRICK] ;22A
-type = ChangeState
-value = 2125
-triggerall = map(Groove_Style) = 3
-triggerall = command = "22A"
-triggerall = numhelper(2120) && !movehitvar(overridden)
-trigger1 = var(2)
-[State -1, C GEAR - DIRTY TRICK] ;22B
-type = ChangeState
-value = 2123
-triggerall = map(Groove_Style) = 3
-triggerall = command = "22B"
-triggerall = numhelper(2120) && !movehitvar(overridden)
-trigger1 = var(2)
-[State -1, C GEAR - DIRTY TRICK] ;22C
-type = ChangeState
-value = 2124
-triggerall = map(Groove_Style) = 3
-triggerall = command = "22C" && map(TP_Limiter) = 0
-triggerall = numhelper(2120) && !movehitvar(overridden)
-trigger1 = var(2)
 
 ;===========================================================================
 ;SPECIAL ATTACKS
@@ -207,16 +165,14 @@ trigger1 = var(2)
 type = ChangeState
 value = 1020
 triggerall = command = "623A"
-triggerall = statetype != A
 trigger1 = var(1)
 ;623B
 [State -1, B DP]
 type = ChangeState
-value = 1021
+value = 1019
 triggerall = command = "623B"
-triggerall = statetype != A
 trigger1 = var(1)
-;6233
+;623C
 [State -1, B DP]
 type = ChangeState
 value = 2020
@@ -251,23 +207,43 @@ triggerall = power >= 500
 triggerall = statetype != A
 trigger1 = var(1)
 
+;236A
+[State -1, Crouching Heavy]
+type = ChangeState
+value = 1002
+triggerall = !numhelper(1005)
+triggerall = command = "236A"
+triggerall = statetype = A
+trigger1 = var(1)
+;236B
+[State -1, Crouching Heavy]
+type = ChangeState
+value = 1003
+triggerall = !numhelper(1005)
+triggerall = command = "236B"
+triggerall = statetype = A
+trigger1 = var(1)
+
 ;214A
 [State -1, Crouching Heavy]
 type = ChangeState
 value = 1010
 triggerall = command = "214A"
+triggerall = statetype != A
 trigger1 = var(1)
 ;214B
 [State -1, Crouching Heavy]
 type = ChangeState
 value = 1015
 triggerall = command = "214B"
+triggerall = statetype != A
 trigger1 = var(1)
 ;214C
 [State -1, Crouching Heavy]
 type = ChangeState
-value = 2010 - (1 * statetype = A)
+value = 2010
 triggerall = command = "214C"
+triggerall = statetype != A
 triggerall = power >= 500
 trigger1 = var(1)
 
@@ -293,32 +269,40 @@ trigger1 = ctrl
 ;===========================================================================
 ;COMMAND NORMALS
 ;===========================================================================
-;6C
-[State -1, Crouching Heavy]
+;3C
+[State -1, Slide On Em']
 type = ChangeState
-value = 240
+value = 430
+triggerall = command = "C"
+triggerall = command = "holdfwd" && command = "holddown"
+triggerall = statetype != A && command != "236C"
+trigger1 = ctrl
+trigger2 = (stateno = [200,225] || stateno = [400,420]) && movecontact && !combocount
+;3C (Chainer)
+[State -1, Slide On Em']
+type = ChangeState
+value = 431
+triggerall = command = "C"
+triggerall = command = "holdfwd" && command = "holddown"
+triggerall = statetype != A && command != "236C"
+trigger1 = (stateno = [200,225] || stateno = [400,420]) && movecontact && combocount
+;6C
+[State -1, Clothesline]
+type = ChangeState
+value = 230
 triggerall = command = "C"
 triggerall = command = "holdfwd"
 triggerall = statetype != A
 trigger1 = ctrl
-trigger2 = (stateno = [200,225] || stateno = [400,410]) && movecontact
-;6B
-[State -1, Crouching Heavy]
-type = ChangeState
-value = 230
-triggerall = command = "B"
-triggerall = command = "holdfwd"
-triggerall = statetype != A
-trigger1 = ctrl
-trigger2 = (stateno = [200,225] || stateno = [400,410]) && movecontact && (!combocount || command = "holdup")
-;6B (Chainer)
-[State -1, Crouching Heavy]
+trigger2 = (stateno = [200,225] || stateno = [400,420]) && movecontact && (!combocount || command = "holdup")
+;6C (Chainer)
+[State -1, Clothesline]
 type = ChangeState
 value = 231
-triggerall = command = "B"
+triggerall = command = "C"
 triggerall = command = "holdfwd"
 triggerall = statetype != A
-trigger1 = (stateno = [200,225] || stateno = [400,410]) && movecontact && combocount && command != "holdup"
+trigger1 = (stateno = [200,225] || stateno = [400,420]) && movecontact && combocount && command != "holdup"
 
 ;===========================================================================
 ;---------------------------------------------------------------------------
@@ -329,7 +313,7 @@ value = 200
 triggerall = command = "A"
 triggerall = command != "holddown"
 triggerall = statetype != A
-trigger1 = ctrl
+trigger1 = ctrl || stateno = 200 && movecontact && prevstateno != 200
 
 ;---------------------------------------------------------------------------
 ;5B

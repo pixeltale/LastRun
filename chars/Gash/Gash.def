@@ -3,9 +3,10 @@
 
 ; Player information
 [Info]
-name = "Eden"        ;Name of character
-displayname = "Eden" ;Name of character to display
+name = "Gash"        ;Name of character
+displayname = "Gash" ;Name of character to display
 versiondate = 09,30,2009    ;Version date of character (MM-DD-YYYY or X.XX)
+mugenversion = 1.0          ;Version of M.U.G.E.N character works on (X.XX)
 ikemenversion = 1.0
 author = "PXN."         ;Character author name
 pal.defaults = 1,2,3,4      ;Default palettes in order of preference (up to 4)
@@ -14,16 +15,16 @@ localcoord = 320,240        ;Local coordinate space width and height
 
 ; Files for the player
 [Files]
-cmd     = Eden.cds           ;Command set
-cns     = Eden.cns           ;Constants
-st      = Eden.cns           ;States
+cmd     = Gash.cds           ;Command set
+cns     = Gash.cns           ;Constants
+st      = Gash.cns           ;States
 st1		= NORMALS.CNS
 st2		= SPECIALS.CNS
 stcommon = common.cns      ;Common states (from data/ or motif)
-sprite  = Eden.sff           ;Sprite
-anim    = Eden.air           ;Animation
-sound   = Eden.snd           ;Sound
-ai      = Eden.ai            ;AI hints data (not used)
+sprite  = Gash.sff           ;Sprite
+anim    = Gash.air           ;Animation
+sound   = Gash.snd           ;Sound
+ai      = Gash.ai            ;AI hints data (not used)
 movelist1 = movelist.dat     ;Ikemen feature: Movelist
 movelist2 = movelist1.dat
 movelist3 = movelist2.dat

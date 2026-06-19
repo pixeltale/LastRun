@@ -458,7 +458,21 @@ function menu.f_createMenu(tbl, sec, bg, bool_main)
 		tbl.cursorPosY, tbl.moveTxt, tbl.item = main.f_menuCommonCalc(t, tbl.item, tbl.cursorPosY, tbl.moveTxt, sec, sec.cursor)
 		textImgReset(sec.title.TextSpriteData)
 		textImgSetText(sec.title.TextSpriteData, tbl.title)
-		if esc() or getInput(-1, sec.menu.cancel.key) then
+		local escPressed = esc()
+        local cancelPressed = getInput(-1, sec.menu.cancel.key)
+        local cancelPressedOnce = getInputTime(-1, sec.menu.cancel.key) == 1
+        local isTrainingPauseMenu = sec == motif.pause_menu.training_pause_menu
+        if escPressed or cancelPressed then
+            if isTrainingPauseMenu and not escPressed and cancelPressedOnce and menu.currentMenu[1] ~= menu.currentMenu[2] then
+                sndPlay(motif.Snd, sec.cancel.snd[1], sec.cancel.snd[2])
+                main.f_menuSnap(sec)
+                if type(menu.t_itemname._findParentPauseLoop) == 'function' then
+                    menu.currentMenu[1] = menu.t_itemname._findParentPauseLoop(menu.currentMenu[1], menu.currentMenu[2])
+                else
+                    menu.currentMenu[1] = menu.currentMenu[2]
+                end
+                return
+            end
 			if bool_main then
 				sndPlay(motif.Snd, sec.exit.snd[1], sec.exit.snd[2])
 				menu.pauseExitDelay = gameOption('Input.PauseExitDelay')

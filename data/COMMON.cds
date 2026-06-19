@@ -869,39 +869,30 @@ buffertime = 18
 [Command]
 name = "236A"
 command = ~D, F+a
-steptime = 7
 [Command]
 name = "236A"
 command = ~D, F, a
-steptime = 7
 [Command]
 name = "236A"
 command = ~D, DF, F, a
-steptime = 7
 [Command]
 name = "236B"
 command = ~D, F+b
-steptime = 7
 [Command]
 name = "236B"
 command = ~D, F, b
-steptime = 7
 [Command]
 name = "236B"
 command = ~D, DF, F, b
-steptime = 7
 [Command]
 name = "236C"
 command = ~D, F+c
-steptime = 7
 [Command]
 name = "236C"
 command = ~D, F, c
-steptime = 7
 [Command]
 name = "236C"
 command = ~D, DF, F, c
-steptime = 7
 [Command]
 name = "236D"
 command = ~D, F+d

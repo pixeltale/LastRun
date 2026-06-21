@@ -40,7 +40,7 @@ persistent 		= 0
 type 				= HitDef
 trigger1 				= !movecontact && !movereversed
 ;===============================
-damage 				= 25 * map(P4)
+damage 				= 55 * map(P4)
 pausetime 			= 8,8 + 2 * enemy, movetype = A
 getpower 				= 25 * map(P4)
 ;===============================
@@ -204,10 +204,10 @@ ctrl = 1
 ;5C (Close)
 [Statedef 220]
 type    		= S
-movetype	= A
+movetype		= A
 physics 		= S
 juggle  		= 0
-poweradd	= 0
+poweradd		= 0
 ctrl 		= 0
 velset 		= 3,0
 anim 		= 220
@@ -259,7 +259,7 @@ guardsound 			= 6,0
 ground.hittime  			= 19
 ground.slidetime			= 19
 ground.velocity 			= -0 - 5*(animelem =4)
-air.hittime  			= 90
+air.hittime  			= 30
 air.velocity 			= -3.5,-1 / map(JuggleScale)
 down.velocity 			= -1,-5
 down.hittime 			= 30
@@ -413,7 +413,7 @@ movetype		= A
 physics 		= S
 poweradd		= 0
 ctrl 		= 0
-velset 		= 3,0
+velset 		= vel x,0
 anim 		= 230
 
 [State -2, P1 Value Set]
@@ -560,7 +560,7 @@ physics 		= S
 poweradd		= 0
 facep2 		= 1
 ctrl 		= 0
-velset 		= 3,0
+velset 		= vel x,0
 anim 		= 231
 
 [State -2, P1 Value Set]
@@ -735,7 +735,7 @@ persistent 		= 0
 type 				= HitDef
 trigger1 				= !movecontact && !movereversed
 ;===============================
-damage 				= 25 * MAP(P4),0
+damage 				= 50 * MAP(P4),0
 pausetime 			= 8,8 + 2 * (enemy, movetype = A)
 getpower 				= 25 * map(P4)
 ;===============================
@@ -1186,7 +1186,7 @@ attr = A, NA
 damage 		= 50*map(P4) + 5
 hitflag 		= MAF
 guardflag 	= H
-pausetime 	= 8,10 + 2 * (enemy, movetype = A)
+pausetime 	= 8,8 + 2 * (enemy, movetype = A)
 sparkno 		= 0
 sparkxy 		= -15,-8
 hitsound   	= 5,0
@@ -1195,13 +1195,13 @@ ground.type 	= low
 animtype 		= light
 air.animtype 	= back
 ground.slidetime 	= 5
-ground.hittime  	= 12 - 4 * (sysvar(3) > 0) ;If Performed from Hop
+ground.hittime  	= 10 - 2 * (sysvar(3) > 0) ;If Performed from Hop
 air.hittime  	= 16 
 down.hittime 	= 16 
 ground.velocity 	= -1
-air.velocity 	= -1.3,-2 / map(JuggleScale)
+air.velocity 	= -1.3,-1 / map(JuggleScale)
 guard.slidetime 	= 6
-guard.ctrltime 	= 10 - 4 * (sysvar(3) > 0) ;If Performed from Hop
+guard.ctrltime 	= 8 - 2 * (sysvar(3) > 0) ;If Performed from Hop
 guard.velocity 	= -1
 air.fall 			= 0
 forcenofall 		= 1
@@ -1274,13 +1274,13 @@ guardsound 			= 6,0
 ground.type 	= high
 air.type		= high
 ground.slidetime 	= 6
-ground.hittime  	= 16 - 4 * (sysvar(3) > 0) ;If Performed from Hop
+ground.hittime  	= 12 - 2 * (sysvar(3) > 0) ;If Performed from Hop
 air.hittime  		= 26 
 ground.velocity 	= -3
 guard.velocity 	= -1
 fall.yvelocity 	= 0
 air.velocity 		= -4, 1
-guard.ctrltime 	= 16 - 4 * (sysvar(3) > 0) ;If Performed from Hop
+guard.ctrltime 	= 10 - 2 * (sysvar(3) > 0) ;If Performed from Hop
 air.fall 			= 1
 ground.cornerpush.veloff = -3
 air.cornerpush.veloff 	= -3 
@@ -1373,12 +1373,12 @@ guardsound 			= 6,0
 ground.type 	= high
 air.type		= high
 ground.slidetime 	= 6
-ground.hittime  	= 20 - 4 * (sysvar(3) > 0) ;If Performed from Hop
+ground.hittime  	= 16 - 2 * (sysvar(3) > 0) ;If Performed from Hop
 air.hittime  		= 28
 ground.velocity 	= -3
 fall.yvelocity 	= 0
 air.velocity 		= -8, -5 / map(JuggleScale)
-guard.ctrltime 	= 16 - 4 * (sysvar(3) > 0) ;If Performed from Hop
+guard.ctrltime 	= 14 - 2 * (sysvar(3) > 0) ;If Performed from Hop
 air.fall 			= 1
 ground.cornerpush.veloff = -3
 air.cornerpush.veloff 	= -3 
@@ -1508,7 +1508,7 @@ ctrl = 1
 ;Aerial Deadzone
 [Statedef 710]
 type    		= A
-movetype	= A
+movetype		= A
 physics 		= A
 juggle  		= 0
 ctrl 		= 0
@@ -1569,9 +1569,9 @@ air.type		= high
 ground.slidetime 	= 6
 ground.hittime  	= 999
 air.hittime  	= 999 
-ground.velocity 	= -8, -6
+ground.velocity 	= -8, -2
 fall.yvelocity 	= 0
-air.velocity 		= -8,-6 / map(JuggleScale)
+air.velocity 		= -8,-2 / map(JuggleScale)
 guard.ctrltime 	= 20
 fall		= 1
 air.fall 		= 1

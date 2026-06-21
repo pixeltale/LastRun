@@ -73,6 +73,9 @@ down.bounce.yaccel = .4               ;Vertical acceleration for player bouncing
 down.bounce.groundlevel = 12          ;Y-position at which player bouncing off the ground touches the ground again **MUGEN 1.0**
 down.friction.threshold = .05         ;If the player's speed drops below this threshold while lying down, stop his movement **MUGEN 1.0**
 
+[Constants]
+hop.height = 0.65
+
 [Quotes]
 victory1 = "Its over..."
 

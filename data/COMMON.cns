@@ -204,7 +204,7 @@ triggerall = sysvar(3) = 1
 triggerall = sysvar(1) = 1
 trigger1 = animtime = 0
 x = cond(prevstateno = 100, const(velocity.runjump.fwd.x), const(velocity.jump.fwd.x))
-y = const(velocity.jump.y) * 0.75
+y = const(velocity.jump.y) * const(hop.height)
 
 [State 40, 4] ;Neutral Hop
 type = VelSet
@@ -212,7 +212,7 @@ triggerall = sysvar(3) = 1
 triggerall = sysvar(1) = 0
 trigger1 = animtime = 0
 x = const(velocity.jump.neu.x)
-y = const(velocity.jump.y) * 0.75
+y = const(velocity.jump.y) * const(hop.height)
 
 [State 40, 4] ;Backward Hop
 type = VelSet
@@ -220,7 +220,7 @@ triggerall = sysvar(3) = 1
 triggerall = sysvar(1) = -1
 trigger1 = animtime = 0
 x = cond(prevstateno = [100, 101], const(velocity.runjump.back.x), const(velocity.jump.back.x))
-y = const(velocity.jump.y) * 0.75
+y = const(velocity.jump.y) * const(hop.height)
 
 [State 40, 6]
 type = ChangeState
@@ -367,7 +367,7 @@ trigger1 = 1
 [Statedef 52]
 type    = S
 physics = S
-ctrl = 0
+ctrl = 1
 anim = 47
 velset = vel x, 0
 
@@ -1841,23 +1841,6 @@ trigger1 = time = 1 && map(IBTimer)
 map = "IBTimer"
 value = 0
 
-[State 0, Mapadd]
-type 		= MapAdd
-triggerall      = !map(IBCheck) && !map(Pursuit.MAX)
-trigger1 	    = time = 1
-map 		    = "Pursuit"
-value 		    = -gethitvar(ctrltime) * 1.5
-ignorehitpause 	= 1
-persistent 		= 1
-[State 0, Mapadd]
-type 		= MapAdd
-triggerall      = map(IBCheck)
-trigger1 	    = time = 1
-map 		    = "Pursuit"
-value 		    = gethitvar(ctrltime)
-ignorehitpause 	= 1
-persistent 		= 1
-
 [State 0, Changestate] ;Guard Crush
 type = Changestate 
 trigger1 = Map(GC)=1 && BackEdgeBodyDist <=0 && !map(BGuard)
@@ -1970,22 +1953,6 @@ trigger1 = time = 1 && map(IBTimer)
 map = "IBTimer"
 value = 0
 
-[State 0, Mapadd]
-type 		= MapAdd
-triggerall      = !map(IBCheck) && !map(Pursuit.MAX)
-trigger1 	    = time = 1
-map 		    = "Pursuit"
-value 		    = -gethitvar(ctrltime) * 1.5
-ignorehitpause 	= 1
-persistent 		= 1
-[State 0, Mapadd]
-type 		= MapAdd
-triggerall      = map(IBCheck)
-trigger1 	    = time = 1
-map 		    = "Pursuit"
-value 		    = gethitvar(ctrltime)
-ignorehitpause 	= 1
-persistent 		= 1
 
 [State 0, Changestate] ;Guard Crush
 type = Changestate 
@@ -5501,7 +5468,13 @@ ctrl = 0
 anim = 4000
 velset = 0,0
 
-[State 0, MapSet] ;START
+[State 0, MapSet] ;START CHECKER
+type = MapSet
+trigger1 = !time
+map = "TERMINA.START"
+value = 1
+ignorehitpause = 1
+[State 0, MapSet] ;ACTIVE BOOLEAN
 type = MapSet
 trigger1 = !time
 map = "TERMINA.ACTIVE"
@@ -5578,11 +5551,11 @@ triggerall = statetype != A && stateno < 3000 && movetype != H
 trigger1 = MAP(pursuit.MAX)
 
 ;PARRY
-[State -1, PARRY]
-type = ChangeState
-value = 900 + 10*statetype = A
-triggerall = command = "D" || (prevstateno = 5120 || stateno = 140) && command = "HOLD_D" || (prevstateno = 905 || prevstateno = 915) && command = "Multiparry"
-trigger1 = ctrl
+; [State -1, PARRY]
+; type = ChangeState
+; value = 900 + 10*statetype = A
+; triggerall = command = "D" || (prevstateno = 5120 || stateno = 140) && command = "HOLD_D" || (prevstateno = 905 || prevstateno = 915) && command = "Multiparry"
+; trigger1 = ctrl
 
 [State -1, Pursuit Dash Cancel]
 type = ChangeState
@@ -5638,7 +5611,7 @@ ignorehitpause = 0
 persistent = 1
 [State -2, Juggle Scaling Timer - Reset]
 type = MapSet
-trigger1 = !combocount
+trigger1 = !combocount || map(Termina.Start)
 map = "JuggleTime"
 value = 0
 ignorehitpause = 1
@@ -5647,7 +5620,7 @@ persistent = 1
 type = MapSet
 trigger1 = map(JuggleTime) < 30 
 map = "JuggleScale"
-value = 0.9
+value = 1
 ignorehitpause = 1
 persistent = 1
 [State -2, Juggle State Check]
@@ -5805,12 +5778,6 @@ ignorehitpause = 1
 ;Build Pursuit for Aggression
 [State 0, MapSet] 
 type = MapAdd
-triggerall = vel x > 0
-trigger1 = !combocount
-map = "Pursuit"
-value = floor(vel x * 0.4) + statetype = A
-[State 0, MapSet] 
-type = MapAdd
 trigger1 = movecontact && !movehitvar(overridden)
 map = "Pursuit"
 value = enemy,gethitvar(damage) * 0.7
@@ -5821,6 +5788,17 @@ trigger1 = enemy, stateno = [150, 153]
 map = "Pursuit"
 value = 1
 ignorehitpause = 1
+
+;Pursuit Gain on IB
+[State 0, Mapadd]
+type 		= MapAdd
+triggerall      = stateno = 150 || stateno = 152
+triggerall      = map(IBCheck)
+trigger1 	    = time = 1
+map 		    = "Pursuit"
+value 		    = gethitvar(ctrltime)
+ignorehitpause 	= 1
+persistent 		= 1
 
 [State 0, MapSet] ;Player has MAX Pursuit Value. Cannot be depleted by blocking or deadzones.
 type = MapSet
@@ -5870,6 +5848,12 @@ trigger1 = map(TERMINA.ACTIVE) = 1
 map = "PURSUIT"
 value = 999 * (map(TERMINA.TIME)/600)
 ignorehitpause = 1
+[State 0, MapSet] ;START CHECKER
+type = MapSet
+trigger1 = map(TERMINA.START)
+map = "TERMINA.START"
+value = 0
+ignorehitpause = 1
 
 
 ;======================================
@@ -5898,12 +5882,6 @@ trigger1 = map(TERMINA.ACTIVE)
 time = 5
 add = -10,-50,-10
 persistent = 1
-ignorehitpause = 1
-[State 0, MapSet] ;NO JUGGLE LIMIT
-type = MapSet
-trigger1 = map(TERMINA.ACTIVE)
-map = "JUGGLETIME"
-value = 0
 ignorehitpause = 1
 
 ;======================================
@@ -6296,11 +6274,6 @@ value = gethitvar(hittime) + 30
 ignorehitpause = 1
 persistent = 0
 
-[State 100, 3] ;No Chip Damage
-type = AssertSpecial
-trigger1 	= map(IBTimer) > 20 || map(Bguard)
-flag = NoGuardDamage
-
 [State 0. MapSet]
 type 		= MapSet
 trigger1    = stateno = 150 || stateno = 152 || stateno = 154
@@ -6336,6 +6309,11 @@ trigger1 = map(IBParam)
 map = "IBparam"
 value = -1
 
+[State 0, MapSet] ;Instant Block Check
+type = MapSet
+trigger1 = movetype != H
+map = "IBCheck"
+value = 0
 ;==================================================================================================
 ;TRAINING MODE STUFF
 ;==================================================================================================
@@ -6633,30 +6611,15 @@ ignorehitpause = 1
 
 [State 0, AssertSpecial]
 type = AssertSpecial
-trigger1 = map(_iksys_trainingGuardMode) = 2
+trigger1 = map(_iksys_trainingGuardMode) = [2,3]
 flag = autoGuard
 ignorehitpause = 1
 persistent = 1
 [State 0, MapSet]
 type = MapSet
-trigger1 = map(_iksys_trainingGuardMode) = 2
-map = "IBTimer"
-value = 1
-ignorehitpause = 1
-persistent = 1
-
-[State 0, AssertSpecial]
-type = AssertSpecial
 trigger1 = map(_iksys_trainingGuardMode) = 3
-flag = autoGuard
-ignorehitpause = 1
-persistent = 1
-;Punish
-[State 0, AssertInput]
-type = AssertInput
-triggerall =  map(_iksys_trainingGuardMode) = 3
-trigger1 = stateno = [120, 155] && !time
-flag = x
+map = "IBTimer"
+value = 28
 ignorehitpause = 1
 persistent = 1
 
@@ -6925,7 +6888,7 @@ triggerall = map(IBTimer) <= 0
 trigger1 = command = "back"
 trigger2 = command = "downback"
 map = "IBTimer"
-value = 28
+value = 27
 ignorehitpause = 0
 
 ;======================================================================
@@ -6983,6 +6946,7 @@ trigger1 = enemy, time = 1
 trigger2 = combocount
 map = "PunishCheck"
 value = 0
+
 [State 0, MapSet] 
 type = MapSet
 trigger1 = map(ForceRetribution) = 1

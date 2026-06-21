@@ -29,8 +29,9 @@ var(2) = 0
 [State -1, Special Cancel Normal Attacks]
 type = VarSet
 trigger1 = ctrl || stateno = 40 || stateno = 55
-trigger2 = (stateno = [200,299]) || (stateno = [400,499] || stateno = [600,710]) 
+trigger2 = (stateno = [200,299]) || (stateno = [400,499] || stateno = [600,700]) 
 trigger2 = movecontact
+trigger3 = map(IBCheck) && HitShakeOver
 var(1) = 1
 ignorehitpause = 1
 [State -1, Super Cancel Special Attacks]
@@ -152,7 +153,7 @@ type = ChangeState
 value = 2500
 triggerall = map(Groove_Style) = 1
 triggerall = command = "FF" && !map(AirDash)
-triggerall = statetype = A && pos y < -40
+triggerall = statetype = A && pos y < -60
 triggerall = (stateno != [1000, 3000) && stateno != [600,630]) || (map(Pursuit) >= 333 || map(Termina.Active))
 trigger1 = var(2)
 
@@ -255,14 +256,14 @@ trigger1 = var(1)
 [State -1, Standing Deadzone]
 type = ChangeState
 value = 700
-triggerall = command = "B" && command = "C"
+triggerall = command = "D"
 triggerall = statetype != A
 trigger1 = ctrl
 ;jBC
 [State -1, Aerial Deadzone]
 type = ChangeState
 value = 710
-triggerall = command = "B" && command = "C"
+triggerall = command = "D"
 triggerall = statetype = A
 trigger1 = ctrl
 

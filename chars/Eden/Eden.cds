@@ -30,8 +30,9 @@ var(2) = 0
 type = VarSet
 triggerall = stateno != 240
 trigger1 = ctrl || stateno = 40 || stateno = 55
-trigger2 = (stateno = [200,299]) || (stateno = [400,499] || stateno = [600,710]) 
+trigger2 = (stateno = [200,299]) || (stateno = [400,499] || stateno = [600,700]) 
 trigger2 = movecontact
+trigger3 = map(IBCheck) && HitShakeOver
 var(1) = 1
 ignorehitpause = 1
 [State -1, Super Cancel Special Attacks]
@@ -147,7 +148,7 @@ trigger1 = var(2)
 type = ChangeState
 value = 2105
 triggerall = map(Groove_Style) = 1
-triggerall = command = "22BC"
+triggerall = command = "22D"
 triggerall = statetype != A && stateno != [2100, 3000)
 triggerall = stateno != [1000, 3000) || (map(Pursuit) >= 333 || map(Termina.Active))
 trigger1 = var(2)
@@ -155,7 +156,7 @@ trigger1 = var(2)
 type = ChangeState
 value = 2100
 triggerall = map(Groove_Style) = 1
-triggerall = command = "214BC"
+triggerall = command = "214D"
 triggerall = statetype != A && stateno != [2100, 3000) && !numhelper(2101)
 triggerall = stateno != [1000, 3000) || (map(Pursuit) >= 333 || map(Termina.Active))
 trigger1 = var(2)
@@ -164,7 +165,7 @@ trigger1 = var(2)
 type = ChangeState
 value = 2110 - 1*(statetype = A)
 triggerall = map(Groove_Style) = 2
-triggerall = command = "214BC"
+triggerall = command = "214D"
 triggerall = (numhelper(2111) = 0 || statetype = A) && stateno != [2100, 3000)
 triggerall = stateno != [1000, 3000) || (map(Pursuit) >= 333 || map(Termina.Active))
 trigger1 = var(2)
@@ -173,7 +174,7 @@ trigger1 = var(2)
 type = ChangeState
 value = 2120
 triggerall = map(Groove_Style) = 3
-triggerall = command = "214BC"
+triggerall = command = "214D"
 triggerall = statetype != A && stateno != [2100, 3000)
 triggerall = stateno != [1000, 3000) || (map(Pursuit) >= 333 || map(Termina.Active))
 trigger1 = var(2)
@@ -279,14 +280,14 @@ trigger1 = var(1)
 [State -1, Standing Deadzone]
 type = ChangeState
 value = 700
-triggerall = command = "B" && command = "C"
+triggerall = command = "D"
 triggerall = statetype != A
 trigger1 = ctrl
 ;jBC
 [State -1, Aerial Deadzone]
 type = ChangeState
 value = 710
-triggerall = command = "B" && command = "C"
+triggerall = command = "D"
 triggerall = statetype = A
 trigger1 = ctrl
 

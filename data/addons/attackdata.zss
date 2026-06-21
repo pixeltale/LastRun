@@ -196,10 +196,10 @@ if numenemy {
 
 	#Display Damage Scaling - PXN Modification
 	if root, map(_iksys_trainingAtkDataDisp) = 2 {
-		# Hitstun Decay
+		# Juggle Decay
 			text{
 			font: F map(_pots_attackdata_cfg_font);
-			text: "Hitstun Decay";
+			text: "Juggle Decay";
 			removetime: 1;
 			layerno: map(_pots_attackdata_cfg_layer);
 			align: 1;
@@ -207,11 +207,11 @@ if numenemy {
 			pos: map(_pots_attackdata_cfg_text_x), map(_pots_attackdata_cfg_text_y) + 6 * map(_pots_attackdata_cfg_text_linespacing);
 			scale: map(_pots_attackdata_cfg_text_scale), map(_pots_attackdata_cfg_text_scale);
 			}
-		# Hitstun Decay Value
+		# Juggle Decay Value
 			text{
 			font: F map(_pots_attackdata_cfg_font);
 			text: "%d%%";
-			params: ceil(root, enemy, map(UntechMOD) * 100);
+			params: (root, enemy, map(JuggleScale) * 100);
 			removetime: 1;
 			layerno: map(_pots_attackdata_cfg_layer);
 			align: -1;

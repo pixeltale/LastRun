@@ -1,0 +1,119 @@
+;Dynamiclight - States
+
+[Statedef 0]
+
+;===============================================================================
+;------- DYNAMIC LIGHTING - DEPRECATED EXPLOD VERSION --------
+;===============================================================================
+[State 0, Dynamic Lighting] 	;Uses basic explod tactics to simulate a rimlight effect.
+type = Explod				;Will be triggered based on stage.
+trigger1 = StageConst(RimLight)
+triggerall =  numexplod(909090)=0
+anim = Player(1), anim
+animelem = Player(1),  animelemno(0)
+ID = 909090
+pos	= 0, -1
+postype = p1
+bindtime = -1
+facing = 1
+supermovetime = 0
+pausemovetime = 1
+scale = Player(1), const(size.xscale), Player(1), const(size.yscale)
+sprpriority = -10
+ownpal = 1
+trans = Add 
+removetime = 1
+palfx.time = 40
+palfx.add = StageConst(RimLightR),StageConst(RimLightG),StageConst(RimLightB)
+alpha = StageConst(RimLightAlpha)
+angle = animelemvar(angle)
+removeonchangestate = 0
+ignorehitpause = 1
+persistent = 1
+redirectid = Player(1), id
+
+[State 0, Dynamic Shadow] 	;Uses basic explod tactics to simulate a rimlight effect.
+type = Explod				;Will be triggered based on stage.
+trigger1 = StageConst(InnerShadow)
+triggerall =  numexplod(909095)=0
+anim = Player(1), anim
+animelem = Player(1),  animelemno(0)
+ID = 909095
+pos	= 0, 0
+postype = p1
+bindtime = -1
+facing = 1
+supermovetime = 0
+pausemovetime = 1
+scale = Player(1), const(size.xscale), Player(1), const(size.yscale)*0.99
+sprpriority = player(1), sprpriority + 1
+ownpal = 1
+trans = Sub
+removetime = 1
+palfx.time = 40
+palfx.add = StageConst(InnerShadowR),StageConst(InnerShadowG),StageConst(InnerShadowB)
+alpha = StageConst(InnerShadowAlpha)
+angle = animelemvar(angle)
+removeonchangestate = 0
+ignorehitpause = 1
+persistent = 1
+redirectid = Player(1), id
+
+
+;===============================================================================
+;------- DYNAMIC LIGHTING - DEPRECATED EXPLOD VERSION --------
+;===============================================================================
+[State 0, Dynamic Lighting] 	;Uses basic explod tactics to simulate a rimlight effect.
+type = Explod				;Will be triggered based on stage.
+trigger1 = StageConst(RimLight)
+triggerall =  numexplod(909091)=0
+triggerall =  !numexplod(909091)
+anim = Player(2),  anim
+animelem = Player(2),  animelemno(0)
+ID = 909091
+pos	= 0, -1
+postype = p1
+bindtime = 1
+facing = 1
+supermovetime = 0
+pausemovetime = 1
+scale = Player(2), const(size.xscale), Player(2), const(size.yscale)
+sprpriority = -10
+ownpal = 1
+trans = Add
+removetime = 1
+palfx.time = 40
+palfx.add = StageConst(RimLightR),StageConst(RimLightG),StageConst(RimLightB)
+alpha = StageConst(RimLightAlpha)
+angle = animelemvar(angle)
+removeonchangestate = 0
+ignorehitpause = 1
+persistent = 1
+redirectid = Player(2), id
+
+[State 0, Dynamic Shadow] 	;Uses basic explod tactics to simulate a rimlight effect.
+type = Explod				;Will be triggered based on stage.
+trigger1 = StageConst(InnerShadow)
+triggerall =  numexplod(909096)=0
+anim = Player(2), anim
+animelem = Player(2),  animelemno(0)
+ID = 909096
+pos	= 0, 0
+postype = p1
+bindtime = -1
+facing = 1
+supermovetime = 0
+pausemovetime = 1
+scale = Player(2), const(size.xscale), Player(2), const(size.yscale)*0.99
+sprpriority = player(2), sprpriority + 1
+ownpal = 1
+trans = Sub
+removetime = 1
+palfx.time = 40
+palfx.add = StageConst(InnerShadowR),StageConst(InnerShadowG),StageConst(InnerShadowB)
+alpha = StageConst(InnerShadowAlpha)
+angle = animelemvar(angle)
+removeonchangestate = 0
+ignorehitpause = 1
+persistent = 1
+redirectid = Player(2), id

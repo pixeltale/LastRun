@@ -112,11 +112,10 @@ trigger1 = ctrl
 ;236236BC - Black Hole Sun
 [State -1, LASTRIDE A TYPE - TIMES ARE GONE FOR HONEST MEN]
 type = ChangeState
-value = 3200
+value = 3200 + 10*(statetype=A)
 triggerall = map(Super_Type) = 1
 triggerall = power >= 1000 || map(TERMINA.ACTIVE) > 0 && (var(2) || map(Termina.Time) > 1)
-triggerall = command = "236236BC"
-triggerall = statetype != A
+triggerall = command = "236236A" || command = "236236B" || command = "236236C"
 trigger1 = var(2) || stateno = [3000,3010] && (map(Pursuit) >= 666 || map(Termina.Active))
 
 ;236236BC - Piercing Black Truth
@@ -153,7 +152,7 @@ type = ChangeState
 value = 2500
 triggerall = map(Groove_Style) = 1
 triggerall = command = "FF" && !map(AirDash)
-triggerall = statetype = A && pos y < -60
+triggerall = statetype = A && (pos y < -60 || stateno = [1020,1025])
 triggerall = (stateno != [1000, 3000) && stateno != [600,630]) || (map(Pursuit) >= 333 || map(Termina.Active))
 trigger1 = var(2)
 

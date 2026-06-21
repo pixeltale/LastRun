@@ -623,7 +623,7 @@ trigger1 = enemy, movetype != H
 Trigger1 = time = 0 
 attr = S, NT          ;Attributes: Standing, Normal Throw
 hitflag = M-          ;Affect only ground people who are not being hit
-priority = 10, Miss    ;Low Prio
+priority = 10, Miss    
 sparkno = -1          ;No spark
 ground.type = trip
 p1sprpriority = 1     ;Draw p1's sprite in front of p2
@@ -7094,3 +7094,4 @@ trigger1 = !map(ComboStateCheck)
 map = "CHStarter"
 value = 0
 ignorehitpause = 0
+

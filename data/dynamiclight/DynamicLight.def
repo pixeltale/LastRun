@@ -1,0 +1,9 @@
+;Dynamic Lighting AttachedCharacter
+;Adds a rimlight to players based on a set of parameters defined as stage constants.
+
+[Info]
+name			= "Dynamic Lighting"
+mugenversion 	= 1.0
+ikemenversion	= 0.99
+[Files]
+st      	= DynamicLight.cns

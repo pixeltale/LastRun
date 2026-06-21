@@ -8,6 +8,7 @@ randomselect
 [ExtraStages]
 stages/black.def, music = sound/PhoneOff.mp3, music = sound/FLY.mp3, music = sound/MASQUERADE.mp3, music = sound/VELOUR.mp3, music = sound/WRITEBACK.mp3
 stages/purple.def, music = sound/DoingItToo.mp3, music = sound/BreathFromAnother.mp3, music = sound/COMPUTERLOVE.mp3, music = sound/SEXTAPES.mp3
+stages/dark.def
 
 ;-------------------------------------------------------------------------------
 [Options]

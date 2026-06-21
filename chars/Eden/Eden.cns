@@ -207,8 +207,8 @@ ignorehitpause = 1
 [State 0, DisplayToClipboard]
 type = DisplayToClipboard
 trigger1 = 1
-text = "punish = %.0f retribution = %.0f"
-params = map(TP_Limiter), map(retribution)
+text = "p2dist = %.0f retribution = %.0f"
+params = p2dist x, map(retribution)
 ignorehitpause = 1
 persistent = 1
 
@@ -226,3 +226,4 @@ trigger1		= !combocount
 map 			= "Limiter_214AAA_BOUNCE"
 value 		= 0
 ignorehitpause = 1
+

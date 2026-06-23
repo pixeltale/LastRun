@@ -349,7 +349,7 @@ sparkxy 				= -p2dist x * 0.25, -60
 hitsound 				= 5,3
 guardsound 			= 6,0
 ;===============================
-ground.hittime  		= 12
+ground.hittime  		= 14
 ground.slidetime		= 12
 ground.velocity 		= -6
 air.hittime  			= 30

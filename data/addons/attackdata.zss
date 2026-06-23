@@ -210,8 +210,8 @@ if numenemy {
 		# Juggle Decay Value
 			text{
 			font: F map(_pots_attackdata_cfg_font);
-			text: "%d%%";
-			params: (root, enemy, map(JuggleScale) * 100);
+			text: "%f";
+			params: (root, enemy, map(JuggleScale));
 			removetime: 1;
 			layerno: map(_pots_attackdata_cfg_layer);
 			align: -1;

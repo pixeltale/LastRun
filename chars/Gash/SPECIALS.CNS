@@ -1730,6 +1730,14 @@ facep2 		= 1
 sprpriority 	= 2
 poweradd 		= -1000 + 1000 * (map(Termina.Active) = 1)
 
+[State 0, MapSet] ;Set to 1 When done during termina
+type = MapSet
+trigger1 = map(TERMINA.ACTIVE)
+map = "TERMINA.TIME"
+value = 1
+ignorehitpause = 0
+persistent = 1
+
 [State 0]
 type = Zoom
 trigger1 = time = [1, 47]

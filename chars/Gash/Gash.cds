@@ -277,7 +277,7 @@ triggerall = command = "C"
 triggerall = command = "holdfwd" && command = "holddown"
 triggerall = statetype != A && command != "236C"
 trigger1 = ctrl
-trigger2 = (stateno = [200,225] || stateno = [400,420]) && movecontact && !combocount
+trigger2 = (stateno = [200,220] || stateno = [400,420]) && movecontact && !combocount
 ;3C (Chainer)
 [State -1, Slide On Em']
 type = ChangeState
@@ -285,7 +285,7 @@ value = 431
 triggerall = command = "C"
 triggerall = command = "holdfwd" && command = "holddown"
 triggerall = statetype != A && command != "236C"
-trigger1 = (stateno = [200,225] || stateno = [400,420]) && movecontact && combocount
+trigger1 = (stateno = [200,220] || stateno = [400,420]) && movecontact && combocount
 ;6C
 [State -1, Clothesline]
 type = ChangeState
@@ -294,7 +294,7 @@ triggerall = command = "C"
 triggerall = command = "holdfwd"
 triggerall = statetype != A
 trigger1 = ctrl
-trigger2 = (stateno = [200,225] || stateno = [400,420]) && movecontact && (!combocount || command = "holdup")
+trigger2 = (stateno = [200,220] || stateno = [400,420]) && movecontact && (!combocount || command = "holdup")
 ;6C (Chainer)
 [State -1, Clothesline]
 type = ChangeState
@@ -302,7 +302,7 @@ value = 231
 triggerall = command = "C"
 triggerall = command = "holdfwd"
 triggerall = statetype != A
-trigger1 = (stateno = [200,225] || stateno = [400,420]) && movecontact && combocount && command != "holdup"
+trigger1 = (stateno = [200,220] || stateno = [400,420]) && movecontact && combocount && command != "holdup"
 
 ;===========================================================================
 ;---------------------------------------------------------------------------
@@ -331,7 +331,7 @@ trigger2 = (stateno = 200 || stateno = 400) && movecontact
 [State -1, Standing Heavy]
 type = ChangeState
 value = 220
-triggerall = p2Dist X <= 50
+triggerall = p2BodyDist X <= 30
 triggerall = command = "C"
 triggerall = command != "holddown"
 triggerall = statetype != A
@@ -342,7 +342,7 @@ trigger2 = (stateno = [200,210] || stateno = [400,410]) && movecontact
 [State -1, Standing Heavy]
 type = ChangeState
 value = 225
-triggerall = p2Dist X > 50
+triggerall = p2BodyDist X > 30
 triggerall = command = "C"
 triggerall = command != "holddown"
 triggerall = statetype != A

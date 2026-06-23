@@ -23,7 +23,7 @@ yscale = 1           ;Vertical scaling factor.
 ground.back = 20     ;Player width (back, ground)
 ground.front = 15    ;Player width (front, ground)
 air.back = 20        ;Player width (back, air)
-air.front = 20       ;Player width (front, air)
+air.front = 15       ;Player width (front, air)
 height = 100          ;Height of player (for opponent to jump over)
 attack.dist = 0    ;Default attack distance
 proj.attack.dist = 0 ;Default attack distance for projectiles
@@ -195,9 +195,8 @@ ignorehitpause 	= 1
 
 [State -2, Lifetime Set]
 type 		= MapSet
-trigger1 		= pos y >= 0
-trigger2 		= combocount > 0
-map 			= "TP_Limiter"
+trigger1 		= combocount = 0
+map 			= "EXKickGB"
 value 		= 0
 ignorehitpause = 1
 
@@ -206,7 +205,7 @@ ignorehitpause = 1
 type = DisplayToClipboard
 trigger1 = 1
 text = "punish = %.0f retribution = %.0f"
-params = map(TP_Limiter), map(retribution)
+params = map(Throwtech.ok), map(retribution)
 ignorehitpause = 1
 persistent = 1
 

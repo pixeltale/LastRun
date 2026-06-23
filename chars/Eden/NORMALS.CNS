@@ -136,7 +136,7 @@ type 				= HitDef
 trigger1 				= animelem = 3 || animelem = 4
 ;===============================
 damage 				= 40 * map(P4)
-pausetime 			= 10,10 + 2 * (enemy, movetype = A)
+pausetime 			= 8,8 + 2 * (enemy, movetype = A)
 getpower 				= 25 * map(P4)
 ;===============================
 attr 				= S,NA
@@ -155,7 +155,7 @@ guardsound 			= 6,0
 ground.hittime 		= 12
 air.hittime 			= 12
 down.hittime 			= 24
-ground.velocity 		= -6 + 5*(animelem = 3)
+ground.velocity 		= -6 - 1*(animelem = 3)
 air.velocity 			= -2,-1.5 / map(JuggleScale)
 ;===============================
 guard.ctrltime 		= 8
@@ -302,7 +302,7 @@ physics 		= S
 juggle  		= 0
 poweradd	= 0
 ctrl 		= 0
-velset 		= vel x + 3, 0
+velset 		= vel x + 6, 0
 anim 		= 225
 sprpriority	= 2
 facep2 		= 1
@@ -787,12 +787,12 @@ envshake.phase 		= 0.5
 
 [State 0, VelAdd]
 type = PosAdd
-trigger1 = animelem = 2
-x = 15
+trigger1 = animelemno(0) = 2
+x = 4
 [State 0, VelAdd]
 type = PosAdd
-trigger1 = animelem = 3
-x = 30
+trigger1 = animelemno(0) = 3
+x = 14
 
 [State 0, Jump Cancel]
 type 		= MapSet

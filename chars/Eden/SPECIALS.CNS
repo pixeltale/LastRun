@@ -1468,7 +1468,7 @@ envshake.time 		= 3
 envshake.freq 		= 3
 envshake.ampl 		= 2
 envshake.phase 	= 1
-getpower 			= 50
+getpower 			= 0
 id				= 2
 
 [State 630, 2] ;Always Clean Hit
@@ -1504,7 +1504,7 @@ envshake.time 	= 8
 envshake.freq 	= 10
 envshake.ampl 	= 5
 envshake.phase 	= 1
-getpower 		= 0
+getpower 		= 50
 p2stateno 	= 5220
 p2getp1state 	= 0
 id		= 1

@@ -691,7 +691,7 @@ value = 0
 ctrl = 1
 
 
-;Throw - Hold In )lace - Tech Window
+;Throw - Hold In Place - Tech Window
 ;-----------------------------
 [Statedef 803]
 type    = S
@@ -6845,22 +6845,10 @@ map = "THROWTECH.OK"
 value = 1
 [State Throw Tech]
 type = mapset
+trigger1 = stateno != 812
 trigger1 = !ctrl || movetype = A
 map = "THROWTECH.OK"
 value = 0
-;==============================================
-;Better Neutral Inputs
-[State Input]
-type = mapset
-trigger1 = command != "holdfwd"
-trigger1 = command != "holdback"
-trigger1 = command != "holddown"
-trigger1 = command != "holdup"
-trigger1 = command != "fwd"
-trigger1 = command != "back"
-trigger1 = command != "down"
-map = "neutral"
-value = 1
 
 ;---------------------------------------------------------------------------------
 [Statedef -3]

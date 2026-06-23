@@ -348,7 +348,7 @@ trigger2 = (stateno = 200 || stateno = 400) && movecontact
 [State -1, Standing Heavy]
 type = ChangeState
 value = 220
-triggerall = p2BodyDist X <= 30
+triggerall = p2BodyDist X <= 25
 triggerall = command = "C"
 triggerall = command != "holddown"
 triggerall = statetype != A
@@ -359,7 +359,7 @@ trigger2 = (stateno = [200,210] || stateno = [400,410]) && movecontact
 [State -1, Standing Heavy]
 type = ChangeState
 value = 225
-triggerall = p2BodyDist X > 30
+triggerall = p2BodyDist X > 25
 triggerall = command = "C"
 triggerall = command != "holddown"
 triggerall = statetype != A

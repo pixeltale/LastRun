@@ -269,8 +269,8 @@ guard.slidetime 		= 12
 guard.velocity 		= -10
 airguard.velocity 		= -2,-1
 ;===============================
-ground.cornerpush.veloff	= -4
-air.cornerpush.veloff 	= -4
+ground.cornerpush.veloff	= -8
+air.cornerpush.veloff 	= -8
 down.cornerpush.veloff 	= -4
 guard.cornerpush.veloff 	= -4
 ;===============================

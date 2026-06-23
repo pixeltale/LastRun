@@ -172,7 +172,7 @@ animtype 		= light                 ;Animation type: Light, Medium, Heavy, Back (
 air.animtype 	= back
 guardflag 	= M
 hitflag 		= MAF
-pausetime 		= 1, 1
+pausetime 		= 1, 1 + 2 * (enemy, movetype = A)
 sparkno 			= 0
 sparkxy 			= -30, -59
 hitsound 			= 5, 1
@@ -291,7 +291,7 @@ animtype 		= light                 ;Animation type: Light, Medium, Heavy, Back (
 air.animtype 	= back
 guardflag 	= M
 hitflag 		= MAF
-pausetime 		= 10, 10
+pausetime 		= 10, 10 + 2 * (enemy, movetype = A)
 sparkno 			= 0
 sparkxy 			= -30, -59
 hitsound 			= 5, 1
@@ -1654,9 +1654,149 @@ persistent = 1
 [State 0, ChangeState]	;Followup Attack
 type 	= ChangeState
 trigger1 	= (command = "A" || command = "B" || command = "C") && anim = 2020 && (animelemno(0) > 5 || movecontact = [1,10])
-value	= 1025
+value	= 2025
 ignorehitpause = 1
 
+
+[State 200, 3]
+type = ChangeState
+trigger1 = anim = 1021 && AnimTime = 0
+value = 0
+ctrl = 1
+
+;----------------------
+;Knockdown Kick
+[Statedef 2025]
+type    		= A
+movetype		= A
+physics 		= A
+velset 		= vel x, 0
+ctrl 		= 0
+anim 		= 2025
+facep2 		= 1
+poweradd 		= 0
+sprpriority 	= 2
+
+[State 0, PosAdd]
+type = PosAdd
+triggerall = !time
+trigger1 = prevstateno = 1010
+y = -20
+
+
+[State 0]
+type 	= HitDef 
+p2facing 	= 1
+triggerall = !map(EXKickGB)
+trigger1	= animelem = 4
+attr 		= S, NA
+animtype 		= Hard
+air.animtype 	= back
+damage 		= 35
+hitflag 		= MAF
+guardflag 	= M
+pausetime 	= 15,15 + 2 * (enemy, movetype = A)
+sparkno 		= 2
+sparkxy 		= -15,-60
+hitsound   	= 5,0
+guardsound 	= 6,0
+ground.slidetime 	= 12
+ground.hittime  	= 999
+air.hittime  		= 999 
+down.hittime 		= 26 
+ground.velocity 	= -1, 10
+air.velocity 		= -3, 10
+down.velocity 		= -1, -4
+guard.ctrltime 	= 5
+guard.pausetime	=15,15
+guard.velocity 	= -10
+envshake.time 		= 8
+envshake.freq 		= 10
+envshake.ampl 		= 2
+envshake.phase 	= 1
+fall				= 1
+air.fall 			= 1
+air.type			= trip
+fall.yvelocity 	= 0
+air.cornerpush.veloff	= -5
+getpower 				= 0
+p2stateno       		= 5255
+p2getp1state    		= 0
+id					= 1
+
+[State 0]
+type 	= HitDef 
+p2facing 	= 1
+triggerall = map(EXKickGB)
+trigger1	= animelem = 4
+attr 		= S, NA
+animtype 		= Hard
+air.animtype 	= back
+damage 		= 55
+hitflag 		= MAF
+guardflag 	= H
+pausetime 	= 18,18 + 2 * (enemy, movetype = A)
+sparkno 		= 3
+sparkxy 		= -15,-60
+hitsound   	= 5,0
+guardsound 	= 6,0
+ground.slidetime 	= 12
+ground.hittime  	= 20 
+air.hittime  		= 20 
+down.hittime 		= 26 
+ground.velocity 	= -8,-0
+air.velocity 		= 3, 7
+down.velocity 		= -1, -4
+guard.ctrltime 	= 7
+guard.velocity 	= -10
+envshake.time 		= 8
+envshake.freq 		= 10
+envshake.ampl 		= 2
+envshake.phase 	= 1
+air.fall 			= 1
+air.type			= trip
+fall.yvelocity 	= 0
+getpower 				= 0
+
+;Limiter ---------------------------------------+
+[State -2, Retribution Reset]
+type = MapSet
+trigger1 = movehit && enemy,gethitvar(chainid) = 1
+map = "EXKickGB"
+value = 1
+ignorehitpause = 1
+persistent = 1
+;----------------------------------------------------+
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = animelemno(0) = [1,3]
+x = 6
+y = -6
+
+[State 0, PlayerPush]
+type = PlayerPush
+trigger1 = enemy, gethitvar(chainID) = 1 && map(ComboStateCheck)
+value = 0
+
+[State 0, ChangeAnim]	;Landing Recovery Animation and Physics
+type = ChangeAnim
+triggerall = anim != 1021
+trigger1 = pos y >= 0 && statetype = A
+value = 1021
+[State 0, PosSet]
+type = PosSet
+trigger1 = pos y > 0
+y = 0
+[State 0, VelMul]
+type = VelMul
+trigger1 = anim = 1021
+x = 0.85
+y = 0
+[State 0, Turn] ;Flip in landing animation
+type = Turn
+triggerall = anim = 1021
+trigger1 = p2dist x < 0
 
 [State 200, 3]
 type = ChangeState

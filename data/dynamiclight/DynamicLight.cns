@@ -1,6 +1,25 @@
+[Size]
+xscale = 1           ;Horizontal scaling factor.
+yscale = 1           ;Vertical scaling factor.
+ground.back = 0     ;Player width (back, ground)
+ground.front = 0    ;Player width (front, ground)
+air.back = 0        ;Player width (back, air)
+air.front = 0       ;Player width (front, air)
+height = 0          ;Height of player (for opponent to jump over)
+attack.dist = 0    ;Default attack distance
+proj.attack.dist = 0 ;Default attack distance for projectiles
+proj.doscale = 0     ;Set to 1 to scale projectiles too
+
 ;Dynamiclight - States
 
 [Statedef 0]
+[State 0, PlayerPush]
+type = PlayerPush
+trigger1 = 1
+value = 0
+ignorehitpause = 1
+persistent = 1
+
 
 ;===============================================================================
 ;------- DYNAMIC LIGHTING - DEPRECATED EXPLOD VERSION --------

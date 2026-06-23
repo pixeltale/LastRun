@@ -6,13 +6,13 @@
 
 ; Negative state global code toggle
 Default.Enable.Action = 1
-Default.Enable.Dizzy = 1
-Default.Enable.GuardBreak = 1
-Default.Enable.Score = 1
+Default.Enable.Dizzy = 0
+Default.Enable.GuardBreak = 0
+Default.Enable.Score = 0
 Default.Enable.Tag = 1
 
 ; Input toggles
-Input.FBFlipEnemyDistance = -1      ; Positive value inverts B and F inputs when an enemy is behind the player by that distance
+Input.FBFlipEnemyDistance = 1     ; Positive value inverts B and F inputs when an enemy is behind the player by that distance
 Input.PauseOnHitPause = 1           ; 1 makes commands be buffered during hit pause. Deprecated. See command parameters
 
 ; Backward compatibility toggles
@@ -24,7 +24,7 @@ Default.Attack.LifeToPowerMul = 0.7 ; multiplier for power the attacker gets whe
 Super.Attack.LifeToPowerMul = 0     ; multiplier for power the attacker gets when a super attack successfully hits (overridden by getpower HitDef option)
 Default.GetHit.LifeToPowerMul = 0.6 ; multiplier for power the receiver gets when a normal/special attack successfully hits (overridden by givepower HitDef option)
 Super.GetHit.LifeToPowerMul = 0.6   ; multiplier for power the receiver gets when a super attack successfully hits (overridden by givepower HitDef option)
-Super.TargetDefenceMul = 1.5        ; multiplier for how much a SuperPause increases the opponent's defence during combos (ignored if SuperPause p2defmul option is set)
+Super.TargetDefenceMul = 1        ; multiplier for how much a SuperPause increases the opponent's defence during combos (ignored if SuperPause p2defmul option is set)
 Default.LifeToGuardPointsMul = 1.5  ; multiplier for guard points the receiver loses when a normal/special attack is blocked (overridden by guardpoints HitDef option)
 Super.LifeToGuardPointsMul = 0.33   ; multiplier for guard points the receiver loses when a super attack is blocked (overridden by guardpoints HitDef option)
 Default.LifeToDizzyPointsMul = 1.8  ; multiplier for dizzy points the receiver loses when a normal/special attack successfully hits (overridden by dizzypoints HitDef option)

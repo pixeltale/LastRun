@@ -205,7 +205,7 @@ ignorehitpause = 1
 type = DisplayToClipboard
 trigger1 = 1
 text = "punish = %.0f retribution = %.0f"
-params = map(Throwtech.ok), map(retribution)
+params = map(JuggleTime), map(retribution)
 ignorehitpause = 1
 persistent = 1
 

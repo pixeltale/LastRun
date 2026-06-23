@@ -5495,7 +5495,7 @@ sound = 20,0
 pos = 0,0
 movetime = 20
 darken = 1
-p2defmul = 1
+p2defmul = 0
 poweradd = 0
 unhittable = 1
 
@@ -5597,6 +5597,10 @@ ignorehitpause 	= 0
 
 [Statedef -2]
 
+[State 5001, 5]
+type = DefenceMulSet
+trigger1 = 1
+value = 1
 
 ;===============================================================================
 ; ------- Juggle Scaling --------
@@ -5619,6 +5623,7 @@ persistent = 1
 [State -2, Juggle State Check]
 type = MapSet
 trigger1 = map(JuggleTime) < 30 
+trigger2 = map(Termina.Start)
 map = "JuggleScale"
 value = 1
 ignorehitpause = 1
@@ -6789,7 +6794,7 @@ persistent 		= 0
 type 		= MapSet
 trigger1 	= enemy, movetype = H
 map 		= "P4"
-value 		= cond(map(P4) <= 0.05, 0.05, (map(P1)*map(Accumulation)*map(CR)))
+value 		= cond(map(P4) <= 0.05, 0.05, (map(P1)*map(Accumulation)*1))
 ignorehitpause 	= 1
 persistent 		= 0
 
@@ -6876,7 +6881,7 @@ triggerall = map(IBTimer) <= 0
 trigger1 = command = "back"
 trigger2 = command = "downback"
 map = "IBTimer"
-value = 27
+value = 26
 ignorehitpause = 0
 
 ;======================================================================
@@ -7017,7 +7022,7 @@ anim = 99999
 pos = 0,0
 movetime = 2
 darken = 0
-p2defmul = 1
+p2defmul = 0
 unhittable = 1
 
 ;==================================================================================================

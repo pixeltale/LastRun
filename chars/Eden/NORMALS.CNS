@@ -422,7 +422,7 @@ ignorehitpause 	= 1
 type 		= MapSet
 trigger1 		= movehit && map(ComboStateCheck)
 map 		= "P2"
-value 		= 0.85	;85% DMG For next hit
+value 		= 0.95	;85% DMG For next hit
 ignorehitpause 	= 1
 persistent = 0
 [State -2, P2 Accumulation - Scale]
@@ -486,7 +486,7 @@ trigger1 	= animelem = 7
 attr 		= S, NA
 animtype 		= Hard
 air.animtype 	= back
-damage 		= 35
+damage 		= 35 * map(P4)
 hitflag 		= MAF
 guardflag 	= H
 pausetime 	= 12,12 + 2 * (enemy, movetype = A)
@@ -520,7 +520,7 @@ trigger1 	= animelem = 7
 attr 		= S, NA
 animtype 		= Hard
 air.animtype 	= back
-damage 		= 35
+damage 		= 35 * map(P4)
 hitflag 		= MAF
 guardflag 	= M
 pausetime 	= 8,8 + 2 * (enemy, movetype = A)

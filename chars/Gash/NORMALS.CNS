@@ -239,7 +239,7 @@ persistent 		= 0
 type 				= HitDef
 trigger1 				= animelem = 3 || animelem = 4
 ;===============================
-damage 				= 90 * map(P4)
+damage 				= 70 * map(P4)
 pausetime 			= 10,10 + 4 * (movecountered)
 getpower 				= 100 * map(P4)
 ;===============================
@@ -256,16 +256,16 @@ sparkxy 				= -p2dist x * 0.25, -60
 hitsound 				= 5,3
 guardsound 			= 6,0
 ;===============================
-ground.hittime  			= 19
-ground.slidetime			= 19
+ground.hittime  			= 16
+ground.slidetime			= 16
 ground.velocity 			= -0 - 5*(animelem =4)
-air.hittime  			= 30
+air.hittime  			= 24
 air.velocity 			= -3.5,-1 / map(JuggleScale)
 down.velocity 			= -1,-5
 down.hittime 			= 30
 ;===============================
-guard.ctrltime 		= 12
-guard.slidetime 		= 12
+guard.ctrltime 		= 8
+guard.slidetime 		= 8
 guard.velocity 		= -10
 airguard.velocity 		= -2,-1
 ;===============================
@@ -450,7 +450,7 @@ x = 10
 type 				= HitDef
 trigger1 				= animelem = 3
 ;===============================
-damage 				= 90 * map(P4)
+damage 				= 70 * map(P4)
 pausetime 			= 10,10 + 2 * (enemy, movetype = A)
 getpower 				= 25 * map(P4)
 ;===============================
@@ -471,7 +471,7 @@ ground.hittime 		= 12
 air.hittime 			= 12
 down.hittime 			= 24
 ground.velocity 		= -p2dist x * 0.05
-air.velocity 			= -2,-1.5 / map(JuggleScale)
+air.velocity 			= -p2dist x * 0.05,-1.5 / map(JuggleScale)
 ;===============================
 guard.ctrltime 		= 8
 guard.velocity 		= -p2dist x * 0.05
@@ -517,7 +517,7 @@ ground.hittime 		= 12
 air.hittime 			= 12
 down.hittime 			= 24
 ground.velocity 		= p2dist x * 0.05
-air.velocity 			= -2,-1.5 / map(JuggleScale)
+air.velocity 			= p2dist x * 0.05,-1.5 / map(JuggleScale)
 ;===============================
 guard.ctrltime 		= 8
 guard.velocity 		= p2dist x * 0.05
@@ -595,7 +595,7 @@ x = 4
 type 				= HitDef
 trigger1 				= animelem = 3
 ;===============================
-damage 				= 80 * map(P4)
+damage 				= 50 * map(P4)
 pausetime 			= 10,10 + 2 * (enemy, movetype = A)
 guard.pausetime		= 8, 8
 getpower 				= 25 * map(P4)

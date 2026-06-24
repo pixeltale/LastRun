@@ -663,19 +663,19 @@ time = 20
 [Command]
 name = "632146A"
 command = ~$F, D, B, $F, a | ~a
-time = 20
+time = 25
 [Command]
 name = "632146B"
 command = ~$F, D, B, $F, b | ~b
-time = 20
+time = 25
 [Command]
 name = "632146C"
 command = ~$F, D, B, $F, c | ~c
-time = 20
+time = 25
 [Command]
 name = "632146D"
 command = ~$F, D, B, $F, d | ~d
-time = 20
+time = 25
 
 [Command]
 name = "ExGuard"
@@ -865,7 +865,9 @@ command = ~D, F, b+c
 steptime = 7
 buffertime = 18
 
-
+[Command]
+name = "NO236"
+command = ~D, N, F
 [Command]
 name = "236A"
 command = ~D, F+a

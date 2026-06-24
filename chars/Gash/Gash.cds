@@ -178,7 +178,6 @@ type = ChangeState
 value = 2020
 triggerall = command = "623C"
 triggerall = power >= 500
-triggerall = statetype != A
 trigger1 = var(1)
 
 ;236A
@@ -186,7 +185,7 @@ trigger1 = var(1)
 type = ChangeState
 value = 1000
 triggerall = !numhelper(1005)
-triggerall = command = "236A"
+triggerall = command = "236A" && command != "NO236"
 triggerall = statetype != A
 trigger1 = var(1)
 ;236B
@@ -202,7 +201,7 @@ trigger1 = var(1)
 type = ChangeState
 value = 2000
 triggerall = !numhelper(2005)
-triggerall = command = "236C"
+triggerall = command = "236C"&& command != "NO236"
 triggerall = power >= 500
 triggerall = statetype != A
 trigger1 = var(1)

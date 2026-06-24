@@ -41,6 +41,21 @@ facep2 		= 1
 poweradd 		= 0
 sprpriority 	= 2
 
+[State 0, VarSet]
+type = VarSet
+trigger1 = !time
+sysvar(1) = 0
+[State 0, VarSet]
+type = VarSet
+trigger1 = command = "D"
+sysvar(1) = 1
+[State 0, ChangeAnim]
+type = ChangeAnim
+triggerall = anim = 1001
+trigger1 = sysvar(1) && animelemno(-2) = 2
+value = 1050
+ignorehitpause = 1
+
 
 [State 0, Helper]
 type = Helper
@@ -425,7 +440,7 @@ animtype 		= light                 ;Animation type: Light, Medium, Heavy, Back (
 air.animtype 	= back
 guardflag 	= M
 hitflag 		= MAFD
-pausetime 		= 10, 10
+pausetime 		= 1, 1
 sparkno 			= 0
 sparkxy 			= -30, -59
 hitsound 			= 5, 1
@@ -545,7 +560,7 @@ animtype 		= light                 ;Animation type: Light, Medium, Heavy, Back (
 air.animtype 	= back
 guardflag 	= M
 hitflag 		= MAFD
-pausetime 		= 10, 10
+pausetime 		= 1, 1
 sparkno 			= 0
 sparkxy 			= -30, -59
 hitsound 			= 5, 1
@@ -1038,7 +1053,7 @@ ground.hittime  	= 20
 air.hittime  		= 20 
 down.hittime 		= 26 
 ground.velocity 	= -8,-0
-air.velocity 		= 3, 7
+air.velocity 		= 3, 6
 down.velocity 		= -1, -4
 guard.ctrltime 	= 7
 guard.velocity 	= -10
@@ -1236,7 +1251,7 @@ helpertype = Normal ;Player
 name = "Blade Beam"
 ID = 1005
 stateno = 2006
-pos = 20,-20
+pos = 20,0
 postype = P1    ;P2, Front, Back, Left, Right
 facing = 1
 keyctrl = 0
@@ -1368,7 +1383,7 @@ ignorehitpause = 1
 type    		= U
 movetype		= A
 physics 		= N
-velset 		= 2, 12
+velset 		= 4, 20
 ctrl 		= 0
 anim 		= 1007
 facep2 		= 0
@@ -1414,7 +1429,7 @@ guardsound 		= 6, 0
 ground.slidetime 	= 20
 ground.hittime  	= 20
 air.hittime  		= 999
-down.hittime 		= 15
+down.hittime 		= 999
 ground.velocity 	= -2
 guard.ctrltime 	= 4
 guard.slidetime	= 4
@@ -1823,7 +1838,7 @@ trigger1	= animelem = 4
 attr 		= S, NA
 animtype 		= Hard
 air.animtype 	= back
-damage 		= 35
+damage 		= 35 * map(P4)
 hitflag 		= MAF
 guardflag 	= M
 pausetime 	= 15,15 + 2 * (enemy, movetype = A)
@@ -1863,7 +1878,7 @@ trigger1	= animelem = 4
 attr 		= S, NA
 animtype 		= Hard
 air.animtype 	= back
-damage 		= 55
+damage 		= 55 * map(P4)
 hitflag 		= MAF
 guardflag 	= H
 pausetime 	= 18,18 + 2 * (enemy, movetype = A)

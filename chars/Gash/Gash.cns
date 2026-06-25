@@ -200,12 +200,49 @@ map 			= "EXKickGB"
 value 		= 0
 ignorehitpause = 1
 
+[State 0, VelAdd]
+type = VelAdd
+triggerall = map(TAMPAKINGDASH)
+trigger1 = time = 1
+x = 1
+[State 0, Custom Afterimage] ;Tackle Afterimage
+type = Explod
+triggerall = map(TampakingDash) > 0
+trigger1 = time%2=0
+anim = anim
+animelem = animelemno(0)
+animfreeze = 1
+ID = 1000
+postype = P1
+pos = 0, 0
+vfacing = 1
+bindtime = 1
+supermovetime = 0
+pausemovetime = 0
+scale = const(size.xscale), const(size.yscale)
+sprpriority = sprpriority - 1
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+trans = add
+removetime = 5
+palfx.time = 40
+palfx.sinmul = -255,-255,-255,30
+removeongethit = 1
+removeonchangestate = 1
+ignorehitpause = 1
+[State -2, TAMPA KING INSTALL]
+type 		= MapAdd
+trigger1 		= map(TAMPAKINGDASH)
+map 			= "TAMPAKINGDASH"
+value 		= -1
+ignorehitpause 	= 0
 
 [State 0, DisplayToClipboard]
 type = DisplayToClipboard
 trigger1 = 1
 text = "punish = %.0f retribution = %.0f"
-params = map(DC.OVERRIDE), map(retribution)
+params = map(TAMPAKINGDASH), map(retribution)
 ignorehitpause = 1
 persistent = 1
 

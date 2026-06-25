@@ -1550,7 +1550,7 @@ type 				= HitDef
 trigger1 				= !movecontact && !movereversed
 ;===============================
 damage 				= 60 * map(P4)
-pausetime 			= 8,8 + 2 * (enemy, movetype = A)
+pausetime 			= 10,10 + 8 * (enemy, movetype = A)
 getpower 				= 25 * map(P4)
 ;===============================
 attr 				= S,NA
@@ -1677,13 +1677,11 @@ trigger1 = animelemno(0) = 3
 y = -10
 [State 0, VelSet]
 type = VelSet
-triggerall = 1020
 trigger1 = animelem = 3
 x = 14
-y = -4
+y = -4 - 2*(P2, pos y < pos y)
 [State 0, VelSet]
 type = VelAdd
-triggerall = 1020
 trigger1 = animelemno(0) > 3
 y = 0.6
 
@@ -2203,8 +2201,8 @@ air.hittime  			= 999
 air.velocity 			= -8, -5
 down.hittime 			= 30
 ;===============================
-guard.ctrltime 		= 18
-guard.slidetime 		= 18
+guard.ctrltime 		= 15
+guard.slidetime 		= 15
 guard.velocity 		= -10
 airguard.velocity 		= -2,-1
 ;===============================
@@ -2245,14 +2243,14 @@ guardsound 			= 6,0
 ;===============================
 ground.hittime  		= 999
 ground.slidetime		= 999
-ground.velocity 		= -25, -8
+ground.velocity 		= -25, -10
 air.hittime  			= 30
-air.velocity 			= -20,-4
+air.velocity 			= -20,-8
 down.velocity 			= -1,-5
 down.hittime 			= 30
 ;===============================
-guard.ctrltime 		= 18
-guard.slidetime 		= 18
+guard.ctrltime 		= 20
+guard.slidetime 		= 20
 guard.velocity 		= -10
 airguard.velocity 		= -2,-1
 ;===============================
@@ -2271,6 +2269,23 @@ envshake.phase 		= 0.5
 p2stateno 			= 5220
 p2getp1state 			= 0
 missonoverride			= 0
+
+[State -2, Wallbounce Type Set]
+type 			= MapSet
+trigger1 			= movehit
+map 			= "wallbounce_boomerang"
+value 			= 1
+ignorehitpause 		= 1
+persistent 			= 0
+[State -2, Wallbounce Type Set]
+type 			= MapSet
+triggerall		= (camerapos x * facing) > 0
+triggerall		= abs(camerapos x) = [530, 535]
+trigger1 			= movehitvar(FRAME)
+map 				= "wallbounce_yvel"
+value 			= -10
+ignorehitpause 		= 1
+persistent 			= 0
 
 [State -2, Dash Cancel Override]
 type 		= MapSet
@@ -2300,12 +2315,19 @@ type    = S
 physics = N
 anim = 2210
 sprpriority = 1
-ctrl = 1
+ctrl = 0
 velset = const(velocity.run.fwd.x)*1.1,0
+
+[State -2, TAMPA KING INSTALL]
+type 		= MapSet
+trigger1 		= !time
+map 			= "TAMPAKINGDASH"
+value 		= 90
+ignorehitpause 	= 1
 
 [State 100, 1]
 type = VelMul
-trigger1 = 1
+trigger1 = p2dist x > 500
 x = 1.1
 
 [State 200, 2]
@@ -2325,32 +2347,6 @@ type = ChangeState
 trigger1 = command = "holdup"
 value = 55
 ctrl = 0
-
-[State 0, Custom Afterimage] ;Tackle Afterimage
-type = Explod
-trigger1 = time%2=0
-anim = anim
-animelem = animelemno(0)
-animfreeze = 1
-ID = 1000
-postype = P1
-pos = 0, 0
-vfacing = 1
-bindtime = 1
-supermovetime = 0
-pausemovetime = 0
-scale = const(size.xscale), const(size.yscale)
-sprpriority = sprpriority - 1
-ontop = 0
-shadow = 0,0,0
-ownpal = 1
-trans = add
-removetime = 5
-palfx.time = 40
-palfx.sinmul = -255,-255,-255,30
-removeongethit = 1
-removeonchangestate = 1
-ignorehitpause = 1
 
 
 [State 100, 4]
@@ -2373,16 +2369,16 @@ sprpriority	= 2
 facep2 		= 1
 
 [State 0, StateTypeSet];If Done Midair
-type = StateTypeSet
-trigger1 = pos y < 0
-statetype = A       ;S,A,C,L
-movetype = A        ;I,A,H
-physics = A  
+type 		= StateTypeSet
+trigger1 		= pos y < 0
+statetype 	= A       ;S,A,C,L
+movetype 		= A        ;I,A,H
+physics 		= A  
 [State 0, VelMul]
-type = VelMul
-trigger1 = pos y < 0
-x = 0.85
-y = 0.1
+type 		= VelMul
+trigger1 		= pos y < 0
+x 			= 0.85
+y 			= 0.1
 
 
 [State -2, P1 Value Set]
@@ -2503,7 +2499,7 @@ envshake.time 			= 15
 envshake.freq 			= 15
 envshake.ampl 			= 4
 envshake.phase 		= 0.5
-id					= 1
+id					= 2
 
 [State 0, VelAdd]
 type = VelSet
@@ -2576,7 +2572,14 @@ type = TargetBind
 trigger1 = 1
 time = 2
 id = 1
-pos = -50,-20
+pos = -50,-30
+ignorehitpause = 1
+[State 0, TargetBind]
+type = TargetBind
+trigger1 = 1
+time = 2
+id = 2
+pos = -50,-30
 ignorehitpause = 1
 [State 0, ChangeAnim]
 type = ChangeAnim
@@ -2610,11 +2613,11 @@ type 	= HitDef
 p2facing 	= 1
 trigger1 	=  !movecontact && !movereversed
 attr 		= C, NA
-damage 		= 90 * map(P4), 0
+damage 		= 90 * map(P4) + (4*time) * (P2, gethitvar(chainid) = 2), 0
 animtype  	= Hard
 hitflag 		= MAFD
 guardflag 	= 
-pausetime 	= 12,12
+pausetime 	= 12,16
 sparkno 		= 2
 sparkxy 		= -10,-8
 hitsound   	= 5,2
@@ -2985,6 +2988,11 @@ type = VelAdd
 trigger1 = !time
 trigger1 = root, stateno = 3210
 y = 8
+
+[State 0, VelAdd]
+type = VelAdd
+trigger1 = 1
+x = 1
 
 
 [State 200, 1]

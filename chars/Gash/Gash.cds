@@ -301,6 +301,7 @@ triggerall = command = "holdfwd" && command = "holddown"
 triggerall = statetype != A && command != "236C"
 trigger1 = ctrl
 trigger2 = (stateno = [200,220] || stateno = [400,420]) && movecontact && !combocount
+trigger3 = map(TAMPAKINGDASH) && (stateno = 2210 || movecontact)
 ;3C (Chainer)
 [State -1, Slide On Em']
 type = ChangeState
@@ -309,6 +310,7 @@ triggerall = command = "C"
 triggerall = command = "holdfwd" && command = "holddown"
 triggerall = statetype != A && command != "236C"
 trigger1 = (stateno = [200,220] || stateno = [400,420]) && movecontact && combocount
+trigger2 = map(TAMPAKINGDASH) && (stateno = 2210 || movecontact)
 ;6C
 [State -1, Clothesline]
 type = ChangeState
@@ -318,6 +320,7 @@ triggerall = command = "holdfwd"
 triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = (stateno = [200,220] || stateno = [400,420]) && movecontact && (!combocount || command = "holdup")
+trigger3 = map(TAMPAKINGDASH) && (stateno = 2210 || movecontact)
 ;6C (Chainer)
 [State -1, Clothesline]
 type = ChangeState
@@ -326,6 +329,7 @@ triggerall = command = "C"
 triggerall = command = "holdfwd"
 triggerall = statetype != A
 trigger1 = (stateno = [200,220] || stateno = [400,420]) && movecontact && combocount && command != "holdup"
+trigger2 = map(TAMPAKINGDASH) && (stateno = 2210 || movecontact)
 
 ;===========================================================================
 ;---------------------------------------------------------------------------
@@ -337,6 +341,7 @@ triggerall = command = "A"
 triggerall = command != "holddown"
 triggerall = statetype != A
 trigger1 = ctrl || stateno = 200 && movecontact && prevstateno != 200
+trigger2 = map(TAMPAKINGDASH) && (stateno = 2210 || movecontact)
 
 ;---------------------------------------------------------------------------
 ;5B
@@ -348,6 +353,7 @@ triggerall = command != "holddown"
 triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = (stateno = 200 || stateno = 400) && movecontact
+trigger3 = map(TAMPAKINGDASH) && (stateno = 2210 || movecontact)
 
 ;---------------------------------------------------------------------------
 ;5C (Close)
@@ -360,6 +366,7 @@ triggerall = command != "holddown"
 triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = (stateno = [200,210] || stateno = [400,410]) && movecontact
+trigger3 = map(TAMPAKINGDASH) && (stateno = 2210 || movecontact)
 
 ;5C (Far)
 [State -1, Standing Heavy]
@@ -371,6 +378,7 @@ triggerall = command != "holddown"
 triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = (stateno = [200,210] || stateno = [400,410]) && movecontact
+trigger3 = map(TAMPAKINGDASH) && (stateno = 2210 || movecontact)
 
 ;---------------------------------------------------------------------------
 ;Taunt
@@ -388,8 +396,9 @@ type = ChangeState
 value = 400
 triggerall = command = "A"
 triggerall = command = "holddown"
-trigger1 = statetype = C
+triggerall = statetype != A
 trigger1 = ctrl
+trigger2 = map(TAMPAKINGDASH) && (stateno = 2210 || movecontact)
 
 ;---------------------------------------------------------------------------
 ;2B
@@ -401,6 +410,7 @@ triggerall = command = "holddown"
 triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = (stateno = 200 || stateno = 400) && movecontact
+trigger3 = map(TAMPAKINGDASH) && (stateno = 2210 || movecontact)
 
 ;---------------------------------------------------------------------------
 ;2C
@@ -412,6 +422,7 @@ triggerall = command = "holddown"
 triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = (stateno = [200,210] || stateno = [400,410]) && movecontact
+trigger3 = map(TAMPAKINGDASH) && (stateno = 2210 || movecontact)
 
 ;---------------------------------------------------------------------------
 ;j.A
@@ -421,6 +432,7 @@ value = 600
 triggerall = command = "A"
 triggerall = statetype = A
 trigger1 = ctrl
+trigger2 = map(TAMPAKINGDASH) && (stateno = 2210 || movecontact)
 
 ;---------------------------------------------------------------------------
 ;j.B
@@ -431,6 +443,7 @@ triggerall = command = "B"
 triggerall = statetype = A
 trigger1 = ctrl
 trigger2 = stateno = 600 && MoveContact
+trigger3 = map(TAMPAKINGDASH) && (stateno = 2210 || movecontact)
 ;---------------------------------------------------------------------------
 ;j.C
 [State -1, Jump Heavy]
@@ -440,4 +453,5 @@ triggerall = command = "C"
 triggerall = statetype = A
 trigger1 = ctrl
 trigger2 = stateno = [600,610] && MoveContact
+trigger3 = map(TAMPAKINGDASH) && (stateno = 2210 || movecontact)
 

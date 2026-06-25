@@ -1,46 +1,50 @@
-<#f0f000>EDEN HAZARD: B-TYPE</>
+<#f0f000>GASH HAZARD: B-TYPE</>
 <#f0f000>COMMAND NORMALS</>
-Overhead            						_F_+^B
-   <#bbbbbb>An overhead kick with two hits. Chain OK.</>
-Uppercut            						_F_+^C
-   <#bbbbbb>A powerful uppercut. AIR RAID OK. Hits OTG</>
+CLOSE QUARTERS            						_CLOSE^C
+CHAIN            						_F_+^C
+   <#bbbbbb>A two-hit clothesline attack that pulls opponents in
+   on hit and block. Chain OK.</>
+UNDERMINE            						_DF_+^C
+   <#bbbbbb>A low sliding attack that goes under many
+   other attacks.</>
 
 <#f0f000>THROWS</>
-Hands Off   								[_B/_F]_+^A +^B
+Gut Rearranger   								[_B/_F]_+^A_+^B
 
 <#f0f000>SPECIAL MOVES</>
-Fatal Introduction_EX						_QDF^A/^B/^C
+CUT SPACE: DICER_EX_AIROK						_QDF^A/^B/^C
    <#bbbbbb>A projectile attack.
-   A Version is slow.
-   B Version is fast.
-   C Version is fastest and 3 hits.</>
-Territory Lord_EX							_DSF^A/^B/^C
-   <#bbbbbb>An anti-air attack with a large hitbox and reversal potential.
-   A version is fast upper body invul. [R]
-   B version is full invul. [R] (Midcombo)
-   EX is fast, full invul, and good for juggles. [R] (Midcombo)</>
-Water's Edge_EX_AIROK								_QDB^A/^B/^C
+   A Version is fast but expires quickly.
+   B Version is slow, but more active. Can be feinted with D.
+   C Version is fastest and 2 hits.</>
+Reckless Assault_EX_AIROK							_DSF^A/^B/^C
+   <#bbbbbb>A flying knee with a followup that knocks down.</>
+   _!Knockdown								(After any Version) ^A/^B/^C
+Loiter Shot_EX								_QDB^A/^B/^C
    <#bbbbbb>A series of kick attacks.
-   A version is a upward kick that starts combos. Has followups.
+   A version is a quick, safe on block knee.
    B Version lunges across the screen at high speed. [R]
-   EX is an overhead that knocks down air opponents. [R]</>
-_!Extra kick								(After A Version) ^A
-  _!Knockdown [R]								    (After A Version) ^A
+   EX is an extremely fast restand.</>
+   _!Knockdown								(After A Version) ^A/^B/^C
 
 <#f0f000>LASTRIDE</>
-Revelation</>		_QDF_QDF_+^B _+^C
+Flamagra Burnout</>		_QDB_QDB_+^A/^B/^C
 
 <#f0f000>ALTERNATIVE SPECIAL MOVES: B-GEAR</>
-CRAWLING FLAME						_QDB^B_+^C
-   <#bbbbbb>A slow moving, multi-hit projectile
-   that travels across the ground.</>
-SOARING FLAME						_QDB^B_+^C
-   <#bbbbbb>An air to ground projectile attack.</>
+CUT RULE: ODE TO THE TAMPA KING						_QDB+^D
+   <#bbbbbb>Gash readies a powerful shoulder charge, modeled
+   after some asshole he fought in a parking lot once.</>
+   _!EMBODIMENT OF TAMPA KING								(Level 3 Charge) _XFF
+      <#bbbbbb>Gash dash cancels the shoulder charge, and for
+      a limited period of time, can cancel any move that makes
+      contact into a normal attack. Chains are made to be broken.</>
+REIGNING KILLER ONSLAUGHT_AIROK						_QDF+^D
+   <#bbbbbb>Command grab. Can be done in air. Air version does
+   extra damage the higher you land it.</>
 
 <#f0f000>LASTRIDE: ALTERNATIVES</>
-SUPER 1: BLACK HOLE SUN					_QDB_QDB^B_+^C
-   <#bbbbbb> A projectile with infinite health that 
-   eats all other projectiles.</>
+SUPER 1: REDHOTBLADE_AIROK				_QDB_QDB^B_+^C
+   <#bbbbbb> A very fast projectile good for ending combos.</>
 SUPER 2: BLACK BULLET					_QDB_QDB^B_+^C
    <#bbbbbb> A projectile with infinite health that 
    eats all other projectiles.</>

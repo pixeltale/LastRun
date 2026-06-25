@@ -12,10 +12,10 @@ UNDERMINE            						_DF_+^C
 Gut Rearranger   								[_B/_F]_+^A_+^B
 
 <#f0f000>SPECIAL MOVES</>
-DICER_EX						_QDF^A/^B/^C
+CUT SPACE: DICER_EX_AIROK						_QDF^A/^B/^C
    <#bbbbbb>A projectile attack.
    A Version is fast but expires quickly.
-   B Version is slow, but more active.
+   B Version is slow, but more active. Can be feinted with D.
    C Version is fastest and 2 hits.</>
 Reckless Assault_EX_AIROK							_DSF^A/^B/^C
    <#bbbbbb>A flying knee with a followup that knocks down.</>
@@ -31,15 +31,14 @@ Loiter Shot_EX								_QDB^A/^B/^C
 Flamagra Burnout</>		_QDB_QDB_+^A/^B/^C
 
 <#f0f000>ALTERNATIVE SPECIAL MOVES: A-GEAR</>
-AIRDASH						_XFF
+CUT GRAVITY						_XFF
    <#bbbbbb>Fly forward in the air, beautifully
    and majestically. Gives Gash the ability to
-   Pursuit Cancel in midair.</>
+   Pursuit Cancel in midair. Laws are made to be broken.</>
 
 <#f0f000>LASTRIDE: ALTERNATIVES</>
-SUPER 1: BLACK HOLE SUN					_QDB_QDB^B_+^C
-   <#bbbbbb> A projectile with infinite health that 
-   eats all other projectiles.</>
+SUPER 1: REDHOTBLADE_AIROK				_QDB_QDB^B_+^C
+   <#bbbbbb> A very fast projectile good for ending combos.</>
 SUPER 2: BLACK BULLET					_QDB_QDB^B_+^C
    <#bbbbbb> A projectile with infinite health that 
    eats all other projectiles.</>

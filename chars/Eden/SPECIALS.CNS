@@ -992,6 +992,7 @@ envshake.phase 	= 1
 getpower 		= 200
 p2stateno 	= 5220
 p2getp1state 	= 0
+missonoverride			= 0
 id		= 1
 
 ;RETRIBUTION ---------------------------------------+

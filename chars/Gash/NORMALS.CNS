@@ -239,7 +239,7 @@ persistent 		= 0
 type 				= HitDef
 trigger1 				= animelem = 3 || animelem = 4
 ;===============================
-damage 				= 70 * map(P4)
+damage 				= 60 * map(P4)
 pausetime 			= 10,10 + 4 * (movecountered)
 getpower 				= 100 * map(P4)
 ;===============================
@@ -337,7 +337,7 @@ persistent 		= 0
 type 				= HitDef
 trigger1 				= !movecontact && !movereversed
 ;===============================
-damage 				= 100 * map(P4)
+damage 				= 90 * map(P4)
 pausetime 			= 14,14 + 4 * (movecountered)
 getpower 				= 100 * map(P4)
 ;===============================
@@ -573,7 +573,7 @@ ignorehitpause 	= 1
 type 		= MapSet
 trigger1 		= movehit && map(ComboStateCheck)
 map 		= "P2"
-value 		= 0.85	;85% DMG For next hit
+value 		= 0.80	;85% DMG For next hit
 ignorehitpause 	= 1
 persistent = 0
 [State -2, P2 Accumulation - Scale]
@@ -595,7 +595,7 @@ x = 4
 type 				= HitDef
 trigger1 				= animelem = 3
 ;===============================
-damage 				= 50 * map(P4)
+damage 				= 30 * map(P4)
 pausetime 			= 10,10 + 2 * (enemy, movetype = A)
 guard.pausetime		= 8, 8
 getpower 				= 25 * map(P4)
@@ -1362,7 +1362,7 @@ p2facing 	= 1
 trigger1 	= !movecontact && !MoveReversed
 hitonce 	= 1
 attr 	= A, NA
-damage 	= 100 * MAP(P4)
+damage 	= 80 * MAP(P4)
 hitflag 	= MAF
 guardflag 	= H
 pausetime 	= 14,14 + 4 * (enemy, movetype = A)

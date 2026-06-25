@@ -156,6 +156,22 @@ triggerall = statetype = A && (pos y < -60 || stateno = [1020,1025])
 triggerall = (stateno != [1000, 3000) && stateno != [600,630]) || (map(Pursuit) >= 333 || map(Termina.Active))
 trigger1 = var(2)
 
+[State -1, B GEAR - TAMPA KING]
+type = ChangeState
+value = 2200
+triggerall = map(Groove_Style) = 2
+triggerall = command = "214D"
+triggerall = statetype != A && stateno != [2100, 3000) && !numhelper(2101)
+triggerall = stateno != [1000, 3000) || (map(Pursuit) >= 333 || map(Termina.Active))
+trigger1 = var(2)
+[State -1, B GEAR - RKO]
+type = ChangeState
+value = 2250
+triggerall = map(Groove_Style) = 2
+triggerall = command = "236D"
+triggerall =  stateno != [2100, 3000) && !numhelper(2101)
+triggerall = stateno != [1000, 3000) || (map(Pursuit) >= 333 || map(Termina.Active))
+trigger1 = var(2)
 
 ;===========================================================================
 ;SPECIAL ATTACKS

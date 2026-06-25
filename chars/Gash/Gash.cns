@@ -34,10 +34,10 @@ shadowoffset = 0     ;Number of pixels to vertically offset the shadow
 draw.offset = 0,0    ;Player drawing offset in pixels (x, y). Recommended 0,0
 
 [Velocity]
-walk.fwd  = 3      ;Walk forward
-walk.back = -3     ;Walk backward
+walk.fwd  = 2.7      ;Walk forward
+walk.back = -2.8     ;Walk backward
 run.fwd  = 7, 0    ;Run forward (x, y)
-run.back = -6,-4 ;Hop backward (x, y)
+run.back = -6,-3 ;Hop backward (x, y)
 jump.neu = 0,-12    ;Neutral jumping velocity (x, y)
 jump.back = -3.5    ;Jump back Speed (x, y)
 jump.fwd = 3.5       ;Jump forward Speed (x, y)
@@ -205,7 +205,7 @@ ignorehitpause = 1
 type = DisplayToClipboard
 trigger1 = 1
 text = "punish = %.0f retribution = %.0f"
-params = map(JuggleTime), map(retribution)
+params = map(DC.OVERRIDE), map(retribution)
 ignorehitpause = 1
 persistent = 1
 

@@ -352,11 +352,13 @@ value = Anim + 3
 
 
 ;---------------------------------------------------------------------------
-; Jump Down (empty state for compatibility)
+; Special Fall
 [Statedef 51]
 type    = A
 physics = A
 facep2 = cond(Map(SJI) , 1, 0)
+anim = 41
+ctrl = 0
 
 [State 51, 1]
 type = Null
@@ -408,7 +410,7 @@ ctrl = 1
 type    = S
 physics = S
 ctrl = 0
-velset = 0, 0
+velset = vel x, 0
 anim = 40
 
 [State 40, 1]
@@ -1943,6 +1945,7 @@ value=151
 
 [State 0, MapSet] ;Instant Block Check
 type = MapSet
+trigger1 = enemy, HitDefVar(guardflag) != H
 trigger1 = time = 0
 map = "IBCheck"
 value = cond(map(IBTimer) > 20, 1, 0)
@@ -2034,7 +2037,7 @@ physics=S
 
 [State 0, Changestate] ;Guard Crush
 type = Changestate 
-trigger1 = map(GC)=1 && BackEdgeBodyDist <= 0 && !map(BGuard)
+trigger1 = map(GC)=1 && BackEdgeBodyDist <= 0
 value = 5275
 
 [State 153, End]
@@ -5560,9 +5563,9 @@ trigger1 = MAP(pursuit.MAX)
 [State -1, Pursuit Dash Cancel]
 type = ChangeState
 value = 100
-triggerall = command = "FF"
+triggerall = command = "FF" && (map(Pursuit) >= 333 || map(TERMINA.ACTIVE))
 triggerall = statetype != A
-triggerall = movecontact = [1, 6]
+triggerall = movecontact = [1, 6] && !map(DC.OVERRIDE)
 trigger1 = (MAP(PURSUITCANCEL_NORMALS)|| MAP(PURSUITCANCEL_SPECIALS))
 
 [State -1, Grab] ;Throw
@@ -5584,6 +5587,15 @@ trigger1 = Map(JC) && movehitvar(overridden) = 0
 ;==============================================================================
 ;------------------------------------------------------------------------------
 [Statedef +1]
+;Custom Dash Cancel Map Reset
+[State -2, Dash Cancel Override]
+type 		= MapSet
+trigger1 		= time = 0 && map(DC.OVERRIDE) > 0
+map 			= "DC.OVERRIDE"
+value 		    = 0
+ignorehitpause 	= 1
+persistent 		= 0
+
 ;===============================================================================
 ; ------- Jump Cancel --------
 ;===============================================================================
@@ -5777,19 +5789,19 @@ ignorehitpause = 1
 
 
 ;======================================
-;PURSUIT Section
+;PURSUIT Section || Pursuit Calculations
 ;======================================
 
 ;Build Pursuit for Aggression
 [State 0, MapSet] 
 type = MapAdd
-trigger1 = movecontact && !movehitvar(overridden)
+trigger1 = movecontact
 map = "Pursuit"
-value = enemy,gethitvar(damage) * 0.7
+value = P2, gethitvar(damage) * 0.5
 ignorehitpause = 1
 [State 0, MapSet] 
 type = MapAdd
-trigger1 = enemy, stateno = [150, 153]
+trigger1 = P2, stateno = [150, 153]
 map = "Pursuit"
 value = 1
 ignorehitpause = 1
@@ -6274,7 +6286,7 @@ persistent 		= 1
 [State 0, PowerAdd]
 type = PowerAdd
 trigger1    = stateno = 150 || stateno = 152 || stateno = 154
-trigger1 	= map(IBTimer) > 20 && time = 0
+trigger1 	= map(IBTimer) > 20 && time = 1
 value = gethitvar(hittime) + 30
 ignorehitpause = 1
 persistent = 0
@@ -6282,7 +6294,7 @@ persistent = 0
 [State 0. MapSet]
 type 		= MapSet
 trigger1    = stateno = 150 || stateno = 152 || stateno = 154
-trigger1 	= map(IBTimer) > 20 && time = 0
+trigger1 	= map(IBparam) && time = 1
 map 		= "IBPalFX"
 value 		= 1
 ignorehitpause 	= 1
@@ -6305,7 +6317,7 @@ ignorehitpause = 1
 
 [State 0, MapSet] ;Map for "remembering" that you instant blocked
 type = MapSet
-trigger1 = map(IBTimer) > 20 && time = 0
+trigger1 = map(IBTimer) > 20 && time = 1
 map = "IBparam"
 value = 10
 [State 0, MapSet] ;Tick Down
@@ -6313,6 +6325,7 @@ type = MapAdd
 trigger1 = map(IBParam)
 map = "IBparam"
 value = -1
+
 
 [State 0, MapSet] ;Instant Block Check
 type = MapSet
@@ -6857,6 +6870,8 @@ value = 0
 
 ;---------------------------------------------------------------------------------
 [Statedef -3]
+
+
 ;===============================================================================
 ; ------- Hop Variable Reset --------
 ;===============================================================================
@@ -6881,7 +6896,7 @@ triggerall = map(IBTimer) <= 0
 trigger1 = command = "back"
 trigger2 = command = "downback"
 map = "IBTimer"
-value = 26
+value = 28
 ignorehitpause = 0
 
 ;======================================================================

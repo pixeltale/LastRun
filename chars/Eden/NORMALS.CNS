@@ -332,7 +332,7 @@ persistent 		= 0
 type 				= HitDef
 trigger1 				= !movecontact && !movereversed
 ;===============================
-damage 				= 100 * map(P4)
+damage 				= 90 * map(P4)
 pausetime 			= 14,14 + 4 * (movecountered)
 getpower 				= 100 * map(P4)
 ;===============================
@@ -1052,7 +1052,7 @@ type 	= HitDef
 p2facing 	= 1
 trigger1 	=  !movecontact && !movereversed
 attr 		= C, NA
-damage 		= 120 * map(P4), 0
+damage 		= 90 * map(P4), 0
 animtype  	= Hard
 hitflag 		= MAFD
 guardflag 	= L
@@ -1308,7 +1308,7 @@ p2facing 	= 1
 trigger1 	= !movecontact && !MoveReversed
 hitonce 	= 1
 attr 	= A, NA
-damage 	= 100 * MAP(P4)
+damage 	= 70 * MAP(P4)
 hitflag 	= MAF
 guardflag 	= H
 pausetime 	= 14,14 + 4 * (enemy, movetype = A)

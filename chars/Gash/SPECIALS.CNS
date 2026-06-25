@@ -2971,7 +2971,7 @@ ctrl = 1
 type    		= U
 movetype		= A
 physics 		= N
-velset 		= 20, 0
+velset 		= 25, 0
 ctrl 		= 0
 anim 		= 3205
 facep2 		= 0
@@ -2992,18 +2992,19 @@ y = 8
 [State 0, VelAdd]
 type = VelAdd
 trigger1 = 1
-x = 1
+x = 2
 
 
 [State 200, 1]
 type = HitDef 
-trigger1 	= !MoveContact && !MoveReversed
-attr = A, HP
-damage 		= 200 * (root, map(P4)) + 100
+trigger1 	= target, ishelper = 0
+trigger1 	= enemy, gethitvar(chainid) != 2016
+attr = SCA, SP, HP
+damage 		= 200 * (root, map(P4)) + 100, 50
 animtype 		= light                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 air.animtype 	= back
-guardflag 	= MA
-hitflag 		= MAFP
+guardflag 	= M
+hitflag 		= MAFD
 pausetime 		= 25, 25
 guard.pausetime	= 5, 5
 sparkno 			= 0
@@ -3023,7 +3024,6 @@ envshake.time 		= 0
 fall 			= 1
 air.fall 			= 1
 fall.yvelocity 	= 0
-priority			= 5
 ;=====================================
 envshake.time 		= 3
 envshake.freq 		= 5
@@ -3032,10 +3032,21 @@ envshake.phase 	= 1
 p2stateno 		= 5300
 p2getp1state		= 0
 getpower 			= 0
+missonoverride		= 0 
+id				= 2016
+
+[State 200, 1]	;Delete Other Projectiles
+type = HitDef 
+trigger1 	= target, ishelper
+attr = SCA, SP, HP
+damage 		= 1, 1
+guardflag 	= M
+hitflag 		= MAFD
+pausetime 		= 1, 1
 
 [State 0, Custom Afterimage]
 type = Explod
-trigger1 = time%2=0
+trigger1 = time
 anim = anim
 animelem = animelemno(0)
 animfreeze = 1
@@ -3072,9 +3083,14 @@ trigger1 = 1
 value = SCA
 time = 1
 
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = projtypecollision
+
 [State 200, 3]
 type = Changestate
-trigger1 = movecontact || frontedgebodydist < -14 || pos y >= 15
+trigger1 = movecontact && enemy, gethitvar(chainid) = 2016 || frontedgebodydist < -14 || pos y >= 15
 trigger2 = root, movetype = H
 value = 2016
 ignorehitpause = 1

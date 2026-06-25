@@ -149,7 +149,7 @@ trigger1 = var(2)
 
 [State -1, A GEAR - AIR DASH!]
 type = ChangeState
-value = 2500
+value = 2100
 triggerall = map(Groove_Style) = 1
 triggerall = command = "FF" && !map(AirDash)
 triggerall = statetype = A && (pos y < -60 || stateno = [1020,1025])

@@ -1945,7 +1945,7 @@ value=151
 
 [State 0, MapSet] ;Instant Block Check
 type = MapSet
-trigger1 = enemy, HitDefVar(guardflag) != H
+; trigger1 = enemy, HitDefVar(guardflag) != H
 trigger1 = time = 0
 map = "IBCheck"
 value = cond(map(IBTimer) > 20, 1, 0)
@@ -5554,11 +5554,12 @@ triggerall = statetype != A && stateno < 3000 && movetype != H
 trigger1 = MAP(pursuit.MAX)
 
 ;PARRY
-; [State -1, PARRY]
-; type = ChangeState
-; value = 900 + 10*statetype = A
-; triggerall = command = "D" || (prevstateno = 5120 || stateno = 140) && command = "HOLD_D" || (prevstateno = 905 || prevstateno = 915) && command = "Multiparry"
-; trigger1 = ctrl
+[State -1, PARRY]
+type = ChangeState
+value = 900 + 10*statetype = A
+triggerall = command = "D" || (prevstateno = 5120 || stateno = 140) && command = "HOLD_D" || (prevstateno = 905 || prevstateno = 915) && command = "Multiparry" 
+trigger1 = ctrl || stateno = [120,155] && map(IBCheck) && time > 0
+ignorehitpause = 1
 
 [State -1, Pursuit Dash Cancel]
 type = ChangeState

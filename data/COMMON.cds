@@ -611,33 +611,27 @@ buffer.time = 2
 [Command]
 name = "236236A"
 command = ~D, F, D, F, a
-time = 30
-buffer.time = 15
+time = 20
 [Command]
 name = "236236B"
 command = ~D, F, D, F, b
-time = 30
-buffer.time = 15
+time = 20
 [Command]
 name = "236236C"
 command = ~D, F, D, F, c
-time = 30
-buffer.time = 15
+time = 20
 [Command]
 name = "236236BC"
 command = ~D, F, D, F, b+c
-time = 30
-buffer.time = 15
+time = 20
 [Command]
 name = "236236D"
 command = ~D, DF, F, D, DF, F, d
-time = 30
-buffer.time = 15
+time = 20
 [Command]
 name = "236236CD"
 command = ~D, DF, F, D, DF, F, c+d
 time = 20
-buffer.time = 15
 
 [Command]
 name = "214214A"

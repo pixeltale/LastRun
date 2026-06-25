@@ -24,7 +24,7 @@ type 		= MapSet
 trigger1 		= movehit && map(ComboStateCheck)
 trigger1		= prevstateno != 200 || prevstateno != 400
 map 			= "P2"
-value 		= 0.75	;85% DMG For next hit
+value 		= 0.80	;85% DMG For next hit
 ignorehitpause 	= 1
 persistent = 0
 [State -2, P2 Accumulation - Scale]
@@ -40,7 +40,7 @@ persistent 		= 0
 type 				= HitDef
 trigger1 				= !movecontact && !movereversed
 ;===============================
-damage 				= 55 * map(P4)
+damage 				= 45 * map(P4)
 pausetime 			= 8,8 + 2 * enemy, movetype = A
 getpower 				= 25 * map(P4)
 ;===============================
@@ -135,7 +135,7 @@ persistent 		= 0
 type 				= HitDef
 trigger1 				= !movecontact && !movereversed
 ;===============================
-damage 				= 60 * map(P4)
+damage 				= 70 * map(P4)
 pausetime 			= 10,10 + 2 * (enemy, movetype = A)
 getpower 				= 25 * map(P4)
 ;===============================
@@ -222,9 +222,9 @@ value 		= 0.95
 ignorehitpause 	= 1
 [State -2, P2 Value Set]
 type 		= MapSet
-trigger1 		= movehit && map(ComboStateCheck)
+trigger1 		= movehit && combocount > 2
 map 			= "P2"
-value 		= 0.95
+value 		= 0.90
 ignorehitpause 	= 1
 persistent = 0
 [State -2, P2 Accumulation - Scale]
@@ -239,7 +239,7 @@ persistent 		= 0
 type 				= HitDef
 trigger1 				= animelem = 3 || animelem = 4
 ;===============================
-damage 				= 60 * map(P4)
+damage 				= 50 * map(P4)
 pausetime 			= 10,10 + 4 * (movecountered)
 getpower 				= 100 * map(P4)
 ;===============================
@@ -424,7 +424,7 @@ value 		= 0.90	;95% Starting DMG
 ignorehitpause 	= 1
 [State -2, P2 Value Set]
 type 		= MapSet
-trigger1 		= movehit && map(ComboStateCheck)
+trigger1 		= movehit && combocount > 2
 map 		= "P2"
 value 		= 0.85	;85% DMG For next hit
 ignorehitpause 	= 1
@@ -432,7 +432,7 @@ persistent = 0
 [State -2, P2 Accumulation - Scale]
 type 		= MapSet
 trigger1 		= movehit
-map 		= "Accumulation"
+map 			= "Accumulation"
 value 		= Map(Accumulation) * map(P2)
 ignorehitpause 	= 1
 persistent 		= 0
@@ -450,7 +450,7 @@ x = 10
 type 				= HitDef
 trigger1 				= animelem = 3
 ;===============================
-damage 				= 70 * map(P4)
+damage 				= 50 * map(P4)
 pausetime 			= 10,10 + 2 * (enemy, movetype = A)
 getpower 				= 25 * map(P4)
 ;===============================
@@ -495,7 +495,7 @@ envshake.phase 		= 0.5
 type 				= HitDef
 trigger1 				= animelem = 4
 ;===============================
-damage 				= 90 * map(P4)
+damage 				= 50 * map(P4)
 pausetime 			= 10,10 + 2 * (enemy, movetype = A)
 guard.pausetime		= 8, 8
 getpower 				= 25 * map(P4)
@@ -571,8 +571,8 @@ value 		= 0.90	;95% Starting DMG
 ignorehitpause 	= 1
 [State -2, P2 Value Set]
 type 		= MapSet
-trigger1 		= movehit && map(ComboStateCheck)
-map 		= "P2"
+trigger1 		= movehit && combocount > 2
+map 			= "P2"
 value 		= 0.80	;85% DMG For next hit
 ignorehitpause 	= 1
 persistent = 0
@@ -595,7 +595,7 @@ x = 4
 type 				= HitDef
 trigger1 				= animelem = 3
 ;===============================
-damage 				= 30 * map(P4)
+damage 				= 35 * map(P4)
 pausetime 			= 10,10 + 2 * (enemy, movetype = A)
 guard.pausetime		= 8, 8
 getpower 				= 25 * map(P4)
@@ -641,7 +641,7 @@ envshake.phase 		= 0.5
 type 				= HitDef
 trigger1 				= animelem = 4
 ;===============================
-damage 				= 80 * map(P4)
+damage 				= 35 * map(P4)
 pausetime 			= 10,10 + 2 * (enemy, movetype = A)
 guard.pausetime		= 8, 8
 getpower 				= 25 * map(P4)
@@ -735,7 +735,7 @@ persistent 		= 0
 type 				= HitDef
 trigger1 				= !movecontact && !movereversed
 ;===============================
-damage 				= 50 * MAP(P4),0
+damage 				= 45 * MAP(P4),0
 pausetime 			= 8,8 + 2 * (enemy, movetype = A)
 getpower 				= 25 * map(P4)
 ;===============================
@@ -813,13 +813,13 @@ facep2 		= 1
 type 		= MapSet
 trigger1 		= movehit && !map(ComboStateCheck)
 map 			= "P1"
-value 		= 0.85	;90% Starting Prorate
+value 		= 0.80	;90% Starting Prorate
 ignorehitpause 	= 1
 [State -2, P2 Value Set]
 type 		= MapSet
 trigger1 		= movehit && map(ComboStateCheck)
 map 			= "P2"
-value 		= 0.85	;85% DMG For next hit
+value 		= 0.90	;85% DMG For next hit
 ignorehitpause = 1
 persistent 	= 0
 [State -2, P2 Accumulation - Scale]
@@ -996,7 +996,7 @@ ignorehitpause 	= 1
 type 		= MapSet
 trigger1 		= movehit && map(ComboStateCheck)
 map 			= "P2"
-value 		= 0.95	;95% DMG For next hit
+value 		= 0.85	;95% DMG For next hit
 ignorehitpause 	= 1
 persistent = 0
 [State -2, P2 Accumulation - Scale]
@@ -1021,7 +1021,7 @@ type 	= HitDef
 p2facing 	= 1
 trigger1 	=  !movecontact && !movereversed
 attr 		= C, NA
-damage 		= 100 * map(P4), 0
+damage 		= 80 * map(P4), 0
 animtype  	= Hard
 hitflag 		= MAF
 guardflag 	= L
@@ -1167,7 +1167,7 @@ ignorehitpause 	= 1
 type 		= MapSet
 trigger1 		= movehit && map(ComboStateCheck)
 map 			= "P2"
-value 		= 0.70	;70% DMG For next hit
+value 		= 0.80	;70% DMG For next hit
 ignorehitpause 	= 1
 persistent = 0
 [State -2, P2 Accumulation - Scale]
@@ -1183,7 +1183,7 @@ type = HitDef
 p2facing = 1
 trigger1 = !MoveContact && !MoveReversed
 attr = A, NA
-damage 		= 50*map(P4) + 5
+damage 		= 45*map(P4) + 5
 hitflag 		= MAF
 guardflag 	= H
 pausetime 	= 8,8 + 2 * (enemy, movetype = A)
@@ -1229,30 +1229,23 @@ sprpriority 	= 2
 velset 		= vel x, vel y
 facep2 		= 0
 
-[State -2, Starter Level]
-type 		= MapSet
-trigger1 		= movehit && !map(ComboStateCheck)
-map 		= "StarterLevel"
-value 		= 2
-ignorehitpause 	= 1
-
 [State -2, P1 Value Set]
 type 		= MapSet
 trigger1 		= movehit && !map(ComboStateCheck)
-map 		= "P1"
+map 			= "P1"
 value 		= 0.88	;100% Starting DMG
 ignorehitpause 	= 1
 [State -2, P2 Value Set]
 type 		= MapSet
 trigger1 		= movehit && !map(ComboStateCheck)
-map 		= "P2"
+map 			= "P2"
 value 		= 0.85	;85% DMG For next hit
 ignorehitpause 	= 1
 persistent = 0
 [State -2, P2 Accumulation - Scale]
 type 		= MapSet
 trigger1 		= movehit
-map 		= "Accumulation"
+map 			= "Accumulation"
 value 		= Map(Accumulation) * map(P2)
 ignorehitpause 	= 1
 persistent 		= 0
@@ -1263,7 +1256,7 @@ p2facing 	= 1
 trigger1 	= !movecontact && !MoveReversed
 hitonce 	= 1
 attr 	= A, NA
-damage 	= 50 * MAP(P4)
+damage 	= 65 * MAP(P4)
 hitflag 	= MAF
 guardflag 	= H
 pausetime 	= 12,12 + 2 * (enemy, movetype = A)
@@ -1328,24 +1321,17 @@ type = PlaySnd
 trigger1 = animelem = 5
 value = 0, 0
 
-[State -2, Starter Level]
-type 		= MapSet
-trigger1 		= movehit && !map(ComboStateCheck)
-map 			= "StarterLevel"
-value 		= 3	;Heavy Starter
-ignorehitpause 	= 1
-
 [State -2, P1 Value Set]
 type 		= MapSet
 trigger1 		= movehit && !map(ComboStateCheck)
-map 		= "P1"
-value 		= 0.95	;100% Starting DMG
+map 			= "P1"
+value 		= 1	;100% Starting DMG
 ignorehitpause 	= 1
 [State -2, P2 Value Set]
 type 		= MapSet
 trigger1 		= movehit && !map(ComboStateCheck)
-map 		= "P2"
-value 		= 0.87	;85% DMG For next hit
+map 			= "P2"
+value 		= 0.90	;85% DMG For next hit
 ignorehitpause 	= 1
 persistent = 0
 [State -2, P2 Accumulation - Scale]

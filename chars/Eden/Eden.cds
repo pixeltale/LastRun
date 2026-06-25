@@ -280,14 +280,14 @@ trigger1 = var(1)
 [State -1, Standing Deadzone]
 type = ChangeState
 value = 700
-triggerall = command = "D"
+triggerall = command = "B" && command = "C"
 triggerall = statetype != A
 trigger1 = ctrl
 ;jBC
 [State -1, Aerial Deadzone]
 type = ChangeState
 value = 710
-triggerall = command = "D"
+triggerall = command = "B" && command = "C"
 triggerall = statetype = A
 trigger1 = ctrl
 

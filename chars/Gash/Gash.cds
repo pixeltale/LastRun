@@ -36,6 +36,7 @@ var(1) = 1
 ignorehitpause = 1
 [State -1, Super Cancel Special Attacks]
 type = VarSet
+triggerall = stateno != 2251
 trigger1 = var(1)
 trigger2 = stateno = [1000,3000) && MoveContact
 trigger3 = (stateno = [1000, 1001] || stateno = 2000 ) && animelemno(0) > 3
@@ -278,14 +279,14 @@ trigger1 = var(1)
 [State -1, Standing Deadzone]
 type = ChangeState
 value = 700
-triggerall = command = "D"
+triggerall = command = "B" && command = "C"
 triggerall = statetype != A
 trigger1 = ctrl
 ;jBC
 [State -1, Aerial Deadzone]
 type = ChangeState
 value = 710
-triggerall = command = "D"
+triggerall = command = "B" && command = "C"
 triggerall = statetype = A
 trigger1 = ctrl
 

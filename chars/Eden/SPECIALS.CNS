@@ -2147,17 +2147,13 @@ removeongethit = 0
 
 [State 0, VelAdd]
 type = PosAdd
-trigger1 = animelem = 4
-x = 20
+trigger1 = animelemno(0) = 4
+x = 25
 
 [State 0, VelAdd]
-type = PosAdd
-trigger1 = animelem = 4
-x = 10
-[State 0, VelAdd]
 type = VelSet
-trigger1 = animelem = 5
-x = 35
+trigger1 = animelemno(0) = 5
+x = 20
 [State 0, VelAdd]
 type = VelSet
 trigger1 = animelem = 6

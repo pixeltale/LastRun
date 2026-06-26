@@ -2995,7 +2995,7 @@ TO.displaytime = 70
 TO.snd     = 2,2
 KO.sndtime = 0           ;Time to play sound for KO, DKO and TO.
 
-slow.time = 60             ;Total KO slowdown length (in ticks)
+slow.time = 0             ;Total KO slowdown length (in ticks)
 slow.fadetime = 45         ;KO slowdown fade length (default: 75% of slow.time)
 slow.speed = 0.25          ;KO slowdown game speed adjustment (default: 0.25)
 

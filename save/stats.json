@@ -7,9 +7,9 @@
     },
     "netplayversus": {
       "playtime": 5037.17,
-      "clear": 125
-    ,"clearcount":{"eden":114,"gash":11}}
-  }
+      "clear": 126
+    ,"clearcount":{"eden":115,"gash":11}}
+  ,"versus":{"playtime":0,"clear":1,"clearcount":{"eden":1}}}
 }arcount": {
         "eden": 1
       }

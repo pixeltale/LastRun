@@ -2226,7 +2226,7 @@ sprpriority = 2
 
 [State 0, MapSet] 
 type = MapSet
-trigger1 = 1
+trigger1 = time >= 8
 map = "ForceRetribution"
 value = 1
 
@@ -2365,7 +2365,7 @@ sprpriority = 2
 
 [State 0, MapSet] 
 type = MapSet
-trigger1 = 1
+trigger1 = time >= 8
 map = "ForceRetribution"
 value = 1
 [State -1, Standing Parry]
@@ -6970,13 +6970,14 @@ value = 0
 
 [State 0, MapSet] 
 type = MapSet
-trigger1 = map(ForceRetribution) = 1
+trigger1 = map(ForceRetribution) = 1 && time = 1
 map = "ForceRetribution"
 value = 0
 
 [State -2, Retribution]
 type = MapSet
-trigger1 = map(PunishCheck) = 1
+trigger1 = map(PunishCheck) = 1 
+trigger2 = map(ForceRetribution) = 1
 map = "Retribution"
 value = 1
 ignorehitpause = 1

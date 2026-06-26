@@ -2257,7 +2257,7 @@ ctrl = 1
 
 ;---------------------------------------------------------------------------
 ;Parry Success
-[Statedef 905] ;Redline guard success
+[Statedef 905]
 type    = S
 movetype= I
 physics = S
@@ -2288,7 +2288,7 @@ ignorehitpause = 1
 
 [State 0, Mapadd]
 type 		= MapAdd
-trigger1 	    = !time
+trigger1 	    = P2, movehitvar(FRAME)
 map 		    = "Pursuit"
 value 		    = 50
 ignorehitpause 	= 1
@@ -2296,7 +2296,7 @@ persistent 		= 1
 [State 0, Mapadd]
 type 		= MapAdd
 triggerall      = gethitvar(attr) != SCA,NP, SP, HP
-trigger1 	    = !time
+trigger1 	    = P2, movehitvar(FRAME)
 map 		    = "Pursuit"
 value 		    = -50
 ignorehitpause 	= 1
@@ -2380,8 +2380,8 @@ time = 8
 [State 1000, 7]
 type = ChangeState
 trigger1 = AnimTime = 0
-value = 50
-ctrl = 1
+value = 51
+ctrl = 0
 
 ;---------------------------------------------------------------------------
 ;Red Guard - Success (Air)
@@ -2390,10 +2390,18 @@ type    = A
 movetype= I
 physics = A
 poweradd= 100
-velset = vel x, -3 
+velset = vel x, 0
 anim = 910
 ctrl = 0
 sprpriority = 2
+
+[State 5100, 11]
+type = PosFreeze
+trigger1 = time <= 10
+[State 700, VelAdd]
+type = VelSet
+trigger1 = time = 10
+y = -3
 
 [State 700, VelAdd]
 type = VelAdd
@@ -5346,16 +5354,6 @@ trigger1 = HitShakeOver
 y = map(pos_y)
 ignorehitpause = 1
 
-[State 0, Zoom]
-type = zoom
-trigger1 = !hitshakeover
-scale = 1.25
-lag = 0.65
-stagebound = 1
-camerabound = 0
-pos = pos x - 20, (map(Pos_y) - 10) * 0.5
-ignorehitpause = 1
-
 [State 5220, State]
 type = SelfState
 trigger1 = HitShakeOver = 1
@@ -5367,14 +5365,6 @@ value = 5301
 type    = A
 movetype= H
 physics = N
-
-[State 0, ScreenBound]
-type = ScreenBound
-trigger1 = enemy, abs(camerapos x) < 435
-trigger1 = enemy, facing * camerapos x < 0
-value = 0
-movecamera = 0,0
-redirectid = enemy, id
 
 [State 5301 VelSet]
 type = velset
@@ -5551,6 +5541,23 @@ value = 190
 type = ChangeState
 trigger1 = 1
 value = 0
+
+;----------------------
+;Projectile Disspate
+[Statedef 999]
+type    		= U
+movetype		= A
+physics 		= N
+velset 		= 4, 0
+ctrl 		= 0
+anim 		= -1
+facep2 		= 0
+poweradd 		= 0
+sprpriority 	= 10
+
+[State 200, 3]
+type = DestroySelf
+trigger1 = time = 1
 
 
 [Statedef -1] ;Common CMD actions. Mostly utilized for system mechanics and universal actions.
@@ -7021,11 +7028,21 @@ ignorehitpause = 1
 ;Retribution Activation Slowdown
 [State 0, Mapadd]
 type 		    = MapAdd
-trigger1 	    = map(PunishCheck) && movehit = 1
+triggerall      = movehitvar(overridden) = 0
+trigger1 	    = map(PunishCheck) && movehitvar(Frame)
 map 		    = "Pursuit"
-value 		    = 25
+value 		    = 333
 ignorehitpause 	= 1
 persistent 		= 0
+[State 0, Mapadd]
+type 		    = MapAdd
+triggerall      = movehitvar(overridden) = 0
+trigger1 	    = map(PunishCheck) && movehitvar(Frame)
+map 		    = "Pursuit"
+value 		    = -166
+ignorehitpause 	= 1
+persistent 		= 0
+redirectid      = P2, ID
 [State 0, Mapadd]
 type 		= MapAdd
 trigger1 	    = map(Slowdowntime)

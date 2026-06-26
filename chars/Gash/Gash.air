@@ -1730,6 +1730,17 @@ Clsn2Default: 1
 3005,1, 0,0, 2
 3005,2, 0,0, 2
 
+; Dissipate
+[Begin Action 3206]
+Interpolate Scale
+Interpolate Blend
+Interpolate Offset
+3005,0, 0,0, 20, , AS256D0
+Interpolate Scale
+Interpolate Blend
+Interpolate Offset
+3005,2, 14,54, 2, , AS0D256, 0.05,1.5
+
 ; Air Dicer
 [Begin Action 3210]
 Clsn2: 3
@@ -1776,6 +1787,19 @@ Clsn2Default: 1
 3005,0, -40,0, 2, , , 1,1, 320
 3005,1, -40,0, 2, , , 1,1, 320
 3005,2, -40,0, 2, , , 1,1, 320
+
+; Dissipate
+[Begin Action 3216]
+Interpolate Blend
+Interpolate Offset
+Interpolate Scale
+Interpolate Angle
+3005,0, -40,0, 20, , AS256D0, 1,1, 320
+Interpolate Blend
+Interpolate Offset
+Interpolate Scale
+Interpolate Angle
+3005,1, -70,20, 2, , AS0D256, 0.05,1.55, 270
 
 ; Termina Activation
 [Begin Action 4000]

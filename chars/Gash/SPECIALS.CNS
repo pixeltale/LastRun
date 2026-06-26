@@ -787,7 +787,7 @@ guardsound 			= 6,0
 ground.hittime 		= 20
 air.hittime 			= 99
 down.hittime 			= 99
-ground.velocity 		= -2, -8
+ground.velocity 		= -2, -8 / map(JuggleScale)
 air.velocity 			= -2, -4 / map(JuggleScale)
 ;===============================
 guard.ctrltime 		= 18
@@ -2755,6 +2755,7 @@ envshake.phase 	= 1
 getpower 			= 0
 p2stateno			= 5300
 p2getp1state		= 0
+missonoverride		= 0
 
 [State 0, Custom Afterimage]
 type = Explod
@@ -2964,7 +2965,7 @@ p2defmul = 0
 [State 0, Helper]
 type = Helper
 trigger1 = animelem = 3
-helpertype = Normal ;Player
+helpertype = Projectile
 name = "SHINKU DICER"
 ID = 3205
 stateno = 3205
@@ -3014,12 +3015,27 @@ type = VelAdd
 trigger1 = 1
 x = 2
 
+;[State 0, AssertSpecial]
+;type = AssertSpecial
+;trigger1 = 1
+;flag = Runlast
+;ignorehitpause = 1
 
-[State 200, 1]
-type = HitDef 
-trigger1 	= target, ishelper = 0
-trigger1 	= enemy, gethitvar(chainid) != 2016
+[State 200, 1]	;Delete Other Projectiles
+type = HitDef
+trigger1 = !ClsnOverlap(clsn1, p2,ID, clsn2)
 attr = SCA, SP, HP
+damage 		= 0, 0
+guardflag 	= M
+hitflag 		= MAFD
+pausetime 		= 0, 0
+sparkno			= -1
+id				= 222
+[State 200, 1]
+type = HitDef
+trigger1 = ClsnOverlap(clsn1, p2,ID, clsn2)
+trigger1 	= enemy, gethitvar(chainid) != 2016
+attr 	= SCA, SP, HP
 damage 		= 200 * (root, map(P4)) + 100, 50
 animtype 		= light                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 air.animtype 	= back
@@ -3055,14 +3071,11 @@ getpower 			= 0
 missonoverride		= 0 
 id				= 2016
 
-[State 200, 1]	;Delete Other Projectiles
-type = HitDef 
-trigger1 	= target, ishelper
-attr = SCA, SP, HP
-damage 		= 1, 1
-guardflag 	= M
-hitflag 		= MAFD
-pausetime 		= 1, 1
+[State 0, HitAdd]
+type = HitAdd
+trigger1 = enemy, gethitvar(chainid) = 222
+value = -1
+ignorehitpause = 1
 
 [State 0, Custom Afterimage]
 type = Explod
@@ -3090,18 +3103,35 @@ palfx.sinmul = -255,-255,-255,160
 removeongethit = 0
 ignorehitpause = 1
 
-[State 0, ScreenBound]
-type = ScreenBound
-trigger1 = movehit
-value = 0
-movecamera = 0,0
-redirectid = root, id
+[State 0, VarSet]
+type = VarSet
+trigger1 = !time && prevstateno != 5000
+sysvar(1) = 0 
+[State 0, VarSet]
+type = VarAdd
+trigger1 = !time && gethitvar(attr) = , HP
+sysvar(1) = 1 
 
 [State 0, NotHitBy]
 type = NotHitBy
 trigger1 = 1
-value = SCA
+value = ,NA,SA,HA,NT,ST,HT
 time = 1
+
+[State 0, HitOverride]
+type = HitOverride
+trigger1 = 1
+attr = SCA,NP,SP
+slot = 1
+time = 10
+keepstate = 1
+[State 0, HitOverride]
+type = HitOverride
+trigger1 = 1
+attr = SCA,HP
+slot = 0
+stateno = 3206
+time = 10
 
 [State 0, AssertSpecial]
 type = AssertSpecial
@@ -3110,9 +3140,9 @@ flag = projtypecollision
 
 [State 200, 3]
 type = Changestate
-trigger1 = movecontact && enemy, gethitvar(chainid) = 2016 || frontedgebodydist < -14 || pos y >= 15
+trigger1 = enemy, gethitvar(chainid) = 2016 || frontedgebodydist < -14 || pos y >= 15 || sysvar(1) = 1
 trigger2 = root, movetype = H
-value = 2016
+value = 3206
 ignorehitpause = 1
 [State 0, DestroySelf]
 type = DestroySelf
@@ -3125,18 +3155,12 @@ ignorehitpause = 1
 type    		= U
 movetype		= A
 physics 		= N
-velset 		= 20
+velset 		= 2
 ctrl 		= 0
-anim 		= 3205 + 10*(vel y > 0)
+anim 		= 3206 + 10*(vel y > 0)
 facep2 		= 0
 poweradd 		= 0
 sprpriority 	= 10
-
-[State 0, Trans]
-type = Trans
-trigger1 = 1
-trans = Default     ;None, Add, AddAlpha, Add1, Sub
-alpha = 256 - time * 10, 256 - time * 10
 
 [State 0, NotHitBy]
 type = NotHitBy

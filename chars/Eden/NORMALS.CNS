@@ -1420,11 +1420,13 @@ getpower				= 200 * map(P4)
 
 [State 0, MapSet] 
 type = MapAdd
+triggerall = !movehitvar(Overridden)
 trigger1 = movecontact = 1 || movehit = 1
 map = "Pursuit"
 value = 50
 [State 0, MapSet] 
 type = MapAdd
+triggerall = !movehitvar(Overridden)
 triggerall = enemy, map(Pursuit.MAX) = 0
 trigger1 = movecontact = 1 || movehit = 1
 map = "Pursuit"
@@ -1529,11 +1531,13 @@ getpower				= 200 * map(P4)
 
 [State 0, MapSet] 
 type = MapAdd
+triggerall = !movehitvar(Overridden)
 trigger1 = movecontact = 1 || movehit = 1
 map = "Pursuit"
 value = 50
 [State 0, MapSet] 
 type = MapAdd
+triggerall = !movehitvar(Overridden)
 triggerall = enemy, map(Pursuit.MAX) = 0
 trigger1 = movecontact = 1 || movehit = 1
 map = "Pursuit"

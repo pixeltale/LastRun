@@ -112,7 +112,7 @@ type = ChangeState
 value = 3200
 triggerall = map(Super_Type) = 1
 triggerall = power >= 1000 || map(TERMINA.ACTIVE) > 0 && (var(2) || map(Termina.Time) > 1)
-triggerall = command = "236236BC"
+triggerall = command = "236236A" || command = "236236B" || command = "236236C"
 triggerall = statetype != A
 trigger1 = var(2) || stateno = [3000,3010] && (map(Pursuit) >= 666 || map(Termina.Active))
 
@@ -122,7 +122,7 @@ type = ChangeState
 value = 3100
 triggerall = map(Super_Type) = 2
 triggerall = power >= 1000 || map(TERMINA.ACTIVE) > 0 && (var(2) || map(Termina.Time) > 1)
-triggerall = command = "236236BC"
+triggerall = command = "236236A" || command = "236236B" || command = "236236C"
 triggerall = statetype != A
 trigger1 = var(2) || stateno = [3000,3010] && (map(Pursuit) >= 666 || map(Termina.Active))
 

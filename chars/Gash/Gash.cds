@@ -110,13 +110,13 @@ trigger1 = ctrl
 ;===========================================================================
 ;ALTERNATIVE SUPER ATTACKS
 ;===========================================================================
-;236236BC - Black Hole Sun
-[State -1, LASTRIDE A TYPE - TIMES ARE GONE FOR HONEST MEN]
+;236236X - RED HOT BLADE
+[State -1, LASTRIDE A TYPE - CUT THROUGH THE DARK, RIDE BLACK LIGHTNING]
 type = ChangeState
 value = 3200 + 10*(statetype=A)
 triggerall = map(Super_Type) = 1
 triggerall = power >= 1000 || map(TERMINA.ACTIVE) > 0 && (var(2) || map(Termina.Time) > 1)
-triggerall = command = "236236A" || command = "236236B" || command = "236236C"
+triggerall = command = "236236A" || command = "236236B" || command = "C"
 trigger1 = var(2) || stateno = [3000,3010] && (map(Pursuit) >= 666 || map(Termina.Active))
 
 ;236236BC - Piercing Black Truth

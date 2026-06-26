@@ -656,19 +656,19 @@ time = 20
 
 [Command]
 name = "632146A"
-command = ~$F, D, B, $F, a | ~a
+command = ~$F, D, $B, $F, a | ~a
 time = 25
 [Command]
 name = "632146B"
-command = ~$F, D, B, $F, b | ~b
+command = ~$F, D, $B, $F, b | ~b
 time = 25
 [Command]
 name = "632146C"
-command = ~$F, D, B, $F, c | ~c
+command = ~$F, D, $B, $F, c | ~c
 time = 25
 [Command]
 name = "632146D"
-command = ~$F, D, B, $F, d | ~d
+command = ~$F, D, $B, $F, d | ~d
 time = 25
 
 [Command]

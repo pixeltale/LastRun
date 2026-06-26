@@ -13,7 +13,7 @@ sprpriority 	= 2
 [State 0, Helper]
 type = Helper
 trigger1 = animelem = 3
-helpertype = Normal ;Player
+helpertype = Projectile ;Player
 name = "Fatal Introduction"
 ID = 1005
 stateno = 1005
@@ -45,7 +45,7 @@ sprpriority 	= 2
 [State 0, Helper]
 type = Helper
 trigger1 = animelem = 3
-helpertype = Normal ;Player
+helpertype = Projectile ;Player
 name = "Fatal Introduction"
 ID = 1005
 stateno = 1006
@@ -104,7 +104,7 @@ animtype 		= light                 ;Animation type: Light, Medium, Heavy, Back (
 air.animtype 	= back
 guardflag 	= M
 hitflag 		= MAF
-pausetime 		= 1, 1
+pausetime 		= 1, 5
 sparkno 			= 0
 sparkxy 			= -30, -59
 hitsound 			= 5, 1
@@ -196,7 +196,7 @@ animtype 		= light                 ;Animation type: Light, Medium, Heavy, Back (
 air.animtype 	= back
 guardflag 	= M
 hitflag 		= MAF
-pausetime 		= 1, 1
+pausetime 		= 1, 5
 sparkno 			= 0
 sparkxy 			= -30, -59
 hitsound 			= 5, 1
@@ -1064,7 +1064,7 @@ x = -5
 [State 0, Helper]
 type = Helper
 trigger1 = animelem = 3
-helpertype = Normal ;Player
+helpertype = Projectile ;Player
 name = "Fatal Introduction EX"
 ID = 2005
 stateno = 2005
@@ -1145,7 +1145,7 @@ sysvar(1) = 0
 type = VarAdd
 trigger1 = movereversed = 1
 trigger2 = movecontact = 1
-trigger3 = !time && gethitvar(attr) = SCA, AP
+trigger3 = !time && gethitvar(attr) = SCA, NP, SP
 sysvar(1) = 1 
 
 [State 0, DisplayToClipboard]
@@ -3092,7 +3092,7 @@ persistent 		= 0
 [State 200, 1]
 type = HitDef 
 trigger1 	= time % 2 = 0
-trigger1 	= sysvar(1) < 15
+trigger1 	= sysvar(1) < 10
 attr = SCA, SP, HP
 damage 		= 15 * (root, map(P4)), 10
 animtype 		= light                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
@@ -3159,7 +3159,7 @@ time = 10
 
 [State 200, 3]
 type = Changestate
-trigger1 = sysvar(1) = 15
+trigger1 = sysvar(1) = 10
 trigger2 = frontedgedist < -100
 value = 1007
 ignorehitpause = 1

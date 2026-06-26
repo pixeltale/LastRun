@@ -116,7 +116,7 @@ type = ChangeState
 value = 3200 + 10*(statetype=A)
 triggerall = map(Super_Type) = 1
 triggerall = power >= 1000 || map(TERMINA.ACTIVE) > 0 && (var(2) || map(Termina.Time) > 1)
-triggerall = command = "236236A" || command = "236236B" || command = "C"
+triggerall = command = "236236A" || command = "236236B" || command = "236236C"
 trigger1 = var(2) || stateno = [3000,3010] && (map(Pursuit) >= 666 || map(Termina.Active))
 
 ;236236BC - Piercing Black Truth

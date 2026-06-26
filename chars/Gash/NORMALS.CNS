@@ -589,7 +589,7 @@ persistent 		= 0
 type = Velset
 triggerall = enemy, BackEdgeBodyDist > 0
 trigger1 = animelemno(0) = [3,4]
-x = 4
+x = 6
 
 [State 0, JORMUNGANDR DEFAULT HITDEF]
 type 				= HitDef

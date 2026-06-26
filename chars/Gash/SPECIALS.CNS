@@ -2921,7 +2921,7 @@ velset 		= vel x, 0
 ctrl 		= 0
 anim 		= 3200
 facep2 		= 1
-poweradd 		= -1000
+poweradd 		= -1000 + 1000 * (map(Termina.Active) = 1)
 sprpriority 	= 2
 
 [State 0, MapSet] ;Set to 1 When done during termina
@@ -3183,8 +3183,29 @@ velset 		= vel x, vel y
 ctrl 		= 0
 anim 		= 3210
 facep2 		= 1
-poweradd 		= 0
+poweradd 		= -1000 + 1000 * (map(Termina.Active) = 1)
 sprpriority 	= 2
+
+[State 0, MapSet] ;Set to 1 When done during termina
+type = MapSet
+trigger1 = map(TERMINA.ACTIVE)
+map = "TERMINA.TIME"
+value = 1
+ignorehitpause = 0
+persistent = 1
+[State 0, MapSet] ;If canceled from super
+type = MapSet
+trigger1 = prevstateno = [3000,3010]
+map = "TERMINA.TIME"
+value = 0
+ignorehitpause = 0
+persistent = 1
+[State 0, MapSet]	;Spend pursuit when canceling
+type = MapAdd
+triggerall = !time
+trigger1 = prevstateno = [3000,3010]
+map = "Pursuit"
+value = -666
 
 [State 0, VelMul]
 type = VelMul

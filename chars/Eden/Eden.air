@@ -322,6 +322,13 @@ Clsn2Default: 3
 1010,6, 0,0, 2
 1010,8, 0,0, 999
 
+; Intro
+[Begin Action 191]
+11,2, 0,0, 15, H
+11,1, 0,0, 4, H
+11,0, 0,0, 4, H
+0,0, 0,0, 4
+
 ; Taunt
 [Begin Action 195]
 Clsn2Default: 2

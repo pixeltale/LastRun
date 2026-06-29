@@ -6925,13 +6925,13 @@ ignorehitpause = 0
 [State -3, QuoteValue]
 type = mapset
 triggerall = MatchOver
-trigger1 = enemy, name = "JV"
+trigger1 = enemy, name = "EDEN"
 map = "quoteNum"
 value = 1
 [State -3, QuoteValue]
 type = mapset
 triggerall = MatchOver
-trigger1 = enemy, name = "Lili"
+trigger1 = enemy, name = "GASH"
 map = "quoteNum"
 value = 2
 [State -3, QuoteValue]
@@ -6959,6 +6959,11 @@ trigger1 = MatchOver
 value = MAP(quoteNum)
 
 [statedef -4]
+
+[State 52, 3]
+type = CtrlSet
+trigger1 = roundstate = 0
+value = 0
 
 ;===============================================================================
 ; ------- Retribution --------

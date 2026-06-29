@@ -77,7 +77,8 @@ down.friction.threshold = .05         ;If the player's speed drops below this th
 hop.height = 0.65
 
 [Quotes]
-victory1 = "Its over..."
+victory1 = "Your technique is unrefined. You could never be me."
+victory2 = "As I am now, nobody can stop me. Not even you."
 
 ;---------------------------------------------------------------------------
 ; Variable usage:
@@ -142,12 +143,12 @@ value = 0
 
 [State 191, 2] ;Assert this until you want "round 1, fight" to begin
 type = AssertSpecial
-trigger1 = 1
+trigger1 = !time
 flag = Intro
 
 [State 191, 3] ;Change to stand state when done
 type = ChangeState
-trigger1 = AnimTime = 0
+trigger1 = time = 10
 value = 0
 
 [State 191, Snd 2]

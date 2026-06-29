@@ -2995,9 +2995,9 @@ TO.displaytime = 70
 TO.snd     = 2,2
 KO.sndtime = 0           ;Time to play sound for KO, DKO and TO.
 
-slow.time = 0             ;Total KO slowdown length (in ticks)
+slow.time = 0            ;Total KO slowdown length (in ticks)
 slow.fadetime = 45         ;KO slowdown fade length (default: 75% of slow.time)
-slow.speed = 0.25          ;KO slowdown game speed adjustment (default: 0.25)
+slow.speed = 0.02          ;KO slowdown game speed adjustment (default: 0.25)
 
 over.hittime = 10          ;Time after KO that players can still damage each other (for double KO)
 over.waittime = 45         ;Time to wait after KO before player control is stopped
@@ -3191,11 +3191,11 @@ p2.clutch.snd = 2, 7
 p2.clutch.sndtime = 125
 
 ; Fade
-fadein.time = 30           ;round start fade time (default: 30)
+fadein.time = 1           ;round start fade time (default: 30)
 fadein.col = 0, 0, 0       ;round start fade color (default: 0,0,0)
-fadeout.time = 30          ;round end fade time (default: 30, extends over.time if fadeout.time is longer)
+fadeout.time = 1        ;round end fade time (default: 30, extends over.time if fadeout.time is longer)
 fadeout.col = 0, 0, 0      ;round end fade color (default: 0,0,0)
-shutter.time = 15          ;skip intro fade time (default: 15, whole anim is twice as long)
+shutter.time = 0          ;skip intro fade time (default: 15, whole anim is twice as long)
 shutter.col = 0, 0, 0      ;skip intro fade color (default: 0,0,0)
 
 ; Animations

@@ -5588,12 +5588,12 @@ triggerall = statetype != A
 triggerall = movecontact = [1, 6] && !map(DC.OVERRIDE)
 trigger1 = (MAP(PURSUITCANCEL_NORMALS)|| MAP(PURSUITCANCEL_SPECIALS))
 
-[State -1, Grab] ;Throw
+[State -1, Grab] ;Throw Command
 type = ChangeState
 value = 800
 trigger1 = command = "Throw"
 trigger1 = statetype != A
-trigger1 = ctrl || (stateno = [200,230] && time < 2) && prevstateno != [200, 430]
+trigger1 = ctrl || (stateno = [200,230] && time < 3) && prevstateno != [200, 430]
 
 ;Air Raid
 [State -1, Super Jump Cancel]

@@ -24,7 +24,7 @@ type 		= MapSet
 trigger1 		= movehit && map(ComboStateCheck)
 trigger1		= prevstateno != 200 || prevstateno != 400
 map 			= "P2"
-value 		= 0.75	;85% DMG For next hit
+value 		= 0.80	;85% DMG For next hit
 ignorehitpause 	= 1
 persistent = 0
 [State -2, P2 Accumulation - Scale]
@@ -248,7 +248,7 @@ air.TYPE 				= High
 ;===============================
 sparkno 				= 2
 sparkxy 				= -p2dist x * 0.25, -60
-hitsound 				= 5,3
+hitsound 				= 5,2
 guardsound 			= 6,0
 ;===============================
 ground.hittime  			= 19
@@ -346,7 +346,7 @@ air.TYPE 				= High
 ;===============================
 sparkno 				= 2
 sparkxy 				= -p2dist x * 0.25, -60
-hitsound 				= 5,3
+hitsound 				= 5,2
 guardsound 			= 6,0
 ;===============================
 ground.hittime  		= 14
@@ -721,7 +721,7 @@ facep2 		= 1
 type 		= MapSet
 trigger1 		= movehit && !map(ComboStateCheck)
 map 			= "P1"
-value 		= 1.2	;100% Starting DMG
+value 		= 1	;100% Starting DMG
 ignorehitpause 	= 1
 [State -2, P2 Value Set]
 type 		= MapSet

@@ -1042,7 +1042,7 @@ buffer.time = 2
 name = "Throw"
 command = a+b
 time = 3
-buffer.time = 2
+buffer.time = 5
 
 [Command]
 name = "throwtech"

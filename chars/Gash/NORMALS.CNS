@@ -59,7 +59,7 @@ guardsound 			= 6,0
 ;===============================
 ground.hittime 		= 12
 ground.slidetime		= 12
-air.hittime 			= 12 + 10 * enemy, movetype = A
+air.hittime 			= 14
 down.hittime 			= 10
 ground.velocity 		= -5
 air.velocity 			= -2,-3 / map(JuggleScale)
@@ -75,8 +75,7 @@ down.cornerpush.veloff 	= -3
 guard.cornerpush.veloff 	= -3
 ;===============================
 fall 				= 0
-air.fall 				= 0
-forcenofall 			= 1
+air.fall 				= 1
 ;===============================
 envshake.time 			= 8
 envshake.freq 			= 8
@@ -771,8 +770,7 @@ down.cornerpush.veloff 	= -5
 guard.cornerpush.veloff 	= -5
 ;===============================
 fall 				= 0
-air.fall 				= 0
-forcenofall 			= 1
+air.fall 				= 1
 ;===============================
 envshake.time 			= 8
 envshake.freq 			= 8

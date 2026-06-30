@@ -8,6 +8,13 @@ velset = vel x, 0
 facep2 = 1
 ctrl = 1
 
+[State 5120, 5] ;Can't be thrown right after getting up
+type = NotHitBy
+trigger1 = prevstateno = 5120
+value = , NT,ST,HT
+time = 12
+ignorehitpause = 1
+
 [State 0, PosSet]
 type = PosSet
 trigger1 = !time
@@ -3491,13 +3498,6 @@ type = HitFallSet
 trigger1 = AnimTime = 0
 value = 1
 
-[State 5120, 5] ;Can't be thrown right after getting up
-type = NotHitBy
-trigger1 = AnimTime = 0
-value = , NT,ST,HT
-time = 12
-ignorehitpause = 1
-
 [State 5120, 7]
 type = ChangeState
 trigger1 = AnimTime = 0
@@ -3662,13 +3662,6 @@ type = NotHitBy
 trigger1 = 1
 value = SCA
 time = 1
-
-[State 5120, 5] ;Can't be thrown right after getting up
-type = NotHitBy
-trigger1 = AnimTime = 0
-value = , NT,ST,HT
-time = 12
-ignorehitpause = 1
 
 [State 5120, 6] ;Can't be hit right after getting up (short time)
 type = NotHitBy
@@ -6732,7 +6725,7 @@ value = 0
 [State 0, AttackDist]
 type = AttackDist
 trigger1 = 1
-value = 2
+value = 10
 ignorehitpause = 1
 persistent = 1
 

@@ -1037,6 +1037,13 @@ command = y
 time = 3
 buffer.time = 2
 
+;-| DEADZNE |-----------------------------------------------
+[Command]
+name = "DEADZONE"
+command = b+c
+time = 3
+buffer.time = 2
+
 ;-| Throws |-----------------------------------------------
 [Command]
 name = "Throw"

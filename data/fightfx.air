@@ -130,17 +130,19 @@ Interpolate Scale
 
 ; Strong ground shockwave
 [Begin Action 62]
-62,0, 0,0, 2, ,A1
-62,1, 0,0, 2, ,A1
-62,2, 0,0, 2, ,A1
-62,3, 0,0, 2, ,A1
-62,4, 0,0, 2, ,A1
-62,5, 0,0, 2, ,A1
-62,6, 0,0, 2, ,A
-62,7, 0,0, 2, ,A
-62,8, 0,0, 2, ,A
-62,9, 0,0, 2, ,A
-62,10, 0,0, 3, ,A
+62,0, 0,0, 2, , A, 0.75,2.5
+Interpolate Blend
+Interpolate Scale
+Interpolate Offset
+62,0, 0,0, 10, , A
+Interpolate Blend
+Interpolate Scale
+Interpolate Offset
+62,0, 0,0, 5, , AS256D0, 1.5,0.6
+Interpolate Blend
+Interpolate Scale
+Interpolate Offset
+62,3, 0,0, 2, , AS256D0, 1.85,0.05
 
 ;Light wall-hit shockwave
 [Begin Action 70]

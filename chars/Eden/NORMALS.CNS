@@ -1544,9 +1544,17 @@ value = -10
 ignorehitpause = 1
 redirectid = enemynear, id
 
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = movehit = 1 && P2, movetype = H
+value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+time = 99999
+redirectid = enemynear, id
+
+
 [State 0, ChangeState]
 type = ChangeState
-trigger1 =animtime = 0 
+trigger1 = animtime = 0 
 value = 50
 ctrl = 1
 
@@ -1554,4 +1562,120 @@ ctrl = 1
 type = ChangeState
 trigger1 = pos y>= 0
 value = 52
+ctrl = 1
+
+;---------------------------------------------------------------------------
+;Guard Cancel Deadzone
+[Statedef 715]
+type    		= S
+movetype	= A
+physics 		= S
+juggle  		= 0
+poweradd	= 0
+ctrl 		= 0
+velset 		= 0,0
+anim 		= 700
+sprpriority 	= 2
+facep2 		= 1
+
+[State 0, SuperPause]
+type = SuperPause
+trigger1 = !time
+time = 10
+movetime = 10
+anim = -1
+sound = -1
+pos = 0,0
+darken = 1
+p2defmul = 0
+poweradd = 0
+unhittable = 1
+
+[State 0, JORMUNGANDR DEFAULT HITDEF]
+type 				= HitDef
+trigger1 				= !movecontact && !movereversed
+;===============================
+damage 				= 0
+pausetime 			= 12,12 + 4 * (movecountered)
+getpower 				= 100 * map(P4)
+;===============================
+attr 				= S,NA
+hitflag 				= MAF
+guardflag 			= M
+animtype 				= Light
+air.animtype 			= Light
+ground.TYPE 			= high
+air.TYPE 				= high
+;===============================
+sparkno 				= 3
+sparkxy 				= -p2dist x * 0.25, -60
+hitsound 				= 5,3
+guardsound 			= 6,0
+;===============================
+ground.hittime  			= 999
+ground.slidetime			= 16
+ground.velocity 			= -8,-6
+air.hittime  			= 999
+air.velocity 			= -8,-6 / map(JuggleScale)
+down.velocity 			= -1,-5
+down.hittime 			= 30
+;===============================
+guard.ctrltime 			= 18
+guard.slidetime 			= 18
+guard.velocity 			= -10
+airguard.velocity 			= -2,-1
+;===============================
+ground.cornerpush.veloff		= -8
+air.cornerpush.veloff 		= -8
+down.cornerpush.veloff 		= -8
+guard.cornerpush.veloff 		= -8
+;===============================
+fall 				= 1
+air.fall 				= 1
+;===============================
+envshake.time 			= 15
+envshake.freq 			= 15
+envshake.ampl 			= 4
+envshake.phase 			= 0.5
+getpower				= 200 * map(P4)
+
+[State 0, MapSet] 
+type = MapAdd
+trigger1 = !time
+map = "Pursuit"
+value = -333
+[State 0, MapSet] 
+type = MapAdd
+triggerall = !movehitvar(Overridden)
+trigger1 = movehit = 1
+map = "Pursuit"
+value = -150
+ignorehitpause = 1
+redirectid = enemynear, id
+
+[State 0, VelAdd]
+type = PosAdd
+trigger1 = animelem = 2
+x = 5
+[State 0, VelAdd]
+type = PosAdd
+trigger1 = animelem = 3
+x = 20
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = movehit = 1 && P2, movetype = H
+value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+time = 60
+redirectid = P2, id
+
+[State 200, 2]
+type = PlaySnd
+trigger1 = animelem = 2
+value = 0, 4
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = animtime = 0
+value = 0
 ctrl = 1

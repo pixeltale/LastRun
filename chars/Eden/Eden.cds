@@ -274,24 +274,6 @@ trigger1 = var(1)
 
 
 ;===========================================================================
-;DEADZONE ATTACKS
-;===========================================================================
-;BC
-[State -1, Standing Deadzone]
-type = ChangeState
-value = 700
-triggerall = command = "B" && command = "C"
-triggerall = statetype != A
-trigger1 = ctrl
-;jBC
-[State -1, Aerial Deadzone]
-type = ChangeState
-value = 710
-triggerall = command = "B" && command = "C"
-triggerall = statetype = A
-trigger1 = ctrl
-
-;===========================================================================
 ;COMMAND NORMALS
 ;===========================================================================
 ;6C

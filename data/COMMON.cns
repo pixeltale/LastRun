@@ -5572,6 +5572,15 @@ triggerall = command = "TERMINA"
 triggerall = statetype != A && stateno < 3000 && movetype != H
 trigger1 = MAP(pursuit.MAX)
 
+[State -1, Pursuit Dash Cancel]
+type = ChangeState
+value = 100
+triggerall = command = "FF" && (map(Pursuit) >= 333 || map(TERMINA.ACTIVE))
+triggerall = statetype != A
+triggerall = movecontact = [1, 6] && !map(DC.OVERRIDE)
+trigger1 = (MAP(PURSUITCANCEL_NORMALS)|| MAP(PURSUITCANCEL_SPECIALS))
+
+
 ;PARRY
 [State -1, PARRY]
 type = ChangeState
@@ -5580,13 +5589,6 @@ triggerall = command = "D" || (prevstateno = 5120 || stateno = 140) && command =
 trigger1 = ctrl || stateno = [120,155] && map(IBCheck) && time > 0
 ignorehitpause = 1
 
-[State -1, Pursuit Dash Cancel]
-type = ChangeState
-value = 100
-triggerall = command = "FF" && (map(Pursuit) >= 333 || map(TERMINA.ACTIVE))
-triggerall = statetype != A
-triggerall = movecontact = [1, 6] && !map(DC.OVERRIDE)
-trigger1 = (MAP(PURSUITCANCEL_NORMALS)|| MAP(PURSUITCANCEL_SPECIALS))
 
 [State -1, Grab] ;Throw Command
 type = ChangeState
@@ -5602,6 +5604,32 @@ value = 55
 triggerall = statetype != A
 triggerall = command = "holdup" || command = "up"
 trigger1 = Map(JC) && movehitvar(overridden) = 0
+
+
+;===========================================================================
+;DEADZONE ATTACKS
+;BC
+[State -1, Standing Deadzone]
+type = ChangeState
+value = 700
+triggerall = command = "DEADZONE"
+triggerall = statetype != A
+trigger1 = ctrl || (stateno = [200,230] && time < 3) && prevstateno != [200, 430]
+;jBC
+[State -1, Aerial Deadzone]
+type = ChangeState
+value = 710
+triggerall = command = "DEADZONE"
+triggerall = statetype = A
+trigger1 = ctrl || (stateno = [600,630] && time < 3) && prevstateno != [200, 430]
+;Guard Cancel BC
+[State -1, Guard Cancel Deadzone]
+type = ChangeState
+value = 715
+triggerall = command = "B" && command = "C"
+triggerall = statetype != A && map(Pursuit) >= 333
+trigger1 = stateno = [150,153]
+;===========================================================================
 
 
 ;==============================================================================
@@ -6976,7 +7004,7 @@ value = 1
 [State 0, MapSet] 
 type = MapSet
 trigger1 = enemy, time = 1
-trigger2 = combocount
+trigger2 = combocount || stateno = 715 ;Guard Cancel
 map = "PunishCheck"
 value = 0
 

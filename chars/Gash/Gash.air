@@ -179,6 +179,7 @@ LoopStart
 Clsn2Default: 1
   Clsn2[0] = -52, -105, 60, -8
 100,0, 0,0, 4
+100,1, 0,0, 4
 
 ; Runstop
 [Begin Action 101]

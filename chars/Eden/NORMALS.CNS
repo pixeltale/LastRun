@@ -53,7 +53,7 @@ ground.TYPE 			= High
 air.TYPE 				= High
 ;===============================
 sparkno 				= 1
-sparkxy 				= -p2dist x * 0.25, -50
+sparkxy 				= -p2dist x * 0.25, -110
 hitsound 				= 5,0
 guardsound 			= 6,0
 ;===============================
@@ -148,7 +148,7 @@ ground.TYPE 			= High
 air.TYPE 				= High
 ;===============================
 sparkno 				= 1
-sparkxy 				= -p2dist x * 0.25, -50
+sparkxy 				= -p2dist x * 0.25, -90 - 30*(ANIMELEM=4)
 hitsound 				= 5,1
 guardsound 			= 6,0
 ;===============================
@@ -247,7 +247,7 @@ ground.TYPE 			= High
 air.TYPE 				= High
 ;===============================
 sparkno 				= 2
-sparkxy 				= -p2dist x * 0.25, -60
+sparkxy 				= -p2dist x * 0.25, -100
 hitsound 				= 5,2
 guardsound 			= 6,0
 ;===============================
@@ -458,7 +458,7 @@ hitflag 		= MAF
 guardflag 	= H
 pausetime 	= 8,8 + 2 * (enemy, movetype = A)
 sparkno 		= 2
-sparkxy 		= -15,-60
+sparkxy 		= -15,-110
 hitsound   	= 5,0
 guardsound 			= 6,0
 ground.slidetime 	= 12
@@ -635,7 +635,7 @@ hitflag 		= MAF
 guardflag 	= M
 pausetime 	= 6,6 + 2 * (enemy, movetype = A)
 sparkno 		= 2
-sparkxy 		= -15,-60
+sparkxy 		= -15,-110
 hitsound   	= 5,0
 guardsound 			= 6,0
 ground.slidetime 	= 12
@@ -871,7 +871,7 @@ air.TYPE 				= High
 p2facing				= 1
 ;===============================
 sparkno 				= 1
-sparkxy 				= -p2dist x * 0.25, -50
+sparkxy 				= -p2dist x * 0.25, -60
 hitsound 				= 5,0
 guardsound 			= 6,0
 ;===============================
@@ -963,7 +963,7 @@ air.animtype 	= back
 hitflag 		= MAFD
 guardflag 	= L
 pausetime 	= 12,12 + 2 * (enemy, movetype = A)
-sparkxy 		= -15,-33
+sparkxy 		= -15,-5
 sparkno 		= 1
 hitsound   	= 5,2
 guardsound 		= 6,0
@@ -1207,13 +1207,12 @@ persistent 		= 0
 type = HitDef 
 p2facing 	= 1
 trigger1 	= !movecontact && !MoveReversed
-hitonce 	= 1
 attr 	= A, NA
 damage 	= 50 * MAP(P4)
 hitflag 	= MAF
 guardflag 	= H
 pausetime 	= 12,12 + 2 * (enemy, movetype = A)
-sparkno 		= 3
+sparkno 		= 1
 sparkxy 		= -5,-35
 hitsound   	= 5,3
 guardsound 			= 6,0
@@ -1305,7 +1304,7 @@ damage 	= 70 * MAP(P4)
 hitflag 	= MAF
 guardflag 	= H
 pausetime 	= 14,14 + 4 * (enemy, movetype = A)
-sparkno 		= 3
+sparkno 		= 2
 sparkxy 		= -5,-35
 hitsound   	= 5,3
 guardsound 			= 6,0
@@ -1386,7 +1385,7 @@ air.animtype 			= Light
 ground.TYPE 			= high
 air.TYPE 				= high
 ;===============================
-sparkno 				= 2
+sparkno 				= 3
 sparkxy 				= -p2dist x * 0.25, -60
 hitsound 				= 5,3
 guardsound 			= 6,0

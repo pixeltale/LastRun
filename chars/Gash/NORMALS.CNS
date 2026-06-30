@@ -53,7 +53,7 @@ ground.TYPE 			= High
 air.TYPE 				= High
 ;===============================
 sparkno 				= 1
-sparkxy 				= -p2dist x * 0.25, -50
+sparkxy 				= 0, -80
 hitsound 				= 5,0
 guardsound 			= 6,0
 ;===============================
@@ -148,7 +148,7 @@ ground.TYPE 			= High
 air.TYPE 				= High
 ;===============================
 sparkno 				= 1
-sparkxy 				= -p2dist x * 0.25, -50
+sparkxy 				= 0, -85
 hitsound 				= 5,1
 guardsound 			= 6,0
 ;===============================
@@ -252,7 +252,7 @@ ground.TYPE 			= High
 air.TYPE 				= High
 ;===============================
 sparkno 				= 2
-sparkxy 				= -p2dist x * 0.25, -60
+sparkxy 				= -p2dist x * 0.25, -90 - 30*(ANIMELEM=4)
 hitsound 				= 5,3
 guardsound 			= 6,0
 ;===============================
@@ -350,7 +350,7 @@ ground.TYPE 			= High
 air.TYPE 				= High
 ;===============================
 sparkno 				= 2
-sparkxy 				= -p2dist x * 0.25, -60
+sparkxy 				= 0, -100
 hitsound 				= 5,3
 guardsound 			= 6,0
 ;===============================
@@ -463,7 +463,7 @@ ground.TYPE 			= High
 air.TYPE 				= High
 ;===============================
 sparkno 				= 1
-sparkxy 				= -p2dist x * 0.25, -50
+sparkxy 				= -p2dist x * 0.25, -120
 hitsound 				= 5,1
 guardsound 			= 6,0
 ;===============================
@@ -509,7 +509,7 @@ ground.TYPE 			= High
 air.TYPE 				= High
 ;===============================
 sparkno 				= 1
-sparkxy 				= -p2dist x * 0.25, -50
+sparkxy 				= -p2dist x * 0.25, -120
 hitsound 				= 5,1
 guardsound 			= 6,0
 ;===============================
@@ -609,7 +609,7 @@ ground.TYPE 			= High
 air.TYPE 				= High
 ;===============================
 sparkno 				= 1
-sparkxy 				= -p2dist x * 0.25, -50
+sparkxy 				= -p2dist x * 0.25, -120
 hitsound 				= 5,1
 guardsound 			= 6,0
 ;===============================
@@ -655,7 +655,7 @@ ground.TYPE 			= High
 air.TYPE 				= High
 ;===============================
 sparkno 				= 1
-sparkxy 				= -p2dist x * 0.25, -50
+sparkxy 				= -p2dist x * 0.25, -120
 hitsound 				= 5,1
 guardsound 			= 6,0
 ;===============================
@@ -749,7 +749,7 @@ air.TYPE 				= High
 p2facing				= 1
 ;===============================
 sparkno 				= 1
-sparkxy 				= -p2dist x * 0.25, -50
+sparkxy 				= 0, 0
 hitsound 				= 5,0
 guardsound 			= 6,0
 ;===============================
@@ -841,7 +841,7 @@ air.animtype 	= back
 hitflag 		= MAFD
 guardflag 	= M
 pausetime 	= 12,12 + 2 * (enemy, movetype = A)
-sparkxy 		= -15,-33
+sparkxy 		= -15,-60
 sparkno 		= 1
 hitsound   	= 5,2
 guardsound 		= 6,0
@@ -937,7 +937,7 @@ ground.TYPE 			= High
 air.TYPE 				= High
 ;===============================
 sparkno 				= 2
-sparkxy 				= -p2dist x * 0.25, -60
+sparkxy 				= -p2dist x * 0.25, -80
 hitsound 				= 5,3
 guardsound 			= 6,0
 ;===============================
@@ -1027,7 +1027,7 @@ hitflag 		= MAF
 guardflag 	= L
 pausetime 	= 14,14 + 4 * (enemy, movetype = A)
 sparkno 		= 2
-sparkxy 		= -10,-8
+sparkxy 		= 0,0
 hitsound   	= 5,2
 guardsound 			= 6,0
 air.type		= LOW
@@ -1112,7 +1112,7 @@ hitflag 		= MAFD
 guardflag 	= L
 pausetime 	= 14,14 + 4 * (enemy, movetype = A)
 sparkno 		= 2
-sparkxy 		= -10,-8
+sparkxy 		= 0,0
 hitsound   	= 5,2
 guardsound 			= 6,0
 air.type		= LOW

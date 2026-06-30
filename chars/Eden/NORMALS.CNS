@@ -1566,10 +1566,10 @@ ctrl = 1
 ;Guard Cancel Deadzone
 [Statedef 715]
 type    		= S
-movetype	= A
+movetype		= A
 physics 		= S
 juggle  		= 0
-poweradd	= 0
+poweradd		= -500
 ctrl 		= 0
 velset 		= 0,0
 anim 		= 700
@@ -1637,11 +1637,6 @@ envshake.ampl 			= 4
 envshake.phase 			= 0.5
 getpower				= 200 * map(P4)
 
-[State 0, MapSet] 
-type = MapAdd
-trigger1 = !time
-map = "Pursuit"
-value = -333
 [State 0, MapSet] 
 type = MapAdd
 triggerall = !movehitvar(Overridden)

@@ -5627,7 +5627,7 @@ trigger1 = ctrl || (stateno = [600,630] && time < 3) && prevstateno != [200, 430
 type = ChangeState
 value = 715
 triggerall = command = "B" && command = "C"
-triggerall = statetype != A && map(Pursuit) >= 333
+triggerall = statetype != A && power >= 500
 trigger1 = stateno = [150,153]
 ;===========================================================================
 

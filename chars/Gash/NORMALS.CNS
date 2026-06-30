@@ -1670,11 +1670,6 @@ getpower				= 200 * map(P4)
 
 [State 0, MapSet] 
 type = MapAdd
-trigger1 = !time
-map = "Pursuit"
-value = -333
-[State 0, MapSet] 
-type = MapAdd
 triggerall = !movehitvar(Overridden)
 trigger1 = movehit = 1
 map = "Pursuit"

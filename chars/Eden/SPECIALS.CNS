@@ -288,6 +288,11 @@ type 		= VarSet
 trigger1 		= time = 10 && movecontact
 sysvar(1) 	= 0		
 
+[State Test]
+type = Height
+trigger1 = movecontact
+trigger1 = statetype = A
+value = -30, 50
 
 [State 0, StateTypeSet]
 type 		= StateTypeSet

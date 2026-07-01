@@ -2373,6 +2373,13 @@ triggerall = !time
 trigger1 = prevstateno = [1000, 4000)
 map = "Pursuit"
 value = -333
+[State 0, MapSet]		;Spend pursuit when canceling
+type = MapSet
+trigger1 = 1
+map = "PunishCheck"
+value = 1
+redirectid = P2, ID
+
 
 [State 0, StateTypeSet];If Done Midair
 type 		= StateTypeSet
@@ -2617,6 +2624,7 @@ ignorehitpause = 1
 [State 430, 2]
 type 	= HitDef 
 p2facing 	= 1
+trigger1 = !map(Retribution)
 trigger1 	=  !movecontact && !movereversed
 attr 		= C, NA
 damage 		= 90 * map(P4) + (4*time) * (P2, gethitvar(chainid) = 2), 0
@@ -2649,6 +2657,66 @@ envshake.freq 			= 15
 envshake.ampl 			= 4
 envshake.phase 		= 0.5
 getpower 			= 150 * map(P4)
+
+[State 430, 2]
+type 	= HitDef 
+p2facing 	= 1
+trigger1 = map(Retribution)
+trigger1 	=  !movecontact && !movereversed
+attr 		= C, NA
+damage 		= 120 * map(P4) + (4*time) * (P2, gethitvar(chainid) = 2), 0
+animtype  	= diagup
+hitflag 		= MAFD
+guardflag 	= 
+pausetime 	= 14,18
+sparkno 		= 3
+sparkxy 		= -10,-8
+hitsound   	= 5,4
+guardsound 			= 6,0
+air.type		= TRIP
+ground.type 	= TRIP
+ground.slidetime 	= 25
+ground.hittime  	= 31
+air.hittime  		= 99
+down.hittime 		= 31
+ground.velocity 	= -2,-1
+guard.velocity		= -8
+fall 			= 1
+air.velocity 		= -1,15
+fall.yvelocity 		= 0
+down.velocity 		= -2,-7
+down.hittime 		= 999
+guard.ctrltime 		= 14
+guard.cornerpush.veloff 	= -6
+;===============================
+envshake.time 			= 15
+envshake.freq 			= 15
+envshake.ampl 			= 4
+envshake.phase 		= 0.5
+p2stateno       		= 5255
+p2getp1state    		= 0
+getpower 			= 200
+id = 5255
+
+;RETRIBUTION ---------------------------------------+
+[State 0, Zoom]
+type = zoom
+trigger1 = movehit && enemy,gethitvar(chainid) = 5255
+trigger1 = enemy,HitShakeOver = 0
+scale = 1.5
+lag = 0.5
+stagebound = 1
+camerabound = 0
+pos = enemy, pos x,-20
+ignorehitpause=1
+[State -2, Retribution Reset]
+type = MapSet
+trigger1 = movehit && enemy,gethitvar(chainid) = 5255
+map = "Retribution"
+value = 0
+ignorehitpause = 1
+persistent = 1
+;----------------------------------------------------+
 
 [State 200, 3]
 type = ChangeState

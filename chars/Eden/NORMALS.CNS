@@ -493,8 +493,8 @@ sparkno 		= 3
 sparkxy 		= -15,-60
 hitsound   	= 5,0
 guardsound 	= 6,0
-ground.slidetime 	= 12
-ground.hittime  	= 20 
+ground.slidetime 	= 23
+ground.hittime  	= 23 
 air.hittime  		= 20 
 down.hittime 		= 26 
 ground.velocity 	= -8,-0
@@ -549,6 +549,7 @@ air.cornerpush.veloff	= -5
 getpower 				= 75
 p2stateno       		= 5255
 p2getp1state    		= 0
+missonoverride			= 0
 id					= 5255
 
 [State 0, NotHitBy]
@@ -1367,8 +1368,17 @@ value 		= Map(Accumulation) * map(P2)
 ignorehitpause 	= 1
 persistent 		= 0
 
+[State 700, Deadzone Limiter]
+type 		= MapSet
+trigger1 		= movehit = 1
+map 			= "DeadzoneUsed"
+value 		= 1
+ignorehitpause 	= 1
+persistent 		= 0
+
 [State 0, JORMUNGANDR DEFAULT HITDEF]
 type 				= HitDef
+triggerall			= !map(DeadzoneUsed)
 trigger1 				= !movecontact && !movereversed
 ;===============================
 damage 				= 100 * map(P4)
@@ -1388,11 +1398,10 @@ sparkxy 				= -p2dist x * 0.25, -60
 hitsound 				= 5,3
 guardsound 			= 6,0
 ;===============================
-ground.hittime  			= 999
-ground.slidetime			= 16
-ground.velocity 			= -8,-6
-air.hittime  			= 999
-air.velocity 			= -8,-6 / map(JuggleScale)
+ground.hittime  		= 90
+ground.velocity 		= -25,-6
+air.hittime  			= 90
+air.velocity 			= -25,-6 / map(JuggleScale)
 down.velocity 			= -1,-5
 down.hittime 			= 30
 ;===============================
@@ -1414,6 +1423,59 @@ envshake.freq 			= 15
 envshake.ampl 			= 4
 envshake.phase 			= 0.5
 getpower				= 200 * map(P4)
+p2stateno				= 5235
+p2getp1state			= 0 
+missonoverride			= 0
+[State 0, JORMUNGANDR DEFAULT HITDEF]
+type 				= HitDef
+triggerall			= map(DeadzoneUsed)
+trigger1 				= !movecontact && !movereversed
+;===============================
+damage 				= 100 * map(P4)
+pausetime 			= 12,12 + 4 * (movecountered)
+getpower 				= 100 * map(P4)
+;===============================
+attr 				= S,NA
+hitflag 				= MAF
+guardflag 			= M
+animtype 				= Light
+air.animtype 			= Light
+ground.TYPE 			= high
+air.TYPE 				= high
+;===============================
+sparkno 				= 3
+sparkxy 				= -p2dist x * 0.25, -60
+hitsound 				= 5,3
+guardsound 			= 6,0
+;===============================
+ground.hittime  		= 90
+ground.velocity 		= -25,-6
+air.hittime  			= 90
+air.velocity 			= -25,-6 / map(JuggleScale)
+down.velocity 			= -1,-5
+down.hittime 			= 30
+;===============================
+guard.ctrltime 			= 18
+guard.slidetime 			= 18
+guard.velocity 			= -10
+airguard.velocity 			= -2,-1
+;===============================
+ground.cornerpush.veloff		= -8
+air.cornerpush.veloff 		= -8
+down.cornerpush.veloff 		= -8
+guard.cornerpush.veloff 		= -8
+;===============================
+fall 				= 1
+air.fall 				= 1
+;===============================
+envshake.time 			= 15
+envshake.freq 			= 15
+envshake.ampl 			= 4
+envshake.phase 			= 0.5
+getpower				= 200 * map(P4)
+p2stateno				= 5235
+p2getp1state			= 0 
+missonoverride			= 0
 
 [State 0, MapSet] 
 type = MapAdd

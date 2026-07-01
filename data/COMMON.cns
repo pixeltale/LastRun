@@ -461,7 +461,7 @@ facep2 = cond(Map(SJI) , 1, 0)
 [State 0, PosAdd]
 type = PosAdd
 trigger1 = !time
-y = -10
+y = -30
 
 [State 45, 2]
 type = ChangeAnim
@@ -2609,12 +2609,18 @@ trigger1 = pos y = 0
 y = 0
 [State 151, Vel]
 type = VelSet
+triggerall = prevstateno != 5238 ;wall crush
 trigger1 = !time
 x = gethitvar(xvel) * facing
 [State 5002, 4]
 type = VelSet
 trigger1 = HitOver
 x = 0
+
+[State Test]
+type = GetHitVarSet
+trigger1 = 1
+fall = 0
 
 ;[State 5002, 5]
 ;type = DefenceMulSet
@@ -4248,91 +4254,104 @@ type = PlaySnd
 trigger1 = Time = 0
 value = F7,0
 
-;------------------------------------------------------------
-;CORNER ONLY Wall Bounce Shake
+;------------------
+;Wall Crush Shake
 [Statedef 5235]
 type    = A
 movetype= H
 physics = N
 velset = 0,0
 
-[State 5220, Anim] ;Custom animation
+[State 5230, Anim]
 type = ChangeAnim2
 trigger1 = 1
-value = 5220
+value = 5240
 
-[State 5220, State]
+[State 1025, State]
 type = ChangeState
 trigger1 = HitShakeOver = 1
 value = 5236
 
-;---------------------------------------------------------------
-;CORNER ONLY Wall Bounce Fly
+;------------------
+;Wall Crush Fly
 [Statedef 5236]
 type    = A
 movetype= H
 physics = N
+anim    = 5240
 
-[State 5221 VelSet]
-type = velset
-trigger1 = Time = 0
-x = gethitvar(xvel)*cond(enemy,facing=facing,1,-1)*cond(facing=1,-1,1)
-y = gethitvar(yvel)
-
-[State 5221, Gravity]
+[State 5223, Gravity]
 type = VelAdd
 trigger1 = 1
-y = .45
+y = .4
 
-[State 5221, No scroll]
-type = ScreenBound
-triggerall = Pos y < -15
-trigger1 = BackEdgeBodyDist < 65
-trigger2 = FrontEdgeBodyDist < 65
-value = 1
-movecamera = 1,1
+[State 151, Vel]
+type = VelSet
+trigger1 = !time
+x = gethitvar(xvel) * facing
+y = gethitvar(yvel)
 
-[State 5221, Hit wall]
+[State 5231, Hit wall]
 type = ChangeState
-triggerall = Pos y < -15
-trigger1 = BackEdgeBodyDist <= 20
-trigger2 = FrontEdgeBodyDist <= 20
+triggerall = Pos y < -1
+trigger1 = BackEdgeBodyDist <= 1
+trigger2 = FrontEdgeBodyDist <= 1
 value = 5237
 
-[State 1026, Hit ground]
+[State 5232, Hit ground]
 type = SelfState
-trigger1 = (Vel y > 0) && (Pos y >= 0)
+trigger1 = (Vel y > -.1) && (Pos y >= 0)
 value = 5100
 
-;--------------------------------------------------
-;CORNER ONLY Wall Bounce Stick
+;------------------
+;Wall Crush Splat
 [Statedef 5237]
 type    = A
 movetype= H
 physics = N
+anim    = 5222
+velset  = 0, 0
 
-[State 5222, Turn]
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = animelem = 1
+x = -5 - BackEdgeBodyDist 
+
+[State 210, Width]
+type = Width
+trigger1 = AnimElemTime (1) >= 0
+player = 15,0
+
+[State 5232, Turn]
 type = Turn
 trigger1 = (Time = 0) && (FrontEdgeBodyDist <= 30)
 
-[State 5222, Pos]
-type = PosAdd
-trigger1 = Time = 0
-x = 15 - BackEdgeBodyDist
-
-[State 5222, Stop moving]
+[State 5232, Stop moving]
 type = PosFreeze
 trigger1 = 1
-x = 1
-y = 1
+x = 0
+y = 0
 
-[State 1027, No scroll]
+[State -2, Invul Setter]
+type 		= MapSet
+trigger1 		= time = 0
+map 			= "SuperOnly"
+value 		= prevstateno = 5301
+ignorehitpause 	= 1
+[State 5232, Only Hit By Supers]
+type = hitby
+trigger1 = map(SuperOnly)
+value = SCA,HA,HP,HT
+time = 1
+persistent = 1
+
+[State 5232, No scroll]
 type = ScreenBound
 trigger1 = 1
 value = 1
-movecamera = 1,1
+movecamera = 0,1
 
-[State 1027, Spark]
+[State 5232, Spark]
 type = Explod
 trigger1 = Time = 0
 anim = F72
@@ -4340,80 +4359,38 @@ pos = 0, floor (screenpos y) - 50
 postype = back
 sprpriority = 3
 
-[State 5222, Anim]
-type = ChangeAnim2
-trigger1 = Time = 0
-value = 5222
-
-[State 1027, Sound]
+[State 5232, Sound]
 type = PlaySnd
 trigger1 = Time = 0
 value = F7,0
 
-[State 5222, State]
+[State 1027, State]
 type = ChangeState
-trigger1 = AnimTime = 0
+trigger1 = Time = 2
 value = 5238
 
 ;------------------
-;CORNER ONLY Wall Bounce Off Wall
-; (a custom gethit state)
+;Midscreen Wall Crush Slide on Wall
 [Statedef 5238]
 type    = A
 movetype= H
 physics = N
 
-[State 5223, Vel Y]
+[State 0, VelSet]
 type = VelSet
-trigger1 = Time = 0
-y = -6
-
-[State 5223, Vel X]
-type = VelSet
-trigger1 = Time = 0
-x = 1.6
-
-[State 5223, Turn]
-type = Turn
-trigger1 = (Time = 0) && (BackEdgeDist < 30)
-
-[State 5223, Gravity]
-type = VelAdd
 trigger1 = 1
-y = .35
+x = 0
 
-[State 1028, Anim 5050] ;Self falling animation
-type = ChangeAnim
-trigger1 = Time = 0
-trigger1 = !SelfAnimExist(5052)
-value = 5050
+[State 0, VelAdd]
+type = VelAdd
+trigger1 = time
+x = 0
+y = .2
 
-[State 1028, Anim 5052] ;Self falling animation (diagup type)
-type = ChangeAnim
-trigger1 = Time = 0
-trigger1 = SelfAnimExist(5052)
-value = 5052
-
-[State 1028, Anim 5060] ;Coming down - normal
-type = ChangeAnim
-trigger1 = Vel Y > -2
-trigger1 = Anim = 5050
-trigger1 = SelfAnimExist(5060)
-persistent = 0
-value = 5060
-
-[State 1028, Anim 5062] ;Coming down - diagup type
-type = ChangeAnim
-trigger1 = Vel Y > -2
-trigger1 = Anim = 5052
-trigger1 = SelfAnimExist(5062)
-persistent = 0
-value = 5062
-
-[State 1028, Hit ground]
+[State 1028, Restand from WallCrush]
 type = SelfState
 trigger1 = (Vel y > 0) && (Pos y >= 0)
-value = 5100
+value = 5002
 
 ;------------------
 ;CORNER ONLY Wall Splat Shake
@@ -5383,69 +5360,6 @@ trigger1 = (Vel y > 0) && (Pos y >= 0) && time > 5
 value = 5200
 
 ;---------------------------------------------------------------------------
-; Restand State
-[Statedef 5310]
-type    = S
-movetype= H
-physics = N
-velset = 0, 0
-sprpriority = 2
-
-[State 0, ChangeAnim]
-type = ChangeAnim
-trigger1 = time = 1
-value = 5000
-elem = 1
-
-[State -2, Starter Level]
-type 		= MapSet
-trigger1 	= hitshakeover
-map 		= "hitPauseEnd"
-value 		= 1
-ignorehitpause = 1
-persistent = 1
-[State -2, Starter Level]
-type 		= MapSet
-trigger1 	= Map(hitPauseEnd)
-map 		= "hitPauseEnd"
-value 		= 0
-ignorehitpause = 1
-persistent = 1
-
-[State 151, Vel]
-type = veladd
-trigger1 = hitshakeover
-x = -1
-y = -1
-
-[State 0, StateTypeSet]
-type = StateTypeSet
-trigger1 = pos y >= 0
-statetype = S       ;S,A,C,L
-movetype = H        ;I,A,H
-physics = S         ;A,C,S,N
-ignorehitpause = 1
-persistent = 1
-
-[State 0, ScreenBound]
-type = ScreenBound
-trigger1 = 1
-value = 1
-movecamera = 1,0
-
-[State 0, PosSet]
-type = PosSet
-trigger1 = pos y >= 0
-y = 0
-
-[State 0, SelfState]
-type = SelfState
-trigger1 = pos y >= 0 && gethitvar(ctrltime) = 0
-value = 5000
-ctrl = 0
-ignorehitpause = 1
-
-;---------------------------------------------------------------------------
 ; Continue screen animation
 [Statedef 5500]
 type = S
@@ -6299,7 +6213,7 @@ persistent	= 0
 type 		= MapSet
 trigger1 	= 1
 map 		= "cornerSplat"
-value 		= cond((abs(camerapos x) > 260 && frontedgedist < 250) && (stagefrontedgedist < stagebackedgedist), 5225, 5220)
+value 		= cond((abs(camerapos x) > 495 && frontedgedist < 530) && (stagefrontedgedist < stagebackedgedist), 5225, 5220)
 ignorehitpause 	= 0
 persistent	= 0
 
@@ -6912,7 +6826,14 @@ value = 0
 
 ;---------------------------------------------------------------------------------
 [Statedef -3]
-
+;===============================================================================
+; ------- Deadzone Wallslam Limiter --------
+;===============================================================================
+[State -3, Deadzone Limiter]
+type 		    = MapSet
+trigger1 		= combocount = 0
+map 			= "DeadzoneUsed"
+value 		    = 0
 
 ;===============================================================================
 ; ------- Hop Variable Reset --------

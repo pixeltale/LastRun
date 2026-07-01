@@ -823,6 +823,27 @@ buffer.time = 15
 time = 20
 
 [Command]
+name = "426A"
+command = ~B, $D, $F, a
+buffer.time = 15
+time = 20
+[Command]
+name = "426B"
+command = ~B, $D, $F, b
+buffer.time = 15
+time = 20
+[Command]
+name = "426C"
+command = ~B, $D, $F, c
+buffer.time = 15
+time = 20
+[Command]
+name = "426D"
+command = ~B, $D, $F, d
+buffer.time = 15
+time = 20
+
+[Command]
 name = "63214A"
 command = ~F, DF, D, DB, B, a
 buffer.time = 10

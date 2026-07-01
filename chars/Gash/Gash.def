@@ -4,7 +4,7 @@
 ; Player information
 [Info]
 name = "Gash"        ;Name of character
-displayname = "Gash" ;Name of character to display
+displayname = "Cash" ;Name of character to display
 versiondate = 09,30,2009    ;Version date of character (MM-DD-YYYY or X.XX)
 mugenversion = 1.1          ;Version of M.U.G.E.N character works on (X.XX)
 ikemenversion = 1.0

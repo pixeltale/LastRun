@@ -181,19 +181,19 @@ trigger1 = var(2)
 [State -1, A DP]
 type = ChangeState
 value = 1020
-triggerall = command = "623A"
+triggerall = command = "426A"
 trigger1 = var(1)
 ;623B
 [State -1, B DP]
 type = ChangeState
 value = 1019
-triggerall = command = "623B"
+triggerall = command = "426B"
 trigger1 = var(1)
 ;623C
 [State -1, B DP]
 type = ChangeState
 value = 2020
-triggerall = command = "623C"
+triggerall = command = "426C"
 triggerall = power >= 500
 trigger1 = var(1)
 
@@ -227,6 +227,7 @@ trigger1 = var(1)
 [State -1, Crouching Heavy]
 type = ChangeState
 value = 1002
+triggerall = map(Groove_Style) = 1
 triggerall = !numhelper(1005)
 triggerall = command = "236A"
 triggerall = statetype = A
@@ -235,6 +236,7 @@ trigger1 = var(1)
 [State -1, Crouching Heavy]
 type = ChangeState
 value = 1003
+triggerall = map(Groove_Style) = 1
 triggerall = !numhelper(1005)
 triggerall = command = "236B"
 triggerall = statetype = A
@@ -243,6 +245,7 @@ trigger1 = var(1)
 [State -1, Crouching Heavy]
 type = ChangeState
 value = 2001
+triggerall = map(Groove_Style) = 1
 triggerall = !numhelper(1005)
 triggerall = command = "236C"
 triggerall = statetype = A

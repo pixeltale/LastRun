@@ -10,7 +10,7 @@ ctrl = 1
 
 [State 5120, 5] ;Can't be thrown right after getting up
 type = NotHitBy
-triggerall = !time
+triggerall = time = 1
 trigger1 = prevstateno = 5120
 value = , NT,ST,HT
 time = 12

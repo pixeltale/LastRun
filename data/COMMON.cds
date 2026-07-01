@@ -656,20 +656,24 @@ time = 20
 
 [Command]
 name = "632146A"
-command = ~$F, D, $B, $F, a | ~a
+command = ~$F, D, $B, $F, a
 time = 25
+buffer.time = 10
 [Command]
 name = "632146B"
-command = ~$F, D, $B, $F, b | ~b
+command = ~$F, D, $B, $F, b
 time = 25
+buffer.time = 10
 [Command]
 name = "632146C"
-command = ~$F, D, $B, $F, c | ~c
+command = ~$F, D, $B, $F, c
 time = 25
+buffer.time = 10
 [Command]
 name = "632146D"
-command = ~$F, D, $B, $F, d | ~d
+command = ~$F, D, $B, $F, d
 time = 25
+buffer.time = 10
 
 [Command]
 name = "ExGuard"
@@ -837,16 +841,20 @@ buffer.time = 10
 
 [Command]
 name = "623A"
-command = ~F, D, $F, a | ~a
+command = ~F, D, DF, a
+buffer.time = 10
 [Command]
 name = "623B"
-command = ~F, D, $F, b | ~b
+command = ~F, D, DF, b
+buffer.time = 10
 [Command]
 name = "623C"
-command = ~F, D, $F, c | ~c
+command = ~F, D, DF, c
+buffer.time = 10
 [Command]
 name = "623D"
-command = ~F, D, $F, d | ~d
+command = ~F, D, DF, d
+buffer.time = 10
 
 [Command]
 name = "236BC"

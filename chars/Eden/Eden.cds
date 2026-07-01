@@ -149,7 +149,7 @@ type = ChangeState
 value = 2105
 triggerall = map(Groove_Style) = 1
 triggerall = command = "22D"
-triggerall = statetype != A && stateno != [2100, 3000)
+triggerall = statetype != A && stateno != [2100, 3000) && !map(NOPCANCEL)
 triggerall = stateno != [1000, 3000) || (map(Pursuit) >= 333 || map(Termina.Active))
 trigger1 = var(2)
 [State -1, A GEAR - BLACK HOLE]
@@ -157,7 +157,7 @@ type = ChangeState
 value = 2100
 triggerall = map(Groove_Style) = 1
 triggerall = command = "214D"
-triggerall = statetype != A && stateno != [2100, 3000) && !numhelper(2101)
+triggerall = statetype != A && stateno != [2100, 3000) && !numhelper(2101) && !map(NOPCANCEL)
 triggerall = stateno != [1000, 3000) || (map(Pursuit) >= 333 || map(Termina.Active))
 trigger1 = var(2)
 
@@ -166,7 +166,7 @@ type = ChangeState
 value = 2110 - 1*(statetype = A)
 triggerall = map(Groove_Style) = 2
 triggerall = command = "214D"
-triggerall = (numhelper(2111) = 0 || statetype = A) && stateno != [2100, 3000)
+triggerall = (numhelper(2111) = 0 || statetype = A) && stateno != [2100, 3000) && !map(NOPCANCEL)
 triggerall = stateno != [1000, 3000) || (map(Pursuit) >= 333 || map(Termina.Active))
 trigger1 = var(2)
 
@@ -175,28 +175,28 @@ type = ChangeState
 value = 2120
 triggerall = map(Groove_Style) = 3
 triggerall = command = "214D"
-triggerall = statetype != A && stateno != [2100, 3000)
+triggerall = statetype != A && stateno != [2100, 3000) && !map(NOPCANCEL)
 triggerall = stateno != [1000, 3000) || (map(Pursuit) >= 333 || map(Termina.Active))
 trigger1 = var(2)
 [State -1, C GEAR - DIRTY TRICK] ;22A
 type = ChangeState
 value = 2125
 triggerall = map(Groove_Style) = 3
-triggerall = command = "22A"
+triggerall = command = "22A" && !map(NOPCANCEL)
 triggerall = numhelper(2120) && !movehitvar(overridden)
 trigger1 = var(2)
 [State -1, C GEAR - DIRTY TRICK] ;22B
 type = ChangeState
 value = 2123
 triggerall = map(Groove_Style) = 3
-triggerall = command = "22B"
+triggerall = command = "22B" && !map(NOPCANCEL)
 triggerall = numhelper(2120) && !movehitvar(overridden)
 trigger1 = var(2)
 [State -1, C GEAR - DIRTY TRICK] ;22C
 type = ChangeState
 value = 2124
 triggerall = map(Groove_Style) = 3
-triggerall = command = "22C" && map(TP_Limiter) = 0
+triggerall = command = "22C" && map(TP_Limiter) = 0 && !map(NOPCANCEL)
 triggerall = numhelper(2120) && !movehitvar(overridden)
 trigger1 = var(2)
 

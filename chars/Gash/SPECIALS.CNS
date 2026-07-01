@@ -916,7 +916,7 @@ animtype  	= Light
 air.animtype	 = back
 damage 		= 100 * map(P4)
 hitflag 		= MAFD
-guardflag 	= MA
+guardflag 	= M
 pausetime 	= 10,10
 sparkno 		= 1
 sparkxy 		= -30,-54
@@ -1021,7 +1021,7 @@ physics 		= A
 velset 		= vel x, 0
 ctrl 		= 0
 anim 		= 1025
-facep2 		= combocount > 0 
+facep2 		= 0
 poweradd 		= 0
 sprpriority 	= 2
 
@@ -1304,7 +1304,7 @@ ground.hittime  	= 18
 air.hittime  		= 999
 down.hittime 		= 15
 ground.velocity 	= -2
-guard.ctrltime 	= 4
+guard.ctrltime 	= 14
 guard.slidetime	= 4
 airguard.velocity 	= -3,-.8
 air.velocity 		= -5,-2 / root, map(JuggleScale)
@@ -1712,7 +1712,7 @@ animtype  	= Light
 air.animtype	 = back
 damage 		= 100 * map(P4)
 hitflag 		= MAFD
-guardflag 	= MA
+guardflag 	= M
 pausetime 	= 8,8
 sparkno 		= 1
 sparkxy 		= -30,-54
@@ -1817,7 +1817,7 @@ physics 		= A
 velset 		= vel x, 0
 ctrl 		= 0
 anim 		= 2025
-facep2 		= 1
+facep2 		= 0
 poweradd 		= 0
 sprpriority 	= 2
 
@@ -2420,7 +2420,7 @@ type 				= HitDef
 triggerall			= statetype != A
 trigger1 				= !movecontact && !movereversed
 ;===============================
-damage 				= 150 * map(P4)
+damage 				= 100 * map(P4)
 pausetime 			= 1,1
 getpower 				= 150 * map(P4)
 ;===============================
@@ -2627,7 +2627,7 @@ p2facing 	= 1
 trigger1 = !map(Retribution)
 trigger1 	=  !movecontact && !movereversed
 attr 		= C, NA
-damage 		= 90 * map(P4) + (4*time) * (P2, gethitvar(chainid) = 2), 0
+damage 		= (90 + (6*time) * (P2, gethitvar(chainid) = 2))* map(P4), 0
 animtype  	= Hard
 hitflag 		= MAFD
 guardflag 	= 
@@ -2664,7 +2664,7 @@ p2facing 	= 1
 trigger1 = map(Retribution)
 trigger1 	=  !movecontact && !movereversed
 attr 		= C, NA
-damage 		= 120 * map(P4) + (4*time) * (P2, gethitvar(chainid) = 2), 0
+damage 		= (120 + (6*time) * (P2, gethitvar(chainid) = 2))* map(P4), 0
 animtype  	= diagup
 hitflag 		= MAFD
 guardflag 	= 

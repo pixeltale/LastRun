@@ -5552,6 +5552,14 @@ value 		    = 0
 ignorehitpause 	= 1
 persistent 		= 0
 
+[State -3, 	NO P-CANCEL]
+type 		    = MapAdd
+trigger1 		= map(NOPCANCEL)
+map 			= "NOPCANCEL"
+value 		    = -1
+ignorehitpause 	= 1
+persistent 		= 1
+
 ;===============================================================================
 ; ------- Jump Cancel --------
 ;===============================================================================
@@ -6834,6 +6842,7 @@ type 		    = MapSet
 trigger1 		= combocount = 0
 map 			= "DeadzoneUsed"
 value 		    = 0
+
 
 ;===============================================================================
 ; ------- Hop Variable Reset --------

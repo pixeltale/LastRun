@@ -10,6 +10,7 @@ ctrl = 1
 
 [State 5120, 5] ;Can't be thrown right after getting up
 type = NotHitBy
+triggerall = !time
 trigger1 = prevstateno = 5120
 value = , NT,ST,HT
 time = 12
@@ -336,7 +337,7 @@ value = 45
 [State 50, 1]
 type = PosAdd
 trigger1 = Time = 0 && prevstateno = 40
-y = -25
+y = -50
 
 [State 50, 1]
 type = VarSet
@@ -6735,7 +6736,7 @@ persistent = 1
 type = NotHitBy
 trigger1 = (stateno = [120,155]) && stateno != [135,137]
 value = ,NT,ST,HT
-time = 1
+time = 10
 ignorehitpause = 1
 ;persistent = 
 

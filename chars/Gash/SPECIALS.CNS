@@ -252,7 +252,7 @@ flag = projtypecollision
 
 [State 200, 3]
 type = Changestate
-trigger1 = movecontact || MoveReversed
+trigger1 = movecontact || MoveReversed || root, movetype = H
 trigger2 = time = 15
 value = 1007
 ignorehitpause = 1
@@ -364,7 +364,7 @@ time = 10
 
 [State 200, 3]
 type = Changestate
-trigger1 = movecontact || MoveReversed
+trigger1 = movecontact || MoveReversed || root, movetype = H
 trigger2 = time = 35
 trigger3 = root, stateno = 2251
 value = 1007
@@ -512,7 +512,7 @@ flag = projtypecollision
 
 [State 200, 3]
 type = Changestate
-trigger1 = movecontact || MoveReversed || pos y >= 0
+trigger1 = movecontact || MoveReversed || pos y >= 0 || root, movetype = H
 trigger2 = time = 15
 value = 1007
 ignorehitpause = 1
@@ -632,7 +632,7 @@ flag = projtypecollision
 
 [State 200, 3]
 type = Changestate
-trigger1 = movecontact || MoveReversed || pos y >= 0
+trigger1 = movecontact || MoveReversed || pos y >= 0 || root, movetype = H
 trigger2 = time = 35
 value = 1007
 ignorehitpause = 1
@@ -1021,7 +1021,7 @@ physics 		= A
 velset 		= vel x, 0
 ctrl 		= 0
 anim 		= 1025
-facep2 		= 1
+facep2 		= combocount > 0 
 poweradd 		= 0
 sprpriority 	= 2
 
@@ -1030,7 +1030,6 @@ type = PosAdd
 triggerall = !time
 trigger1 = prevstateno = 1010
 y = -20
-
 
 [State 0]
 type 	= HitDef 
@@ -1052,7 +1051,7 @@ ground.slidetime 	= 12
 ground.hittime  	= 20 
 air.hittime  		= 20 
 down.hittime 		= 26 
-ground.velocity 	= -8,-0
+ground.velocity 	= -8, 5
 air.velocity 		= 3, 6
 down.velocity 		= -1, -4
 guard.ctrltime 	= 7
@@ -1063,6 +1062,7 @@ envshake.ampl 		= 2
 envshake.phase 	= 1
 air.fall 			= 1
 air.type			= trip
+ground.type 		= trip
 fall.yvelocity 	= 0
 getpower 				= 75 * map(P4)
 [State 0]

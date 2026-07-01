@@ -1473,9 +1473,6 @@ envshake.freq 			= 15
 envshake.ampl 			= 4
 envshake.phase 			= 0.5
 getpower				= 200 * map(P4)
-p2stateno				= 5235
-p2getp1state			= 0 
-missonoverride			= 0
 
 [State 0, MapSet] 
 type = MapAdd

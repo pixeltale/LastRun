@@ -48,6 +48,8 @@ alpha = StageConst(RimLightAlpha)
 angle = animelemvar(angle)
 removeonchangestate = 0
 ignorehitpause = 1
+supermovetime = 5
+pausemovetime = 5
 persistent = 1
 redirectid = Player(1), id
 
@@ -75,6 +77,8 @@ alpha = StageConst(InnerShadowAlpha)
 angle = animelemvar(angle)
 removeonchangestate = 0
 ignorehitpause = 1
+supermovetime = 5
+pausemovetime = 5
 persistent = 1
 redirectid = Player(1), id
 
@@ -107,6 +111,8 @@ alpha = StageConst(RimLightAlpha)
 angle = animelemvar(angle)
 removeonchangestate = 0
 ignorehitpause = 1
+supermovetime = 5
+pausemovetime = 5
 persistent = 1
 redirectid = Player(2), id
 
@@ -134,5 +140,7 @@ alpha = StageConst(InnerShadowAlpha)
 angle = animelemvar(angle)
 removeonchangestate = 0
 ignorehitpause = 1
+supermovetime = 5
+pausemovetime = 5
 persistent = 1
 redirectid = Player(2), id

@@ -523,7 +523,7 @@ ignorehitpause = 1
 type    		= U
 movetype		= A
 physics 		= N
-velset 		= 5, 10
+velset 		= 1, 10
 ctrl 		= 0
 anim 		= 1007
 facep2 		= 0
@@ -3063,7 +3063,7 @@ ctrl = 1
 
 ;----------------------
 ;Shin Dicer Projectile
-[Statedef 3205]
+	[Statedef 3205]
 type    		= U
 movetype		= A
 physics 		= N
@@ -3083,7 +3083,7 @@ value = 3215
 type = VelAdd
 trigger1 = !time
 trigger1 = root, stateno = 3210
-y = 8
+y = 10
 
 [State 0, VelAdd]
 type = VelAdd
@@ -3185,6 +3185,7 @@ sysvar(1) = 0
 [State 0, VarSet]
 type = VarAdd
 trigger1 = !time && gethitvar(attr) = , HP
+trigger2 = enemy, gethitvar(chainid) = 2016 && movehit
 sysvar(1) = 1 
 
 [State 0, NotHitBy]
@@ -3215,7 +3216,7 @@ flag = projtypecollision
 
 [State 200, 3]
 type = Changestate
-trigger1 = enemy, gethitvar(chainid) = 2016 || frontedgebodydist < -14 || pos y >= 15 || sysvar(1) = 1
+trigger1 = frontedgebodydist < -14 || pos y >= 15 || sysvar(1) = 1
 trigger2 = root, movetype = H
 value = 3206
 ignorehitpause = 1
@@ -3306,7 +3307,7 @@ persistent = 1
 type = SuperPause
 trigger1 = animelem = 2
 time = 18
-movetime = 0
+movetime = 2
 darken = 1
 unhittable = 1
 [State 0, Helper]

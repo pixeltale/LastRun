@@ -22,6 +22,12 @@ postype = P1    ;P2, Front, Back, Left, Right
 facing = 1
 keyctrl = 0
 ownpal = 0
+[State 0, MapSet]		;Punish State
+type = MapSet
+trigger1 = animelemno(0) >= 3
+map = "PunishCheck"
+value = 1
+redirectid = P2, ID
 
 [State 200, 3]
 type = ChangeState
@@ -54,6 +60,12 @@ postype = P1    ;P2, Front, Back, Left, Right
 facing = 1
 keyctrl = 0
 ownpal = 0
+[State 0, MapSet]		;Punish State
+type = MapSet
+trigger1 = animelemno(0) >= 3
+map = "PunishCheck"
+value = 1
+redirectid = P2, ID
 
 [State 200, 3]
 type = ChangeState
@@ -1079,7 +1091,12 @@ postype = P1    ;P2, Front, Back, Left, Right
 facing = 1
 keyctrl = 0
 ownpal = 0
-
+[State 0, MapSet]		;Punish State
+type = MapSet
+trigger1 = animelemno(0) >= 3
+map = "PunishCheck"
+value = 1
+redirectid = P2, ID
 
 [State 200, 3]
 type = ChangeState

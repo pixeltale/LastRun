@@ -31,7 +31,6 @@ type = VarSet
 trigger1 = ctrl || stateno = 40 || stateno = 55
 trigger2 = (stateno = [200,299]) || (stateno = [400,499] || stateno = [600,700]) 
 trigger2 = movecontact
-trigger3 = map(IBCheck) && HitShakeOver
 var(1) = 1
 ignorehitpause = 1
 [State -1, Super Cancel Special Attacks]

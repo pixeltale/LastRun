@@ -37,11 +37,6 @@ command = d
 time = 1
 buffer.time = 6
 [Command]
-name = "Multiparry"
-command = d
-time = 1
-buffer.time = 10
-[Command]
 name = "F"
 command = x
 time = 1
@@ -76,18 +71,6 @@ command = /s
 name = "m"
 command = m
 time = 1
-
-[Command]
-name = "pushblock"
-command = a
-time = 1
-buffer.time = 10
-
-[Command]
-name = "pushblock"
-command = a
-time = 1
-buffer.time = 1
 
 [Command]
 name = "back"     ; REQUIRED for command buffering
@@ -300,19 +283,19 @@ time = 1
 [Command]
 name = "holdfwd" ;Required (do not remove)
 command = /$F
-buffer.time = 2
+buffer.time = 0
 [Command]
 name = "holddown" ;Required (do not remove)
 command = /$D
-buffer.time = 2
+buffer.time = 0
 [Command]
 name = "holdback" ;Required (do not remove)
 command = /$B
-buffer.time = 2
+buffer.time = 0
 [Command]
 name = "holdup" ;Required (do not remove)
 command = /$U
-buffer.time = 2
+buffer.time = 0
 
 [Command]
 name = "holdfwd_r" ; Raw hold forward (REQUIRED for command buffering)

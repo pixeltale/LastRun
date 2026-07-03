@@ -369,6 +369,13 @@ facep2 = cond(Map(SJI) , 1, 0)
 anim = 41
 ctrl = 0
 
+[State 0, MapSet]		;Punish State
+type = MapSet
+trigger1 = 1
+map = "PunishCheck"
+value = 1
+redirectid = P2, ID
+
 [State 51, 1]
 type = Null
 trigger1 = 1
@@ -2275,7 +2282,7 @@ anim = 900 + 5 * (anim = 905)
 ctrl = 0
 sprpriority = 2
 
-[State 700, Snd]
+[State 700, Snd] ;Cosmetics
 type = playsnd
 trigger1 = !time
 value = 900, 0
@@ -2285,31 +2292,32 @@ trigger1 = !time
 volumescale = 0
 redirectid = enemy, ID
 ignorehitpause = 1
-[State 0, PalFX]
-type = BGPalFX
+[State 0, Mapadd]
+type 		= MapSet
+trigger1        = 1
+trigger1        = gethitvar(attr) != SCA,NP, SP, HP
+map 		    = "BGDarkTime"
+value 		    = gethitvar(hitshaketime) * 1.25
+ignorehitpause 	= 1
+persistent 		= 1
+[State 0, EnvShake]
+type = EnvShake
 trigger1 = !time
-time = 15
-add = -20, -20, -20
-invertall = 0
-color = 0
+time = 20
+freq = 20
+ampl = -3
+phase = 120
 ignorehitpause = 1
+persistent = 1
 
 [State 0, Mapadd]
 type 		= MapAdd
+trigger1        = gethitvar(attr) != SCA,NP, SP, HP
 trigger1 	    = P2, movehitvar(FRAME)
 map 		    = "Pursuit"
-value 		    = 50
+value 		    = 150
 ignorehitpause 	= 1
 persistent 		= 1
-[State 0, Mapadd]
-type 		= MapAdd
-triggerall      = gethitvar(attr) != SCA,NP, SP, HP
-trigger1 	    = P2, movehitvar(FRAME)
-map 		    = "Pursuit"
-value 		    = -50
-ignorehitpause 	= 1
-persistent 		= 1
-redirectid      = enemy, ID
 
 [State 0, Pause]
 type = SuperPause
@@ -2327,36 +2335,40 @@ ignorehitpause = 1
 type = SuperPause
 triggerall = gethitvar(attr) = SCA,NP, SP, HP
 trigger1 = !time
-time = gethitvar(hitshaketime) + 10
-movetime = gethitvar(hitshaketime) + 10
+time = gethitvar(hitshaketime) + 5
+movetime = 9999     ;Freeze only the projectile while parrying
 anim = -1
 sound = -1
 darken = 0
-unhittable = 1
+unhittable = 0
 ignorehitpause = 1
 
-[State 0, PalFX]
-type = PalFX
-trigger1 = !time
-time = 10
-add = 60, 30, 30
-invertall = 0
-color = 0
-ignorehitpause = 1
-[State 0, EnvShake]
-type = EnvShake
-trigger1 = !time
-time = 20
-freq = 20
-ampl = -3
-phase = 120
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = ,AP
+time = 2
 ignorehitpause = 1
 persistent = 1
 
+[State 0, ModifyPlayer] ;Enemies Dont Get Frozen
+type = ModifyPlayer
+trigger1 = gethitvar(attr) = SCA,NP, SP, HP
+supermovetime = 5
+redirectid = enemy, ID
+ignorehitpause = 1
+persistent = 1
 
 [State 1000, 7]
 type = ChangeState
+triggerall = gethitvar(attr) != SCA,NP, SP, HP
 trigger1 = time = 10
+value = 0
+ctrl = 1
+[State 1000, 7]
+type = ChangeState
+triggerall = gethitvar(attr) = SCA,NP, SP, HP
+trigger1 = time = 2
 value = 0
 ctrl = 1
 
@@ -2416,7 +2428,7 @@ type = VelAdd
 trigger1 = 1
 y = -0.1
 
-[State 700, Snd]
+[State 700, Snd] ;Cosmetics
 type = playsnd
 trigger1 = !time
 value = 900, 0
@@ -2426,31 +2438,32 @@ trigger1 = !time
 volumescale = 0
 redirectid = enemy, ID
 ignorehitpause = 1
-[State 0, PalFX]
-type = BGPalFX
+[State 0, Mapadd]
+type 		= MapSet
+trigger1        = 1
+trigger1        = gethitvar(attr) != SCA,NP, SP, HP
+map 		    = "BGDarkTime"
+value 		    = gethitvar(hitshaketime) * 1.25
+ignorehitpause 	= 1
+persistent 		= 1
+[State 0, EnvShake]
+type = EnvShake
 trigger1 = !time
-time = 15
-add = -20, -20, -20
-invertall = 0
-color = 0
+time = 20
+freq = 20
+ampl = -3
+phase = 120
 ignorehitpause = 1
+persistent = 1
 
 [State 0, Mapadd]
 type 		= MapAdd
-trigger1 	    = !time
+trigger1        = gethitvar(attr) != SCA,NP, SP, HP
+trigger1 	    = P2, movehitvar(FRAME)
 map 		    = "Pursuit"
-value 		    = 50
+value 		    = 150
 ignorehitpause 	= 1
 persistent 		= 1
-[State 0, Mapadd]
-type 		= MapAdd
-triggerall      = gethitvar(attr) != SCA,NP, SP, HP
-trigger1 	    = !time
-map 		    = "Pursuit"
-value 		    = -50
-ignorehitpause 	= 1
-persistent 		= 1
-redirectid      = enemy, ID
 
 [State 0, Pause]
 type = SuperPause
@@ -2468,38 +2481,42 @@ ignorehitpause = 1
 type = SuperPause
 triggerall = gethitvar(attr) = SCA,NP, SP, HP
 trigger1 = !time
-time = gethitvar(hitshaketime) + 10
-movetime = gethitvar(hitshaketime) + 10
+time = gethitvar(hitshaketime) + 5
+movetime = 9999     ;Freeze only the projectile while parrying
 anim = -1
 sound = -1
 darken = 0
-unhittable = 1
+unhittable = 0
 ignorehitpause = 1
 
-[State 0, PalFX]
-type = PalFX
-trigger1 = !time
-time = 10
-add = 60, 30, 30
-invertall = 0
-color = 0
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = ,AP
+time = 2
 ignorehitpause = 1
-[State 0, EnvShake]
-type = EnvShake
-trigger1 = !time
-time = 20
-freq = 20
-ampl = -3
-phase = 120
+persistent = 1
+
+[State 0, ModifyPlayer] ;Enemies Dont Get Frozen
+type = ModifyPlayer
+trigger1 = gethitvar(attr) = SCA,NP, SP, HP
+supermovetime = 5
+redirectid = enemy, ID
 ignorehitpause = 1
 persistent = 1
 
 [State 1000, 7]
 type = ChangeState
+triggerall = gethitvar(attr) != SCA,NP, SP, HP
 trigger1 = time = 10
 value = 50
 ctrl = 1
-
+[State 1000, 7]
+type = ChangeState
+triggerall = gethitvar(attr) = SCA,NP, SP, HP
+trigger1 = time = 2
+value = 50
+ctrl = 1
 ;---------------------------------------------------------------------------
 ; Stand get-hit (shaking)
 [Statedef 5000]
@@ -5493,7 +5510,7 @@ trigger1 = (MAP(PURSUITCANCEL_NORMALS)|| MAP(PURSUITCANCEL_SPECIALS))
 [State -1, PARRY]
 type = ChangeState
 value = 900 + 10*statetype = A
-triggerall = command = "D" || (prevstateno = 5120 || stateno = 140) && command = "HOLD_D" || (prevstateno = 905 || prevstateno = 915) && command = "Multiparry" 
+triggerall = command = "D" || (prevstateno = 5120 || stateno = 140) && command = "HOLD_D" || (prevstateno = 905 || prevstateno = 915) && command = "D" 
 trigger1 = ctrl || stateno = [120,155] && map(IBCheck) && time > 0
 ignorehitpause = 1
 
@@ -5756,18 +5773,18 @@ ignorehitpause = 1
 ;PURSUIT Section || Pursuit Calculations
 ;======================================
 
-;Build Pursuit for Aggression
+;Build Pursuit for Damage
 [State 0, MapSet] 
 type = MapAdd
 trigger1 = movecontact
 map = "Pursuit"
-value = P2, gethitvar(damage) * 0.5
+value = P2, gethitvar(damage) * 0.75
 ignorehitpause = 1
 [State 0, MapSet] 
 type = MapAdd
 trigger1 = P2, stateno = [150, 153]
 map = "Pursuit"
-value = 1
+value = 2
 ignorehitpause = 1
 
 ;Pursuit Gain on IB
@@ -5777,7 +5794,7 @@ triggerall      = stateno = 150 || stateno = 152
 triggerall      = map(IBCheck)
 trigger1 	    = time = 1
 map 		    = "Pursuit"
-value 		    = gethitvar(ctrltime)
+value 		    = gethitvar(ctrltime) * 5
 ignorehitpause 	= 1
 persistent 		= 1
 
@@ -7007,15 +7024,6 @@ map 		    = "SlowdownTime"
 value 		    = -1
 ignorehitpause 	= 1
 persistent 		= 1
-
-[State 0, BGPalFX]
-type = BGPalFX
-trigger1 = map(SlowdownTime)
-time = 5
-add = -(map(SlowdownTime))*1.75,-(map(SlowdownTime))*1.75,-(map(SlowdownTime))*1.75
-persistent = 1
-ignorehitpause = 1
-
 [State 0, EVERYTHING WILL FREEZE!]
 type = Pause
 triggerall = map(slowdownTime)
@@ -7027,6 +7035,29 @@ movetime = 2
 darken = 0
 p2defmul = 0
 unhittable = 1
+
+[State 0, BGPalFX]
+type = BGPalFX
+trigger1 = map(SlowdownTime)
+time = 5
+add = -(map(SlowdownTime))*1.75,-(map(SlowdownTime))*1.75,-(map(SlowdownTime))*1.75
+persistent = 1
+ignorehitpause = 1
+
+[State 0, Mapadd]
+type 		= MapAdd
+trigger1 	    = map(BGDarkTime)
+map 		    = "BGDarkTime"
+value 		    = -1
+ignorehitpause 	= 1
+persistent 		= 1
+[State 0, BGPalFX]
+type = BGPalFX
+trigger1 = map(BGDarkTime)
+time = 5
+add = -(map(BGDarkTime))*1.75,-(map(BGDarkTime))*1.75,-(map(BGDarkTime))*1.75
+persistent = 1
+ignorehitpause = 1
 
 ;==================================================================================================
 ;TRAINING MODE - Movelist Update

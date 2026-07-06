@@ -10,7 +10,7 @@ ctrl = 1
 
 [State 5120, 5] ;Can't be thrown right after getting up
 type = NotHitBy
-triggerall = time = 1
+triggerall = time = 0
 trigger1 = prevstateno = 5120
 value = , NT,ST,HT
 time = 12
@@ -3518,7 +3518,7 @@ value = 1
 [State 5120, 7]
 type = ChangeState
 trigger1 = AnimTime = 0
-value = 0
+value = 0 + 11 * command = "holddown"
 ctrl = 1
 
 ;---------------------------------------------------------------------------

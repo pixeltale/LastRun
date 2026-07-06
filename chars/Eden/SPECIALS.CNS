@@ -904,6 +904,11 @@ sprpriority 	= 2
 type = VelSet
 trigger1 = animelem = 3
 x = 4
+[State 0, VelSet]
+type = VelSet
+trigger1 = anim = 1050
+x = 6
+persistent = 0
 
 [State 0, VarSet]
 type = VarSet

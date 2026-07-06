@@ -7,13 +7,6 @@ b = b
 c = c
 s = s
 
-;-| Default Values |-------------------------------------------------------
-[Defaults]
-command.time = 15
-command.buffer.time = 1
-
-
-; Don't remove the following line. It's required by the CMD standard.
 [Statedef -1]
 
 ;===========================================================================
@@ -94,7 +87,7 @@ ignorehitpause = 1
 type = ChangeState
 value = 100
 triggerall = command = "66"
-triggerall = statetype != A
+triggerall = statetype != A && stateno != [100, 101]
 trigger1 = ctrl
 
 ;---------------------------------------------------------------------------

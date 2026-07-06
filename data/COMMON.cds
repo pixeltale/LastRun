@@ -11,22 +11,27 @@ time = 1
 name = "A"
 command = a
 time = 1
+buffer.time = 1
 [Command]
 name = "b"
 command = b
 time = 1
+buffer.time = 1
 [Command]
 name = "B"
 command = b
 time = 1
+buffer.time = 1
 [Command]
 name = "c"
 command = c
 time = 1
+buffer.time = 1
 [Command]
 name = "C"
 command = c
 time = 1
+buffer.time = 1
 [Command]
 name = "d"
 command = d
@@ -287,7 +292,7 @@ buffer.time = 0
 [Command]
 name = "holddown" ;Required (do not remove)
 command = /$D
-buffer.time = 0
+buffer.time = 1
 [Command]
 name = "holdback" ;Required (do not remove)
 command = /$B
@@ -441,25 +446,18 @@ time = 1
 name = "66"
 command = F, F
 time = 10
-buffertime = 15
+buffer.time = 1
 [Command]
 name = "FF"
 command = F, F
 time = 10
-buffertime = 15
-
-[Command]
-name = "66"
-command = ~F, F
-time = 5
-buffertime = 5
-
+buffer.time = 1
 
 [Command]
 name = "a66"
-command = ~F, F
+command = $F, F
 time = 10
-buffertime = 20
+buffer.time = 1
 
 
 [Command]

@@ -17,14 +17,14 @@ sprpriority 	= 2
 type 		= MapSet
 trigger1 		= movehit && !map(ComboStateCheck)
 map 			= "P1"
-value 		= 0.80	;100% Starting DMG
+value 		= 0.85	;100% Starting DMG
 ignorehitpause 	= 1
 [State -2, P2 Value Set]
 type 		= MapSet
 trigger1 		= movehit && map(ComboStateCheck)
 trigger1		= prevstateno != 200 || prevstateno != 400
 map 			= "P2"
-value 		= 0.80	;85% DMG For next hit
+value 		= 0.85	;85% DMG For next hit
 ignorehitpause 	= 1
 persistent = 0
 [State -2, P2 Accumulation - Scale]
@@ -113,7 +113,7 @@ facep2 		= 1
 type 		= MapSet
 trigger1 		= movehit && !map(ComboStateCheck)
 map 		= "P1"
-value 		= 0.80	;90% Starting DMG
+value 		= 0.85	;90% Starting DMG
 ignorehitpause 	= 1
 [State -2, P2 Value Set]
 type 		= MapSet
@@ -811,7 +811,7 @@ facep2 		= 1
 type 		= MapSet
 trigger1 		= movehit && !map(ComboStateCheck)
 map 			= "P1"
-value 		= 0.80	;90% Starting Prorate
+value 		= 0.85	;90% Starting Prorate
 ignorehitpause 	= 1
 [State -2, P2 Value Set]
 type 		= MapSet
@@ -1445,10 +1445,10 @@ sparkxy 				= -p2dist x * 0.25, -60
 hitsound 				= 5,3
 guardsound 			= 6,0
 ;===============================
-ground.hittime  		= 90
-ground.velocity 		= -25,-6
-air.hittime  			= 90
-air.velocity 			= -25,-6 / map(JuggleScale)
+ground.hittime  		= 30
+ground.velocity 		= -35,-7
+air.hittime  			= 30
+air.velocity 			= -35,-6 / map(JuggleScale)
 down.velocity 			= -1,-5
 down.hittime 			= 30
 ;===============================
@@ -1496,9 +1496,9 @@ hitsound 				= 5,3
 guardsound 			= 6,0
 ;===============================
 ground.hittime  		= 90
-ground.velocity 		= -25,-6
+ground.velocity 		= -8,-6
 air.hittime  			= 90
-air.velocity 			= -25,-6 / map(JuggleScale)
+air.velocity 			= -8,-6 / map(JuggleScale)
 down.velocity 			= -1,-5
 down.hittime 			= 30
 ;===============================

@@ -209,7 +209,7 @@ ignorehitpause = 1
 type = DisplayToClipboard
 trigger1 = 1
 text = "p2dist = %.0f retribution = %.0f"
-params = map(DeadzoneUsed), map(forceretribution)
+params = gethitvar(ctrltime), map(forceretribution)
 ignorehitpause = 1
 persistent = 1
 

@@ -44,6 +44,7 @@ ctrl = 0
 type    = C
 physics = C
 anim = 10
+ctrl = 1
 
 [State 10, 2] ;Stop moving if low velocity
 type = VelSet
@@ -62,6 +63,7 @@ type    = C
 physics = C
 anim = 11
 sprpriority = 0
+ctrl = 1
 
 [State 11, 1] ;Change from turning animation
 type = ChangeAnim
@@ -1490,7 +1492,7 @@ anim = 100
 sprpriority = 1
 ctrl = 0
 
-[State 100, CtrlSet] ;allows you to jump while running
+[State 100, Ctrlset]
 type = CtrlSet
 trigger1 = time = 1
 value = 1
@@ -1531,16 +1533,7 @@ x = const(velocity.run.fwd.x)
 type = AssertSpecial
 trigger1 = 1
 flag = NoWalk
-
-[State 100, 3] ;Prevent from turning
-type = AssertSpecial
-trigger1 = 1
-flag = NoAutoTurn
-
-[State 100, Jump] ;allows you to jump while running
-type = changestate
-trigger1 = command = "up" || command = "upfwd" || command = "upback"
-value = 40
+flag2 = noautoturn
 
 [State 100, 4]
 type = ChangeState
@@ -2646,7 +2639,7 @@ fall = 0
 
 [State 5002, 6]
 type = SelfState
-trigger1 = pos y = 0 && hitover
+trigger1 = pos y = 0 && time = gethitvar(ctrltime)
 value = 0
 ctrl = 1
 
@@ -4311,8 +4304,8 @@ y = gethitvar(yvel)
 [State 5231, Hit wall]
 type = ChangeState
 triggerall = Pos y < -1
-trigger1 = BackEdgeBodyDist <= 1
-trigger2 = FrontEdgeBodyDist <= 1
+trigger1 = BackEdgeBodyDist <= 10
+trigger2 = FrontEdgeBodyDist <= 10
 value = 5237
 
 [State 5232, Hit ground]
@@ -4395,14 +4388,14 @@ physics = N
 
 [State 0, VelSet]
 type = VelSet
-trigger1 = 1
+trigger1 = !time
 x = 0
 
 [State 0, VelAdd]
 type = VelAdd
 trigger1 = time
 x = 0
-y = .2
+y = .4
 
 [State 1028, Restand from WallCrush]
 type = SelfState
@@ -5501,7 +5494,7 @@ trigger1 = MAP(pursuit.MAX)
 type = ChangeState
 value = 100
 triggerall = command = "FF" && (map(Pursuit) >= 333 || map(TERMINA.ACTIVE))
-triggerall = statetype != A
+triggerall = statetype != A && !map(NOPCANCEL)
 triggerall = movecontact = [1, 6] && !map(DC.OVERRIDE)
 trigger1 = (MAP(PURSUITCANCEL_NORMALS)|| MAP(PURSUITCANCEL_SPECIALS))
 
@@ -5539,7 +5532,7 @@ type = ChangeState
 value = 700
 triggerall = command = "DEADZONE"
 triggerall = statetype != A
-trigger1 = ctrl || (stateno = [200,230] && time < 3) && prevstateno != [200, 430]
+trigger1 = ctrl || (stateno = [200,240] && time < 3) && prevstateno != [200, 440]
 ;jBC
 [State -1, Aerial Deadzone]
 type = ChangeState

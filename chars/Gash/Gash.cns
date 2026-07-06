@@ -248,8 +248,8 @@ ignorehitpause 	= 0
 [State 0, DisplayToClipboard]
 type = DisplayToClipboard
 trigger1 = 1
-text = "punish = %.0f retribution = %.0f"
-params = map(TAMPAKINGDASH), map(retribution)
+text = "prevstate = %i retribution = %.0f"
+params = prevstateno, map(retribution)
 ignorehitpause = 1
 persistent = 1
 

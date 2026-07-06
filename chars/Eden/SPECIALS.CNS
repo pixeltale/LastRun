@@ -1440,7 +1440,7 @@ trigger1 = animelem = 3
 x = 4
 
 [State -2, 	NO P-CANCEL]
-type 		= MapAdd
+type 		= MapSet
 trigger1 		= combocount < 3
 map 			= "NOPCANCEL"
 value 		= 2
@@ -2546,14 +2546,8 @@ value = 0
 
 [State 0, PosSet]
 type = PosSet
-trigger2 = !time
-trigger1 = pos y >= 0
+trigger1 = !time
 y = 0
-[State 0, PosAdd]
-type = PosAdd
-trigger1 = time = [0, 4]
-x = 30
-y = 20
 
 
 [State 0, StateTypeSet]

@@ -173,19 +173,19 @@ trigger1 = var(2)
 [State -1, A DP]
 type = ChangeState
 value = 1020
-triggerall = command = "426A"
+triggerall = command = "624A"
 trigger1 = var(1)
 ;623B
 [State -1, B DP]
 type = ChangeState
 value = 1019
-triggerall = command = "426B"
+triggerall = command = "624B"
 trigger1 = var(1)
 ;623C
 [State -1, B DP]
 type = ChangeState
 value = 2020
-triggerall = command = "426C"
+triggerall = command = "624C"
 triggerall = power >= 500
 trigger1 = var(1)
 

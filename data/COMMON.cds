@@ -784,23 +784,19 @@ steptime = 7
 
 [Command]
 name = "624A"
-command = ~$F, $D, $B, a
-buffer.time = 15
+command = ~F, $D, B, a
 time = 20
 [Command]
 name = "624B"
-command = ~$F, $D, $B, b
-buffer.time = 15
+command = ~F, $D, B, b
 time = 20
 [Command]
 name = "624C"
-command = ~$F, $D, $B, c
-buffer.time = 15
+command = ~F, $D, B, c
 time = 20
 [Command]
 name = "624D"
-command = ~$F, $D, $B, d
-buffer.time = 15
+command = ~F, $D, B, d
 time = 20
 
 [Command]

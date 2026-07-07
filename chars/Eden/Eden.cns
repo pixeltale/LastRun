@@ -38,7 +38,7 @@ walk.fwd  = 3.4      ;Walk forward
 walk.back = -3.2     ;Walk backward
 run.fwd  = 8, 0    ;Run forward (x, y)
 run.back = -8,-3 ;Hop backward (x, y)
-jump.neu = 0,-12    ;Neutral jumping velocity (x, y)
+jump.neu = 0,-10.5    ;Neutral jumping velocity (x, y)
 jump.back = -3.5    ;Jump back Speed (x, y)
 jump.fwd = 3.5       ;Jump forward Speed (x, y)
 runjump.back = -7,-8.1 ;Running jump speeds (opt)
@@ -75,6 +75,7 @@ down.friction.threshold = .05         ;If the player's speed drops below this th
 
 [Constants]
 hop.height = 0.65
+superjump.height = -13.2
 
 [Quotes]
 victory1 = "Your technique is unrefined. You could never be me."

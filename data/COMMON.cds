@@ -1,6 +1,6 @@
 [Defaults]
 command.time = 15
-command.buffer.time = 10
+command.buffer.time = 5
 
 ;-| Single Button |---------------------------------------------------------
 [Command]
@@ -805,23 +805,19 @@ time = 20
 
 [Command]
 name = "426A"
-command = ~B, $D, $F, a
-buffer.time = 15
+command = ~B, $D, F, a
 time = 20
 [Command]
 name = "426B"
-command = ~B, $D, $F, b
-buffer.time = 15
+command = ~B, $D, F, b
 time = 20
 [Command]
 name = "426C"
-command = ~B, $D, $F, c
-buffer.time = 15
+command = ~B, $D, F, c
 time = 20
 [Command]
 name = "426D"
-command = ~B, $D, $F, d
-buffer.time = 15
+command = ~B, $D, F, d
 time = 20
 
 [Command]

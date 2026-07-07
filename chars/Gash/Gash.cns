@@ -75,6 +75,7 @@ down.friction.threshold = .05         ;If the player's speed drops below this th
 
 [Constants]
 hop.height = 0.65
+superjump.height = -13.5
 
 [Quotes]
 victory1 = "I might have gone a bit overboard..."

@@ -1575,9 +1575,9 @@ air.type		= high
 ground.slidetime 	= 6
 ground.hittime  	= 999
 air.hittime  	= 999 
-ground.velocity 	= -8, -2
+ground.velocity 	= -6, -6
 fall.yvelocity 	= 0
-air.velocity 		= -8,-2 / map(JuggleScale)
+air.velocity 		= -6,-6
 guard.ctrltime 	= 20
 fall		= 1
 air.fall 		= 1
@@ -1603,6 +1603,7 @@ redirectid = enemynear, id
 
 [State 0, NotHitBy]
 type = NotHitBy
+triggerall = !movecountered
 trigger1 = movehit = 1 && P2, movetype = H
 value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
 time = 99999

@@ -503,7 +503,7 @@ sysvar(1) = -1
 type = VelSet
 trigger1 = Time = 0
 x = ifelse(sysvar(1)=0, const(velocity.jump.neu.x), ifelse(sysvar(1)=1, const(velocity.jump.fwd.x) + vel x, const(velocity.jump.back.x)))*1.1
-y = const(velocity.jump.y) * 1.1
+y = const(superjump.height)
 
 [State 1220, Afterimage]
 type = AfterImage
@@ -2355,7 +2355,7 @@ persistent = 1
 [State 1000, 7]
 type = ChangeState
 triggerall = gethitvar(attr) != SCA,NP, SP, HP
-trigger1 = time = 10
+trigger1 = time = 5
 value = 0
 ctrl = 1
 [State 1000, 7]
@@ -3412,13 +3412,6 @@ trigger2 = SysVar(0) ;SysVar(0) = 1 avoids hit ground frame
 trigger3 = Anim = [5110,5119]
 value = 5150
 
-[State 5111, 11] ;Transition to invincible getup
-type = ChangeState
-triggerall = alive
-triggerall = Anim = 5110
-trigger1 = Time = 25 && command != "holddown" || time >= 35
-value = 5120
-
 [State 5111, 11]
 type    = NotHitBy
 trigger1    = time >= 5 || prevstateno = 5243
@@ -3446,6 +3439,21 @@ type = VelSet
 trigger1 = abs(Vel x) < Const(movement.down.friction.threshold)
 persistent = 0
 x = 0
+
+[State 0, ChangeState] ;Backroll
+type = SelfState
+triggerall = gethitvar(attr) != SCA,HA,HP, HT
+triggerall = command = "HOLD_D"
+trigger1 = time = 15
+value = 5202
+ctrl = 0
+
+[State 5111, 11] ;Transition to invincible getup
+type = ChangeState
+triggerall = alive
+triggerall = Anim = 5110
+trigger1 = Time = 25
+value = 5120
 
 ;---------------------------------------------------------------------------
 ;Invincible Knockdown
@@ -3629,7 +3637,7 @@ y = 0
 [State 0, ChangeState] ;Backroll
 type = SelfState
 triggerall = command = "HOLD_D"
-trigger1 = time = 15
+trigger1 = time = 5
 value = 5202
 ctrl = 0
 
@@ -6781,7 +6789,7 @@ persistent 		= 0
 type 		= MapSet
 trigger1 	= enemy, movetype = H
 map 		= "P4"
-value 		= cond(map(P4) <= 0.05, 0.05, (map(P1)*map(Accumulation)*1))
+value 		= cond(map(P4) <= 0.10, 0.10, (map(P1)*map(Accumulation)*1))
 ignorehitpause 	= 1
 persistent 		= 0
 

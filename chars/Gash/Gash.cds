@@ -127,7 +127,7 @@ trigger1 = var(2) || stateno = [3000,3010] && (map(Pursuit) >= 666 || map(Termin
 ;SUPER ATTACKS
 ;===========================================================================
 ;632146X
-[State -1, Ranbu Super]
+[State -1, Flamagra Burnout]
 type = ChangeState
 value = 3000
 triggerall = power >= 1000 || map(TERMINA.ACTIVE) > 0

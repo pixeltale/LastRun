@@ -2553,6 +2553,14 @@ value = 0
 type = PosSet
 trigger1 = !time
 y = 0
+[State 0, PosAdd]
+type = VelAdd
+trigger1 = time = [0,4]
+x = 3
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = time = [0,4]
+x = 30
 
 
 [State 0, StateTypeSet]

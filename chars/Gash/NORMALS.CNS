@@ -1639,6 +1639,14 @@ value = -10
 ignorehitpause = 1
 redirectid = enemynear, id
 
+[State 0, NotHitBy]
+type = NotHitBy
+triggerall = !movecountered
+trigger1 = movehit = 1 && P2, movetype = H
+value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+time = 99999
+redirectid = enemynear, id
+
 [State 0, ChangeState]
 type = ChangeState
 trigger1 =animtime = 0 

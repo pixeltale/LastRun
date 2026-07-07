@@ -22,7 +22,6 @@ ignorehitpause 	= 1
 [State -2, P2 Value Set]
 type 		= MapSet
 trigger1 		= movehit && map(ComboStateCheck)
-trigger1		= prevstateno != 200 || prevstateno != 400
 map 			= "P2"
 value 		= 0.85	;85% DMG For next hit
 ignorehitpause 	= 1
@@ -212,13 +211,13 @@ facep2 		= 1
 type 		= MapSet
 trigger1 		= movehit && !map(ComboStateCheck)
 map 			= "P1"
-value 		= 0.9	;100% Starting DMG
+value 		= 1	;100% Starting DMG
 ignorehitpause 	= 1
 [State -2, P2 Value Set]
 type 		= MapSet
 trigger1 		= movehit && map(ComboStateCheck)
 map 			= "P2"
-value 		= 0.90	;85% DMG For next hit
+value 		= 0.95	;85% DMG For next hit
 ignorehitpause 	= 1
 persistent = 0
 [State -2, P2 Accumulation - Scale]
@@ -316,7 +315,7 @@ ignorehitpause 	= 1
 type 		= MapSet
 trigger1 		= movehit && map(ComboStateCheck)
 map 			= "P2"
-value 		= 0.90	;85% DMG For next hit
+value 		= 0.95	;85% DMG For next hit
 ignorehitpause 	= 1
 persistent = 0
 [State -2, P2 Accumulation - Scale]
@@ -833,14 +832,14 @@ facep2 		= 1
 [State -2, P1 Value Set]
 type 		= MapSet
 trigger1 		= movehit && !map(ComboStateCheck)
-map 		= "P1"
+map 			= "P1"
 value 		= 0.85	;85% Starting DMG
 ignorehitpause 	= 1
 [State -2, P2 Value Set]
 type 		= MapSet
 trigger1 		= movehit && map(ComboStateCheck)
 trigger1		= prevstateno != 200 || prevstateno != 400
-map 		= "P2"
+map 			= "P2"
 value 		= 0.85	;85% DMG For next hit
 ignorehitpause 	= 1
 persistent = 0
@@ -934,7 +933,7 @@ facep2 		= 1
 type 		= MapSet
 trigger1 		= movehit && !map(ComboStateCheck)
 map 			= "P1"
-value 		= 0.80	;90% Starting Prorate
+value 		= 0.85	;90% Starting Prorate
 ignorehitpause 	= 1
 [State -2, P2 Value Set]
 type 		= MapSet
@@ -1282,7 +1281,7 @@ ignorehitpause 	= 1
 type 		= MapSet
 trigger1 		= movehit && !map(ComboStateCheck)
 map 			= "P2"
-value 		= 0.85	;85% DMG For next hit
+value 		= 0.95	;85% DMG For next hit
 ignorehitpause 	= 1
 persistent = 0
 [State -2, P2 Accumulation - Scale]
@@ -1351,7 +1350,7 @@ facep2 		= 1
 type 		= MapSet
 trigger1 		= movehit && !map(ComboStateCheck)
 map 		= "P1"
-value 		= 0.90	;90% Starting DMG
+value 		= 1	;90% Starting DMG
 ignorehitpause 	= 1
 [State -2, P2 Value Set]
 type 		= MapSet
@@ -1528,18 +1527,11 @@ type = PlaySnd
 trigger1 = animelem = 5
 value = 0, 0
 
-[State -2, Starter Level]
-type 		= MapSet
-trigger1 		= movehit && !map(ComboStateCheck)
-map 			= "StarterLevel"
-value 		= 3	;Heavy Starter
-ignorehitpause 	= 1
-
 [State -2, P1 Value Set]
 type 		= MapSet
 trigger1 		= movehit && !map(ComboStateCheck)
 map 			= "P1"
-value 		= 0.90	;100% Starting DMG
+value 		= 1	;100% Starting DMG
 ignorehitpause 	= 1
 [State -2, P2 Value Set]
 type 		= MapSet

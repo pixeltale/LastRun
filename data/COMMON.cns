@@ -2223,7 +2223,7 @@ value = 0
 ;======================================================================================
 ;PARRY SECTION                                                                       []
 ;=====================================================================================
-[Statedef 900] ;PARRY
+[Statedef 900] ;PARRY Attempt
 type    = S
 movetype= I
 physics = S
@@ -2237,6 +2237,16 @@ type = MapSet
 trigger1 = time >= 8
 map = "ForceRetribution"
 value = 1
+
+[State 0, PalFXWiz]
+type = PalFX
+trigger1 = time <= 8
+time = 1
+add = 250,70,70
+mul = 256,256,256
+sinadd = -80,-80,-8,1
+invertall = 0
+color = 0
 
 [State -1, Standing Parry]
 type = HitOverRide
@@ -2376,6 +2386,17 @@ anim = 910
 ctrl = 0
 sprpriority = 2
 
+
+[State 0, PalFXWiz]
+type = PalFX
+trigger1 = time <= 8
+time = 1
+add = 250,70,70
+mul = 256,256,256
+sinadd = -80,-80,-8,1
+invertall = 0
+color = 0
+
 [State 0, MapSet] 
 type = MapSet
 trigger1 = time >= 8
@@ -2501,7 +2522,7 @@ persistent = 1
 [State 1000, 7]
 type = ChangeState
 triggerall = gethitvar(attr) != SCA,NP, SP, HP
-trigger1 = time = 10
+trigger1 = time = 5
 value = 50
 ctrl = 1
 [State 1000, 7]
@@ -3674,13 +3695,16 @@ value = 5120 + (anim % 10)
 type = VelSet
 trigger1 = Time = 0
 x = -15
-[State 0, Mapadd]
-type 		= MapAdd
-trigger1 	    = time = [0, 9]
-map 		    = "Pursuit"
-value 		    = -50
-ignorehitpause 	= 1
-persistent 		= 1
+
+[State 0, PalFXWiz]
+type = PalFX
+trigger1 = 1
+time = 1
+add = 50,50,250
+mul = 256,256,256
+sinadd = -80,-80,-8,1
+invertall = 0
+color = 0
 
 [State 5120, 3]
 type = NotHitBy
@@ -6760,13 +6784,13 @@ value = 0
 type 		= MapSet
 trigger1 	= combocount && !map(CHStarter)
 map 		= "CR"
-value 		= 0.80	;80% DMG Limit
+value 		= 0.85	;85% DMG Mid-Combo
 ignorehitpause 	= 1
 [State -2, Combo Rate Calculation - Counter Hit]
 type 		= MapSet
 trigger1 	= combocount && map(CHStarter)
 map 		= "CR"
-value 		= 0.90
+value 		= 0.95
 ignorehitpause 	= 1
 
 [State -2, P2 - Accumulation - Start]
@@ -6789,7 +6813,7 @@ persistent 		= 0
 type 		= MapSet
 trigger1 	= enemy, movetype = H
 map 		= "P4"
-value 		= cond(map(P4) <= 0.10, 0.10, (map(P1)*map(Accumulation)*1))
+value 		= cond(map(P4) <= 0.15, 0.15, (map(P1)*map(Accumulation)*map(CR)))
 ignorehitpause 	= 1
 persistent 		= 0
 
@@ -7082,43 +7106,16 @@ value = 2
 ;===============================================================================
 ; ------- Counter-Hit --------
 ;===============================================================================
-[State -2, CH Check - 1] 				;Checks if the opponent is
-type = MapSet	                        ;attacking or not
-trigger1 = enemynear, movetype = A
-map = "CounterHit"
-value = 1
-ignorehitpause = 1
-[State -2, CH Check - 1] 				;Checks if the opponent is
-type = MapSet	                        ;attacking or not
-trigger1 = enemynear, movetype != A
-map = "CounterHit"
-value = 0
-ignorehitpause = 1
-
-[State -2, CH - Read for Start Flag] 				;Checks if the opponent is
-type = MapSet	                                    ;attacking or not
-trigger1 = map(CounterHit)	
-map = "CounterHit_Flag"
-value = 5
-ignorehitpause = 1
-[State -2, CH - Read for Start Flag] 				;Checks if the opponent is
-type = MapAdd	                                    ;attacking or not
-trigger1 = map(CounterHit_Flag)	
-map = "CounterHit_Flag"
-value = -1
-ignorehitpause = 1
-
 [State -2, Counter Hit Start Flag] 		;Checks for counterhit starter for the combo.
 type = MapSet					
-trigger1 = map(CounterHit_Flag)
-trigger1 = map(ComboStateCheck)
+trigger1 = movecountered && combocount
 map = "CHStarter"
 value = 1
 ignorehitpause = 1
 
 [State -2, Counter Hit Start Reset] 		;Resets the "counterhit starter" value after a combo finishes.
 type = MapSet					
-trigger1 = !map(ComboStateCheck)
+trigger1 = !combocount
 map = "CHStarter"
 value = 0
 ignorehitpause = 0

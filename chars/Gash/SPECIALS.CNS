@@ -3369,7 +3369,7 @@ air.animtype 		= back
 guardflag 		= MA
 hitflag 			= MAFD
 ;==============================================
-pausetime 		= 12, 12 + map(CounterHit)
+pausetime 		= 12, 12
 sparkno 			= 0
 sparkxy 			= -30, -59
 hitsound 			= 5, 1

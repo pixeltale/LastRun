@@ -1736,7 +1736,7 @@ getpower				= 200 * map(P4)
 [State 0, MapSet] 
 type = MapAdd
 triggerall = !movehitvar(Overridden)
-trigger1 = movehit = 1
+trigger1 = movehitvar(frame) && movehit
 map = "Pursuit"
 value = -150
 ignorehitpause = 1

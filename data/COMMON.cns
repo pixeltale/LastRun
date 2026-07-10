@@ -183,7 +183,16 @@ sysvar(1) = 1
 type = VarSet
 trigger1 = command = "holdback"
 sysvar(1) = -1
-
+[State -2, Neutral Jump Checker]
+type 		= MapSet
+trigger1 		= !time || sysvar(1) != 0
+map 			= "NeutralJump"
+value 		= 0
+[State -2, Neutral Jump Checker]
+type 		= MapSet
+trigger1 		= sysvar(1) = 0
+map 			= "NeutralJump"
+value 		= 1
 
 [State 40, 4];FWD jump
 type = VelSet
@@ -2285,7 +2294,13 @@ anim = 900 + 5 * (anim = 905)
 ctrl = 0
 sprpriority = 2
 
-[State 700, Snd] ;Cosmetics
+[State 905, PowerAdd] ;No Extra Bar on Projectile Parry
+type = PowerAdd
+trigger1 = !time
+trigger1 = gethitvar(attr) = SCA,NP, SP, HP
+value = -gethitvar(power)
+
+[State 900, PowerAdd] ;Cosmetics
 type = playsnd
 trigger1 = !time
 value = 900, 0
@@ -2432,6 +2447,11 @@ sprpriority = 2
 [State 5100, 11]
 type = PosFreeze
 trigger1 = time <= 10
+[State 905, PowerAdd] ;No Extra Bar on Projectile Parry
+type = PowerAdd
+trigger1 = !time
+trigger1 = gethitvar(attr) = SCA,NP, SP, HP
+value = -gethitvar(power)
 [State 700, VelAdd]
 type = VelSet
 trigger1 = time = 10
@@ -6686,11 +6706,11 @@ MAP = "upDETECTION"
 value = 0
 
 ;-----------------------------------------------------
-;No Proximity Block.
+;Proximity Block.
 [State 0, AttackDist]
 type = AttackDist
 trigger1 = 1
-value = 10
+value = 50
 ignorehitpause = 1
 persistent = 1
 

@@ -1,0 +1,77 @@
+<#f0f000>EDEN HAZARD: A-TYPE</>
+<#f0f000>COMMAND NORMALS</>
+Overhead            						_F_+^B
+   <#bbbbbb>An overhead kick with two hits. Chain OK.</>
+Uppercut            						_F_+^C
+   <#bbbbbb>A powerful uppercut. AIR RAID OK. Hits OTG</>
+
+<#f0f000>THROWS</>
+Hands Off   								[_B/_F]_+^A +^B
+
+<#f0f000>SPECIAL MOVES</>
+Fatal Introduction_EX						_QDF^A/^B/^C
+   <#bbbbbb>A projectile attack.
+   A Version is slow.
+   B Version is fast.
+   C Version is fastest and 3 hits.</>
+Territory Lord_EX							_DSF^A/^B/^C
+   <#bbbbbb>An anti-air attack with a large hitbox and reversal potential.
+   A version is fast upper body invul. [R]
+   B version is full invul. [R] (Midcombo)
+   EX is fast, full invul, and good for juggles. [R] (Midcombo)</>
+Water's Edge_EX_AIROK								_QDB^A/^B/^C
+   <#bbbbbb>A series of kick attacks.
+   A version is a upward kick that starts combos. Has followups.
+   B Version lunges across the screen at high speed. [R]
+   EX is an overhead that knocks down air opponents. [R]</>
+_!Extra kick								(After A Version) ^A
+  _!Knockdown [R]								    (After A Version) ^A
+
+<#f0f000>LASTRIDE</>
+Revelation</>		_QDF_QDF_+^B _+^C
+
+<#f0f000>ALTERNATIVE SPECIAL MOVES: A-GEAR</>
+BLACK HOLE						_QDB^B_+^C
+   <#bbbbbb>A projectile spawns at the enemy's
+   location before exploding.</>
+
+LOWCARD						_D_D^B_+^C
+   <#bbbbbb>A low card attack.</>
+
+<#f0f000>LASTRIDE: ALTERNATIVES</>
+SUPER 1: BLACK HOLE SUN					_QDB_QDB^B_+^C
+   <#bbbbbb> A projectile with infinite health that 
+   eats all other projectiles.</>
+SUPER 2: BLACK BULLET					_QDB_QDB^B_+^C
+   <#bbbbbb> A projectile with infinite health that 
+   eats all other projectiles.</>
+
+<#f0f000>ULTIMATE</>
+Not implemented Yet
+
+<#f0f000>UNIVERSAL MECHANICS</>
+Dead Zone_AIROK</>		^B +^C
+   <#bbbbbb>A slow but powerful and large attack used for controlling space.
+   Drains enemy pursuit gauge on contact.</>
+
+Parry_AIROK</>		^D or _D _+^D
+   <#bbbbbb>For 8 Frames, intercept enemy attacks and become invulnerable, 
+   giving an opportunity to counterattack. Attacks must be parried high and
+   low, corresponding to how they are guarded. Additionally, attacks can be
+   parried in midair.</>
+
+Backroll</>		^D (During Soft Knockdown)
+   <#bbbbbb>Holding the back direction during a soft knockdown will
+   allow you to back-roll. Be aware that this drains your 
+   pursuit gauge.</>
+
+Hop</>		Tap Up
+   <#bbbbbb>Tapping an up direction will allow you to perform a
+   small jump called a hop.</>
+
+Retribution</>		(After Punishing An Attack)
+   <#bbbbbb>After punishing a failed attack by the opponent, 
+   RETRIBUTION becomes available. The first special attack with a 
+   RETRIBUTION trait [R] used in the ensuing combo will perform
+   a special effect, usually allowing for a 
+   longer and more damaging combo.</>

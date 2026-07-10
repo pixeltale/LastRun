@@ -3154,7 +3154,7 @@ ignorehitpause = 1
 
 [State 0, Custom Afterimage]
 type = Explod
-trigger1 = time
+trigger1 = time % 2 || movehit
 anim = anim
 animelem = animelemno(0)
 animfreeze = 1
@@ -3177,6 +3177,8 @@ palfx.time = 40
 palfx.sinmul = -255,-255,-255,160
 removeongethit = 0
 ignorehitpause = 1
+velocity = 1
+accel = -0.1
 
 [State 0, VarSet]
 type = VarSet

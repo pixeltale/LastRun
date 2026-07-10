@@ -40,7 +40,7 @@ time = 1
 name = "D"
 command = d
 time = 1
-buffer.time = 6
+buffer.time = 4
 [Command]
 name = "F"
 command = x
@@ -459,6 +459,10 @@ command = $F, F
 time = 10
 buffer.time = 1
 
+[Command]
+name = "MashC"
+command = c, c
+time = 10
 
 [Command]
 name = "44"
@@ -786,18 +790,22 @@ steptime = 7
 name = "624A"
 command = ~F, $D, B, a
 time = 20
+steptime = 7
 [Command]
 name = "624B"
 command = ~F, $D, B, b
 time = 20
+steptime = 7
 [Command]
 name = "624C"
 command = ~F, $D, B, c
 time = 20
+steptime = 7
 [Command]
 name = "624D"
 command = ~F, $D, B, d
 time = 20
+steptime = 7
 
 [Command]
 name = "426A"

@@ -668,6 +668,15 @@ command = ~F, y
 ; Command Inputs - Special, Without Buttons
 ;===================================
 [Command]
+name = "[4]6A"
+command = /20$B, $F, a
+[Command]
+name = "[4]6B"
+command = /20$B, $F, b
+[Command]
+name = "[4]6C"
+command = /20$B, $F, c
+[Command]
 name = "6246"
 command = ~$F, $D, $B, $F
 [Command]
@@ -870,46 +879,34 @@ steptime = 7
 buffertime = 18
 
 [Command]
-name = "NO236"
-command = ~D, N, F
-[Command]
-name = "236A"
-command = ~D, F+a
-[Command]
 name = "236A"
 command = ~D, F, a
+steptime = 7
 [Command]
 name = "236A"
-command = ~D, DF, F, a
-[Command]
-name = "236B"
-command = ~D, F+b
+command = ~D, F, UF, a
 [Command]
 name = "236B"
 command = ~D, F, b
+steptime = 7
 [Command]
 name = "236B"
-command = ~D, DF, F, b
-[Command]
-name = "236C"
-command = ~D, F+c
+command = ~D, DF, UF, b
 [Command]
 name = "236C"
 command = ~D, F, c
+steptime = 7
 [Command]
 name = "236C"
-command = ~D, DF, F, c
-[Command]
-name = "236D"
-command = ~D, F+d
-time = 20
+command = ~D, DF, UF, c
+steptime = 7
 [Command]
 name = "236D"
 command = ~D, F, d
-time = 20
+steptime = 7
 [Command]
 name = "236D"
-command = ~D, DF, F, d
+command = ~D, DF, UF, d
 
 [Command]
 name = "421A"
@@ -930,28 +927,32 @@ time = 6
 
 [Command]
 name = "214A"
-command = ~D, B+a
+command = ~D, B, a
+steptime = 7
 [Command]
 name = "214A"
-command = ~D, B, a
-[Command]
-name = "214B"
-command = ~D, B+b
+command = ~D, B, UB, a
 [Command]
 name = "214B"
 command = ~D, B, b
+steptime = 7
 [Command]
-name = "214C"
-command = ~D, B+c
+name = "214B"
+command = ~D, B, UB, b
 [Command]
 name = "214C"
 command = ~D, B, c
+steptime = 7
 [Command]
-name = "214D"
-command = ~D, B+d
+name = "214C"
+command = ~D, B, UB, c
 [Command]
 name = "214D"
 command = ~D, B, d
+steptime = 7
+[Command]
+name = "214D"
+command = ~D, B, UB, d
 
 [Command]
 name = "66A"

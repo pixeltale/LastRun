@@ -75,7 +75,7 @@ down.friction.threshold = .05         ;If the player's speed drops below this th
 
 [Constants]
 hop.height = 0.65
-superjump.height = -13.2
+superjump.height = -12.2
 
 [Quotes]
 victory1 = "Your technique is unrefined. You could never be me."
@@ -219,7 +219,7 @@ persistent = 1
 [State -2, Groundbounce Limiter]
 type 		= MapSet
 trigger1		= !combocount
-map 			= "Limiter_6B_BOUNCE"
+map 			= "Limiter_j46B_BOUNCE"
 value 		= 0
 ignorehitpause = 1
 [State -2, Groundbounce Limiter]

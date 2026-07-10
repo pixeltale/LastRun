@@ -450,6 +450,30 @@ trigger1 = 1
 value = , AT
 time = 1
 
+[State -2, Neutral Jump Checker]
+type 		= MapSet
+trigger1 		= !time || sysvar(1) != 0
+map 			= "NeutralJump"
+value 		= 0
+[State -2, Neutral Jump Checker]
+type 		= MapSet
+trigger1 		= sysvar(1) = 0
+map 			= "NeutralJump"
+value 		= 1
+[State 40, 3]
+type = VarSet
+trigger1 = command != "holdback"
+trigger1 = command != "holdfwd"
+sysvar(1) = 0
+[State 40, 2]
+type = VarSet
+trigger1 = command = "holdfwd"
+sysvar(1) = 1
+[State 40, 3]
+type = VarSet
+trigger1 = command = "holdback"
+sysvar(1) = -1
+
 [State - Air Option Limiter - Double Jump]
 type 		= mapset
 trigger1 		= !time
@@ -491,22 +515,6 @@ type = MapSet
 trigger1 = time = 0
 map = "SJI" ;Super Jump Install
 value = 1
-
-[State 40, 2]
-type = VarSet
-trigger1 = command = "holdfwd"
-sysvar(1) = 1
-
-[State 40, 3]
-type = VarSet
-trigger1 = command != "holdback"
-trigger1 = command != "holdfwd"
-sysvar(1) = 0
-
-[State 40, 3]
-type = VarSet
-trigger1 = command = "holdback"
-sysvar(1) = -1
 
 [State 45, 6]
 type = VelSet
@@ -3859,7 +3867,6 @@ value = 5221
 type    = A
 movetype= H
 physics = N
-anim    = 5220
 
 [State 5221 VelSet]
 type = velset
@@ -4001,12 +4008,12 @@ redirectid      = enemynear, id
 [State 5223, Gravity]
 type = VelAdd
 trigger1 = 1
-y = .3
+y = .4
 
 [State 1028, Anim 5050] ;Transition to Spinout Animation
 type = ChangeAnim
 trigger1 = Time = 0
-value = 5160
+value = 5223
 
 [State 5050, 5]; Recover in mid air
 type = SelfState
@@ -4975,6 +4982,7 @@ value = 5259
 type    = A
 movetype= H
 physics = N
+anim = 5259
 
 [State 1028, Vel Y]
 type = VelMul
@@ -4988,8 +4996,13 @@ y = -7
 
 [State 1028, Gravity]
 type = VelAdd
-trigger1 = 1
-y = .25
+trigger1 = pos y <= -40
+y = .5
+
+[State 5050, 5]
+type = ChangeAnim
+trigger1 = vel y > 1 && time > 3
+value = 5100
 
 [State 5050, 5]; Recover in mid air
 type = ChangeState

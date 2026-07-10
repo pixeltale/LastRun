@@ -2523,6 +2523,12 @@ type = VelSet
 trigger1 = animelem = 7
 x = vel x + 15
 
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = animelemno(0) < 8
+value = ,AT
+time = 1
+
 [State 0, ChangeState]
 type = ChangeState
 trigger1 = movehit

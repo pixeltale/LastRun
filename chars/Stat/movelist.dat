@@ -1,24 +1,30 @@
-<#f0f000>EDEN HAZARD: A-TYPE</>
+<#f0f000>YVONNE STASIA YRASTORZA: A-TYPE</>
 <#f0f000>COMMAND NORMALS</>
-Overhead            						_F_+^B
-   <#bbbbbb>An overhead kick with two hits. Chain OK.</>
-Uppercut            						_F_+^C
-   <#bbbbbb>A powerful uppercut. AIR RAID OK. Hits OTG</>
+Hardlight Jam            						_MASH ^C
+   <#bbbbbb>A multi-hit ball of lightning. Can only be done
+   after C Normals.</>
 
 <#f0f000>THROWS</>
-Hands Off   								[_B/_F]_+^A +^B
+Dress Down   								[_B/_F]_+^A +^B
 
 <#f0f000>SPECIAL MOVES</>
-Fatal Introduction_EX						_QDF^A/^B/^C
-   <#bbbbbb>A projectile attack.
-   A Version is slow.
-   B Version is fast.
-   C Version is fastest and 3 hits.</>
-Territory Lord_EX							_DSF^A/^B/^C
-   <#bbbbbb>An anti-air attack with a large hitbox and reversal potential.
-   A version is fast upper body invul. [R]
-   B version is full invul. [R] (Midcombo)
-   EX is fast, full invul, and good for juggles. [R] (Midcombo)</>
+Zanjan Avantura_EX						_QDB^A/^B/^C
+   <#bbbbbb>A powerful gut punch.
+   A Version is fast.
+   B Version is slow and high damage. 
+      Can be held to draw the opponent in
+      and can be feinted with D.
+   C Version is fast and high damage.</>
+Starlight Slaughter Lamb_EX							_CHARGE_B_F^A/^B/^C
+   <#bbbbbb>A sliding kick with the ability to go under many attacks.
+   A version is fast. 
+   B version is slower and more active. 
+   EX is fast, multi-hitting, and ends in an air raid launcher.</>
+Moonlight Slaughter Lamb_EX_AIR							_CHARGE_B_F^A/^B/^C
+   <#bbbbbb>A rapid divekick that must be blocked standing.
+   A version hits at a shallow angle.
+   B version flies more horizontally. [R]
+   EX is ken carson goomba. [R] (Midcombo)</>
 Water's Edge_EX_AIROK								_QDB^A/^B/^C
    <#bbbbbb>A series of kick attacks.
    A version is a upward kick that starts combos. Has followups.

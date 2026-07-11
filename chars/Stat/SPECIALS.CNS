@@ -176,16 +176,10 @@ trigger1 = animelemno(0) = 3
 x = 12
 
 [State 0, VelAdd]
-type = VelAdd
-triggerall = anim = 1001
-trigger1 = animelem = 2
-x = 2
-redirectid = enemy, id
-[State 0, VelAdd]
 type = PosAdd
 triggerall = anim = 1001
-trigger1 = animelemno(0) = 2
-x = cond(time * 0.2 < 15, time * 0.2, 15)
+trigger1 = animelemno(0) = [1, 2]
+x = cond(time * 0.2 < 15, time * 0.2, 15) * cond(p2dist x < 0, -1, 1)
 redirectid = enemy, id
 [State 0, PlayerPush]
 type = PlayerPush
@@ -200,7 +194,7 @@ priority = 999
 type = ChangeAnim
 triggerall = anim = 1001
 trigger1 = animelemno(0) = 2
-trigger1 = command = "HOLD_B"
+trigger1 = command = "HOLD_B" && time < 50
 value = 1001 
 elem = 2
 
@@ -1210,14 +1204,14 @@ air.velocity 		= -5,-1.5 / map(JuggleScale)
 fall.yvelocity 		= 0
 down.velocity 		= -2,-7
 down.hittime 		= 999
-guard.ctrltime 		= 16
+guard.ctrltime 		= 8
 guard.cornerpush.veloff 	= -6
 ;===============================
 envshake.time 			= 15
 envshake.freq 			= 15
 envshake.ampl 			= 4
 envshake.phase 		= 0.5
-getpower 			= 150 * map(P4)
+getpower 				= 0
 [State 0, JORMUNGANDR DEFAULT HITDEF]
 type 				= HitDef
 trigger1 				= animelem = 11

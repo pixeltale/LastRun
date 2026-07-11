@@ -185,28 +185,43 @@ trigger1 = var(1)
 type = ChangeState
 value = 2000
 triggerall = command = "214C"
-triggerall = power >= 500
-triggerall = statetype != A
+triggerall = statetype != A && power >= 500
 trigger1 = var(1)
 
 ;[4]6A
 [State -1, Crouching Heavy]
 type = ChangeState
-value = 1010 + 20 * statetype = A
+value = 1010
 triggerall = command = "[4]6A"
+triggerall = statetype != A
 trigger1 = var(1)
 ;[4]6A
 [State -1, Crouching Heavy]
 type = ChangeState
-value = 1011 + 20 * statetype = A
+value = 1011
 triggerall = command = "[4]6B"
+triggerall = statetype != A
 trigger1 = var(1)
-;[4]6A
+;[4]6C
 [State -1, Crouching Heavy]
 type = ChangeState
 value = 2010
 triggerall = command = "[4]6C"
-triggerall = statetype != A
+triggerall = statetype != A && power >= 500
+trigger1 = var(1)
+;[4]86A
+[State -1, Crouching Heavy]
+type = ChangeState
+value = 1030
+triggerall = command = "[4]86A"
+triggerall = statetype = A
+trigger1 = var(1)
+;[4]86B
+[State -1, Crouching Heavy]
+type = ChangeState
+value = 1031
+triggerall = command = "[4]86B"
+triggerall = statetype = A
 trigger1 = var(1)
 
 ;===========================================================================

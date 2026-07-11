@@ -669,13 +669,28 @@ command = ~F, y
 ;===================================
 [Command]
 name = "[4]6A"
-command = /20$B, $F, a
+command = /25$B, $F, a
 [Command]
 name = "[4]6B"
-command = /20$B, $F, b
+command = /25$B, $F, b
 [Command]
 name = "[4]6C"
-command = /20$B, $F, c
+command = /25$B, $F, c
+[Command]
+name = "[4]6D"
+command = /25$B, $F, d
+[Command]
+name = "[4]86A"
+command = /20$B, $U, $F, a
+[Command]
+name = "[4]86B"
+command = /20$B, $U, $F, b
+[Command]
+name = "[4]86C"
+command = /20$B, $U, $F, c
+[Command]
+name = "[4]86D"
+command = /20$B, $U, $F, d
 [Command]
 name = "6246"
 command = ~$F, $D, $B, $F

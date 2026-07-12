@@ -1084,9 +1084,9 @@ guardsound 			= 6,0
 ;===============================
 ground.hittime  			= 18
 ground.slidetime			= 18
-ground.velocity 			= -5
+ground.velocity 			= -15, -6
 air.hittime  			= 30
-air.velocity 			= -3.5,-1 / map(JuggleScale)
+air.velocity 			= -15,-3 / map(JuggleScale)
 down.velocity 			= -1,-5
 down.hittime 			= 30
 ;===============================
@@ -1100,14 +1100,24 @@ air.cornerpush.veloff 	= -5
 down.cornerpush.veloff 	= -4
 guard.cornerpush.veloff 	= -4
 ;===============================
-fall 				= 0
+fall 				= 1
 air.fall 				= 1
 ;===============================
 envshake.time 			= 15
 envshake.freq 			= 15
 envshake.ampl 			= 4
 envshake.phase 		= 0.5
+p2stateno 			= 5220
+p2getp1state 			= 0
+missonoverride			= 0
 
+[State -2, Wallbounce Type Set]
+type 			= MapSet
+trigger1 			= movehitvar(FRAME)
+map 				= "wallbounce_yvel"
+value 			= -1
+ignorehitpause 		= 1
+persistent 			= 0
 
 [State 200, 3]
 type = ChangeState

@@ -126,13 +126,13 @@ trigger1 = ctrl
 ;SUPER ATTACKS
 ;===========================================================================
 ;632146X
-[State -1, Ranbu Super]
-type = ChangeState
-value = 3000
-triggerall = power >= 1000 || map(TERMINA.ACTIVE) > 0
-triggerall = command = "632146A" || command = "632146B" || command = "632146C"
-triggerall = statetype != A
-trigger1 = var(2)
+;[State -1, Ranbu Super]
+;type = ChangeState
+;value = 3000
+;triggerall = power >= 1000 || map(TERMINA.ACTIVE) > 0
+;triggerall = command = "632146A" || command = "632146B" || command = "632146C"
+;triggerall = statetype != A
+;trigger1 = var(2)
 
 
 ;===========================================================================
@@ -147,21 +147,21 @@ trigger1 = var(2)
 [State -1, A DP]
 type = ChangeState
 value = 1020
-triggerall = command = "623A"
+triggerall = command = "632146A"
 triggerall = statetype != A
 trigger1 = var(1)
 ;623B
 [State -1, B DP]
 type = ChangeState
 value = 1020
-triggerall = command = "623B"
+triggerall = command = "632146B"
 triggerall = statetype != A
 trigger1 = var(1)
 ;6233
 [State -1, B DP]
 type = ChangeState
 value = 2020
-triggerall = command = "623C"
+triggerall = command = "632146C"
 triggerall = power >= 500
 triggerall = statetype != A
 trigger1 = var(1)

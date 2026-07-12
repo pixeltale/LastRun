@@ -5,7 +5,7 @@ Hardlight Jam            						_MASH ^C
    after C Normals.</>
 
 <#f0f000>THROWS</>
-Dress Down   								[_B/_F]_+^A +^B
+Dark Blue   								[_B/_F]_+^A +^B
 
 <#f0f000>SPECIAL MOVES</>
 Zanjan Avantura_EX						_QDB^A/^B/^C
@@ -15,42 +15,29 @@ Zanjan Avantura_EX						_QDB^A/^B/^C
       Can be held to draw the opponent in
       and can be feinted with D.
    C Version is fast and high damage.</>
-Starlight Slaughter Lamb_EX							_CHARGE_B_F^A/^B/^C
+Starlight Slaughter Lamb_EX							~B_F^A/^B/^C
    <#bbbbbb>A sliding kick with the ability to go under many attacks.
    A version is fast. 
    B version is slower and more active. 
    EX is fast, multi-hitting, and ends in an air raid launcher.</>
-Moonlight Slaughter Lamb_EX_AIR							_CHARGE_B_F^A/^B/^C
+Moonlight Slaughter Lamb_EX_AIR							~B_HUF^A/^B/^C
    <#bbbbbb>A rapid divekick that must be blocked standing.
    A version hits at a shallow angle.
    B version flies more horizontally. [R]
    EX is ken carson goomba. [R] (Midcombo)</>
-Water's Edge_EX_AIROK								_QDB^A/^B/^C
-   <#bbbbbb>A series of kick attacks.
-   A version is a upward kick that starts combos. Has followups.
-   B Version lunges across the screen at high speed. [R]
-   EX is an overhead that knocks down air opponents. [R]</>
-_!Extra kick								(After A Version) ^A
-  _!Knockdown [R]								    (After A Version) ^A
+Violent Response, Insane Caller_EX_AIROK								_HCB_F^A/^B/^C
+   <#bbbbbb>A command grab
+   A/B are grippy!
+   EX inflicts wallcrush.</>
 
 <#f0f000>LASTRIDE</>
-Revelation</>		_QDF_QDF_+^B _+^C
+Not implemented Yet
 
 <#f0f000>ALTERNATIVE SPECIAL MOVES: A-GEAR</>
-BLACK HOLE						_QDB^B_+^C
-   <#bbbbbb>A projectile spawns at the enemy's
-   location before exploding.</>
-
-LOWCARD						_D_D^B_+^C
-   <#bbbbbb>A low card attack.</>
+Not implemented Yet
 
 <#f0f000>LASTRIDE: ALTERNATIVES</>
-SUPER 1: BLACK HOLE SUN					_QDB_QDB^B_+^C
-   <#bbbbbb> A projectile with infinite health that 
-   eats all other projectiles.</>
-SUPER 2: BLACK BULLET					_QDB_QDB^B_+^C
-   <#bbbbbb> A projectile with infinite health that 
-   eats all other projectiles.</>
+Not implemented Yet
 
 <#f0f000>ULTIMATE</>
 Not implemented Yet

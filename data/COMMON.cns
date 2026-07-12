@@ -2249,12 +2249,6 @@ anim = 900 + 5*(command = "holddown")
 ctrl = 0
 sprpriority = 2
 
-[State 0, MapSet] 
-type = MapSet
-trigger1 = time >= 8
-map = "ForceRetribution"
-value = 1
-
 [State 0, PalFXWiz]
 type = PalFX
 trigger1 = time <= 8
@@ -2420,11 +2414,6 @@ sinadd = -80,-80,-8,1
 invertall = 0
 color = 0
 
-[State 0, MapSet] 
-type = MapSet
-trigger1 = time >= 8
-map = "ForceRetribution"
-value = 1
 [State -1, Standing Parry]
 type = HitOverRide
 trigger1 = !time
@@ -5560,7 +5549,7 @@ type = ChangeState
 value = 100
 triggerall = command = "FF" && (map(Pursuit) >= 333 || map(TERMINA.ACTIVE))
 triggerall = statetype != A && !map(NOPCANCEL)
-triggerall = movecontact = [1, 6] && !map(DC.OVERRIDE)
+triggerall = movecontact = [1, 10] && !map(DC.OVERRIDE)
 trigger1 = (MAP(PURSUITCANCEL_NORMALS)|| MAP(PURSUITCANCEL_SPECIALS))
 
 

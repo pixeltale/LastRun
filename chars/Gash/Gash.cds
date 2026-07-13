@@ -241,6 +241,7 @@ triggerall = map(Groove_Style) = 1
 triggerall = !numhelper(1005)
 triggerall = command = "236C"
 triggerall = statetype = A
+triggerall = power >= 500
 trigger1 = var(1)
 
 ;214A

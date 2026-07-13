@@ -13,6 +13,10 @@ command = a
 time = 1
 buffer.time = 1
 [Command]
+name = "BUFFERA"
+command = a
+time = 1
+[Command]
 name = "b"
 command = b
 time = 1
@@ -23,6 +27,10 @@ command = b
 time = 1
 buffer.time = 1
 [Command]
+name = "BUFFERB"
+command = b
+time = 1
+[Command]
 name = "c"
 command = c
 time = 1
@@ -32,6 +40,10 @@ name = "C"
 command = c
 time = 1
 buffer.time = 1
+[Command]
+name = "BUFFERC"
+command = c
+time = 1
 [Command]
 name = "d"
 command = d
@@ -592,6 +604,30 @@ buffer.time = 2
 ;===================================
 ; Command Inputs - Super
 ;===================================
+[Command]
+name = "EVA_A"
+command = ~D, $B, F, $U, a
+time = 20
+[Command]
+name = "EVA_B"
+command = ~D, $B, F, $U, b
+time = 20
+[Command]
+name = "EVA_C"
+command = ~D, $B, F, $U, b
+time = 20
+[Command]
+name = "[4]648A"
+command = /25$B, $F, $B, $U, a
+time = 30
+[Command]
+name = "[4]648B"
+command = /25$B, $F, $B, $U, b
+time = 30
+[Command]
+name = "[4]648C"
+command = /25$B, $F, $B, $U, c
+time = 30
 
 [Command]
 name = "236236A"
@@ -667,6 +703,7 @@ command = ~F, y
 ;===================================
 ; Command Inputs - Special, Without Buttons
 ;===================================
+
 [Command]
 name = "[4]6A"
 command = /25$B, $F, a

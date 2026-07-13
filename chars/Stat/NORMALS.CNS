@@ -105,7 +105,6 @@ poweradd		= 0
 ctrl 		= 0
 velset 		= vel x,0
 anim 		= 210
-sprpriority 	= -1
 facep2 		= 1
 
 [State -2, P1 Value Set]
@@ -138,7 +137,7 @@ pausetime 			= 10,10 + 2 * (enemy, movetype = A)
 getpower 				= 25 * map(P4)
 ;===============================
 attr 				= S,NA
-hitflag 				= MAFD
+hitflag 				= MAF
 guardflag 			= M
 animtype 				= Light
 air.animtype 			= Light
@@ -346,7 +345,7 @@ ground.hittime  		= 18
 ground.slidetime		= 18
 ground.velocity 		= -6
 air.hittime  			= 30
-air.velocity 			= -3.5,-2
+air.velocity 			= -3.5,-2 / map(JuggleScale)
 down.velocity 			= -1,-5
 down.hittime 			= 30
 ;===============================
@@ -404,7 +403,7 @@ ignorehitpause 	= 1
 type 		= MapSet
 trigger1 		= movehit && combocount > 2
 map 			= "P2"
-value 		= 0.95	;85% DMG For next hit
+value 		= 0.85	;85% DMG For next hit
 ignorehitpause 	= 1
 persistent = 0
 [State -2, P2 Accumulation - Scale]
@@ -450,10 +449,10 @@ id = 235
 type 	= HitDef 
 p2facing 	= 1
 trigger1 	= time % 3
-attr 		= S, NA
+attr 		= SCA, NP
 animtype 		= Hard
 air.animtype 	= back
-damage 		= 30 * map(P4), 3
+damage 		= 10 * map(P4), 3
 hitflag 		= MAF
 guardflag 	= H
 pausetime 	= 4,4 + 2 * (enemy, movetype = A)
@@ -463,10 +462,10 @@ hitsound   	= 5,0
 guardsound 			= 6,0
 ground.slidetime 	= 10
 ground.hittime  	= 10
-air.hittime  	= 20 
+air.hittime  	= 40 
 down.hittime 	= 26 
 ground.velocity = -8,-0
-air.velocity 	= -3, -3 / map(JuggleScale)
+air.velocity 	= -3, 0
 down.velocity 	= -1, -4
 guard.ctrltime 	= 8
 guard.velocity 	= -10

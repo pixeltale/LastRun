@@ -180,37 +180,74 @@ trigger1 = AnimTime = 0
 value = 0
 ctrl = 1
 
+[Statedef +1]
+
+[State -2, Lamb To Slaughter - Reset]
+type 		= MapSet
+trigger1 		= time = 0
+map 			= "LS_ACancel"
+value 		= 0
+ignorehitpause 	= 1
+persistent		= 1
+[State -2, Lamb To Slaughter - Reset]
+type 		= MapSet
+trigger1 		= time = 0
+map 			= "LS_BCancel"
+value 		= 0
+ignorehitpause 	= 1
+persistent		= 1
+
 [Statedef -2]
 
-[State -2, Lifetime Set]
-type 		= MapSet
-trigger1 		= time = 0
-trigger1		= numhelper(2120)
-map 			= "Stalker"
-value 		= 1
-ignorehitpause 	= 1
-[State -2, Lifetime Set]
-type 		= MapSet
-trigger1 		= time = 0
-trigger1		= !numhelper(2120)
-map 			= "Stalker"
-value 		= 0
+[State -2, Fatal Attraction Tick Down]
+type 		= MapAdd
+trigger1 		= map(Attraction) > 0 && combocount = 0
+map 			= "Attraction"
+value 		= -1
 ignorehitpause 	= 1
 
-[State -2, Lifetime Set]
+[State -2, Lamb To Slaughter - Limiter Reset]
 type 		= MapSet
-trigger1 		= pos y >= 0
-trigger2 		= combocount > 0
-map 			= "TP_Limiter"
+trigger1 		= ctrl = 1
+map 			= "LS_6A"
 value 		= 0
 ignorehitpause = 1
-
+[State -2, Lamb To Slaughter - Limiter Reset]
+type 		= MapSet
+trigger1 		= ctrl = 1
+map 			= "LS_8A"
+value 		= 0
+ignorehitpause = 1
+[State -2, Lamb To Slaughter - Limiter Reset]
+type 		= MapSet
+trigger1 		= ctrl = 1
+map 			= "LS_2A"
+value 		= 0
+ignorehitpause = 1
+[State -2, Lamb To Slaughter - Limiter Reset]
+type 		= MapSet
+trigger1 		= ctrl = 1
+map 			= "LS_6B"
+value 		= 0
+ignorehitpause = 1
+[State -2, Lamb To Slaughter - Limiter Reset]
+type 		= MapSet
+trigger1 		= ctrl = 1
+map 			= "LS_8B"
+value 		= 0
+ignorehitpause = 1
+[State -2, Lamb To Slaughter - Limiter Reset]
+type 		= MapSet
+trigger1 		= ctrl = 1
+map 			= "LS_2B"
+value 		= 0
+ignorehitpause = 1
 
 [State 0, DisplayToClipboard]
 type = DisplayToClipboard
 trigger1 = 1
-text = "prevstateno = %i retribution = %.0f"
-params = prevstateno, map(forceretribution)
+text = "slaughter lamb = %.0f"
+params = map(LS_ACANCEL)
 ignorehitpause = 1
 persistent = 1
 

@@ -11,7 +11,7 @@ Dark Blue   								[_B/_F]_+^A +^B
 
 <#f0f000>SPECIAL MOVES</>
 Zanjan Avantura_EX						_QDB^A/^B/^C
-   <#bbbbbb>A powerful gut punch.
+   <#bbbbbb>A powerful gut punch. Initiates Lamb to Slaughter.
    A Version is fast.
    B Version is slow and high damage. 
       Can be held to draw the opponent in
@@ -27,13 +27,36 @@ Moonlight Slaughter Lamb_EX_AIR							~B_HUF^A/^B/^C
    A version hits at a shallow angle.
    B version flies more horizontally. [R]
    EX is ken carson goomba. [R] (Midcombo)</>
-Violent Response, Insane Caller_EX_AIROK								_HCB_F^A/^B/^C
+Violent Response, Insane Caller_EX								_HCB_F^A/^B/^C
    <#bbbbbb>A command grab
    A/B are grippy!
    EX inflicts wallcrush.</>
 
+<#f0f000>SPECIAL MOVES: LAMB TO SLAUGHTER CIRCLE</>
+Lamb to Slaughter is a unique combination attack state where Stat 
+can chain several attacks together. The rules go as so.
+1. When canceling from attack to attack, attack 2 must be on a 
+different button from attack 1. 
+2. When canceling from attack to attack, attack 2 must correspond
+to a different direction than attack 1.
+3. An attack cannot be repeated without returning to neutral.
+
+TheKill2								_F^A
+   <#bbbbbb>A slash that knocks down air opponents.</>
+Heavens Tear								_U^A
+   <#bbbbbb>An overhead attack that groundbounces.</>
+Ketamina								_D^A
+   <#bbbbbb>A fast low punch.</>
+Pony								_F^B
+   <#bbbbbb>A flying knee that wallbounces.</>
+Tiffany Blue Black Means								_U^B
+   <#bbbbbb>A front roundhouse that's good for 
+   juggling airborne opponents.</>
+Rio Trash Girl								_D^B
+   <#bbbbbb>A quick hop into a low kick.</>
+
 <#f0f000>LASTRIDE</>
-Not implemented Yet
+Evanescence							_QDB_F_QFU^A/^B/^C
 
 <#f0f000>ALTERNATIVE SPECIAL MOVES: A-GEAR</>
 Not implemented Yet

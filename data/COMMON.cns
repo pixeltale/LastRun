@@ -4011,10 +4011,17 @@ triggerall = time >= gethitvar(ctrltime)
 trigger1 = 1 ;Condition that makes you always airtech on the first possible frame
 value = 5210 
 
-[State 1026, Hit ground]
+[State 1026, Hit ground] ;Hard Knockdown
 type = SelfState
 triggerall = alive
 trigger1 = (Vel y > 0) && (Pos y >= 0)
+trigger1 = gethitvar(type) = 3
+value = 5100
+[State 1026, Hit ground] ;Soft Knockdown
+type = SelfState
+triggerall = alive
+trigger1 = (Vel y > 0) && (Pos y >= 0)
+trigger1 = gethitvar(type) != 3
 value = 5200
 
 [State 1028, Hit ground]

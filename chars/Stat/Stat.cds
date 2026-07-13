@@ -126,13 +126,13 @@ trigger1 = ctrl
 ;SUPER ATTACKS
 ;===========================================================================
 ;632146X
-;[State -1, Ranbu Super]
-;type = ChangeState
-;value = 3000
-;triggerall = power >= 1000 || map(TERMINA.ACTIVE) > 0
-;triggerall = command = "632146A" || command = "632146B" || command = "632146C"
-;triggerall = statetype != A
-;trigger1 = var(2)
+[State -1, Ranbu Super]
+type = ChangeState
+value = 3000
+triggerall = power >= 1000 || map(TERMINA.ACTIVE) > 0
+triggerall = command = "EVA_A" || command = "EVA_B" || command = "EVA_C"
+triggerall = statetype != A
+trigger1 = var(2)
 
 
 ;===========================================================================
@@ -212,17 +212,58 @@ trigger1 = var(1)
 ;[4]86A
 [State -1, Crouching Heavy]
 type = ChangeState
-value = 1030
+value = 1015
 triggerall = command = "[4]86A"
 triggerall = statetype = A
 trigger1 = var(1)
 ;[4]86B
 [State -1, Crouching Heavy]
 type = ChangeState
-value = 1031
+value = 1016
 triggerall = command = "[4]86B"
 triggerall = statetype = A
 trigger1 = var(1)
+
+;===========================================================================
+;A-GEAR: LAMB TO SLAUGHTER
+;===========================================================================
+[State 1030, 6A - TheKill2]
+type = ChangeState
+triggerall = !map(LS_6A)
+triggerall = command = "BUFFERA" && command = "holdfwd"
+trigger1 = map(LS_ACancel) && stateno != 1045
+value = 1030
+[State 1035, 8A - My High]
+type = ChangeState
+triggerall = !map(LS_8A)
+triggerall = command = "BUFFERA" && command = "holdup"
+trigger1 = map(LS_ACancel) && stateno != 1050
+value = 1035
+[State 1040, 2A - Ketamina]
+type = ChangeState
+triggerall = !map(LS_2A)
+triggerall = command = "BUFFERA" && command = "holddown"
+trigger1 = map(LS_ACancel) && stateno != 1055
+value = 1040
+
+[State 1045, 6B - Neverender]
+type = ChangeState
+triggerall = !map(LS_6B)
+triggerall = command = "BUFFERB" && command = "holdfwd"
+trigger1 = map(LS_BCancel) && stateno != 1030
+value = 1045
+[State 1050, 8B - Telepatija]
+type = ChangeState
+triggerall = !map(LS_8B)
+triggerall = command = "BUFFERB" && command = "holdup"
+trigger1 = map(LS_BCancel) && stateno != 1035
+value = 1050
+[State 1055, 2B - Rio Trash Girl]
+type = ChangeState
+triggerall = !map(LS_2B)
+triggerall = command = "BUFFERB" && command = "holddown"
+trigger1 = map(LS_BCancel) && stateno != 1040
+value = 1055
 
 ;===========================================================================
 ;COMMAND NORMALS
@@ -233,7 +274,7 @@ type = ChangeState
 value = 230
 triggerall = command = "MashC"
 triggerall = statetype != A
-trigger1 = (stateno = [220,225] || stateno = 420) && movecontact
+trigger1 = (stateno = [220,225] || stateno = 420) && (movecontact || time < 10)
 
 ;===========================================================================
 ;---------------------------------------------------------------------------

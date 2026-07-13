@@ -341,8 +341,8 @@ sparkxy 				= -p2dist x * 0.25, -60
 hitsound 				= 5,2
 guardsound 			= 6,0
 ;===============================
-ground.hittime  		= 18
-ground.slidetime		= 18
+ground.hittime  		= 20
+ground.slidetime		= 20
 ground.velocity 		= -6
 air.hittime  			= 30
 air.velocity 			= -3.5,-2 / map(JuggleScale)
@@ -449,10 +449,10 @@ id = 235
 type 	= HitDef 
 p2facing 	= 1
 trigger1 	= time % 3
-attr 		= SCA, NP
+attr 		= SCA, NP, NA
 animtype 		= Hard
 air.animtype 	= back
-damage 		= 10 * map(P4), 3
+damage 		= 10 * map(P4), 0
 hitflag 		= MAF
 guardflag 	= H
 pausetime 	= 4,4 + 2 * (enemy, movetype = A)
@@ -467,12 +467,25 @@ down.hittime 	= 26
 ground.velocity = -8,-0
 air.velocity 	= -3, 0
 down.velocity 	= -1, -4
-guard.ctrltime 	= 8
+guard.ctrltime 	= 4
 guard.velocity 	= -10
 air.fall 			= 1
 fall.yvelocity 	= 0
 ground.cornerpush.veloff = -3
-getpower 				= 35 * map(P4)
+getpower 				= 15 * map(P4)
+
+[State 0, StateTypeSet]
+type = StateTypeSet
+trigger1 = movecontact && movehitvar(overridden) && enemy, stateno = [900, 915]
+movetype = I        ;I,A,H
+
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = anim = 230
+attr = ,NP,SP
+slot = 0
+time = 1
 
 [State 200, 2]
 type = PlaySnd
@@ -494,7 +507,6 @@ value = 0, 3
 type = ChangeAnim
 triggerall = anim = 230
 trigger1 = !animtime && command != "HOLD_C"
-trigger2 = movecontact && movehitvar(overridden) && enemy, stateno = [900, 915]
 value = 232
 ;[State 0, Anim]
 ;type = ChangeAnim
@@ -572,8 +584,8 @@ air.hittime 			= 15
 air.velocity 			= -1,-4 / map(JuggleScale)
 down.hittime 			= 15
 ;===============================
-guard.ctrltime 		= 8
-guard.slidetime		= 8
+guard.ctrltime 		= 6
+guard.slidetime		= 6
 guard.velocity 		= -6
 airguard.velocity 		= -1,-1
 ;===============================
@@ -754,7 +766,7 @@ type 	= HitDef
 p2facing 	= 1
 trigger1 	=  animelem = 4 || animelem = 5 || animelem = 6
 attr 		= C, NA
-damage 		= 30 * map(P4), 5
+damage 		= 20 * map(P4), 0
 animtype  	= Hard
 hitflag 		= MAFD
 guardflag 	= M

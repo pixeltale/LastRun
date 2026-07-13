@@ -234,7 +234,8 @@ ignorehitpause = 1
 [State 0, NotHitBy]
 type = NotHitBy
 trigger1 = 1
-value = ,NA,SA,HA,NT,ST,HT
+attr = ,NA,SA,HA,NT,ST,HT
+slot = 0
 time = 1
 [State 0, HitOverride]
 type = HitOverride
@@ -352,7 +353,8 @@ ignorehitpause = 1
 [State 0, NotHitBy]
 type = NotHitBy
 trigger1 = 1
-value = ,NA,SA,HA,NT,ST,HT
+attr = ,NA,SA,HA,NT,ST,HT
+slot = 0
 time = 1
 [State 0, HitOverride]
 type = HitOverride
@@ -494,7 +496,8 @@ ignorehitpause = 1
 [State 0, NotHitBy]
 type = NotHitBy
 trigger1 = 1
-value = ,NA,SA,HA,NT,ST,HT
+attr = ,NA,SA,HA,NT,ST,HT
+slot = 0
 time = 1
 [State 0, HitOverride]
 type = HitOverride
@@ -614,7 +617,8 @@ ignorehitpause = 1
 [State 0, NotHitBy]
 type = NotHitBy
 trigger1 = 1
-value = ,NA,SA,HA,NT,ST,HT
+attr = ,NA,SA,HA,NT,ST,HT
+slot = 0
 time = 1
 [State 0, HitOverride]
 type = HitOverride
@@ -1358,7 +1362,8 @@ sysvar(1) = 1
 [State 0, NotHitBy]
 type = NotHitBy
 trigger1 = 1
-value = ,NA,SA,HA,NT,ST,HT
+attr = ,NA,SA,HA,NT,ST,HT
+slot = 0
 time = 1
 
 [State 0, HitOverride]
@@ -1486,7 +1491,8 @@ sysvar(1) = 1
 [State 0, NotHitBy]
 type = NotHitBy
 trigger1 = 1
-value = ,NA,SA,HA,NT,ST,HT
+attr = ,NA,SA,HA,NT,ST,HT
+slot = 0
 time = 1
 
 [State 0, HitOverride]
@@ -2197,7 +2203,7 @@ ground.hittime  		= 999
 ground.slidetime		= 999
 ground.velocity 		= -8, -5
 air.hittime  			= 999
-air.velocity 			= -8, -5
+air.velocity 			= -8, -4.5
 down.hittime 			= 30
 ;===============================
 guard.ctrltime 		= 15
@@ -2528,7 +2534,8 @@ x = vel x + 15
 [State 0, NotHitBy]
 type = NotHitBy
 trigger1 = animelemno(0) < 8
-value = ,AT
+attr = ,AT
+slot = 0
 time = 1
 
 [State 0, ChangeState]
@@ -2732,6 +2739,56 @@ trigger1 = anim = 2252 && AnimTime = 0
 value = 0
 ctrl = 1
 
+
+;[B] 623D - CASHSTEP
+[Statedef 2255]
+type    		= S
+movetype		= A
+physics 		= S
+juggle  		= 0
+poweradd		= 0
+ctrl 		= 0
+velset 		= 2, 0
+anim 		= 20
+sprpriority	= 2
+facep2 		= 1
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = time = [0,5]
+x = 15
+
+[State 0, Trans]
+type = Trans
+trigger1 = 1
+trans = AddAlpha     ;None, Add, AddAlpha, Add1, Sub
+alpha = 156, 156
+
+
+[State 0, MapSet]		;Spend pursuit when canceling
+type = MapAdd
+triggerall = !time
+trigger1 = prevstateno = [1000, 4000)
+map = "Pursuit"
+value = -333
+[State 0, MapSet]		;Spend pursuit when canceling
+type = MapSet
+trigger1 = 1
+map = "PunishCheck"
+value = 1
+redirectid = P2, ID
+
+[State 0, PlayerPush]
+type = PlayerPush
+trigger1 = 1
+value = 0
+
+[State 200, 3]
+type = ChangeState
+trigger1 = !animtime
+value = 0
+ctrl = 1
+
 ;214214X - BOOM
 [Statedef 3000]
 type    		= S
@@ -2869,7 +2926,8 @@ ignorehitpause = 1
 [State 0, NotHitBy]
 type = NotHitBy
 trigger1 = movehit
-value = SCA
+attr = SCA
+slot = 0
 time = 10
 redirectid = root, id
 
@@ -2926,7 +2984,8 @@ unhittable = 1
 [State 0, NotHitBy]
 type = NotHitBy
 trigger1 = animelemno(0) < 5
-value = ,AP
+attr = ,AP
+slot = 0
 time = 1
 
 [State 200, 1]
@@ -3031,8 +3090,9 @@ value = -666
 [State 1030, Projectile Invulnerability]
 type = NotHitBy
 trigger1 = time<16
-value = ,AP
+attr = ,AP
 time = 1
+slot = 0
 ignorehitpause = 1
 persistent = 1
 
@@ -3201,7 +3261,8 @@ sysvar(1) = 1
 [State 0, NotHitBy]
 type = NotHitBy
 trigger1 = 1
-value = ,NA,SA,HA,NT,ST,HT
+attr = ,NA,SA,HA,NT,ST,HT
+slot = 0
 time = 1
 
 [State 0, HitOverride]
@@ -3251,7 +3312,8 @@ sprpriority 	= 10
 [State 0, NotHitBy]
 type = NotHitBy
 trigger1 = 1
-value = SCA
+attr = SCA
+slot = 0
 time = 1
 
 [State 0, DestroySelf]
@@ -3308,7 +3370,8 @@ y = -5
 [State 1030, Full Invulnerability]
 type = NotHitBy
 trigger1 = time<=16
-value = SCA
+attr = SCA
+slot = 0
 time = 1
 ignorehitpause = 1
 persistent = 1

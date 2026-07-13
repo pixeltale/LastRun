@@ -184,14 +184,14 @@ ctrl = 1
 
 [State -2, Lamb To Slaughter - Reset]
 type 		= MapSet
-trigger1 		= time = 0
+trigger1 		= time = 0 || movecontact && movehitvar(overridden)
 map 			= "LS_ACancel"
 value 		= 0
 ignorehitpause 	= 1
 persistent		= 1
 [State -2, Lamb To Slaughter - Reset]
 type 		= MapSet
-trigger1 		= time = 0
+trigger1 		= time = 0 || movecontact && movehitvar(overridden)
 map 			= "LS_BCancel"
 value 		= 0
 ignorehitpause 	= 1
@@ -246,8 +246,8 @@ ignorehitpause = 1
 [State 0, DisplayToClipboard]
 type = DisplayToClipboard
 trigger1 = 1
-text = "slaughter lamb = %.0f"
-params = map(LS_ACANCEL)
+text = "slaughter lamb = %i"
+params = movehitvar(overridden)
 ignorehitpause = 1
 persistent = 1
 

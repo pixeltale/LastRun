@@ -12,7 +12,8 @@ ctrl = 1
 type = NotHitBy
 triggerall = time = 0
 trigger1 = prevstateno = 5120
-value = , NT,ST,HT
+attr = , NT,ST,HT
+slot = 0
 time = 12
 ignorehitpause = 1
 
@@ -2249,6 +2250,13 @@ anim = 900 + 5*(command = "holddown")
 ctrl = 0
 sprpriority = 2
 
+[State 0, NotHitBy]
+type = HitBy
+trigger1 = 1
+attr = SCA, AA, AP, AT
+slot = 0
+time = 1
+
 [State 0, PalFXWiz]
 type = PalFX
 trigger1 = time <= 8
@@ -2295,6 +2303,7 @@ velset = vel x * 0.5, 0
 anim = 900 + 5 * (anim = 905)
 ctrl = 0
 sprpriority = 2
+
 
 [State 905, PowerAdd] ;No Extra Bar on Projectile Parry
 type = PowerAdd
@@ -2619,7 +2628,7 @@ value = 1
 type = NotHitBy
 trigger1 = HitOver
 value = ,NT,ST,HT
-time = 3
+time = 10
 ignorehitpause = 1
 [State 5001, 6]
 type = ChangeState
@@ -2767,7 +2776,7 @@ value = 1
 type = NotHitBy
 trigger1 = HitOver
 value = ,NT,ST,HT
-time = 3
+time = 10
 ignorehitpause = 1
 [State 5011, 6]
 type = ChangeState
@@ -5614,6 +5623,16 @@ trigger1 = stateno = [150,153]
 ;==============================================================================
 ;------------------------------------------------------------------------------
 [Statedef +1]
+
+[State 0, NotHitBy] ;Lose All Invul
+type = HitBy
+trigger1 = movehitvar(overridden) && enemy, stateno = [900, 915]
+attr = SCA, AA, AP, AT
+slot = 0
+time = 1
+ignorehitpause = 1
+
+
 ;Custom Dash Cancel Map Reset
 [State -2, Dash Cancel Override]
 type 		= MapSet

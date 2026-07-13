@@ -24,6 +24,7 @@ type = VarSet
 trigger1 = ctrl || stateno = 40 || stateno = 55
 trigger2 = (stateno = [200,299]) || (stateno = [400,499] || stateno = [600,700]) 
 trigger2 = movecontact || time < 4
+trigger3 = stateno = 2255
 var(1) = 1
 ignorehitpause = 1
 [State -1, Super Cancel Special Attacks]
@@ -157,6 +158,15 @@ triggerall = command = "214D"
 triggerall = statetype != A && stateno != [2100, 3000) && !numhelper(2101)
 triggerall = stateno != [1000, 3000) || (map(Pursuit) >= 333 || map(Termina.Active))
 trigger1 = var(2)
+[State -1, B GEAR - CASH STEP]
+type = ChangeState
+value = 2255
+triggerall = map(Groove_Style) = 2
+triggerall = command = "623D"
+triggerall =  stateno != [2100, 3000) && !numhelper(2101)
+triggerall = stateno != [1000, 3000) || (map(Pursuit) >= 333 || map(Termina.Active))
+trigger1 = var(2)
+
 [State -1, B GEAR - RKO]
 type = ChangeState
 value = 2250
@@ -165,7 +175,6 @@ triggerall = command = "236D"
 triggerall =  stateno != [2100, 3000) && !numhelper(2101)
 triggerall = stateno != [1000, 3000) || (map(Pursuit) >= 333 || map(Termina.Active))
 trigger1 = var(2)
-
 ;===========================================================================
 ;SPECIAL ATTACKS
 ;===========================================================================

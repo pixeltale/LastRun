@@ -893,6 +893,7 @@ envshake.time 			= 15
 envshake.freq 			= 15
 envshake.ampl 			= 4
 envshake.phase 		= 0.5
+guard.dist			= 0
 id					= 1
 
 [State 0, ChangeState]
@@ -2142,6 +2143,7 @@ envshake.time 			= 15
 envshake.freq 			= 15
 envshake.ampl 			= 4
 envshake.phase 		= 0.5
+guard.dist			= 0
 id					= 1
 
 [State 0, ChangeState]

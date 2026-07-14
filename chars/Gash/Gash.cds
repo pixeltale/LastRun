@@ -162,8 +162,8 @@ trigger1 = var(2)
 type = ChangeState
 value = 2255
 triggerall = map(Groove_Style) = 2
-triggerall = command = "623D"
-triggerall =  stateno != [2100, 3000) && !numhelper(2101)
+triggerall = command = "D" && command = "holdfwd"
+triggerall = statetype != A && stateno != [2100, 3000) && !numhelper(2101)
 triggerall = stateno != [1000, 3000) || (map(Pursuit) >= 333 || map(Termina.Active))
 trigger1 = var(2)
 
@@ -181,16 +181,38 @@ trigger1 = var(2)
 ;623A
 [State -1, A DP]
 type = ChangeState
+value = 1030
+triggerall = statetype != A
+triggerall = command = "623A"
+trigger1 = var(1)
+;623B
+[State -1, A DP]
+type = ChangeState
+value = 1031
+triggerall = statetype != A
+triggerall = command = "623B"
+trigger1 = var(1)
+;623C
+[State -1, A DP]
+type = ChangeState
+value = 2030
+triggerall = statetype != A
+triggerall = command = "623C"
+trigger1 = var(1)
+
+;624A
+[State -1, A DP]
+type = ChangeState
 value = 1020
 triggerall = command = "624A"
 trigger1 = var(1)
-;623B
+;624B
 [State -1, B DP]
 type = ChangeState
 value = 1019
 triggerall = command = "624B"
 trigger1 = var(1)
-;623C
+;624C
 [State -1, B DP]
 type = ChangeState
 value = 2020

@@ -1,4 +1,4 @@
-<#f0f000>GASH HAZARD: A-TYPE</>
+<#f0f000>MICHEAL "CASH" HAZARD: A-TYPE</>
 <#f0f000>COMMAND NORMALS</>
 CLOSE QUARTERS            						_CLOSE^C
 CHAIN            						_F_+^C
@@ -17,7 +17,7 @@ CUT SPACE: DICER_EX_AIROK						_QDF^A/^B/^C
    A Version is fast but expires quickly.
    B Version is slow, but more active. Can be feinted with D.
    C Version is fastest and 2 hits.</>
-Reckless Assault_EX_AIROK							_DSF^A/^B/^C
+Reckless Assault_EX_AIROK							_HCB^A/^B/^C
    <#bbbbbb>A flying knee with a followup that knocks down.</>
    _!Knockdown								(After any Version) ^A/^B/^C
 Loiter Shot_EX								_QDB^A/^B/^C
@@ -26,6 +26,11 @@ Loiter Shot_EX								_QDB^A/^B/^C
    B Version lunges across the screen at high speed. [R]
    EX is an extremely fast restand.</>
    _!Knockdown								(After A Version) ^A/^B/^C
+Untamed_EX								_DSF^A/^B/^C
+   <#bbbbbb>A rising slash attack.
+   A version is fast and launches the opponent close.
+   B Version slower, 2 hits, launches further. [R]
+   EX is wobbly invincible.</>
 
 <#f0f000>LASTRIDE</>
 Flamagra Burnout</>		_QDB_QDB_+^A/^B/^C

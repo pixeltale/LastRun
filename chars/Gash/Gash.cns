@@ -79,7 +79,8 @@ superjump.height = -11.5
 
 [Quotes]
 victory1 = "I might have gone a bit overboard..."
-victory2 = "Well, you lost. You gotta show up for Jury Duty."
+victory2 = "Well, you lost. You gotta show up for Jury Duty, Cash #2!"
+victory3 = "Fighting you is difficult in more ways than one..."
 
 ;---------------------------------------------------------------------------
 ; Variable usage:
@@ -134,8 +135,9 @@ time = 1
 [Statedef 191]
 type = S
 ctrl = 0
-anim = 0
+anim = 191
 velset = 0,0
+ctrl = 0
 
 [State 191, 1] ;Freeze animation until PreIntro is over
 type = ChangeAnim
@@ -149,19 +151,8 @@ flag = Intro
 
 [State 191, 3] ;Change to stand state when done
 type = ChangeState
-trigger1 = time = 10
+trigger1 = !animtime
 value = 0
-
-[State 191, 3] ;Change to stand state when done
-type = ChangeState
-trigger1 = AnimTime = 0
-value = 0
-
-[State 191, Snd 2]
-type = PlaySnd
-trigger1 = AnimElemTime(7) = 3
-value = F5,3
-volume = -80
 
 ;---------------------------------------------------------------------------
 ; Taunt

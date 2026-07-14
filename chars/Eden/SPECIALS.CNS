@@ -163,6 +163,7 @@ flag = projtypecollision
 [State 200, 3]
 type = Changestate
 trigger1 = movecontact || MoveReversed || frontedgedist < 5
+trigger2 = enemy, combocount
 value = 1007
 ignorehitpause = 1
 
@@ -250,6 +251,7 @@ time = 10
 [State 200, 3]
 type = Changestate
 trigger1 = movecontact || MoveReversed || frontedgedist < 5
+trigger2 = enemy, combocount
 value = 1007
 ignorehitpause = 1
 
@@ -1206,6 +1208,7 @@ time = 10
 type = Changestate
 trigger1 = sysvar(1) = 3
 trigger2 = time > 100
+trigger3 = enemy, combocount
 value = 1007
 ignorehitpause = 1
 
@@ -1423,7 +1426,7 @@ sprpriority 	= 2
 
 [State 0, NotHitBy]
 type = NotHitBy
-triggerall = !movehitvar(overridden) && enemy, stateno = [900, 915]
+triggerall = !(movehitvar(overridden) && enemy, stateno = [900, 915])
 trigger1 = animelemno(0) <= 5
 attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
 slot = 0

@@ -78,8 +78,9 @@ hop.height = 0.65
 superjump.height = -12.2
 
 [Quotes]
-victory1 = "Your technique is unrefined. You could never be me."
-victory2 = "As I am now, nobody can stop me. Not even you."
+victory1 = "Hey, hey! Outta the way, you gloomy-looking bastard!"	;Eden
+victory2 = "Amazing smile! I'm feeing a strong 4/10 on this one!"	;Gash
+victory3 = "There are real ethical concerns to cloning me, you know! Who greenlit this? What are my clones being used for!?" ;Stat
 
 ;---------------------------------------------------------------------------
 ; Variable usage:
@@ -134,13 +135,14 @@ time = 1
 [Statedef 191]
 type = S
 ctrl = 0
-anim = 0
+anim = 191
 velset = 0,0
+ctrl = 0
 
 [State 191, 1] ;Freeze animation until PreIntro is over
 type = ChangeAnim
 trigger1 = RoundState = 0
-value = 0
+value = 191
 
 [State 191, 2] ;Assert this until you want "round 1, fight" to begin
 type = AssertSpecial
@@ -149,14 +151,8 @@ flag = Intro
 
 [State 191, 3] ;Change to stand state when done
 type = ChangeState
-trigger1 = time = 10
+trigger1 = !animtime
 value = 0
-
-[State 191, Snd 2]
-type = PlaySnd
-trigger1 = AnimElemTime(7) = 3
-value = F5,3
-volume = -80
 
 ;---------------------------------------------------------------------------
 ; Taunt

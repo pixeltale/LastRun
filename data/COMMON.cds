@@ -850,40 +850,36 @@ steptime = 7
 [Command]
 name = "624A"
 command = ~F, $D, B, a
-time = 20
-steptime = 7
+steptime = 8
 [Command]
 name = "624B"
 command = ~F, $D, B, b
-time = 20
-steptime = 7
+steptime = 8
 [Command]
 name = "624C"
 command = ~F, $D, B, c
-time = 20
-steptime = 7
+steptime = 8
 [Command]
 name = "624D"
 command = ~F, $D, B, d
-time = 20
-steptime = 7
+steptime = 8
 
 [Command]
 name = "426A"
-command = ~B, $D, F, a
-time = 20
+command = ~B, DB, $D, F, a
+steptime = 10
 [Command]
 name = "426B"
-command = ~B, $D, F, b
-time = 20
+command = ~B, DB, $D, F, b
+steptime = 10
 [Command]
 name = "426C"
-command = ~B, $D, F, c
-time = 20
+command = ~B, DB, $D, F, c
+steptime = 10
 [Command]
 name = "426D"
-command = ~B, $D, F, d
-time = 20
+command = ~B, DB, $D, F, d
+steptime = 10
 
 [Command]
 name = "63214A"
@@ -905,19 +901,15 @@ buffer.time = 10
 [Command]
 name = "623A"
 command = ~F, D, DF, a
-buffer.time = 10
 [Command]
 name = "623B"
 command = ~F, D, DF, b
-buffer.time = 10
 [Command]
 name = "623C"
 command = ~F, D, DF, c
-buffer.time = 10
 [Command]
 name = "623D"
 command = ~F, D, DF, d
-buffer.time = 10
 
 [Command]
 name = "236BC"

@@ -78,8 +78,9 @@ hop.height = 0.65
 superjump.height = -13.2
 
 [Quotes]
-victory1 = "Your technique is unrefined. You could never be me."
+victory1 = "The way you carry yourself is unrefined. Let's face it; you could never be me."
 victory2 = "As I am now, nobody can stop me. Not even you."
+victory3 = "A thunder god dressed as a gravure model. Just when I thought my day couldnt get better."
 
 ;---------------------------------------------------------------------------
 ; Variable usage:
@@ -134,13 +135,14 @@ time = 1
 [Statedef 191]
 type = S
 ctrl = 0
-anim = 0
+anim = 191
 velset = 0,0
+ctrl = 0
 
 [State 191, 1] ;Freeze animation until PreIntro is over
 type = ChangeAnim
 trigger1 = RoundState = 0
-value = 0
+value = 191
 
 [State 191, 2] ;Assert this until you want "round 1, fight" to begin
 type = AssertSpecial
@@ -149,14 +151,8 @@ flag = Intro
 
 [State 191, 3] ;Change to stand state when done
 type = ChangeState
-trigger1 = time = 10
+trigger1 = !animtime
 value = 0
-
-[State 191, Snd 2]
-type = PlaySnd
-trigger1 = AnimElemTime(7) = 3
-value = F5,3
-volume = -80
 
 ;---------------------------------------------------------------------------
 ; Taunt

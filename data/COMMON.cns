@@ -453,7 +453,7 @@ time = 1
 
 [State -2, Neutral Jump Checker]
 type 		= MapSet
-trigger1 		= !time || sysvar(1) != 0
+trigger1 		= !time
 map 			= "NeutralJump"
 value 		= 0
 [State -2, Neutral Jump Checker]
@@ -500,6 +500,12 @@ physics = A
 ctrl = 1
 anim = 41
 facep2 = cond(Map(SJI) , 1, 0)
+
+[State -2, Neutral Jump Checker]
+type 		= MapSet
+trigger1 		= sysvar(1) != 0
+map 			= "NeutralJump"
+value 		= 0
 
 [State 0, PosAdd]
 type = PosAdd
@@ -6979,7 +6985,7 @@ value = 2
 [State -3, QuoteValue]
 type = mapset
 triggerall = MatchOver
-trigger1 = enemy, name = "Astra"
+trigger1 = enemy, name = "STAT"
 map = "quoteNum"
 value = 3
 [State -3, QuoteValue]
@@ -7004,7 +7010,7 @@ value = MAP(quoteNum)
 
 [State 52, 3]
 type = CtrlSet
-trigger1 = roundstate = 0
+trigger1 = roundstate = [0, 1]
 value = 0
 
 ;===============================================================================

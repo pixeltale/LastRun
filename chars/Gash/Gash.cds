@@ -24,7 +24,7 @@ type = VarSet
 trigger1 = ctrl || stateno = 40 || stateno = 55
 trigger2 = (stateno = [200,299]) || (stateno = [400,499] || stateno = [600,700]) 
 trigger2 = movecontact || time < 4
-trigger3 = stateno = 2255
+trigger3 = stateno = 2255 || stateno = 2100
 var(1) = 1
 ignorehitpause = 1
 [State -1, Super Cancel Special Attacks]

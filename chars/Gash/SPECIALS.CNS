@@ -2191,6 +2191,14 @@ attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
 slot = 0
 time = 1
 
+[State -2, 	NO P-CANCEL]
+type 		= MapSet
+trigger1 		= combocount < 4
+map 			= "NOPCANCEL"
+value 		= 2
+ignorehitpause 	= 1
+persistent 		= 1
+
 [State 8000, PalFX]
 type = PalFX
 trigger1 = 1
@@ -2283,7 +2291,7 @@ id			= 20301
 type = HitDef 
 p2facing = 1
 triggerall = MAP(RETRIBUTION)
-trigger1 = animelem = 5
+trigger1 = animelem = 5 && combocount > 3
 hitonce = 1
 attr = S, SA
 damage = 120 * map(P4), 10

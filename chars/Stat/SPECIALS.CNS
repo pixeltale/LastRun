@@ -1464,6 +1464,14 @@ p2getp1state 			= 0
 missonoverride			= 0
 getpower 			= 120 * map(P4)
 
+[State -2, Wallbounce Type Set]
+type 			= MapSet
+trigger1 			= movehitvar(FRAME)
+map 				= "wallbounce_yvel"
+value 			= -6 /map(JuggleScale)
+ignorehitpause 		= 1
+persistent 			= 0
+
 [State 0, PosAdd]
 type = PosAdd
 trigger1 = animelem = 4

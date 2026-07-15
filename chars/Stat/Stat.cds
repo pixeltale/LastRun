@@ -229,38 +229,38 @@ trigger1 = var(1)
 ;===========================================================================
 [State 1030, 6A - TheKill2]
 type = ChangeState
-triggerall = !map(LS_6A)
+triggerall = !map(LS_6A) && movetype != H
 triggerall = command = "A" && command = "holdfwd"
 trigger1 = map(LS_ACancel) && stateno != 1045
 value = 1030
 [State 1035, 8A - My High]
 type = ChangeState
-triggerall = !map(LS_8A)
+triggerall = !map(LS_8A) && movetype != H
 triggerall = command = "A" && command = "holdup"
 trigger1 = map(LS_ACancel) && stateno != 1050
 value = 1035
 [State 1040, 2A - Ketamina]
 type = ChangeState
-triggerall = !map(LS_2A)
+triggerall = !map(LS_2A) && movetype != H
 triggerall = command = "A" && command = "holddown"
 trigger1 = map(LS_ACancel) && stateno != 1055
 value = 1040
 
 [State 1045, 6B - Neverender]
 type = ChangeState
-triggerall = !map(LS_6B)
+triggerall = !map(LS_6B) && movetype != H
 triggerall = command = "B" && command = "holdfwd"
 trigger1 = map(LS_BCancel) && stateno != 1030
 value = 1045
 [State 1050, 8B - Telepatija]
 type = ChangeState
-triggerall = !map(LS_8B)
+triggerall = !map(LS_8B) && movetype != H
 triggerall = command = "B" && command = "holdup"
 trigger1 = map(LS_BCancel) && stateno != 1035
 value = 1050
 [State 1055, 2B - Rio Trash Girl]
 type = ChangeState
-triggerall = !map(LS_2B)
+triggerall = !map(LS_2B) && movetype != H
 triggerall = command = "B" && command = "holddown"
 trigger1 = map(LS_BCancel) && stateno != 1040
 value = 1055

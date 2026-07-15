@@ -2180,7 +2180,7 @@ velset 		= vel x + 3, 0
 ctrl 		= 0
 anim 		= 2030
 facep2 		= 1
-poweradd 		= 0
+poweradd 		= -500
 sprpriority 	= 2
 
 [State 0, NotHitBy]
@@ -2254,7 +2254,7 @@ persistent 		= 0
 
 [State 200, 1]
 type = HitDef 
-trigger1	= Map(RETRIBUTION) = 0 || animelem = 3 || animelem = 4
+trigger1	= (Map(RETRIBUTION) = 0 || combocount < 4) || animelem = 3 || animelem = 4
 trigger1 	= animelem = 3 || animelem = 4 || animelem = 5
 attr = S, SA
 damage 			= 90 * map(P4), 4

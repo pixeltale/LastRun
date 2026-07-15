@@ -5580,7 +5580,7 @@ trigger1 = (MAP(PURSUITCANCEL_NORMALS)|| MAP(PURSUITCANCEL_SPECIALS))
 type = ChangeState
 value = 900 + 10*statetype = A
 triggerall = command = "D" || (prevstateno = 5120 || stateno = 140) && command = "HOLD_D" || (prevstateno = 905 || prevstateno = 915) && command = "D" 
-trigger1 = ctrl || stateno = [120,155] && map(IBCheck) && time > 0
+trigger1 = ctrl
 ignorehitpause = 1
 
 
@@ -6354,7 +6354,7 @@ persistent = 0
 [State 0. MapSet]
 type 		= MapSet
 trigger1    = stateno = 150 || stateno = 152 || stateno = 154
-trigger1 	= map(IBparam) && time = 1
+trigger1 	= map(IBTimer) > 20 && time = 1
 map 		= "IBPalFX"
 value 		= 1
 ignorehitpause 	= 1

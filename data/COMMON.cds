@@ -1,6 +1,6 @@
 [Defaults]
 command.time = 15
-command.buffer.time = 5
+command.buffer.time = 6
 
 ;-| Single Button |---------------------------------------------------------
 [Command]
@@ -606,15 +606,15 @@ buffer.time = 2
 ;===================================
 [Command]
 name = "EVA_A"
-command = ~D, $B, F, $U, a
+command = ~D, $B, $F, $U, a
 time = 20
 [Command]
 name = "EVA_B"
-command = ~D, $B, F, $U, b
+command = ~D, $B, $F, $U, b
 time = 20
 [Command]
 name = "EVA_C"
-command = ~D, $B, F, $U, b
+command = ~D, $B, $F, $U, b
 time = 20
 [Command]
 name = "[4]648A"
@@ -943,7 +943,6 @@ steptime = 7
 [Command]
 name = "236C"
 command = ~D, DF, UF, c
-steptime = 7
 [Command]
 name = "236D"
 command = ~D, F, d

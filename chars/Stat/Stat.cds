@@ -230,38 +230,38 @@ trigger1 = var(1)
 [State 1030, 6A - TheKill2]
 type = ChangeState
 triggerall = !map(LS_6A)
-triggerall = command = "BUFFERA" && command = "holdfwd"
+triggerall = command = "HOLD_A" && command = "holdfwd"
 trigger1 = map(LS_ACancel) && stateno != 1045
 value = 1030
 [State 1035, 8A - My High]
 type = ChangeState
 triggerall = !map(LS_8A)
-triggerall = command = "BUFFERA" && command = "holdup"
+triggerall = command = "HOLD_A" && command = "holdup"
 trigger1 = map(LS_ACancel) && stateno != 1050
 value = 1035
 [State 1040, 2A - Ketamina]
 type = ChangeState
 triggerall = !map(LS_2A)
-triggerall = command = "BUFFERA" && command = "holddown"
+triggerall = command = "HOLD_A" && command = "holddown"
 trigger1 = map(LS_ACancel) && stateno != 1055
 value = 1040
 
 [State 1045, 6B - Neverender]
 type = ChangeState
 triggerall = !map(LS_6B)
-triggerall = command = "BUFFERB" && command = "holdfwd"
+triggerall = command = "HOLD_B" && command = "holdfwd"
 trigger1 = map(LS_BCancel) && stateno != 1030
 value = 1045
 [State 1050, 8B - Telepatija]
 type = ChangeState
 triggerall = !map(LS_8B)
-triggerall = command = "BUFFERB" && command = "holdup"
+triggerall = command = "HOLD_B" && command = "holdup"
 trigger1 = map(LS_BCancel) && stateno != 1035
 value = 1050
 [State 1055, 2B - Rio Trash Girl]
 type = ChangeState
 triggerall = !map(LS_2B)
-triggerall = command = "BUFFERB" && command = "holddown"
+triggerall = command = "HOLD_B" && command = "holddown"
 trigger1 = map(LS_BCancel) && stateno != 1040
 value = 1055
 

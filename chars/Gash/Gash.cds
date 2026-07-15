@@ -145,7 +145,7 @@ trigger1 = var(2)
 type = ChangeState
 value = 2100
 triggerall = map(Groove_Style) = 1
-triggerall = command = "FF" && !map(AirDash)
+triggerall = command = "FF" && !map(AirDash) && !map(NOPCANCEL)
 triggerall = statetype = A && (pos y < -60 || stateno = [1020,1025])
 triggerall = (stateno != [1000, 3000) && stateno != [600,630]) || (map(Pursuit) >= 333 || map(Termina.Active))
 trigger1 = var(2)
@@ -199,6 +199,7 @@ type = ChangeState
 value = 2030
 triggerall = statetype != A
 triggerall = command = "623C"
+triggerall = power >= 500
 trigger1 = var(1)
 
 ;624A

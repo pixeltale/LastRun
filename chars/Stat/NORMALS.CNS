@@ -449,12 +449,12 @@ id = 235
 type 	= HitDef 
 p2facing 	= 1
 trigger1 	= time % 3
-attr 		= SCA, NP, NA
+attr 		= SCA, NP
 animtype 		= Hard
 air.animtype 	= back
 damage 		= 10 * map(P4), 0
 hitflag 		= MAF
-guardflag 	= H
+guardflag 	= M
 pausetime 	= 4,4 + 2 * (enemy, movetype = A)
 sparkno 		= 1
 sparkxy 		= -15,-70 - (random%5 * 8)

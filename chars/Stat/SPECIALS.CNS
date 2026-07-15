@@ -1996,7 +1996,7 @@ type 				= HitDef
 trigger1 				= animelem = 11
 ;===============================
 damage 				= 50 * map(P4)
-pausetime 			= 14,14 + 4 * (movecountered)
+pausetime 			= 14,14
 getpower 				= 0
 ;===============================
 attr 				= S,NA

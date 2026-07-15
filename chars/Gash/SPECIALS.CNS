@@ -2235,7 +2235,7 @@ y = -10
 type 		= MapSet
 trigger1 		= movehit && !map(ComboStateCheck)
 map 			= "P1"
-value 		= 0.80	;100% Starting DMG
+value 		= 0.75	;100% Starting DMG
 ignorehitpause 	= 1
 [State -2, P2 Value Set]
 type 		= MapSet
@@ -2257,7 +2257,7 @@ type = HitDef
 trigger1	= (Map(RETRIBUTION) = 0 || combocount < 4) || animelem = 3 || animelem = 4
 trigger1 	= animelem = 3 || animelem = 4 || animelem = 5
 attr = S, SA
-damage 			= 90 * map(P4), 4
+damage 			= 75 * map(P4), 4
 guardflag 		= M
 hitflag 			= MAF
 pausetime 		= 4, 4
@@ -2272,7 +2272,7 @@ down.hittime 		= 15
 ground.velocity 		= -1, -8
 guard.ctrltime 		= 4
 guard.slidetime		= 4
-air.velocity 		= -5, -6
+air.velocity 		= -5, -7 / map(JuggleScale)
 envshake.time 		= 0
 fall			= 1
 air.fall 			= 1
@@ -2308,7 +2308,7 @@ animtype 		= medium
 ground.slidetime 	= 14
 ground.hittime  	= 999
 ground.velocity 	= -20,-11
-air.velocity 		= -20,-10 / map(JuggleScale)
+air.velocity 		= -20,-10
 air.hittime 		= 999
 fall 			= 1
 fall.yvelocity 	= 0

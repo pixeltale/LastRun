@@ -16,6 +16,7 @@ buffer.time = 1
 name = "BUFFERA"
 command = a
 time = 1
+command.buffer.time = 3
 [Command]
 name = "b"
 command = b
@@ -30,6 +31,7 @@ buffer.time = 1
 name = "BUFFERB"
 command = b
 time = 1
+command.buffer.time = 3
 [Command]
 name = "c"
 command = c
@@ -44,6 +46,7 @@ buffer.time = 1
 name = "BUFFERC"
 command = c
 time = 1
+command.buffer.time = 3
 [Command]
 name = "d"
 command = d

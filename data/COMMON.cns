@@ -2634,7 +2634,7 @@ value = 1
 type = NotHitBy
 trigger1 = HitOver
 value = ,NT,ST,HT
-time = 10
+time = 5
 ignorehitpause = 1
 [State 5001, 6]
 type = ChangeState
@@ -2782,7 +2782,7 @@ value = 1
 type = NotHitBy
 trigger1 = HitOver
 value = ,NT,ST,HT
-time = 10
+time = 5
 ignorehitpause = 1
 [State 5011, 6]
 type = ChangeState

@@ -1730,3 +1730,70 @@ type = ChangeState
 trigger1 = animtime = 0
 value = 0
 ctrl = 1
+
+;---------------------------------------------------------------------------
+;Charge Pursuit
+[Statedef 720]
+type    		= S
+movetype		= A
+physics 		= S
+juggle  		= 0
+poweradd		= 0
+ctrl 		= 0
+velset 		= 0,0
+anim 		= 720
+sprpriority 	= 2
+facep2 		= 1
+
+[State -2, P1 Value Set]
+type 		= MapSet
+trigger1 		= movehit && !map(ComboStateCheck)
+map 		= "P1"
+value 		= 1	;90% Starting DMG
+ignorehitpause 	= 1
+[State -2, P2 Value Set]
+type 		= MapSet
+trigger1 		= movehit && map(ComboStateCheck)
+map 			= "P2"
+value 		= 0.90	;85% DMG For next hit
+ignorehitpause 	= 1
+persistent = 0
+[State -2, P2 Accumulation - Scale]
+type 		= MapSet
+trigger1 		= movehit
+map 		= "Accumulation"
+value 		= Map(Accumulation) * map(P2)
+ignorehitpause 	= 1
+persistent 		= 0
+
+[State 700, Deadzone Limiter]
+type 		= MapSet
+trigger1 		= movehit = 1
+map 			= "DeadzoneUsed"
+value 		= 1
+ignorehitpause 	= 1
+persistent 		= 0
+
+
+[State 0, MapSet] 
+type = MapAdd
+trigger1 = 1
+map = "Pursuit"
+value = 1
+
+[State 0, PalFXWiz]
+type = PalFX
+trigger1 = 1
+time = 1
+add = 100,10,100
+mul = 256,256,256
+sinadd = 20,0,20,30
+invertall = 0
+color = 0
+
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = animtime = 0
+value = 0
+ctrl = 1

@@ -442,7 +442,7 @@ air.velocity 		= -5,-1.5 / map(JuggleScale)
 fall.yvelocity 		= 0
 down.velocity 		= -2,-7
 down.hittime 		= 999
-guard.ctrltime 		= 16
+guard.ctrltime 		= 10
 guard.cornerpush.veloff 	= -6
 ;===============================
 envshake.time 			= 15

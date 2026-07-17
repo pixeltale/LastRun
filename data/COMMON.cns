@@ -5855,15 +5855,15 @@ ignorehitpause = 1
 ;Build Pursuit for Damage
 [State 0, MapSet] 
 type = MapAdd
-trigger1 = movecontact
+trigger1 = combocount
 map = "Pursuit"
 value = P2, gethitvar(damage) * 0.75
 ignorehitpause = 1
 [State 0, MapSet] 
 type = MapAdd
-trigger1 = P2, stateno = [150, 153]
+trigger1 = moveguarded = 1 && movehitvar(frame)
 map = "Pursuit"
-value = 2
+value = 2 * enemy,gethitvar(ctrltime)
 ignorehitpause = 1
 
 ;Pursuit Gain on IB

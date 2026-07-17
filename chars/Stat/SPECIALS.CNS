@@ -2400,7 +2400,7 @@ unhittable = 1
 [State 0, NotHitBy]
 type = NotHitBy
 triggerall = movehitvar(overridden) = 0
-trigger1 = time = [0, 30]
+trigger1 = time = [0, 35]
 attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST
 slot = 0
 time = 1
@@ -2415,7 +2415,7 @@ guardflag 		= M
 hitflag 			= MAFD
 pausetime 		= 0, 2
 sparkno 			= 2
-sparkxy 			= -p2dist x * 0.25, -90
+sparkxy 			= -p2dist x * 0.25 - ((random % 5) * 15), -120 + ((random % 5) * 10)
 hitsound 			= 5, 1
 guardsound 		= 6, 0
 ground.slidetime 	= 10

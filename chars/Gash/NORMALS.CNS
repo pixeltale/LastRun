@@ -941,7 +941,7 @@ guardsound 			= 6,0
 ;===============================
 ground.hittime  		= 12
 ground.slidetime		= 12
-ground.velocity 		= -6
+ground.velocity 		= -2
 air.hittime  			= 30
 air.velocity 			= -1,-5 / map(JuggleScale)
 down.velocity 			= -1,-5

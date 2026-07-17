@@ -331,7 +331,7 @@ trigger1 	=  !movecontact && !movereversed
 attr 		= C, NA
 damage 		= 80 * map(P4), 0
 animtype  	= Hard
-hitflag 		= MAFD
+hitflag 		= MAF
 guardflag 	= L
 pausetime 	= 10, 10 + 4 * (enemy, movetype = A)
 sparkno 		= 2
@@ -421,7 +421,7 @@ trigger1 	=  !movecontact && !movereversed
 attr 		= C, NA
 damage 		= 80 * map(P4), 0
 animtype  	= Hard
-hitflag 		= MAFD
+hitflag 		= MAF
 guardflag 	= L
 pausetime 	= 8,8 + 4 * (enemy, movetype = A)
 sparkno 		= 2

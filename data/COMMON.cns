@@ -5486,6 +5486,12 @@ map = "TERMINA.TIME"
 value = 600
 ignorehitpause = 1
 
+[State 0]
+type = Zoom
+trigger1 = time = [1, 20]
+scale = exp(0.040 * ln(time))
+pos = pos x,0
+
 [State 0, SuperPause]
 type = SuperPause
 trigger1 = time = 0

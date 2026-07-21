@@ -1610,6 +1610,7 @@ sprpriority 	= 2
 [State 0, MapSet]	;Spend pursuit when canceling
 type = MapAdd
 triggerall = !time
+triggerall = !map(Termina.Active)
 trigger1 = prevstateno = [1000, 4000)
 map = "Pursuit"
 value = -333
@@ -1749,6 +1750,7 @@ sprpriority 	= 2
 [State 0, MapSet]	;Spend pursuit when canceling
 type = MapAdd
 triggerall = !time
+triggerall = !map(Termina.Active)
 trigger1 = prevstateno = [1000, 4000)
 map = "Pursuit"
 value = -333
@@ -1826,6 +1828,7 @@ physics 		= S
 [State 0, MapSet]	;Spend pursuit when canceling
 type = MapAdd
 triggerall = !time
+triggerall = !map(Termina.Active)
 trigger1 = prevstateno = [1000, 4000)
 map = "Pursuit"
 value = -333
@@ -1850,6 +1853,7 @@ sprpriority 	= 2
 [State 0, MapSet]	;Spend pursuit when canceling
 type = MapAdd
 triggerall = !time
+triggerall = !map(Termina.Active)
 trigger1 = prevstateno = [1000, 4000) && prevstateno != 2109
 map = "Pursuit"
 value = -333
@@ -2171,6 +2175,7 @@ sprpriority 	= 2
 [State 0, MapSet]	;Spend pursuit when canceling
 type = MapAdd
 triggerall = !time
+triggerall = !map(Termina.Active)
 trigger1 = prevstateno = [1000, 4000)
 map = "Pursuit"
 value = -333

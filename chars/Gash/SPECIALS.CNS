@@ -2493,6 +2493,7 @@ poweradd 		= 0
 [State 0, MapSet]		;Spend pursuit when canceling
 type = MapAdd
 triggerall = !time
+triggerall = !map(Termina.Active)
 trigger1 = prevstateno = [1000, 4000)
 map = "Pursuit"
 value = -333
@@ -2847,6 +2848,7 @@ facep2 		= 1
 [State 0, MapSet]		;Spend pursuit when canceling
 type = MapAdd
 triggerall = !time
+triggerall = !map(Termina.Active)
 trigger1 = prevstateno = [1000, 4000)
 map = "Pursuit"
 value = -333
@@ -3248,6 +3250,7 @@ alpha = 156, 156
 [State 0, MapSet]		;Spend pursuit when canceling
 type = MapAdd
 triggerall = !time
+triggerall = !map(Termina.Active)
 trigger1 = prevstateno = [1000, 4000)
 map = "Pursuit"
 value = -333

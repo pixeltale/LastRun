@@ -922,6 +922,27 @@ type = Turn
 triggerall = anim = 1021
 trigger1 = p2dist x < 0
 
+[State -2, P1 Value Set]
+type 		= MapSet
+trigger1 		= movehit && !map(ComboStateCheck)
+map 		= "P1"
+value 		= 0.85	;90% Starting DMG
+ignorehitpause 	= 1
+[State -2, P2 Value Set]
+type 		= MapSet
+trigger1 		= movehit && map(ComboStateCheck)
+map 		= "P2"
+value 		= 0.85	;84% DMG For next hit
+ignorehitpause 	= 1
+persistent = 0
+[State -2, P2 Accumulation - Scale]
+type 		= MapSet
+trigger1 		= movehit
+map 		= "Accumulation"
+value 		= Map(Accumulation) * map(P2)
+ignorehitpause 	= 1
+persistent 		= 0
+
 [State 1020, 1]
 type = HitDef 
 p2facing 	= 1
@@ -944,8 +965,8 @@ ground.hittime  	= 18
 air.hittime  		= 24
 down.hittime 		= 24
 ground.velocity 	= -7, -6
-guard.ctrltime 	= 12
-guard.slidetime	= 12
+guard.ctrltime 	= 10
+guard.slidetime	= 10
 guard.velocity	= -8
 air.velocity 	= -2,-3
 down.velocity	= -2, -3
@@ -2195,13 +2216,13 @@ facep2 		= 1
 poweradd 		= -500
 sprpriority 	= 2
 
-[State 0, NotHitBy]
-type = NotHitBy
-triggerall = !(movehitvar(overridden) && enemy, stateno = [900, 915])
-trigger1 = animelemno(0) <= 4
-attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
-slot = 0
-time = 1
+;[State 0, NotHitBy]
+;type = NotHitBy
+;triggerall = !(movehitvar(overridden) && enemy, stateno = [900, 915])
+;trigger1 = animelemno(0) <= 4
+;attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+;slot = 0
+;time = 1
 
 [State -2, 	NO P-CANCEL]
 type 		= MapSet
@@ -2949,6 +2970,10 @@ x = 10
 type = VelSet
 trigger1 = animelem = 7
 x = vel x + 15
+[State 0, VelAdd]
+type = VelMul
+trigger1 = pos y >= 0 && animelemno(0) > 7
+x = 0.8
 
 [State 0, NotHitBy]
 type = NotHitBy

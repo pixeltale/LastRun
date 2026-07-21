@@ -163,6 +163,11 @@ facep2 		= 0
 poweradd 		= 0
 sprpriority 	= 10
 
+[State 0, VelAdd]
+type = VelAdd
+trigger1 = ROOT, MAP(SHRINE)
+x = 1
+
 [State -2, P1 Value Set]
 type 		= RootMapSet
 trigger1 		= movehit && root, map(ComboStateCheck) = 0
@@ -266,7 +271,8 @@ flag = projtypecollision
 [State 200, 3]
 type = Changestate
 trigger1 = movecontact || MoveReversed || root, movetype = H
-trigger2 = time = 15
+trigger2 = time = 15 && !ROOT,MAP(SHRINE)
+trigger3 = root, map(SHRINE) && FrontEdgeDist < -10
 value = 1007
 ignorehitpause = 1
 
@@ -379,8 +385,8 @@ time = 10
 [State 200, 3]
 type = Changestate
 trigger1 = movecontact || MoveReversed || root, movetype = H
-trigger2 = time = 35
-trigger3 = root, stateno = 2251
+trigger2 = time = 35 && !ROOT,MAP(SHRINE)
+trigger3 = root, map(SHRINE) && FrontEdgeDist < -10
 value = 1007
 ignorehitpause = 1
 
@@ -417,12 +423,22 @@ trigger1 = time = 1
 type    		= U
 movetype		= A
 physics 		= N
-velset 		= 5, 10
+velset 		= (root, vel x) + 8, 10
 ctrl 		= 0
-anim 		= 1007
+anim 		= 1008 + (root, map(Shrine))
 facep2 		= 0
 poweradd 		= 0
 sprpriority 	= 10
+
+[State 0, VelAdd]
+type = VelAdd
+trigger1 = ROOT, MAP(SHRINE)
+x = 1
+[State 0, VelAdd]
+type = VelMul
+trigger1 = ROOT, MAP(SHRINE)
+trigger1 = pos y >= -10
+y = 0.5
 
 [State -2, P1 Value Set]
 type 		= RootMapSet
@@ -527,8 +543,9 @@ flag = projtypecollision
 
 [State 200, 3]
 type = Changestate
-trigger1 = movecontact || MoveReversed || pos y >= 0 || root, movetype = H
-trigger2 = time = 15
+trigger1 = movecontact || MoveReversed || pos y >= 0 && !root, map(SHRINE) || root, movetype = H
+trigger2 = time = 15 && !root, map(SHRINE)
+trigger3 = root, map(SHRINE) && FrontEdgeDist < -10
 value = 1007
 ignorehitpause = 1
 
@@ -538,12 +555,22 @@ ignorehitpause = 1
 type    		= U
 movetype		= A
 physics 		= N
-velset 		= 1, 10
+velset 		= (root, vel x) + 1, 10
 ctrl 		= 0
-anim 		= 1007
+anim 		= 1007 + 2*(root, map(Shrine))
 facep2 		= 0
 poweradd 		= 0
 sprpriority 	= 10
+
+[State 0, VelAdd]
+type = VelAdd
+trigger1 = ROOT, MAP(SHRINE)
+x = 1
+[State 0, VelAdd]
+type = VelMul
+trigger1 = ROOT, MAP(SHRINE)
+trigger1 = pos y >= -10
+y = 0.5
 
 [State -2, P1 Value Set]
 type 		= RootMapSet
@@ -648,8 +675,9 @@ flag = projtypecollision
 
 [State 200, 3]
 type = Changestate
-trigger1 = movecontact || MoveReversed || pos y >= 0 || root, movetype = H
-trigger2 = time = 35
+trigger1 = movecontact || MoveReversed || pos y >= 0 && !root, map(SHRINE) || root, movetype = H
+trigger2 = time = 35 && !root, map(SHRINE)
+trigger3 = root, map(SHRINE) && FrontEdgeDist < -10
 value = 1007
 ignorehitpause = 1
 
@@ -1632,7 +1660,8 @@ time = 10
 [State 200, 3]
 type = Changestate
 trigger1 = sysvar(1) = 2
-trigger2 = time > 15
+trigger2 = time > 15 && !ROOT, MAP(SHRINE)
+trigger3 = root, map(SHRINE) && FrontEdgeDist < -10
 value = 1007
 ignorehitpause = 1
 
@@ -1766,7 +1795,8 @@ flag = projtypecollision
 [State 200, 3]
 type = Changestate
 trigger1 = sysvar(1) = 2
-trigger2 = pos y >= 2
+trigger2 = pos y >= 2 && !root, map(SHRINE)
+trigger3 = root, map(SHRINE) && FrontEdgeDist < -10
 value = 1007
 ignorehitpause = 1
 
@@ -1810,7 +1840,7 @@ trigger1 				= !movecontact && !movereversed
 ;===============================
 damage 				= 60 * map(P4)
 pausetime 			= 10,10 + 8 * (enemy, movetype = A)
-getpower 				= 25 * map(P4)
+getpower 				= 0
 ;===============================
 attr 				= S,NA
 hitflag 				= MAFD
@@ -1826,7 +1856,7 @@ hitsound 				= 5,1
 guardsound 			= 6,0
 ;===============================
 ground.hittime 		= 18
-air.hittime 			= 18
+air.hittime 			= 24
 down.hittime 			= 99
 ground.velocity 		= -8
 air.velocity 			= -2,-1.5
@@ -2734,7 +2764,8 @@ persistent 			= 0
 
 [State -2, Dash Cancel Override]
 type 		= MapSet
-trigger1 		= sysvar(1) = 2
+trigger1		= map(ChargingAngel)
+trigger2 		= sysvar(1) = 2
 map 			= "DC.OVERRIDE"
 value 		= 1
 ignorehitpause 	= 1
@@ -2742,7 +2773,7 @@ persistent 		= 1
 
 [State 100, 4]
 type = ChangeState
-trigger1 = sysvar(1) = 2 && movecontact
+trigger1 = (sysvar(1) = 2 || sysvar(1) = 1 && map(ChargingAngel)) && movecontact
 trigger1 = command = "FF"
 value = 2210
 ctrl = 0
@@ -3529,12 +3560,6 @@ map = "TERMINA.TIME"
 value = 0
 ignorehitpause = 0
 persistent = 1
-[State 0, MapSet]	;Spend pursuit when canceling
-type = MapAdd
-triggerall = !time
-trigger1 = prevstateno = [3000,3010]
-map = "Pursuit"
-value = -666
 
 [State 1030, Projectile Invulnerability]
 type = NotHitBy
@@ -3626,6 +3651,7 @@ sparkno			= -1
 id				= 222
 [State 200, 1]
 type = HitDef
+trigger1 = root, map(SHRINE) = 0
 trigger1 = !movehitvar(Overridden)
 trigger1 = ClsnOverlap(clsn1, p2,ID, clsn2)
 trigger1 	= enemy, gethitvar(chainid) != 2016
@@ -3661,6 +3687,45 @@ envshake.ampl 		= 2
 envshake.phase 	= 1
 p2stateno 		= 5300
 p2getp1state		= 0
+getpower 			= 0
+id				= 2016
+[State 200, 1]
+type = HitDef
+trigger1 = root, map(SHRINE)
+trigger1 = !movehitvar(Overridden)
+trigger1 = ClsnOverlap(clsn1, p2,ID, clsn2)
+trigger1 	= enemy, gethitvar(chainid) != 2016
+attr 	= SCA, SP, HP
+damage 		= 150 * (root, map(P4)) + 50, 50
+animtype 		= light                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
+air.animtype 	= back
+guardflag 	= M
+hitflag 		= MAFD
+pausetime 		= 25, 25
+guard.pausetime	= 5, 5
+sparkno 			= 0
+sparkxy 			= -30, -59
+hitsound 			= 5, 1
+guardsound 		= 6, 0
+ground.slidetime 	= 18
+ground.hittime  	= 45
+air.hittime  		= 45
+down.hittime 		= 15
+guard.ctrltime 	= 5
+guard.slidetime	= 25
+ground.velocity 	= -18, -8
+air.velocity 		= -18,-6
+envshake.time 		= 0
+fall 			= 1
+air.fall 			= 1
+fall.yvelocity 	= 0
+;=====================================
+envshake.time 		= 3
+envshake.freq 		= 5
+envshake.ampl 		= 2
+envshake.phase 	= 1
+p2stateno 		= 5220
+p2getp1state 		= 0
 getpower 			= 0
 id				= 2016
 

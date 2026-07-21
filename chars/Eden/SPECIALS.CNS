@@ -355,6 +355,11 @@ triggerall = animelem = 3
 trigger1 = prevstateno = 1010
 x = vel x + 1
 y = vel y + -4
+[State 0, VelSet]
+type = VelAdd
+triggerall = animelemno(0) > 3
+trigger1 = vel y >= 0
+y = -0.1
 
 [State -2, P1 Value Set]
 type 		= MapSet
@@ -958,6 +963,7 @@ damage 			= 120 * map(P4)
 guardflag 		= M
 hitflag 			= MAF
 animtype			= diagup
+p2facing			= 1
 pausetime 		= 14, 14
 sparkno 			= 3
 sparkxy 			= -p2dist x * 0.25, -p2dist x + p2dist y
@@ -1281,7 +1287,7 @@ physics 		= A         ;A,C,S,N
 type = VelSet
 trigger1 = animelem = 2
 x = vel x + 7
-y = -6 + 2*(prevstateno = 2009)
+y = -7 + 2*(prevstateno = 2009)
 
 [State -2, P1 Value Set]
 type 		= MapSet
@@ -2945,12 +2951,6 @@ map = "TERMINA.TIME"
 value = 0
 ignorehitpause = 0
 persistent = 1
-[State 0, MapSet]	;Spend pursuit when canceling
-type = MapAdd
-triggerall = !time
-trigger1 = prevstateno = [3000,3010]
-map = "Pursuit"
-value = -666
 
 [State 0, SuperPause]
 type = SuperPause
@@ -3061,12 +3061,6 @@ map = "TERMINA.TIME"
 value = 0
 ignorehitpause = 0
 persistent = 1
-[State 0, MapSet]	;Spend pursuit when canceling
-type = MapAdd
-triggerall = !time
-trigger1 = prevstateno = [3000,3010]
-map = "Pursuit"
-value = -666
 
 [State 0, SuperPause]
 type = SuperPause
@@ -3113,6 +3107,18 @@ facep2 		= 0
 poweradd 		= 0
 sprpriority 	= 10
 
+[State -2, P1 Value Set]
+type 		= MapSet
+trigger1 		= !time
+map 			= "ArsonCheck"
+value 		= 0
+ignorehitpause 	= 1
+[State -2, P1 Value Set]
+type 		= MapSet
+trigger1 		= (root, map(ARSON)) > 0
+map 			= "ArsonCheck"
+value 		= 1
+ignorehitpause 	= 1
 
 [State 0, VelAdd]
 type = VelAdd
@@ -3145,7 +3151,7 @@ type = HitDef
 trigger1 	= time % 2 = 0
 trigger1 	= sysvar(1) < 10
 attr = SCA, SP, HP
-damage 		= 15 * (root, map(P4)), 10
+damage 		= 25 * (root, map(P4)), 10 + 8 * (map(ArsonCheck) = 1)
 animtype 		= light                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 air.animtype 	= back
 guardflag 	= M

@@ -5483,7 +5483,7 @@ ignorehitpause = 1
 type = MapSet
 trigger1 = map(TERMINA.ACTIVE)
 map = "TERMINA.TIME"
-value = 600 - 300 * (combocount > 0)
+value = 600
 ignorehitpause = 1
 
 [State 0, SuperPause]
@@ -6412,12 +6412,14 @@ value = 1000 * (map(_iksys_TrainingMeter) - 1)
 
 [State 0, LifeAdd]
 type = LifeAdd
+triggerall = teamside = 2
 triggerall = GameMode = "Training" && map(_iksys_trainingRegen) = 0
 trigger1 = movetype=I
 value = 10000
 
 [State 0, LifeAdd]
 type = LifeAdd
+triggerall = teamside = 2
 triggerall = GameMode = "Training" && map(_iksys_trainingRegen) = 1
 trigger1 = (stateno = 0 || stateno = 11) && time >= 15
 value = 10000
@@ -7082,6 +7084,14 @@ ignorehitpause = 1
 [State 0, Mapadd]
 type 		    = MapAdd
 triggerall      = movehitvar(overridden) = 0
+trigger1 	    = map(PunishCheck) && movehitvar(Frame)
+map 		    = "Pursuit"
+value 		    = 333
+ignorehitpause 	= 1
+persistent 		= 0
+[State 0, Mapadd]
+type 		    = MapAdd
+triggerall      = movehitvar(overridden) = 0 && IsHelper
 trigger1 	    = map(PunishCheck) && movehitvar(Frame)
 map 		    = "Pursuit"
 value 		    = 333

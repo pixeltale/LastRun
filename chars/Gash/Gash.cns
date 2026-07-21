@@ -259,3 +259,289 @@ trigger1		= !combocount
 map 			= "Limiter_214AAA_BOUNCE"
 value 		= 0
 ignorehitpause = 1
+
+;==================================================
+;============== TERMINA EFFECTS ===================
+;==================================================
+;A-Gear
+[State -2, SHRINE Value Set]
+type 		= MapSet
+trigger1 		= map(Groove_Style) = 1 && map(Termina.Active)
+map 			= "SHRINE"
+value 		= 1
+ignorehitpause 	= 1
+[State -2, SHRINE Value Set]
+type 		= MapSet
+trigger1 		= map(Groove_Style) = 1 && !map(Termina.Active) && stateno != [3000, 9999)
+map 			= "SHRINE"
+value 		= 0
+ignorehitpause 	= 1
+;B-Gear
+[State -2, TAMPA KING Value Set]
+type 		= MapSet
+trigger1 		= map(Groove_Style) = 2 && map(Termina.Active)
+map 			= "ChargingAngel"
+value 		= 1
+ignorehitpause 	= 1
+[State -2, TAMPA KING Value Set]
+type 		= MapSet
+triggerall 	= map(ChargingAngel)
+trigger1 		= map(Groove_Style) = 2 && !map(Termina.Active)
+map 			= "ChargingAngel"
+value 		= 0
+ignorehitpause = 1
+
+;persistent = 
+;C-Gear
+[State 0, LifeAdd]
+type = LifeAdd
+triggerall = map(Groove_Style) = 3 && map(Termina.Active)
+trigger1 = movehitvar(frame)
+value = enemy, gethitvar(damage) * 0.1
+kill = 0
+absolute = 1
+ignorehitpause = 1
+;persistent = 
+
+
+;========================================================
+;============== TERMINA EFFECTS: TEXT ===================
+;========================================================
+[State -2, A-Type - Effect Title - Player 1]
+type = text
+triggerall 	= teamside=1
+trigger1 		= map(Groove_Style) = 1 && map(Termina.Start)
+removetime 	= -1
+layerno 		= 0
+text 		= "House\nOf Knives"
+scale 		= 0.5,0.5
+font 		= F1
+align 		= 0
+pos 			= 15,55
+color 		= 256, 256, 256
+xshear 		= 0.4
+ignorehitpause = 1
+pausemovetime 	= 100
+hidewithbars 	= 1
+accel 		= 0.2, 0
+velocity 		= 1
+maxdist 		= 5
+id			= 1
+[State -2, A-Type - Effect Description - Player 1]
+type = text
+triggerall 	= teamside=1
+trigger1 		= map(Groove_Style) = 1 && map(Termina.Start)
+removetime 	= -1
+layerno 		= 0
+text 		= "Improved Dicers"
+scale 		= 0.55,0.55
+font 		= F5
+align 		= 1
+pos 			= 3,65
+color 		= 256, 256, 256
+ignorehitpause = 1
+pausemovetime 	= 100
+hidewithbars 	= 1
+accel 		= 0.2, 0
+velocity 		= 1
+maxdist 		= 5
+id			= 1
+[State -2, A-Type - Effect Title - Player 2]
+type 		= text
+triggerall 	= teamside = 2
+trigger1 		= map(Groove_Style) = 1 && map(Termina.Start)
+removetime	= -1
+layerno 		= 0 
+text 		= "House\nOf Knives"
+scale 		= 0.5,0.5
+font 		= F1
+align 		= 1
+pos 			= 293,55
+color 		= 256, 256, 256
+xshear 		= 0.4
+ignorehitpause = 1
+pausemovetime 	= 100
+hidewithbars 	= 1
+velocity 		= -1
+maxdist 		= -5
+id			= 1
+[State -2, A-Type - Effect Description - Player 2]
+type = text
+triggerall 	= teamside=2
+trigger1 		= map(Groove_Style) = 1 && map(Termina.Start)
+removetime 	= -1
+layerno 		= 0
+text 		= "Improved Dicers"
+scale 		= 0.55,0.55
+font 		= F5
+align 		= -1
+pos 			= 305,65
+color 		= 256, 256, 256
+ignorehitpause = 1
+pausemovetime 	= 100
+hidewithbars 	= 1
+accel 		= 0.2, 0
+velocity 		= -1
+maxdist 		= -5
+id			= 1
+
+[State -2, B-Type - Effect Title - Player 1]
+type = text
+triggerall 	= teamside=1
+trigger1 		= map(Groove_Style) = 2 && map(Termina.Start)
+removetime 	= -1
+layerno 		= 0
+text 		= "Charging\nAngel"
+scale 		= 0.5,0.5
+font 		= F1
+align 		= 0
+pos 			= 15,55
+color 		= 256, 256, 256
+xshear 		= 0.4
+ignorehitpause = 1
+pausemovetime 	= 100
+hidewithbars 	= 1
+accel 		= 0.2, 0
+velocity 		= 1
+maxdist 		= 5
+id			= 1
+[State -2, B-Type - Effect Description - Player 1]
+type = text
+triggerall 	= teamside=1
+trigger1 		= map(Groove_Style) = 2 && map(Termina.Start)
+removetime 	= -1
+layerno 		= 0
+text 		= "Activate Tampa King on\npartially charged tackle."
+scale 		= 0.5,0.5
+font 		= F5
+align 		= 1
+pos 			= 3,65
+color 		= 256, 256, 256
+ignorehitpause = 1
+pausemovetime 	= 100
+hidewithbars 	= 1
+accel 		= 0.2, 0
+velocity 		= 1
+maxdist 		= 5
+id			= 1
+[State -2, B-Type - Effect Title - Player 2]
+type 		= text
+triggerall 	= teamside = 2
+trigger1 		= map(Groove_Style) = 2 && map(Termina.Start)
+removetime	= -1
+layerno 		= 0 
+text 		= "Charging\nAngel  "
+scale 		= 0.5,0.5
+font 		= F1
+align 		= 1
+pos 			= 293,55
+color 		= 256, 256, 256
+xshear 		= 0.4
+ignorehitpause = 1
+pausemovetime 	= 100
+hidewithbars 	= 1
+velocity 		= -1
+maxdist 		= -5
+id			= 1
+[State -2, B-Type - Effect Description - Player 2]
+type = text
+triggerall 	= teamside=2
+trigger1 		= map(Groove_Style) = 2 && map(Termina.Start)
+removetime 	= -1
+layerno 		= 0
+text 		= "Activate Tampa King on\npartially charged tackle."
+scale 		= 0.5,0.5
+font 		= F5
+align 		= -1
+pos 			= 305,65
+color 		= 256, 256, 256
+ignorehitpause = 1
+pausemovetime 	= 100
+hidewithbars 	= 1
+accel 		= 0.2, 0
+velocity 		= -1
+maxdist 		= -5
+id			= 1
+
+;[State -2, C-Type - Effect Title - Player 1]
+;type = text
+;triggerall 	= teamside=1
+;trigger1 		= map(Groove_Style) = 3 && map(Termina.Start)
+;removetime 	= -1
+;layerno 		= 0
+;text 		= "Massacre"
+;scale 		= 0.5,0.5
+;font 		= F1
+;align 		= 0
+;pos 			= 15,55
+;color 		= 256, 256, 256
+;xshear 		= 0.4
+;ignorehitpause = 1
+;pausemovetime 	= 100
+;hidewithbars 	= 1
+;accel 		= 0.2, 0
+;velocity 		= 1
+;maxdist 		= 5
+;id			= 1
+;[State -2, C-Type - Effect Description - Player 1]
+;type = text
+;triggerall 	= teamside=1
+;trigger1 		= map(Groove_Style) = 3 && map(Termina.Start)
+;removetime 	= -1
+;layerno 		= 0
+;text 		= "Gain Lifesteal on all attacks"
+;scale 		= 0.5,0.5
+;font 		= F5
+;align 		= 1
+;pos 			= 3,60
+;color 		= 256, 256, 256
+;ignorehitpause = 1
+;pausemovetime 	= 100
+;hidewithbars 	= 1
+;accel 		= 0.2, 0
+;velocity 		= 1
+;maxdist 		= 5
+;id			= 1
+;[State -2, C-Type - Effect Title - Player 2]
+;type 		= text
+;triggerall 	= teamside = 2
+;trigger1 		= map(Groove_Style) = 3 && map(Termina.Start)
+;removetime	= -1
+;layerno 		= 0 
+;text 		= "Massacre"
+;scale 		= 0.5,0.5
+;font 		= F1
+;align 		= 1
+;pos 			= 293,55
+;color 		= 256, 256, 256
+;xshear 		= 0.4
+;ignorehitpause = 1
+;pausemovetime 	= 100
+;hidewithbars 	= 1
+;velocity 		= -1
+;maxdist 		= -5
+;id			= 1
+;[State -2, C-Type - Effect Description - Player 2]
+;type = text
+;triggerall 	= teamside=2
+;trigger1 		= map(Groove_Style) = 3 && map(Termina.Start)
+;removetime 	= -1
+;layerno 		= 0
+;text 		= "Gain Lifesteal on all attacks"
+;scale 		= 0.5,0.5
+;font 		= F5
+;align 		= -1
+;pos 			= 305,60
+;color 		= 256, 256, 256
+;ignorehitpause = 1
+;pausemovetime 	= 100
+;hidewithbars 	= 1
+;accel 		= 0.2, 0
+;velocity 		= -1
+;maxdist 		= -5
+;id			= 1
+
+[State -2, Clear Text]
+type = RemoveText
+trigger1 = !map(Termina.Active)
+id 		= 1

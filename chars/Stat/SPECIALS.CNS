@@ -1234,6 +1234,43 @@ persistent 		= 0
 [State 0]
 type 	= HitDef 
 p2facing 	= 1
+triggerall = map(LS_8A_BOUNCE)
+trigger1 	= !MoveContact && !MoveReversed
+attr 		= S, SA
+animtype 		= Hard
+air.animtype 	= back
+damage 		= 90 * map(P4)
+hitflag 		= MAF
+guardflag 	= H
+pausetime 	= 12,12 + 2 * (enemy, movetype = A)
+sparkno 		= 2
+sparkxy 		= -15,-60
+hitsound   	= 5,0
+guardsound 	= 6,0
+ground.slidetime 	= 12
+ground.hittime  	= 999
+air.hittime  		= 999 
+down.hittime 		= 26 
+ground.velocity 	= 0, 10
+air.velocity 		= 0, 10
+down.velocity 		= -1, -4
+guard.ctrltime 	= 5
+guard.pausetime	=15,15
+guard.velocity 	= -10
+envshake.time 		= 8
+envshake.freq 		= 10
+envshake.ampl 		= 2
+envshake.phase 	= 1
+fall				= 1
+air.fall 			= 1
+air.type			= trip
+fall.yvelocity 	= 0
+air.cornerpush.veloff	= -5
+getpower 				= 75
+[State 0]
+type 	= HitDef 
+p2facing 	= 1
+triggerall = !map(LS_8A_BOUNCE)
 trigger1 	= !MoveContact && !MoveReversed
 attr 		= S, SA
 animtype 		= Hard
@@ -1276,6 +1313,13 @@ type = PosAdd
 trigger1 = animelemno(0) = 2
 x = 8
 
+[State -2, Groundbounce Limiter]
+type 		= MapSet
+triggerall	= movehit
+trigger1 		= enemy, gethitvar(chainid) = 5255
+map 			= "LS_8A_BOUNCE"
+value 		= 1
+ignorehitpause = 1
 [State -2, Lamb To Slaughter - Limiter]
 type 		= MapSet
 trigger1 		= 1

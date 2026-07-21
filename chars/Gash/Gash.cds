@@ -110,7 +110,7 @@ value = 3200 + 10*(statetype=A)
 triggerall = map(Super_Type) = 1
 triggerall = power >= 1000 || map(TERMINA.ACTIVE) > 0 && (var(2) || map(Termina.Time) > 1)
 triggerall = command = "236236A" || command = "236236B" || command = "236236C"
-trigger1 = var(2) || stateno = [3000,3010] && (map(Pursuit) >= 666 || map(Termina.Active))
+trigger1 = var(2) || stateno = [3000,3010]
 
 ;236236BC - Piercing Black Truth
 [State -1, LASTRIDE B TYPE - DEATH IN THE COMFORT OF A LIE]
@@ -120,7 +120,7 @@ triggerall = map(Super_Type) = 2
 triggerall = power >= 1000 || map(TERMINA.ACTIVE) > 0 && (var(2) || map(Termina.Time) > 1)
 triggerall = command = "236236BC"
 triggerall = statetype != A
-trigger1 = var(2) || stateno = [3000,3010] && (map(Pursuit) >= 666 || map(Termina.Active))
+trigger1 = var(2) || stateno = [3000,3010]
 
 
 
@@ -226,7 +226,7 @@ trigger1 = var(1)
 [State -1, Crouching Heavy]
 type = ChangeState
 value = 1000
-triggerall = !numhelper(1005)
+triggerall = !numhelper(1005) || map(SHRINE)
 triggerall = command = "236A"
 triggerall = statetype != A
 trigger1 = var(1)
@@ -234,7 +234,7 @@ trigger1 = var(1)
 [State -1, Crouching Heavy]
 type = ChangeState
 value = 1001
-triggerall = !numhelper(1005)
+triggerall = !numhelper(1005) || map(SHRINE)
 triggerall = command = "236B"
 triggerall = statetype != A
 trigger1 = var(1)
@@ -242,7 +242,7 @@ trigger1 = var(1)
 [State -1, Crouching Heavy]
 type = ChangeState
 value = 2000
-triggerall = !numhelper(2005)
+triggerall = !numhelper(2005) || map(SHRINE)
 triggerall = command = "236C"
 triggerall = power >= 500
 triggerall = statetype != A
@@ -253,7 +253,7 @@ trigger1 = var(1)
 type = ChangeState
 value = 1002
 triggerall = map(Groove_Style) = 1
-triggerall = !numhelper(1005)
+triggerall = !numhelper(1005) || map(SHRINE)
 triggerall = command = "236A"
 triggerall = statetype = A
 trigger1 = var(1)
@@ -262,7 +262,7 @@ trigger1 = var(1)
 type = ChangeState
 value = 1003
 triggerall = map(Groove_Style) = 1
-triggerall = !numhelper(1005)
+triggerall = !numhelper(1005) || map(SHRINE)
 triggerall = command = "236B"
 triggerall = statetype = A
 trigger1 = var(1)
@@ -271,7 +271,7 @@ trigger1 = var(1)
 type = ChangeState
 value = 2001
 triggerall = map(Groove_Style) = 1
-triggerall = !numhelper(1005)
+triggerall = !numhelper(1005) || map(SHRINE)
 triggerall = command = "236C"
 triggerall = statetype = A
 triggerall = power >= 500

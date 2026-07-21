@@ -179,19 +179,6 @@ if gameMode != "training" || isHelper || teamSide != 2 {
 			mapAdd{map: "_iksys_trainingHoldDirBuffer"; value: -1}
 		}
 	}
-	# Life and Power recovery
-	call fTrainingRecovery(player(1), id);
-	call fTrainingRecovery(player(2), id);
-	let n = playerId(player(1), id),numPartner;
-	if $n >= 1 {
-		call fTrainingRecovery(player(3), id);
-		if $n >= 2 {
-			call fTrainingRecovery(player(5), id);
-			if $n >= 3 {
-				call fTrainingRecovery(player(7), id);
-			}
-		}
-	}
 
 	# Dummy Control: Cooperative
 if aiLevel = 0 && map(_iksys_trainingDummyControl) = 0 {

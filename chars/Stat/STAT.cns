@@ -258,7 +258,7 @@ ignorehitpause = 1
 [State -2, Groundbounce Limiter]
 type 		= MapSet
 trigger1		= !combocount
-map 			= "Limiter_214AAA_BOUNCE"
+map 			= "LS_8A_BOUNCE"
 value 		= 0
 ignorehitpause = 1
 

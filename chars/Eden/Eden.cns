@@ -37,7 +37,7 @@ draw.offset = 0,0    ;Player drawing offset in pixels (x, y). Recommended 0,0
 walk.fwd  = 3.4      ;Walk forward
 walk.back = -3.2     ;Walk backward
 run.fwd  = 8, 0    ;Run forward (x, y)
-run.back = -8,-3 ;Hop backward (x, y)
+run.back = -8,-4 ;Hop backward (x, y)
 jump.neu = 0,-10.5    ;Neutral jumping velocity (x, y)
 jump.back = -3.5    ;Jump back Speed (x, y)
 jump.fwd = 3.5       ;Jump forward Speed (x, y)
@@ -57,7 +57,7 @@ air.gethit.airrecover.down = 1.5      ;Extra y-velocity for holding down during 
 [Movement]
 airjump.num = 0       ;Number of air jumps allowed (opt)
 airjump.height = 35   ;Minimum distance from ground before you can air jump (opt)
-yaccel = .60          ;Vertical acceleration
+yaccel = .70          ;Vertical acceleration
 stand.friction = .85  ;Friction coefficient when standing
 crouch.friction = .82 ;Friction coefficient when crouching
 stand.friction.threshold = 2          ;If player's speed drops below this threshold while standing, stop his movement **MUGEN 1.0**
@@ -225,3 +225,290 @@ map 			= "Limiter_214AAA_BOUNCE"
 value 		= 0
 ignorehitpause = 1
 
+
+;==================================================
+;============== TERMINA EFFECTS ===================
+;==================================================
+;A-Gear
+[State 0, PowerAdd]
+type = PowerAdd
+trigger1 = map(Groove_Style) = 1 && map(Termina.Active)
+value = 1
+ignorehitpause = 1
+;B-Gear
+[State 0, LifeAdd]
+type = LifeAdd
+triggerall = map(Groove_Style) = 2 && map(Termina.Active)
+trigger1 = movehitvar(frame) && moveguarded
+value = ((enemy, gethitvar(damage)) * -0.2) - 15
+kill = 0
+absolute = 1
+ignorehitpause = 1
+redirectid = P2, ID
+[State -2, ARSON Value Set]
+type 		= MapSet
+trigger1 		= map(Groove_Style) = 2 && map(Termina.Active)
+map 			= "ARSON"
+value 		= 1
+ignorehitpause 	= 1
+[State -2, ARSON Value Set]
+type 		= MapSet
+triggerall 	= map(ARSON)
+trigger1 		= map(Groove_Style) = 2 && !map(Termina.Active)
+map 			= "ARSON"
+value 		= 0
+ignorehitpause = 1
+;persistent = 
+;C-Gear
+[State 0, LifeAdd]
+type = LifeAdd
+triggerall = map(Groove_Style) = 3 && map(Termina.Active)
+trigger1 = movehitvar(frame)
+value = enemy, gethitvar(damage) * 0.1
+kill = 0
+absolute = 1
+ignorehitpause = 1
+;persistent = 
+
+
+;========================================================
+;============== TERMINA EFFECTS: TEXT ===================
+;========================================================
+[State -2, A-Type - Effect Title - Player 1]
+type = text
+triggerall 	= teamside=1
+trigger1 		= map(Groove_Style) = 1 && map(Termina.Start)
+removetime 	= -1
+layerno 		= 0
+text 		= "Checkmate"
+scale 		= 0.5,0.5
+font 		= F1
+align 		= 0
+pos 			= 15,55
+color 		= 256, 256, 256
+xshear 		= 0.4
+ignorehitpause = 1
+pausemovetime 	= 100
+hidewithbars 	= 1
+accel 		= 0.2, 0
+velocity 		= 1
+maxdist 		= 5
+id			= 1
+[State -2, A-Type - Effect Description - Player 1]
+type = text
+triggerall 	= teamside=1
+trigger1 		= map(Groove_Style) = 1 && map(Termina.Start)
+removetime 	= -1
+layerno 		= 0
+text 		= "Gain Meter for \n  the Duration of Termina"
+scale 		= 0.5,0.5
+font 		= F5
+align 		= 1
+pos 			= 3,60
+color 		= 256, 256, 256
+ignorehitpause = 1
+pausemovetime 	= 100
+hidewithbars 	= 1
+accel 		= 0.2, 0
+velocity 		= 1
+maxdist 		= 5
+id			= 1
+[State -2, A-Type - Effect Title - Player 2]
+type 		= text
+triggerall 	= teamside = 2
+trigger1 		= map(Groove_Style) = 1 && map(Termina.Start)
+removetime	= -1
+layerno 		= 0 
+text 		= "Checkmate"
+scale 		= 0.5,0.5
+font 		= F1
+align 		= 1
+pos 			= 293,55
+color 		= 256, 256, 256
+xshear 		= 0.4
+ignorehitpause = 1
+pausemovetime 	= 100
+hidewithbars 	= 1
+velocity 		= -1
+maxdist 		= -5
+id			= 1
+[State -2, A-Type - Effect Description - Player 2]
+type = text
+triggerall 	= teamside=2
+trigger1 		= map(Groove_Style) = 1 && map(Termina.Start)
+removetime 	= -1
+layerno 		= 0
+text 		= "Gain Meter for \nthe Duration of Termina  "
+scale 		= 0.5,0.5
+font 		= F5
+align 		= -1
+pos 			= 305,60
+color 		= 256, 256, 256
+ignorehitpause = 1
+pausemovetime 	= 100
+hidewithbars 	= 1
+accel 		= 0.2, 0
+velocity 		= -1
+maxdist 		= -5
+id			= 1
+
+[State -2, B-Type - Effect Title - Player 1]
+type = text
+triggerall 	= teamside=1
+trigger1 		= map(Groove_Style) = 2 && map(Termina.Start)
+removetime 	= -1
+layerno 		= 0
+text 		= "Arson"
+scale 		= 0.5,0.5
+font 		= F1
+align 		= 0
+pos 			= 15,55
+color 		= 256, 256, 256
+xshear 		= 0.4
+ignorehitpause = 1
+pausemovetime 	= 100
+hidewithbars 	= 1
+accel 		= 0.2, 0
+velocity 		= 1
+maxdist 		= 5
+id			= 1
+[State -2, B-Type - Effect Description - Player 1]
+type = text
+triggerall 	= teamside=1
+trigger1 		= map(Groove_Style) = 2 && map(Termina.Start)
+removetime 	= -1
+layerno 		= 0
+text 		= "Increased chip damage\non all attacks."
+scale 		= 0.5,0.5
+font 		= F5
+align 		= 1
+pos 			= 3,60
+color 		= 256, 256, 256
+ignorehitpause = 1
+pausemovetime 	= 100
+hidewithbars 	= 1
+accel 		= 0.2, 0
+velocity 		= 1
+maxdist 		= 5
+id			= 1
+[State -2, B-Type - Effect Title - Player 2]
+type 		= text
+triggerall 	= teamside = 2
+trigger1 		= map(Groove_Style) = 2 && map(Termina.Start)
+removetime	= -1
+layerno 		= 0 
+text 		= "Arson"
+scale 		= 0.5,0.5
+font 		= F1
+align 		= 1
+pos 			= 293,55
+color 		= 256, 256, 256
+xshear 		= 0.4
+ignorehitpause = 1
+pausemovetime 	= 100
+hidewithbars 	= 1
+velocity 		= -1
+maxdist 		= -5
+id			= 1
+[State -2, B-Type - Effect Description - Player 2]
+type = text
+triggerall 	= teamside=2
+trigger1 		= map(Groove_Style) = 2 && map(Termina.Start)
+removetime 	= -1
+layerno 		= 0
+text 		= "Increased chip damage\non all attacks."
+scale 		= 0.5,0.5
+font 		= F5
+align 		= -1
+pos 			= 305,60
+color 		= 256, 256, 256
+ignorehitpause = 1
+pausemovetime 	= 100
+hidewithbars 	= 1
+accel 		= 0.2, 0
+velocity 		= -1
+maxdist 		= -5
+id			= 1
+
+[State -2, C-Type - Effect Title - Player 1]
+type = text
+triggerall 	= teamside=1
+trigger1 		= map(Groove_Style) = 3 && map(Termina.Start)
+removetime 	= -1
+layerno 		= 0
+text 		= "Massacre"
+scale 		= 0.5,0.5
+font 		= F1
+align 		= 0
+pos 			= 15,55
+color 		= 256, 256, 256
+xshear 		= 0.4
+ignorehitpause = 1
+pausemovetime 	= 100
+hidewithbars 	= 1
+accel 		= 0.2, 0
+velocity 		= 1
+maxdist 		= 5
+id			= 1
+[State -2, C-Type - Effect Description - Player 1]
+type = text
+triggerall 	= teamside=1
+trigger1 		= map(Groove_Style) = 3 && map(Termina.Start)
+removetime 	= -1
+layerno 		= 0
+text 		= "Gain Lifesteal on all attacks"
+scale 		= 0.5,0.5
+font 		= F5
+align 		= 1
+pos 			= 3,60
+color 		= 256, 256, 256
+ignorehitpause = 1
+pausemovetime 	= 100
+hidewithbars 	= 1
+accel 		= 0.2, 0
+velocity 		= 1
+maxdist 		= 5
+id			= 1
+[State -2, C-Type - Effect Title - Player 2]
+type 		= text
+triggerall 	= teamside = 2
+trigger1 		= map(Groove_Style) = 3 && map(Termina.Start)
+removetime	= -1
+layerno 		= 0 
+text 		= "Massacre"
+scale 		= 0.5,0.5
+font 		= F1
+align 		= 1
+pos 			= 293,55
+color 		= 256, 256, 256
+xshear 		= 0.4
+ignorehitpause = 1
+pausemovetime 	= 100
+hidewithbars 	= 1
+velocity 		= -1
+maxdist 		= -5
+id			= 1
+[State -2, C-Type - Effect Description - Player 2]
+type = text
+triggerall 	= teamside=2
+trigger1 		= map(Groove_Style) = 3 && map(Termina.Start)
+removetime 	= -1
+layerno 		= 0
+text 		= "Gain Lifesteal on all attacks"
+scale 		= 0.5,0.5
+font 		= F5
+align 		= -1
+pos 			= 305,60
+color 		= 256, 256, 256
+ignorehitpause = 1
+pausemovetime 	= 100
+hidewithbars 	= 1
+accel 		= 0.2, 0
+velocity 		= -1
+maxdist 		= -5
+id			= 1
+
+[State -2, Clear Text]
+type = RemoveText
+trigger1 = !map(Termina.Active)
+id 		= 1

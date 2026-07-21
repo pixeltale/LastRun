@@ -2441,6 +2441,7 @@ var(1) = 1
 [State 0, MapSet] 
 type = MapAdd
 triggerall = !time
+triggerall = !map(Termina.Active)
 trigger1 = prevstateno = [200, 4000] || prevstateno = [1000, 4000)
 map = "Pursuit"
 value = -333 - 333 * (enemy, stateno = [150, 153])

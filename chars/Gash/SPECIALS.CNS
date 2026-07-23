@@ -220,7 +220,7 @@ envshake.time 		= 3
 envshake.freq 		= 5
 envshake.ampl 		= 2
 envshake.phase 	= 1
-getpower 			= 50
+getpower 			= 90 * (root, map(P4))
 
 [State 0, Custom Afterimage]
 type = Explod
@@ -340,7 +340,7 @@ envshake.time 		= 3
 envshake.freq 		= 5
 envshake.ampl 		= 2
 envshake.phase 	= 1
-getpower 			= 50
+getpower 			= 120 * (root, map(P4))
 
 [State 0, Custom Afterimage]
 type = Explod
@@ -493,7 +493,7 @@ envshake.time 		= 3
 envshake.freq 		= 5
 envshake.ampl 		= 2
 envshake.phase 	= 1
-getpower 			= 50
+getpower 			= 90 * (root, map(P4))
 
 [State 0, Custom Afterimage]
 type = Explod
@@ -625,7 +625,7 @@ envshake.time 		= 3
 envshake.freq 		= 5
 envshake.ampl 		= 2
 envshake.phase 	= 1
-getpower 			= 50
+getpower 			= 120 * (root, map(P4))
 
 [State 0, Custom Afterimage]
 type = Explod
@@ -1261,6 +1261,12 @@ trigger1 = animelem = 4
 x = vel x + 5
 y = -8
 
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = animelemno(0) = [2,4]
+attr = A,NA,SA,HA,NP,SP,HP,NT,ST,HT
+slot = 0
+time = 1
 
 [State -2, P1 Value Set]
 type 		= MapSet
@@ -2254,13 +2260,12 @@ sprpriority 	= 2
 ;slot = 0
 ;time = 1
 
-[State -2, 	NO P-CANCEL]
-type 		= MapSet
-trigger1 		= combocount < 4
-map 			= "NOPCANCEL"
-value 		= 2
-ignorehitpause 	= 1
-persistent 		= 1
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = animelemno(0) <= 6
+attr = A,NA,SA,HA,NP,SP,HP,NT,ST,HT
+slot = 0
+time = 1
 
 [State 8000, PalFX]
 type = PalFX

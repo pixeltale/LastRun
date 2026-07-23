@@ -214,7 +214,7 @@ type = PosAdd
 triggerall = map(Attraction)||combocount
 triggerall = anim = 1001
 trigger1 = animelemno(0) > 1 && animelemno(0) < 3
-x = cond(time * 0.2 < 15, time * 0.2, 15) * cond(p2dist x < 0, -1, 1) + 1.5 * (movetype=H)
+x = cond(time * 0.3 < 15, time * 0.3, 15) * cond(p2dist x < 0, -1, 1) + 1.5 * (movetype=H)
 redirectid = enemy, id
 [State 0, PlayerPush]
 type = PlayerPush
@@ -225,6 +225,17 @@ priority = 2
 type = Width
 trigger1 = 1
 value = 10, 10
+[State Test]
+type = Height
+triggerall = map(Attraction)||combocount
+triggerall = anim = 1001
+trigger1 = animelemno(0) > 1 && animelemno(0) < 3
+value = 30, 0
+[State 0, Turn]
+type = Turn
+trigger1 = facing = P2, facing
+redirectid = P2, ID
+
 
 [State 0, ChangeAnim]
 type = ChangeAnim
@@ -966,7 +977,7 @@ value = 0
 type = HitDef 
 trigger1 	= !MoveContact && !MoveReversed
 attr = S, SA
-damage 			= 150 * map(P4)
+damage 			= 250 * map(P4)
 guardflag 		= M
 hitflag 			= MAF
 pausetime 		= 3, 3
@@ -2271,7 +2282,7 @@ value = 0
 type = HitDef 
 trigger1 	= !MoveContact && !MoveReversed
 attr = S, SA
-damage 			= 150 * map(P4)
+damage 			= 250 * map(P4)
 guardflag 		= M
 hitflag 			= MAF
 pausetime 		= 3, 3
@@ -2443,11 +2454,10 @@ unhittable = 1
 
 [State 0, NotHitBy]
 type = NotHitBy
-triggerall = movehitvar(overridden) = 0
-trigger1 = time = [0, 35]
+trigger1 = time = 0
 attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST
 slot = 0
-time = 1
+time = 40
 
 [State 200, 1]
 type = HitDef 

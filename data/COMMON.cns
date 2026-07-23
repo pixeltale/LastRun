@@ -6323,7 +6323,15 @@ persistent	= 0
 type 		= MapSet
 trigger1 	= 1
 map 		= "cornerSplat"
-value 		= cond((abs(camerapos x) > 495 && frontedgedist < 530) && (stagefrontedgedist < stagebackedgedist), 5225, 5220)
+value 		= cond((abs(camerapos x) > 495) && (stagefrontedgedist < stagebackedgedist), 5225, 5220)
+ignorehitpause 	= 0
+persistent	= 0
+
+[State -2, Corner Only WallCrush Check]
+type 		= MapSet
+trigger1 	= 1
+map 		= "cornerCrush"
+value 		= cond((abs(camerapos x) > 400) && (stagefrontedgedist < stagebackedgedist), 5235, 5220)
 ignorehitpause 	= 0
 persistent	= 0
 

@@ -205,8 +205,8 @@ ignorehitpause = 1
 [State 0, DisplayToClipboard]
 type = DisplayToClipboard
 trigger1 = 1
-text = "prevstateno = %i retribution = %.0f"
-params = prevstateno, map(forceretribution)
+text = "prevstateno = %.0f retribution = %.0f"
+params = camerapos x, map(forceretribution)
 ignorehitpause = 1
 persistent = 1
 

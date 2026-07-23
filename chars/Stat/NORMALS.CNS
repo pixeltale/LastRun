@@ -1175,14 +1175,15 @@ trigger1 				= !movecontact && !movereversed
 damage 				= 100 * map(P4)
 pausetime 			= 12,12 + 4 * (movecountered)
 getpower 				= 100 * map(P4)
+p2facing				= 1
 ;===============================
 attr 				= S,NA
 hitflag 				= MAF
 guardflag 			= M
 animtype 				= Light
 air.animtype 			= Light
-ground.TYPE 			= high
-air.TYPE 				= high
+ground.TYPE 			= TRIP
+air.TYPE 				= TRIP
 ;===============================
 sparkno 				= 3
 sparkxy 				= -p2dist x * 0.25, -60
@@ -1195,6 +1196,7 @@ air.hittime  			= 30
 air.velocity 			= -35,-6 / map(JuggleScale)
 down.velocity 			= -1,-5
 down.hittime 			= 30
+fall.yvelocity			= 0
 ;===============================
 guard.ctrltime 			= 18
 guard.slidetime 			= 18
@@ -1214,7 +1216,7 @@ envshake.freq 			= 15
 envshake.ampl 			= 4
 envshake.phase 			= 0.5
 getpower				= 200 * map(P4)
-p2stateno				= 5235
+p2stateno				= map(cornerCrush)
 p2getp1state			= 0 
 missonoverride			= 0
 [State 0, JORMUNGANDR DEFAULT HITDEF]
@@ -1280,6 +1282,14 @@ map = "Pursuit"
 value = -10
 ignorehitpause = 1
 redirectid = enemynear, id
+
+[State -2, Wallbounce Type Set]
+type 			= MapSet
+trigger1 			= movehitvar(FRAME)
+map 			= "wallbounce_yvel"
+value 			= -8
+ignorehitpause 		= 1
+persistent 			= 0
 
 [State 0, VelAdd]
 type = PosAdd

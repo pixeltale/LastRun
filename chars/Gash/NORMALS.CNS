@@ -240,7 +240,7 @@ trigger1 				= animelem = 3 || animelem = 4
 ;===============================
 damage 				= 55 * map(P4)
 pausetime 			= 10,10 + 4 * (movecountered)
-getpower 				= 100 * map(P4)
+getpower 				= 55 * map(P4)
 ;===============================
 attr 				= S,NA
 hitflag 				= MAF
@@ -451,7 +451,7 @@ trigger1 				= animelem = 3
 ;===============================
 damage 				= 50 * map(P4)
 pausetime 			= 10,10 + 2 * (enemy, movetype = A)
-getpower 				= 25 * map(P4)
+getpower 				= 50 * map(P4)
 ;===============================
 attr 				= S,NA
 hitflag 				= MAFD
@@ -1133,7 +1133,7 @@ envshake.time 			= 15
 envshake.freq 			= 15
 envshake.ampl 			= 4
 envshake.phase 		= 0.5
-getpower 			= 150 * map(P4)
+getpower 			= 50 * map(P4)
 
 
 [State 430, 3]
@@ -1205,7 +1205,7 @@ air.fall 			= 0
 forcenofall 		= 1
 ground.cornerpush.veloff = -2.5
 air.cornerpush.veloff 	= -2.5
-getpower 		= 65 * map(P4)
+getpower 		= 45 * map(P4)
 
 [State 0, ChangeState]
 type = ChangeState
@@ -1275,7 +1275,7 @@ guard.ctrltime 	= 10 - 2 * (sysvar(3) > 0) ;If Performed from Hop
 air.fall 			= 1
 ground.cornerpush.veloff = -3
 air.cornerpush.veloff 	= -3 
-getpower 		= 75 * map(P4)
+getpower 		= 55 * map(P4)
 
 
 [State 0, VelAdd]
@@ -1366,7 +1366,7 @@ guard.ctrltime 	= 14 - 2 * (sysvar(3) > 0) ;If Performed from Hop
 air.fall 			= 1
 ground.cornerpush.veloff = -3
 air.cornerpush.veloff 	= -3 
-getpower 		= 100 * map(P4)
+getpower 		= 80 * map(P4)
 
 [State 0, ChangeState]
 type = ChangeState

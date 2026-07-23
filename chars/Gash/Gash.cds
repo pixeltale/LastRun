@@ -7,6 +7,12 @@ b = b
 c = c
 s = s
 
+[Command]
+name = "214C_CUSTOM"
+command = ~D, B, c
+steptime = 7
+buffer.time = 0
+
 [Statedef -1]
 
 ;===========================================================================
@@ -295,7 +301,7 @@ trigger1 = var(1)
 [State -1, Crouching Heavy]
 type = ChangeState
 value = 2010
-triggerall = command = "214C"
+triggerall = (command = "214C" && prevstateno != 2010) || (command = "214C_CUSTOM")
 triggerall = statetype != A
 triggerall = power >= 500
 trigger1 = var(1)

@@ -80,7 +80,7 @@ superjump.height = -12.2
 [Quotes]
 victory1 = "Hey, hey! Outta the way, you gloomy-looking bastard!"	;Eden
 victory2 = "Amazing smile! I'm feeing a strong 4/10 on this one!"	;Gash
-victory3 = "There are real ethical concerns to cloning me, you know! Who greenlit this? What are my clones being used for!?" ;Stat
+victory3 = "There are real ethical concerns to cloning me, you know! Who greenlit this? What are my clones being used for!? Hello??" ;Stat
 
 ;---------------------------------------------------------------------------
 ; Variable usage:

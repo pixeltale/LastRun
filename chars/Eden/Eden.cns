@@ -78,9 +78,9 @@ hop.height = 0.65
 superjump.height = -13.2
 
 [Quotes]
-victory1 = "The way you carry yourself is unrefined. Let's face it; you could never be me."
-victory2 = "As I am now, nobody can stop me. Not even you."
-victory3 = "A thunder god dressed as a gravure model. Just when I thought my day couldnt get better."
+victory1 = "Let's face it...you could never be me."
+victory2 = "An Idiot through and through." ;GASH
+victory3 = "Is there a brain in that skull of yours? Or are you just going to continue to flail at me." ;STAT
 
 ;---------------------------------------------------------------------------
 ; Variable usage:

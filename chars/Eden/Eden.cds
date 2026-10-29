@@ -96,6 +96,18 @@ triggerall = statetype != A
 trigger1 = ctrl
 
 ;===========================================================================
+;SUPER ATTACKS
+;===========================================================================
+;632146X
+[State -1, Ranbu Super]
+type = ChangeState
+value = 3000
+triggerall = power >= 1000 || map(TERMINA.ACTIVE) > 0
+triggerall = command = "632146A" || command = "632146B" || command = "632146C"
+triggerall = statetype != A
+trigger1 = var(2)
+
+;===========================================================================
 ;ALTERNATIVE SUPER ATTACKS
 ;===========================================================================
 ;236236BC - Black Hole Sun
@@ -120,17 +132,7 @@ trigger1 = var(2) || stateno = [3000,3010]
 
 
 
-;===========================================================================
-;SUPER ATTACKS
-;===========================================================================
-;632146X
-[State -1, Ranbu Super]
-type = ChangeState
-value = 3000
-triggerall = power >= 1000 || map(TERMINA.ACTIVE) > 0
-triggerall = command = "632146A" || command = "632146B" || command = "632146C"
-triggerall = statetype != A
-trigger1 = var(2)
+
 
 
 ;===========================================================================

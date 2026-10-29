@@ -5919,9 +5919,16 @@ map = "TERMINA.TIME"
 value = -1
 ignorehitpause = 0
 persistent = 1
+[State 0, MapSet] ;End after a round
+type = MapSet
+trigger1 = roundstate != 2
+map = "TERMINA.TIME"
+value = 0
+ignorehitpause = 0
+persistent = 1
 [State 0, MapSet] ;END
 type = MapSet
-trigger1 = map(TERMINA.TIME) <= 0
+trigger1 = map(TERMINA.TIME) <= 0 || roundstate != 2
 map = "TERMINA.ACTIVE"
 value = 0
 ignorehitpause = 1
